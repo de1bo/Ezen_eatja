@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.junefw.infra.modules.code.CodeMpp"> <!-- 지금 파일 지정 -->
+
+    <resultMap id="resultMapObj" type="com.junefw.infra.modules.code.Code"></resultMap>
+
+			<!-- infrCodeGroup -->
+	<select id="selectList" resultMap="resultMapObj">
+			SELECT 
+				a.ifcgSeq
+				,a.ifcgName
+			FROM nct.infrCodeGroup a
+			WHERE 1=1
+				AND delNy = 0
+	</select>
+	
+	<insert id="insert">
+			INSERT INTO infrCodeGroup (
+			ifcgName
+			,delNy
+			,ifcgSeq
+			) VALUES (
+			#{ifcgName}
+			,0
+			,#{ifcgSeq}
+			)
+	</insert>
+	<select id="selectOne" resultMap="resultMapObj">
+		select
+			a.ifcgSeq
+		    , a.ifcgName
+		    , a.delNy
+		from
+			infrCodeGroup a
+		where 1=1
+			and delNy = 0
+			and ifcgSeq = #{ifcgSeq}
+	</select>
+	
+	<update id="update">
+		UPDATE
+				infrCodeGroup
+			SET 
+				ifcgName = #{ifcgName}
+			WHERE 1=1
+				AND ifcgSeq = #{ifcgSeq}
+	</update>
+	<!-- infrCode -->
+	
+	<select id="selectListCode" resultMap="resultMapObj">
+		SELECT 
+			a.ifcdSeq
+			, a.ifcdName
+			, a.ifcdDelNy
+		FROM
+			infrCode a
+		WHERE 1=1
+			AND a.ifcdDelNy = 0
+		order by a.infrCodeGroup_ifcgSeq, ifcdOrder
+	</select>
+	
+	<insert id="insertCode">
+		INSERT INTO infrCode (
+			ifcdName
+			,ifcdDelNy
+			,infrCodeGroup_ifcgSeq
+		) VALUES (
+			#{ifcdName}		
+			,0
+			,#{infrCodeGroup_ifcgSeq}
+		)
+	</insert>
+	<select id="selectOneCode" resultMap="resultMapObj">
+		SELECT 
+			a.ifcdSeq
+			, a.ifcdName
+			, a.ifcdDelNy
+		FROM
+			infrCode a
+		WHERE 1=1
+			AND a.ifcdSeq = #{ifcdSeq}
+	</select>
+	
+	<update id="updateCode">
+		UPDATE
+				infrCode
+			SET 
+				ifcdName = #{ifcdName}
+			WHERE 1=1
+				AND ifcdSeq = #{ifcdSeq}
+	</update>
+	
+	
+</mapper>
