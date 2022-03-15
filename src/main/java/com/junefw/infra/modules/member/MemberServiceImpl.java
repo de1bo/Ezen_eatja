@@ -11,9 +11,15 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	MemberDao dao;
 	
+	
 	@Override
-	public List<Member> selectList() throws Exception {
-		return dao.selectList(); 
+	public int selectOneCount(MemberVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
+	@Override
+	public List<Member> selectList(MemberVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectList(vo); 
 	}
 
 	@Override
@@ -31,5 +37,11 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return dao.update(dto);
 	}
+	@Override
+	public List<Member> selectList() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	
 }

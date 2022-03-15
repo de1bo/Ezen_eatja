@@ -7,15 +7,38 @@
 <mapper namespace="com.junefw.infra.modules.code.CodeMpp"> <!-- 지금 파일 지정 -->
 
     <resultMap id="resultMapObj" type="com.junefw.infra.modules.code.Code"></resultMap>
+<!-- infrCodeGroup -->
 
-			<!-- infrCodeGroup -->
+	<sql id="selectCommon">
+		FROM eatja.infrCodeGroup a
+			WHERE 1=1
+				<choose>
+					<when test="shIfcgDelNy == 1">AND a.delNy = 1</when>
+					<when test="shIfcgDelNy == 0">AND a.delNy = 0</when>
+				</choose>
+				<if test="shIfcgName != null and !shIfcgName.equals('')"> AND ifcgName LIKE concat('%',#{shIfcgName},'%')</if>
+				<choose>
+					<when test="shOption == 1">AND a.ifcgName LIKE concat('%',#{shValue},'%')</when>
+					<when test="shOption == 2">AND a.ifcgeEng LIKE concat('%',#{shValue},'%')</when>
+				</choose>
+	</sql>
+	 
+	<select id="selectOneCount" resultType="Integer">
+			SELECT 
+				count(*)
+			<include refid="selectCommon"/>
+	</select>
+	
+			
 	<select id="selectList" resultMap="resultMapObj">
 			SELECT 
 				a.ifcgSeq
 				,a.ifcgName
-			FROM nct.infrCodeGroup a
-			WHERE 1=1
-				AND delNy = 0
+				,a.delNy
+				,a.ifcgeEng
+			<include refid="selectCommon"/>
+			limit #{startRnumForMysql}, #{rowNumToShow}
+				<!-- <if test="shIfcgSeq != null and !shIfcgSeq.equals('')"> AND ifcgSeq = #{shIfcgSeq}</if> -->
 	</select>
 	
 	<insert id="insert">
@@ -50,17 +73,34 @@
 				AND ifcgSeq = #{ifcgSeq}
 	</update>
 	<!-- infrCode -->
+	<sql id="selectCommonCode">
+		FROM eatja.infrCode a
+			WHERE 1=1
+				<choose>
+					<when test="shIfcdDelNy == 1">AND a.ifcdDelNy = 1</when>
+					<when test="shIfcdDelNy == 0">AND a.ifcdDelNy = 0</when>
+				</choose>
+				<if test="shIfcdName != null and !shIfcdName.equals('')"> AND ifcdName LIKE concat('%',#{shIfcdName},'%')</if>
+				<choose>
+					<when test="shOption == 1">AND a.ifcdName LIKE concat('%',#{shValue},'%')</when>
+					<when test="shOption == 2">AND a.ifcdNameEng LIKE concat('%',#{shValue},'%')</when>
+				</choose>
+	</sql>
+	
+	<select id="selectOneCountCode" resultType="Integer">
+			SELECT 
+				count(*)
+			<include refid="selectCommonCode"/>
+	</select>
 	
 	<select id="selectListCode" resultMap="resultMapObj">
 		SELECT 
 			a.ifcdSeq
 			, a.ifcdName
 			, a.ifcdDelNy
-		FROM
-			infrCode a
-		WHERE 1=1
-			AND a.ifcdDelNy = 0
-		order by a.infrCodeGroup_ifcgSeq, ifcdOrder
+			,a.ifcdNameEng
+		<include refid="selectCommonCode"/>
+		limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
 	
 	<insert id="insertCode">
@@ -93,6 +133,5 @@
 			WHERE 1=1
 				AND ifcdSeq = #{ifcdSeq}
 	</update>
-	
 	
 </mapper>

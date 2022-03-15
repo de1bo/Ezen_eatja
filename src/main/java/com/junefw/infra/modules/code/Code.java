@@ -2,16 +2,20 @@ package com.junefw.infra.modules.code;
 
 public class Code {
 	
+	// CodeGroup
 	private String ifcgSeq;
 	private String ifcgName;
+	private String ifcgeEng;
 	private Integer delNy;
 	
+	
+	// Code
 	private String ifcdSeq;
 	private String ifcdName;
-	private String ifcdDelNy;
+	private String ifcdNameEng;
+	private Integer ifcdDelNy;
 	private String infrCodeGroup_ifcgSeq;
 //	private String ifcgSeq;
-	
 	// --------------------
 	public String getIfcgSeq() {
 		return ifcgSeq;
@@ -25,15 +29,18 @@ public class Code {
 	public void setIfcgName(String ifcgName) {
 		this.ifcgName = ifcgName;
 	}
+	public String getIfcgeEng() {
+		return ifcgeEng;
+	}
+	public void setIfcgeEng(String ifcgeEng) {
+		this.ifcgeEng = ifcgeEng;
+	}
 	public Integer getDelNy() {
 		return delNy;
 	}
 	public void setDelNy(Integer delNy) {
 		this.delNy = delNy;
 	}
-	
-	
-	
 	public String getIfcdSeq() {
 		return ifcdSeq;
 	}
@@ -46,10 +53,13 @@ public class Code {
 	public void setIfcdName(String ifcdName) {
 		this.ifcdName = ifcdName;
 	}
-	public String getIfcdDelNy() {
+
+	
+	
+	public Integer getIfcdDelNy() {
 		return ifcdDelNy;
 	}
-	public void setIfcdDelNy(String ifcdDelNy) {
+	public void setIfcdDelNy(Integer ifcdDelNy) {
 		this.ifcdDelNy = ifcdDelNy;
 	}
 	public String getInfrCodeGroup_ifcgSeq() {
@@ -58,7 +68,14 @@ public class Code {
 	public void setInfrCodeGroup_ifcgSeq(String infrCodeGroup_ifcgSeq) {
 		this.infrCodeGroup_ifcgSeq = infrCodeGroup_ifcgSeq;
 	}
+	public String getIfcdNameEng() {
+		return ifcdNameEng;
+	}
+	public void setIfcdNameEng(String ifcdNameEng) {
+		this.ifcdNameEng = ifcdNameEng;
+	}
 	
 	
 	
+
 }

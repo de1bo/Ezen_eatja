@@ -15,10 +15,21 @@ public class MemberController {
 	
 	@RequestMapping(value = "/member/memberList")
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-	public String memberList(Model model) throws Exception {
+	public String memberList(MemberVo vo,Model model) throws Exception {
 
-		List<Member> list = service.selectList();
-		model.addAttribute("list", list);
+		int count = service.selectOneCount(vo);
+		vo.setParamsPaging(count);
+		
+		if(count != 0) {
+			List<Member> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		} else {
+			// by pass
+		}
+		// count 가 0이 아니면 list 가져오는 부분 수정 후 model 개체에 담기
+		model.addAttribute("vo", vo);
+		
+		
 
 		return "member/memberList";
 	}

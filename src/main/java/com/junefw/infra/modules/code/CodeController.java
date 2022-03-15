@@ -5,24 +5,42 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CodeController {
 
+
+
 	@Autowired
 	CodeServiceImpl service;
 	
 	@RequestMapping(value = "/code/codeGroupList")
-	public String codeGroupList(Model model) throws Exception {
+	public String codeGroupList(CodeVo vo, Model model) throws Exception {
 		
-		List<Code> list = service.selectList();
-		model.addAttribute("list", list);
+		// count 가져올 것
+		int count = service.selectOneCount(vo);
 		
+		vo.setParamsPaging(count);
+		
+		if(count != 0) {
+			List<Code> list = service.selectList(vo);
+			model.addAttribute("list", list);
+		} else {
+			// by pass
+		}
+		// count 가 0이 아니면 list 가져오는 부분 수정 후 model 개체에 담기
+		model.addAttribute("vo", vo);
 		return "code/codeGroupList";
 	}
+	
+	
+	
+	
 	@RequestMapping(value = "/code/codeGroupForm")
 	public String codeGroupForm() throws  Exception{
+		
 		return "code/codeGroupForm";
 	}
 	
@@ -63,31 +81,37 @@ public class CodeController {
 		
 		return "redirect:code/codeGroupView?ifcgSeq=" + dto.getIfcgSeq();
 	}
-	// -----------------
-	// code
-//	@RequestMapping(value = "/code/codeList")
-//	public String codeList(Model model) throws Exception {
-//		
-////		List<Code> list = service.selectList();
-////		model.addAttribute("list", list);
-//		
-//		return "code/codeList";
-//	}
 	
 	/* infrCode */
 	
 	@RequestMapping(value = "/code/codeList")
-	public String codeList(Model model) throws Exception {
+	public String codeList(CodeVo vo,Model model) throws Exception {
 		
-		List<Code> list = service.selectListCode();
-		model.addAttribute("list", list);
+		// count 가져옴
+		int countCode = service.selectOneCountCode(vo);
+		vo.setParamsPaging(countCode);
+		// count 가 0이 아니면 list 가져오는 부분 수정 후 model 개체에 담기
+		
+		if(countCode != 0) {
+			List<Code> list = service.selectListCode(vo);
+			model.addAttribute("list", list);
+		} else {
+			// by pass
+		}
+		
+		model.addAttribute("vo", vo);
+		
+		/*
+		 * List<Code> listCodeGroup = service.selectList(vo);
+		 * model.addAttribute("listCodeGroup", listCodeGroup);
+		 */
 		
 		return "code/codeList";
 	}
 	@RequestMapping(value = "/code/codeForm")
-	public String codeForm(Model model) throws  Exception{
+	public String codeForm(CodeVo vo,Model model) throws  Exception{
 		
-		List<Code> list = service.selectList();
+		List<Code> list = service.selectListCode(vo);
 		
 		model.addAttribute("list", list);
 		
