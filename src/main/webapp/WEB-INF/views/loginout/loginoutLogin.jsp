@@ -1,11 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="uTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>로그인</title>
-<link href="../../../_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="../../js/jquery-1.11.2.min.js"></script>
+<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="/infra/resources/js/jquery-1.11.2.min.js"></script>
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -47,9 +54,9 @@
   /* text-align: left; */
 }
     </style>
-    <link href="../../../css/signin.css" rel="stylesheet">
-    <link href="../../../css/style.css" rel="stylesheet">
-    <link href="../../../css/slider1.css" rel="stylesheet">
+    <link href="/infra/resources/css/signin.css" rel="stylesheet">
+    <link href="/infra/resources/css/style.css" rel="stylesheet">
+    <link href="/infra/resources/css/slider1.css" rel="stylesheet">
   </head>
   <body class="text-center" >
   <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
@@ -60,13 +67,13 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../../../images/ro1.png" class="img-fluid" alt="../../../images/ro1.jpg">
+      <img src="/infra/resources/images/ro1.png" class="img-fluid" alt="../../../images/ro1.jpg">
     </div>
     <div class="carousel-item">
-      <img src="../../../images/ro2.png" class="img-fluid" alt="../../../images/ro2.jpg">
+      <img src="/infra/resources/images/ro2.png" class="img-fluid" alt="../../../images/ro2.jpg">
     </div>
     <div class="carousel-item">
-      <img src="../../../images/ro3.png" class="img-fluid" alt="../../../images/ro3.jpg">
+      <img src="/infra/resources/images/ro3.png" class="img-fluid" alt="../../../images/ro3.jpg">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -81,7 +88,7 @@
     <!-- img rotate end-->
     <nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="../../../images/place-setting.svg" height="50" width="50"></a>
+    <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="50" width="50"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -114,7 +121,7 @@
     	<br><hr>
     <div id="jal">간편 로그인</div>
     <br>
-    <button type="button" class="img-border"><img src="../../../images/kakaologin.png"></button>
+    <button type="button" class="img-border"><img src="/infra/resources/images/kakaologin.png"></button>
     <p class="mt-5 mb-3 text-muted">&copy;2022–2022</p>
   </form>
 </main>    
@@ -127,7 +134,7 @@ $(document).ready(function(){
 	  $('.slider').slider();
 	});
 </script>
-<script src="../../../_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

@@ -15,17 +15,15 @@
 }
 </style>
 <title>회원가입</title>
-<!-- <link href="../../../_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet"> -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-<link href="../../../css/style.css" rel="stylesheet">
+<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="/infra/resources/css/style.css" rel="stylesheet">
 </head>
 
 <body>
 <header>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="../../../images/place-setting.svg" height="45" width="45"></a>
+      <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -60,12 +58,11 @@
     </div>
   </nav>
 </header>
-<img src="../../../images/regist.png" alt="../../../images/ro1.jpg" style="width: 100%; padding-top: 50px;">
+<img src="/infra/resources/images/regist.png" alt="../../../images/ro1.jpg" style="width: 100%; padding-top: 50px;">
   <br><br><br>
 
 	
 	 <!-- ★★input 다 하고 id, for, type수정할것★★ 폰트도 신경쓸것 -->
-	 <form method="post" action="/infra/member/memberInst">
 <div class="accordion" id="accordionPanelsStayOpenExample" style="width: 100%">
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -79,9 +76,9 @@
       <div class="col-md-4">
       </div>
       <div class="col-md-4" style="text-align: center;">
-	                <input type="radio" class="btn-check" name="options7" id="option15" autocomplete="off">
+	                <input type="radio" class="btn-check" name="options7" id="option15" autocomplete="off" name="ifmmRegistType">
 	                <label class="btn btn-outline-primary" for="option15">일반 사용자</label> 
-	                <input type="radio" class="btn-check" name="options7" id="option16" autocomplete="off">
+	                <input type="radio" class="btn-check" name="options7" id="option16" autocomplete="off" name="ifmmRegistType">
 	                <label class="btn btn-outline-primary" for="option16">사업자</label>
 	                </div>
 	                <div class="col-md-4">
@@ -101,40 +98,31 @@
         <form class="row g-3" style="padding: 20px;">
             <div class="col-md-6">
 	                <label for="name" class="form-label">이름</label>
-	                	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
-	                <input type="text" class="form-control" id="name" name="ifmmName" placeholder="이름" value="<c:out value="${item.ifmmName}"/>">
+	                <input type="text" class="form-control" id="name">
               </div>
               <div class="col-md-6">
 	                <label for="inputEmail1" class="form-label">아이디</label>
-	                <input type="email" class="form-control" id="inputEmail4">
+	                <input type="email" class="form-control" name="ifmmId">
               </div>
               <div class="col-md-6">
 	                <label for="inputPassword1" class="form-label">비밀번호</label>
-	                <input type="password" class="form-control" id="inputPassword1">
+	                <input type="password" class="form-control" id="inputPassword1" name="ifmmPassword">
               </div>
               <div class="col-md-6">
 	                <label for="inputPassword2" class="form-label">비밀번호 확인</label>
-	                <input type="password" class="form-control" id="inputPassword2">
-              </div>
-              <div class="col-md-6">
-	                <label for="E_name" class="form-label">이름(영문)</label>
-	                <input type="text" class="form-control" id="name_E">
-              </div>
-               <div class="col-md-6">
-	                <label for="FE_name" class="form-label">성(영문)</label>
-	                <input type="text" class="form-control" id="FE_name">
+	                <input type="password" class="form-control" id="inputPassword2" name="ifmmPassword">
               </div>
               <div class="col-md-6">
                   	<label for="gender" class="form-label">성별</label><br>
-	                <input type="radio" class="btn-check" name="options1" id="option1">
+	                <input type="radio" class="btn-check" name="ifmmGender" id="option1">
 	                <label class="btn btn-outline-primary" for="option1">남</label> 
-	                <input type="radio" class="btn-check" name="options1" id="option2" autocomplete="off">
+	                <input type="radio" class="btn-check" name="ifmmGender" id="option2" autocomplete="off">
 	                <label class="btn btn-outline-primary" for="option2">녀</label>
                 </div>
                 
                <div class="col-md-6">
 	               	<label for="birthday" class="form-label">생일</label>
-	               	<input type="date" class="form-control">
+	               	<input type="date" class="form-control" name="ifmmBirthday">
                </div>
                <label for="tel" class="form-label">휴대폰</label>
 				 <div class="input-group">
@@ -149,7 +137,7 @@
 				</div>
 				
 				<div class="col-md-4">
-	               	       <input type="tel" name="tlno" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+	               	       <input type="tel" name="ifmpNumber" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
 	           	</div>
 	           	<div class="col-md-4">
 	           	<button class="btn btn-outline-primary">인증</button>
@@ -157,50 +145,38 @@
 	            </div>
 	            <div class="col-md-6">
 	          		<label for="nation" class="form-label">추천인</label>
-	          		<input type="text" class="form-control" id="FE_name">
+	          		<input type="text" class="form-control" id="FE_name" name="ifmmRecommend">
 	          	</div>
 	          	<div class="col-md-6">
 	           		 <label for="tel" class="form-label">전화번호</label>
-	         	     <input type="tel" name="tlno" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+	         	     <input type="tel" name="ifmpHomeTel" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+	          	</div>
+	          	<div class="row mt-sm-4">
+	          		<div class="col-sm-6 mt-3 mt-sm-0">
+	          			<input type="hidden" id="ifmaDefaultNyArray0" name="ifmaDefaultNyArray" value="1">
+	          			<input type="hidden" id="ifmaTypeCdArray0" name="ifmaTypeCdArray" value="78">
+	          			<input type="hidden" id="ifmaTitleArray0" name="ifmaTitleArray" value="기본">
+	          			<input type="hidden" id="ifmaAddressExtraArray0" name="ifmaAddressExtraArray" value="기본">
+	          			<label for="memZip" class="form-label">주소 (한국전용)</label>
+	          			<div class="input-group input-group-sm">
+	          				<input type="text" id="ifmaZipcodeArray0" name="ifmaZipcodeArray" value="" placeholder="우편번호" class="form-control" readonly>
+	          				<button type="button" id="btnAddress" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+	          				<button type="button" id="btnAddressClear" class="btn btn-outline-secondary"><i class="fa-solid fa-x"></i></button>
+	          			</div>
+	          			<input type="text" id="ifmaAddress1Array0" name="ifmaAddress1Array" value="" placeholder="주소" class="form-control form-fontrol-sm mt-2" readonly">
+	          			<input type="text" id="ifmaAddress2Array0" name="ifmaAddress2Array" value="" maxlength="50" placeholder="상세 주소" class="form-control form-control-sm mt-2">
+	          		</div>
 	          	</div>
 	          	
-	          	<label for="nation" class="form-label">주소</label>
-	          	<div class="input-group">
-	          		<input type="text" class="form-control" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
-					<button class="btn btn-outline-secondary" type="button" id="button-addon2" data-bs-toggle="modal" data-bs-target="#exampleModal">검색하기</button>
-						<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">주소검색</h5>
-										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-									</div>
-									<div class="modal-body">
-													<!-- 내부 -->
-									<div class="input-group mb-3">
-										<input type="text" class="form-control" placeholder="예) 판교역로 235, 한남동 714" aria-label="Recipient's username" aria-describedby="button-addon2">
-										<button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-									</div>
-													<br>
-													<br>
-													<br>
-													<h5>
-														<strong>Tip</strong>
-													</h5>
-													<p>도로명이나 지역명을 이용해서 검색해 보세요. 건물번호, 번지를 함께 입력하시면 더욱 정확한
-														결과가 검색됩니다.</p>
-													<!-- 외부 -->
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary"
-														data-bs-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Save
-														changes</button>
-												</div>
-											</div>
+	          	<div class="col-md-6">
+	          							<input type="text" class="form-control" id="ifmaZipcodeArray0" name="ifmaZipcodeArray" value="" placeholder="우편번호" readonly>
+										<input type="button"class="form-control" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+										<input type="text"class="form-control" id="sample4_roadAddress" placeholder="도로명주소">
+										<input type="text"class="form-control" id="sample4_jibunAddress" placeholder="지번주소">
+										<span id="guide" style="color:#999;display:none"></span>
+										<input type="text" id="sample4_detailAddress"class="form-control" placeholder="상세주소">
+										<input type="text" id="sample4_extraAddress"class="form-control" placeholder="참고항목">
 										</div>
-									</div>
-					</div>
 					<div class="col-md-6">
 						<input type="text" class="form-control" placeholder="상세주소">
 	          		</div>
@@ -266,8 +242,7 @@
     </div>
   </div>
 </div>
-<button type="submit" class="btn btn-primary" value="제출" style=" float:right; border-bottom: 30px;">등록하기</button>
-</form>
+<button type="button" class="btn btn-primary" style=" float:right; border-bottom: 30px;">등록하기</button>
 <footer class="text-muted py-5">
   <div class="container">
     <p class="float-end mb-1">
@@ -285,7 +260,75 @@
 			myInput.focus()
 		})
 	</script>
-<script src="../../../_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+
+	$("btnAddress").on("click", function(){
+		sample4_execDaumPostcode();
+	});
+	
+	$("#btnAddressClear").on("click", function(){
+		$("#ifmaZipcodeArray0").val('');
+		$("#ifmaAddress1Array0").val('');
+	});
+	
+    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+    function sample4_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var roadAddr = data.roadAddress; // 도로명 주소 변수
+                var extraRoadAddr = ''; // 참고 항목 변수
+
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraRoadAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                   extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraRoadAddr !== ''){
+                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample4_postcode').value = data.zonecode;
+                document.getElementById("sample4_roadAddress").value = roadAddr;
+                document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
+                
+                // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                if(roadAddr !== ''){
+                    document.getElementById("sample4_extraAddress").value = extraRoadAddr;
+                } else {
+                    document.getElementById("sample4_extraAddress").value = '';
+                }
+
+                var guideTextBox = document.getElementById("guide");
+                // 사용자가 '선택 안함'을 클릭한 경우, 예상 주소라는 표시를 해준다.
+                if(data.autoRoadAddress) {
+                    var expRoadAddr = data.autoRoadAddress + extraRoadAddr;
+                    guideTextBox.innerHTML = '(예상 도로명 주소 : ' + expRoadAddr + ')';
+                    guideTextBox.style.display = 'block';
+
+                } else if(data.autoJibunAddress) {
+                    var expJibunAddr = data.autoJibunAddress;
+                    guideTextBox.innerHTML = '(예상 지번 주소 : ' + expJibunAddr + ')';
+                    guideTextBox.style.display = 'block';
+                } else {
+                    guideTextBox.innerHTML = '';
+                    guideTextBox.style.display = 'none';
+                }
+            }
+        }).open();
+    }
+</script>
+<script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 

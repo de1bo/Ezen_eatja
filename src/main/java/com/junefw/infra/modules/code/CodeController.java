@@ -17,7 +17,7 @@ public class CodeController {
 	CodeServiceImpl service;
 	
 	@RequestMapping(value = "/code/codeGroupList")
-	public String codeGroupList(CodeVo vo, Model model) throws Exception {
+	public String codeGroupList(/* @ModelAttribute("vo") */ CodeVo vo, Model model) throws Exception {
 		
 		// count 가져올 것
 		int count = service.selectOneCount(vo);
@@ -31,7 +31,10 @@ public class CodeController {
 			// by pass
 		}
 		// count 가 0이 아니면 list 가져오는 부분 수정 후 model 개체에 담기
-		model.addAttribute("vo", vo);
+		model.addAttribute("vo", vo); 
+		
+		
+		
 		return "code/codeGroupList";
 	}
 	
