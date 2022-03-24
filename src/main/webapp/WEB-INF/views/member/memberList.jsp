@@ -13,7 +13,7 @@
 <style type="text/css">
 	#jal {
 	font-family: "jal";
-}
+}`
 #pd{
 	padding: 5%;
 }
@@ -67,7 +67,7 @@
 </header>
 </main>
 <div id="pd">
-  <div style="padding: 20px;">
+  <div style="padding: 5%">
 	<h1 id="jal" style="padding: 15px;" >사용자 관리</h1>
 	  <table class="border border-3">
 	  <form id="" name="" method="get" action="/infra/member/memberList">
@@ -173,7 +173,7 @@
 		  <tr>
 		  	<td><input type="checkbox"></td>
 		  	<td><c:out value="${item.seq}"/></td>
-		  	<td><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>"><c:out value="${item.ifmmName}"/></td>
+		  	<td><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"><c:out value="${item.ifmmName}"/></td>
 		  	<td><c:out value="${item.ifmmId}"/></td>
 		  	<td><c:out value="${item.ifmmDelNy}"/></td>
 		  	<td>경기도 광명시</td>

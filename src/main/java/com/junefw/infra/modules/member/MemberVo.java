@@ -3,7 +3,7 @@ package com.junefw.infra.modules.member;
 public class MemberVo {
 
 	// infrCodeGroup
-	private String shIfcgSeq;
+	private String shIfmmSeq;
 	private String seq;
 	private String shIfmmName;
 	private Integer shIfmmDelNy;
@@ -73,17 +73,21 @@ public class MemberVo {
 			
 		}
 //		-------------------------
-		public String getShIfcgSeq() {
-			return shIfcgSeq;
-		}
 
-		public void setShIfcgSeq(String shIfcgSeq) {
-			this.shIfcgSeq = shIfcgSeq;
-		}
 
 		public String getSeq() {
 			return seq;
 		}
+
+		public String getShIfmmSeq() {
+			return shIfmmSeq;
+		}
+
+
+		public void setShIfmmSeq(String shIfmmSeq) {
+			this.shIfmmSeq = shIfmmSeq;
+		}
+
 
 		public void setSeq(String seq) {
 			this.seq = seq;
