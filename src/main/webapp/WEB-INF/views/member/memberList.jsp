@@ -87,32 +87,6 @@
 		<td>
 		    <div class="col">
 		    	<div class="col p-2">
-					<select class="form-select" aria-label="Default select example" id="shOption" name="shOption">
-		  				<option value="">::검색구분::
-						<option value="1"  <c:if test="${vo.shOption eq 1 }">selected</c:if>>이름
-						<option value="2"  <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디
-					</select>
-				</div>
-		    </div>
-	    </td>
-	    <td>
-		    <div class="col">
-		    	<div class="col p-2">
-					<input type="text" name="shIfmmName" id="shIfmmName" class="form-control" placeholder="회원이름" value="<c:out value="${vo.shIfmmName}"/>">
-				</div>
-		    </div>
-		</td>
-	    <td>
-		    <div class="col">
-		    	<div class="col p-2">
-					<input type="text" name="shValue" id="shValue" class="form-control" placeholder="아이디" value="<c:out value="${vo.shValue}"/>">
-				</div>
-		    </div>
-	    </td>
-	  </tr>
-	  <tr class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
-	  	<td><div class="col">
-		    	<div class="col p-2">
 					<select class="form-select" aria-label="Default select example">
 		  				<option selected>검색</option>
 						<option value="1">One</option>
@@ -120,11 +94,37 @@
 						<option value="3">Three</option>
 					</select>
 				</div>
+		    </div>
+	    </td>
+	    <td>
+		    <div class="col">
+		    	<div class="col p-2">
+					<input type="text" name="shIfmmName" id="shIfmmName" class="form-control" placeholder="시작일" value="<c:out value="${vo.shIfmmName}"/>">
+				</div>
+		    </div>
+		</td>
+	    <td>
+		    <div class="col">
+		    	<div class="col p-2">
+					<input type="text" class="form-control" placeholder="종료일">
+				</div>
+		    </div>
+	    </td>
+	  </tr>
+	  <tr class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+	  	<td><div class="col">
+		    	<div class="col p-2">
+		    	<select class="form-select" aria-label="Default select example" id="shOption" name="shOption">
+		  				<option value="">::검색구분::
+						<option value="1"  <c:if test="${vo.shOption eq 1 }">selected</c:if>>이름
+						<option value="2"  <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디
+					</select>
+				</div>
 			</div></td>
 			<td>
 				 <div class="col">
 		    		<div class="col p-2">
-						<input type="text" id="" class="form-control" placeholder="시작일">
+						<input type="text" name="shValue" id="shValue" class="form-control" placeholder="아이디" value="<c:out value="${vo.shValue}"/>">
 					</div>
 		   		</div>
 			</td>
@@ -173,9 +173,9 @@
 		  <tr>
 		  	<td><input type="checkbox"></td>
 		  	<td><c:out value="${item.seq}"/></td>
-		  	<td><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"><c:out value="${item.ifmmName}"/></td>
+		  	<td><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"><c:out value="${item.ifmmName}"/></td>
 		  	<td><c:out value="${item.ifmmId}"/></td>
-		  	<td><c:out value="${item.ifmmDelNy}"/></td>
+		  	<td><c:out value="${item.ifmmGenderCd}"/></td>
 		  	<td>경기도 광명시</td>
 		  	<td>거부</td>
 		  	<td>거부</td>
@@ -211,8 +211,8 @@
 	</nav>
 	
 	
-	<button type="button" class="btn btn-danger" style=" float:left; border-bottom: 10px;"><img src="images/trash-icon.png" width="25px" height="25px"></button>
-	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><img src="images/plus-sign.png" width="25px" height="25px"></button>
+	<button type="button" class="btn btn-danger" style=" float:left; border-bottom: 10px;"><img src="/infra/resources/images/trash-icon.png" width="25px" height="25px"></button>
+	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><img src="/infra/resources/images/plus-sign.png" width="25px" height="25px"><a href="/infra/member/memberForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">등록</a></button>
 	</div>
 </div>
 	<footer class="text-muted py-5">

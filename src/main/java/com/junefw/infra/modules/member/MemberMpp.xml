@@ -33,6 +33,7 @@
 				,a.ifmmName
 				,a.ifmmId
 				,a.ifmmDelNy
+				,a.ifmmGenderCd
 				<include refid="selectCommon"/>
 				limit #{startRnumForMysql}, #{rowNumToShow}
 	</select>
@@ -49,7 +50,7 @@
 			)
 	</insert>
 	<select id="selectOne" resultMap="resultMapObj">
-		select
+		<!-- select
 			a.seq
 		    , a.ifmmName
 		    , a.ifmmDelNy
@@ -57,7 +58,22 @@
 			infrMember a
 		where 1=1
 			and ifmmDelNy = 0
-			and seq = #{seq}
+			and seq = #{seq} -->
+			
+			SELECT
+				a.seq
+				,a.ifmmName
+				,a.ifmmId
+				,a.ifmmPassword
+				,a.ifmmBirthday
+				,a.regDateTime
+				,a.modDateTime
+				,a.ifmmRecommendSeq
+				,a.ifmmDelNy
+			FROM
+				infrMember a
+			WHERE 1=1
+				and seq = #{seq}
 	</select>
 	
 	<update id="update">
@@ -65,7 +81,13 @@
 				infrMember
 			SET 
 				ifmmName = #{ifmmName}
+				,ifmmId = #{ifmmId}
+				,ifmmPassword = #{ifmmPassword}
+				,ifmmBirthday = #{ifmmBirthday}
+				,ifmmRecommendSeq = #{ifmmRecommendSeq}
+				,ifmmDelNy = #{ifmmDelNy}
 			WHERE 1=1
 				AND seq = #{seq}
+
 	</update>
 </mapper>

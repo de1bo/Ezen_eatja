@@ -6,6 +6,14 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
+<form method="post" action="/infra/member/memberUpdt">
+
+<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }"/>">
+	<input type="hidden" name="shOption" value="<c:out value="${vo.shOption }"/>">
+	<input type="hidden" name="shValue" value="<c:out value="${vo.shValue }"/>">
+	<input type="hidden" name="">
+	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -112,6 +120,7 @@
 
 <main>
 
+
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 320px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><image href="/infra/resources/images/place-setting.svg" height="100%" width="100%"/></svg>
@@ -123,8 +132,8 @@
         <a href="#" class="nav-link link-dark" aria-current="page">
           <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="/infra/resources/images/food/pizza.jpg" height="100%" width="100%"/></svg>
 
-        <h2>김도현</h2>
-        <p>kimdohyun@naver.com</p>
+        <h2><c:out value="${item.ifmmName}"/></h2>
+        <p><c:out value="${item.ifmmId}"/></p>
         </a>
       </li>
       <li class="nav-item ct">
@@ -146,7 +155,7 @@
         </div>
       </li>
       <li>
-      	<button class="form-control">수정 완료</button>
+      <input type="submit" class="form-control" value="수정 완료">
       </li>
     </ul>
     <hr>
@@ -177,15 +186,15 @@
 	      <div class="mb-3 row">
 	      	<label for="staticEmail" class="col-sm-2 col-form-label">이름</label>
     			<div class="col-sm-4">
-	       <input type="text" class="form-control" id="staticEmail" value="김도현">
+	       <input type="text" class="form-control" id="ifmmName" name="ifmmName" value="<c:out value="${item.ifmmName}"/>">
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">아이디</label>
     			<div class="col-sm-4">
-	       <input type="text" class="form-control" id="staticEmail" value="kimdohyun">
+	       <input type="text" class="form-control" id="staticEmail" name="ifmmId" value="<c:out value="${item.ifmmId}"/>">
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">비밀번호</label>
     			<div class="col-sm-4">
-	       <input type="password" class="form-control" id="staticEmail" value="123456">
+	       <input type="password" class="form-control" id="staticEmail" name="ifmmPassword" value="<c:out value="${item.ifmmPassword}"/>">
 	      </div>
 	      <label for="staticGender" class="col-sm-2 col-form-label">성별</label>
 	    	<div class="col-sm-4">
@@ -196,7 +205,7 @@
 		     </div>
 		     	 <label for="staticBirth" class="col-sm-2 col-form-label">생일</label>
     			<div class="col-sm-4">
-	       <input type="date" class="form-control" id="staticEmail" value="1998-10-14">
+	       <input type="date" class="form-control" id="staticEmail" name="ifmmBirthday" value="<c:out value="${item.ifmmBirthday}"/>">
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">휴대폰</label>
     			<div class="col-sm-4">
@@ -208,7 +217,7 @@
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">추천인</label>
     			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="김동현">
+	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="ifmmRecommendSeq" value="<c:out value="${item.ifmmRecommendSeq}"/>">
 	      </div><br><br>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">주소</label>
     			<div class="col-sm-3">
@@ -219,10 +228,10 @@
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
     			<div class="col-sm-3">
-	       <input type="email" class="form-control" id="staticEmail" value="kimdohyun1235">
+	       <input type="text" class="form-control" id="staticEmail" value="kimdohyun1235">
 	      </div>
 	      <div class="col-sm-7">
-	       <input type="email" class="form-control" id="staticEmail" value="kimdohyun1235">
+	       <input type="text" class="form-control" id="staticEmail" value="kimdohyun1235">
 	      </div>
 	    </div>
 	  </div>
@@ -282,11 +291,11 @@
 	      <div class="mb-3 row">
 	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
     			<div class="col-sm-4">
-	       <input type="date" readonly class="form-control" id="staticEmail" value="2021-03-23">
+	       <input type="text" readonly class="form-control" id="staticEmail" name="regDateTime" value="<c:out value="${item.regDateTime}"/>">
 	       </div>
 	       <label for="staticEmail" class="col-sm-2 col-form-label">모바일 수정 날짜</label>
 	       <div class="col-sm-4">
-	       <input type="date" readonly class="form-control" id="staticEmail" value="2021-03-25">
+	       <input type="text" readonly class="form-control" id="staticEmail" name="modDateTime" value="<c:out value="${item.modDateTime}"/>">
 	      </div>
 	      </div>
 	      </div>
@@ -301,3 +310,4 @@
       <script src="/infra/resources/js/sidebars.js"></script>
   </body>
 </html>
+</form>

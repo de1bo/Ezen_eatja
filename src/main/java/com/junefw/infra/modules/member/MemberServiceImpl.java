@@ -37,11 +37,6 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return dao.update(dto);
 	}
-	@Override
-	public List<Member> selectList() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 }

@@ -145,7 +145,8 @@
         </div>
       </li>
       <li>
-      	<button class="form-control">정보 수정</button>
+      	<button class="form-control"><a href="/infra/member/memberForm2?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">수정</a></button>
+      	<a href="/infra/member/memberList?thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a>
       </li>
     </ul>
     <hr>
@@ -199,11 +200,11 @@
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">휴대폰</label>
     			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<c:out value="${item.ifmpNumber}"/>">
+	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="번호">
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
     			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<c:out value="${item.ifmpHomeTel}"/>">
+	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="집전화">
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">추천인</label>
     			<div class="col-sm-4">
@@ -211,17 +212,17 @@
 	      </div><br><br>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">주소</label>
     			<div class="col-sm-3">
-	       <input type="text" readonly class="form-control" id="staticEmail" value="<c:out value="${item.imadAddress1}"/>">
+	       <input type="text" readonly class="form-control" id="staticEmail" value="주소1"/>
 	       </div>
 	       <div class="col-sm-7">
-	       <input type="text" readonly class="form-control" id="staticEmail" value="<c:out value="${item.imadAddress2}"/>">
+	       <input type="text" readonly class="form-control" id="staticEmail" value="주소2"/>
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
     			<div class="col-sm-3">
-	       <input type="email" readonly class="form-control" id="staticEmail" value="<c:out value="${item.ifmeEmailAccount}"/>">
+	       <input type="email" readonly class="form-control" id="staticEmail" value="이메일 계쩡"/>
 	      </div>
 	      <div class="col-sm-7">
-	       <input type="email" readonly class="form-control" id="staticEmail" value="<c:out value="${item.ifmeEmailDomainCd}"/>">
+	       <input type="email" readonly class="form-control" id="staticEmail" value="이메일 도메인">
 	      </div>
 	    </div>
 	  </div>
@@ -281,11 +282,11 @@
 	      <div class="mb-3 row">
 	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
     			<div class="col-sm-4">
-	       <input type="date" readonly class="form-control" id="staticEmail" value="<c:out value="${item.regDateTime}"/>">
+	       <input type="text" readonly class="form-control" id="staticEmail" value="<c:out value="${item.regDateTime}"/>">
 	       </div>
 	       <label for="staticEmail" class="col-sm-2 col-form-label">모바일 수정 날짜</label>
 	       <div class="col-sm-4">
-	       <input type="date" readonly class="form-control" id="staticEmail" value="<c:out value="${item.modDateTime}"/>">
+	       <input type="text" readonly class="form-control" id="staticEmail" value="<c:out value="${item.modDateTime}"/>">
 	      </div>
 	      </div>
 	      </div>
