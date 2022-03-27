@@ -10,6 +10,7 @@
 <sql id="selectCommon">
 		FROM eatja.infrMember a
 			WHERE 1=1
+				AND ifmmDelNy = 0
 				<choose>
 					<when test="shIfmmDelNy == 1">AND a.ifmmDelNy = 1</when>
 					<when test="shIfmmDelNy == 0">AND a.ifmmDelNy = 0</when>
@@ -81,6 +82,7 @@
 			FROM
 				infrMember a
 			WHERE 1=1
+				and ifmmDelNy = 0
 				and seq = #{seq}
 	</select>
 	
@@ -98,4 +100,16 @@
 				AND seq = #{seq}
 
 	</update>
+	
+	<update id="updateDelet">
+		UPDATE infrMember SET ifmmDelNy = 1
+			WHERE 1=1
+				AND seq = #{seq}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM infrMember
+			WHERE 1=1
+				AND seq = #{seq}
+	</delete>
 </mapper>
