@@ -43,7 +43,7 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/member/memberInst")
-	public String memberInst(Model model, Member dto) throws Exception {
+	public String memberInst(@ModelAttribute("vo") MemberVo vo, Member dto, RedirectAttributes redirectAttributes) throws Exception {
 		
 		System.out.println("dto.getIfmmName(): " + dto.getIfmmName());
 
@@ -51,8 +51,13 @@ public class MemberController {
 		int result = service.insert(dto);
 		
 		System.out.println("result: " + result);
+		
+		redirectAttributes.addAttribute("ifcgSeq", dto.getSeq());	// get
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());	// get
+		redirectAttributes.addAttribute("shOption", vo.getShOption());	// get
+		redirectAttributes.addAttribute("shValue", vo.getShValue());	// get
 
-		return "";
+		return "redirect:/member/memberView";
 	}
 
 	/*---------------------------------*/
@@ -89,5 +94,27 @@ public class MemberController {
 		redirectAttributes.addAttribute("shValue", vo.getShValue());
 		
 		return "redirect:/member/memberView";
+	}
+	
+	@RequestMapping(value= "/member/memberDele")
+	public String memberDele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception{
+		service.delete(vo);
+		
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		
+		return "redirect:/member/memberList";
+	}
+	
+	@RequestMapping(value= "/member/memberNele")
+	public String memberNele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception{
+		service.updateDelet(vo);
+		
+		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
+		redirectAttributes.addAttribute("shOption", vo.getShOption());
+		redirectAttributes.addAttribute("shValue", vo.getShValue());
+		
+		return "redirect:/member/memberList";
 	}
 }

@@ -146,7 +146,9 @@
       </li>
       <li>
       	<button class="form-control"><a href="/infra/member/memberForm2?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">수정</a></button>
-      	<a href="/infra/member/memberList?thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a>
+      	<button class="form-control"><a href="/infra/member/memberList?thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a></button>
+      	<button class="form-control"><a href="/infra/member/memberDele?seq=<c:out value="${item.seq}"/>">삭제(진짜)</a></button>
+      	<button class="form-control"><a href="/infra/member/memberNele?seq=<c:out value="${item.seq}"/>">삭제(가짜)</a></button>
       </li>
     </ul>
     <hr>

@@ -64,7 +64,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/infra/resources/js/validation.js"></script>]
+<script src="/infra/resources/js/validation.js"></script>
 
 <script type="text/javascript">
 	$("#btnSubmit").on("click", function(){	

@@ -87,12 +87,6 @@ public class Member {
 	public void setIfmpHomeTel(String ifmpHomeTel) {
 		this.ifmpHomeTel = ifmpHomeTel;
 	}
-	public String getIfmmRecommendSeq() {
-		return ifmmRecommendSeq;
-	}
-	public void setIfmmRecommendSeq(String ifmmRecommendSeq) {
-		this.ifmmRecommendSeq = ifmmRecommendSeq;
-	}
 	public String getImadAddress1() {
 		return imadAddress1;
 	}
@@ -129,7 +123,12 @@ public class Member {
 	public void setModDateTime(String modDateTime) {
 		this.modDateTime = modDateTime;
 	}
-	
+	public String getIfmmRecommendSeq() {
+		return ifmmRecommendSeq;
+	}
+	public void setIfmmRecommendSeq(String ifmmRecommendSeq) {
+		this.ifmmRecommendSeq = ifmmRecommendSeq;
+	}
 
 	
 	

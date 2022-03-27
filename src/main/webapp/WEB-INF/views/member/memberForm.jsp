@@ -33,7 +33,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
       <form class="navbar-nav me-auto mb-2 mb-md-0">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <button class="btn btn-outline-success" type="button">Search</button>
         </form>
         
         <ul class="navbar-nav">
@@ -62,14 +62,14 @@
   </nav>
 </header>
 <img src="/infra/resources/images/regist.png" alt="../../../images/ro1.jpg" style="width: 100%; padding-top: 50px;">
-<form id="form" method="post" action="/infra/member/memberInst">
-<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }"/>">
+
+<br><br>
+	 <!-- ★★input 다 하고 id, for, type수정할것★★ 폰트도 신경쓸것 -->
+<form method="post" action="/infra/member/memberInst">
+	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }"/>">
 	<input type="hidden" name="shOption" value="<c:out value="${vo.shOption }"/>">
 	<input type="hidden" name="shValue" value="<c:out value="${vo.shValue }"/>">
 	<input type="hidden" name="">
-</form>	
-<br><br>
-	 <!-- ★★input 다 하고 id, for, type수정할것★★ 폰트도 신경쓸것 -->
 <div class="accordion" id="accordionPanelsStayOpenExample" style="width: 100%">
 
   <div class="accordion-item">
@@ -80,7 +80,7 @@
     </h2>
     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
       <div class="accordion-body">
-      <form class="row g-3">
+      <div class="row g-3">
       <div class="col-md-4">
       </div>
       <div class="col-md-4" style="text-align: center;">
@@ -91,7 +91,7 @@
 	                </div>
 	                <div class="col-md-4">
       </div>
-	                </form>
+	   </div>
       </div>
     </div>
   </div>
@@ -101,16 +101,17 @@
         개인정보
       </button>
     </h2>
+    </div>
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
       <div class="accordion-body">
-        <form class="row g-3" style="padding: 20px;">
+        <div class="row g-3" style="padding: 20px;">
             <div class="col-md-6">
 	                <label for="name" class="form-label">이름</label>
 	                <input type="text" class="form-control" id="ifmmName" name="ifmmName">
               </div>
               <div class="col-md-6">
 	                <label for="inputEmail1" class="form-label">아이디</label>
-	                <input type="email" class="form-control" id="ifmmId" name="ifmmId">
+	                <input type="text" class="form-control" id="ifmmId" name="ifmmId">
               </div>
               <div class="col-md-6">
 	                <label for="inputPassword1" class="form-label">비밀번호</label>
@@ -118,7 +119,7 @@
               </div>
               <div class="col-md-6">
 	                <label for="inputPassword2" class="form-label">비밀번호 확인</label>
-	                <input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword">
+	                <input type="password" class="form-control"  >
               </div>
               <div class="col-md-6">
               
@@ -155,7 +156,7 @@
 	            </div>
 	            <div class="col-md-6">
 	          		<label for="nation" class="form-label">추천인</label>
-	          		<input type="text" class="form-control" id="ifmmRecommend" name="ifmmRecommend">
+	          		<input type="text" class="form-control" id="ifmmRecommendSeq" name="ifmmRecommendSeq">
 	          	</div>
 	          	<div class="col-md-6">
 	           		 <label for="tel" class="form-label">전화번호</label>
@@ -195,13 +196,11 @@
 						    <option value="2">@google.com</option>
 						    <option value="3">@daum.com</option>
 					  	</select>
-				</div>		
-		 </form>
-
+					</div>		
+				</div>
+		 	</div>
+		 </div>
       </div>
-      </form>
-    </div>
-  </div>
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
@@ -244,12 +243,11 @@
 							</td>
 						</tr>
 					</table>
-
       </div>
     </div>
-  </div>
-</div>
-<button type="submit" class="btn btn-primary" style=" float:right; border-bottom: 30px;">등록하기</button>
+    </div>
+<input type="submit" class="btn btn-primary" style=" float:right; border-bottom: 30px;">
+</form>
 <footer class="text-muted py-5">
   <div class="container">
     <p class="float-end mb-1">
@@ -385,8 +383,8 @@
         }).open();
     }
 </script>
-
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+</form>
 </body>
 </html>
 

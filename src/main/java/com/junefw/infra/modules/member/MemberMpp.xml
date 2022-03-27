@@ -40,13 +40,21 @@
 	
 	<insert id="insert">
 			INSERT INTO infrMember (
-			ifmmName
+			seq
+			,ifmmName
 			,ifmmDelNy
-			,seq
+			,ifmmId
+			,ifmmPassword
+			,ifmmBirthday
+			,ifmmRecommendSeq
 			) VALUES (
-			#{ifmmName}
+			#{seq}
+			,#{ifmmName}
 			,0
-			,#{seq}
+			,#{ifmmId}
+			,#{ifmmPassword}
+			,#{ifmmBirthday}
+			,#{ifmmRecommendSeq}
 			)
 	</insert>
 	<select id="selectOne" resultMap="resultMapObj">
