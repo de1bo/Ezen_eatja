@@ -2,6 +2,13 @@ package com.junefw.infra.modules.member;
 
 public class MemberVo {
 
+	
+	// date
+	private Integer ShOptionDate;
+	private String ShDateEnd;
+	private String ShDateStart;
+	
+	
 	// infrCodeGroup
 	private String shIfmmSeq;
 	private String seq;
@@ -55,7 +62,7 @@ public class MemberVo {
 			if (startRnumForOracle < 1) startRnumForOracle = 1;
 			
 			
-			if (thisPage == 1) {
+			if (thisPage == 1 || thisPage == 0) {
 				startRnumForMysql = 0;
 			} else {
 				startRnumForMysql = ((rowNumToShow * (thisPage-1)));
@@ -212,6 +219,41 @@ public class MemberVo {
 		public void setStartRnumForMysql(int startRnumForMysql) {
 			this.startRnumForMysql = startRnumForMysql;
 		}
+
+
+		public Integer getShOptionDate() {
+			return ShOptionDate;
+		}
+
+
+		public void setShOptionDate(Integer shOptionDate) {
+			ShOptionDate = shOptionDate;
+		}
+
+
+		public String getShDateEnd() {
+			return ShDateEnd;
+		}
+
+
+		public void setShDateEnd(String shDateEnd) {
+			ShDateEnd = shDateEnd;
+		}
+
+
+		public String getShDateStart() {
+			return ShDateStart;
+		}
+
+
+		public void setShDateStart(String shDateStart) {
+			ShDateStart = shDateStart;
+		}
+
+
+
+
+
 	
 	
 }

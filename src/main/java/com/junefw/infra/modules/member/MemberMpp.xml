@@ -10,7 +10,6 @@
 <sql id="selectCommon">
 		FROM eatja.infrMember a
 			WHERE 1=1
-				AND ifmmDelNy = 0
 				<choose>
 					<when test="shIfmmDelNy == 1">AND a.ifmmDelNy = 1</when>
 					<when test="shIfmmDelNy == 0">AND a.ifmmDelNy = 0</when>
@@ -20,6 +19,11 @@
 					<when test="shOption == 1">AND a.ifmmName LIKE concat('%',#{shValue},'%')</when>
 					<when test="shOption == 2">AND a.ifmmId LIKE concat('%',#{shValue},'%')</when>
 				</choose>
+				<choose>
+				<when test="shOptionDate == 1">AND a.regDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 2">AND a.modDateTime BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+				<when test="shOptionDate == 3">AND a.ifmmBirthday BETWEEN #{shDateStart} AND #{shDateEnd}</when>
+			</choose>
 	</sql>
 	
 	<select id="selectOneCount" resultType="Integer">
@@ -46,16 +50,22 @@
 			,ifmmDelNy
 			,ifmmId
 			,ifmmPassword
+			,ifmmGenderCd
 			,ifmmBirthday
 			,ifmmRecommendSeq
+			,regDateTime
+			,modDateTime
 			) VALUES (
 			#{seq}
 			,#{ifmmName}
 			,0
 			,#{ifmmId}
 			,#{ifmmPassword}
+			,#{ifmmGenderCd}
 			,#{ifmmBirthday}
 			,#{ifmmRecommendSeq}
+			,#{regDateTime}
+			,#{modDateTime}
 			)
 	</insert>
 	<select id="selectOne" resultMap="resultMapObj">
@@ -95,7 +105,6 @@
 				,ifmmPassword = #{ifmmPassword}
 				,ifmmBirthday = #{ifmmBirthday}
 				,ifmmRecommendSeq = #{ifmmRecommendSeq}
-				,ifmmDelNy = #{ifmmDelNy}
 			WHERE 1=1
 				AND seq = #{seq}
 

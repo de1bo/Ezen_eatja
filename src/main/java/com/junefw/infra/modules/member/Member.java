@@ -1,5 +1,7 @@
 package com.junefw.infra.modules.member;
 
+import java.util.Date;
+
 public class Member {
 	private Integer seq;
 	private String ifmmName="";
@@ -15,8 +17,8 @@ public class Member {
 	private String imadAddress2;
 	private String ifmeEmailAccount;
 	private String ifmeEmailDomainCd;
-	private String regDateTime;
-	private String modDateTime;
+	private Date regDateTime;
+	private Date modDateTime;
 	
 	
 	private String ifcdName;
@@ -111,17 +113,17 @@ public class Member {
 	public void setIfmeEmailDomainCd(String ifmeEmailDomainCd) {
 		this.ifmeEmailDomainCd = ifmeEmailDomainCd;
 	}
-	public String getRegDateTime() {
+	public Date getRegDateTime() {
 		return regDateTime;
 	}
-	public void setRegDateTime(String regDateTime) {
-		this.regDateTime = regDateTime;
+	public void setRegDateTime(Date date) {
+		this.regDateTime = date;
 	}
-	public String getModDateTime() {
+	public Date getModDateTime() {
 		return modDateTime;
 	}
-	public void setModDateTime(String modDateTime) {
-		this.modDateTime = modDateTime;
+	public void setModDateTime(Date date) {
+		this.modDateTime = date;
 	}
 	public String getIfmmRecommendSeq() {
 		return ifmmRecommendSeq;

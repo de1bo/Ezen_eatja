@@ -87,11 +87,11 @@
 		<td>
 		    <div class="col">
 		    	<div class="col p-2">
-					<select class="form-select" aria-label="Default select example">
-		  				<option selected>검색</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
+					<select class="form-select" id="shOptionDate" name="shOptionDate" aria-label="Default select example">
+		  				<option value="" <c:if test="${empty vo.shOptionDate}">selected</c:if>>날짜</option>
+						<option value="1" <c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
+						<option value="2" <c:if test="${vo.shOptionDate eq 2}">selected</c:if>>수정일</option>
+						<option value="3" <c:if test="${vo.shOptionDate eq 3}">selected</c:if>>생일</option>
 					</select>
 				</div>
 		    </div>
@@ -99,14 +99,14 @@
 	    <td>
 		    <div class="col">
 		    	<div class="col p-2">
-					<input type="text" name="shIfmmName" id="shIfmmName" class="form-control" placeholder="시작일" value="<c:out value="${vo.shIfmmName}"/>">
+					<input type="text" name="shDateStart" id="shDateStart" class="form-control" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>">
 				</div>
 		    </div>
 		</td>
 	    <td>
 		    <div class="col">
 		    	<div class="col p-2">
-					<input type="text" class="form-control" placeholder="종료일">
+					<input type="text" name="shDateEnd" id="shDateEnd" class="form-control" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>">
 				</div>
 		    </div>
 	    </td>
@@ -139,8 +139,8 @@
 				</form>
 			</td>
 	  </tr>
-	  </form>
 	  </div>
+	  </form>
 	</table>
 	<br><br>
         	<select class="form-select" aria-label="Default select example" style="width:150px; float:right; border-bottom: 10px;">

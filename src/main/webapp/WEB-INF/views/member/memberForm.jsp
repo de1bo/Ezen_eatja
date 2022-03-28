@@ -64,7 +64,6 @@
 <img src="/infra/resources/images/regist.png" alt="../../../images/ro1.jpg" style="width: 100%; padding-top: 50px;">
 
 <br><br>
-	 <!-- ★★input 다 하고 id, for, type수정할것★★ 폰트도 신경쓸것 -->
 <form method="post" action="/infra/member/memberInst">
 	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }"/>">
 	<input type="hidden" name="shOption" value="<c:out value="${vo.shOption }"/>">
@@ -125,9 +124,9 @@
               
               
                   	<label for="gender" class="form-label">성별</label><br>
-	                <input type="radio" class="btn-check" id="Gender1" name="ifmmGenderCd">
+	                <input type="radio" class="btn-check" id="Gender1" name="ifmmGenderCd" value="1">
 	                <label class="btn btn-outline-primary" for="Gender1">남</label> 
-	                <input type="radio" class="btn-check" id="Gender2" name="ifmmGenderCd" autocomplete="off">
+	                <input type="radio" class="btn-check" id="Gender2" name="ifmmGenderCd" value="2" autocomplete="off">
 	                <label class="btn btn-outline-primary" for="Gender2">녀</label>
                 </div>
                 
@@ -384,7 +383,6 @@
     }
 </script>
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-</form>
 </body>
 </html>
 
