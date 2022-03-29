@@ -16,7 +16,15 @@ public class MemberVo {
 	private Integer shIfmmDelNy;
 	// common
 		private String shOption;
+		
+
+
 		private String shValue;
+		
+		private String modDateTime;
+		private String regDateTime;
+		
+		private String[] checkboxSeqArray;
 		
 //		paging
 		private int thisPage = 1;									// 현재 페이지
@@ -251,9 +259,36 @@ public class MemberVo {
 		}
 
 
+		public String getModDateTime() {
+			return modDateTime;
+		}
+
+
+		public void setModDateTime(String modDateTime) {
+			this.modDateTime = modDateTime;
+		}
 
 
 
+
+		public String getRegDateTime() {
+			return regDateTime;
+		}
+
+
+		public void setRegDateTime(String regDateTime) {
+			this.regDateTime = regDateTime;
+		}
+
+
+		public String[] getCheckboxSeqArray() {
+			return checkboxSeqArray;
+		}
+
+
+		public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+			this.checkboxSeqArray = checkboxSeqArray;
+		}
 	
 	
 }

@@ -6,5 +6,5 @@ public class Constants {
 	public static final String DATE_FORMAT_BASIC = "yyyy-MM-dd";
 
 	
-	public static final int DATE_INTERVAL = -30;
+	public static final int DATE_INTERVAL = -60;
 }

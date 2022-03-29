@@ -1,6 +1,9 @@
 package com.junefw.infra.modules.member;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +65,29 @@ public class MemberServiceImpl implements MemberService{
 	public int updateDelet(MemberVo vo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.updateDelet(vo);
+	}
+	
+	@PostConstruct
+	public void selectListForCache() {
+		
+		List<Member> memberListFromDb = (ArrayList<Member>) dao.selectListForCache();
+		
+		Member.cachedCodeArrayList.clear();
+		Member.cachedCodeArrayList.addAll(memberListFromDb);
+		System.out.println("cachedCodeArrayList: " + Member.cachedCodeArrayList.size() + " chached ! ");
+		
+	}
+	
+	public static List<Member> selectListCachedCode(String Seq) throws Exception {
+		List<Member> item = new ArrayList<Member>();
+		for(Member codeRow : Member.cachedCodeArrayList) {
+			if(codeRow.getSeq().equals(Seq)) {
+				item.add(codeRow);
+			} else {
+				// by pass
+			}
+		}
+		return item;
 	}
 	
 }

@@ -9,6 +9,7 @@
     <resultMap id="resultMapObj" type="com.junefw.infra.modules.member.Member"></resultMap>
 <sql id="selectCommon">
 		FROM eatja.infrMember a
+		left join eatja.infrMemberPhone as c on c.infrMember_Seq = a.seq and c.ifmpDelNy = 0
 			WHERE 1=1
 				<choose>
 					<when test="shIfmmDelNy == 1">AND a.ifmmDelNy = 1</when>
@@ -39,8 +40,21 @@
 				,a.ifmmId
 				,a.ifmmDelNy
 				,a.ifmmGenderCd
+				,c.ifmpNumber
 				<include refid="selectCommon"/>
+				
 				limit #{startRnumForMysql}, #{rowNumToShow}
+				 
+	</select>
+	
+	<select id="selectListForCache" resultMap="resultMapObj">
+		SELECT
+			seq
+			, ifmmName
+		FROM
+			infrMember
+		WHERE 1=1
+			AND ifmmDelNy = 0
 	</select>
 	
 	<insert id="insert">
@@ -67,6 +81,9 @@
 			,#{regDateTime}
 			,#{modDateTime}
 			)
+			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		</selectKey>
 	</insert>
 	<select id="selectOne" resultMap="resultMapObj">
 		<!-- select
@@ -121,4 +138,6 @@
 			WHERE 1=1
 				AND seq = #{seq}
 	</delete>
+	
+	
 </mapper>

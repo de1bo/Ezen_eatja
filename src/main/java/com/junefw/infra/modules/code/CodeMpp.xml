@@ -133,5 +133,14 @@
 			WHERE 1=1
 				AND ifcdSeq = #{ifcdSeq}
 	</update>
-	
+	<select id="selectListForCache" resultMap="resultMapObj">
+		SELECT 
+			ifcdSeq
+			, ifcdName
+			, infrCodeGroup_ifcgSeq
+		FROM 
+			infrCode 
+		WHERE 1=1 
+			AND ifcdDelNy = 0 
+	</select>
 </mapper>

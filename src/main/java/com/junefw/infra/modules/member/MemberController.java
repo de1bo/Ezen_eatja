@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.junefw.infra.common.constants.Constants;
@@ -22,24 +23,16 @@ public class MemberController {
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 	public String memberList(@ModelAttribute("vo") MemberVo vo,Model model) throws Exception {
 
+		/* Date start*/
 		System.out.println("UtilDateTime.nowLocalDateTime(): " + UtilDateTime.nowLocalDateTime());
 		System.out.println("UtilDateTime.nowDate(): " + UtilDateTime.nowDate());
 		System.out.println("UtilDateTime.nowString: " + UtilDateTime.nowString());
 		
 		
 		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : vo.getShDateStart());
-		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : vo.getShDateEnd());
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
+		/* Date end*/
 		
 		
 		int count = service.selectOneCount(vo);
@@ -54,7 +47,6 @@ public class MemberController {
 		// count 가 0이 아니면 list 가져오는 부분 수정 후 model 개체에 담기
 		model.addAttribute("vo", vo);
 		
-		
 
 		return "member/memberList";
 	}
@@ -63,6 +55,12 @@ public class MemberController {
 	public String memberForm(@ModelAttribute("vo") MemberVo vo) throws Exception {
 
 		return "member/memberForm";
+	}
+	
+	@RequestMapping(value = "/member/AdminForm")
+	public String AdminForm(@ModelAttribute("vo") MemberVo vo) throws Exception {
+
+		return "member/AdminForm";
 	}
 	
 	@RequestMapping(value = "/member/memberInst")
@@ -87,6 +85,14 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberView")
 	public String MemberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
 		System.out.println("vo.getSeq"+vo.getSeq());
+		
+		
+		System.out.println("############################");
+		System.out.println("vo.getShOption(): " + vo.getShOption());
+		System.out.println("vo.getShValue(): " + vo.getShValue());
+		System.out.println("vo.getThisPage(): " + vo.getThisPage());
+		System.out.println("vo.getSeq(): " + vo.getSeq());
+		System.out.println("############################");
 		
 		Member item= service.selectOne(vo);
 		
@@ -134,10 +140,31 @@ public class MemberController {
 	public String memberNele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception{
 		service.updateDelet(vo);
 		
+		
+		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		
+		for(String checkboxSeq : checkboxSeqArray) {
+			vo.setSeq(checkboxSeq);
+			service.updateDelet(vo);
+			}
+		
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("shOption", vo.getShOption());
 		redirectAttributes.addAttribute("shValue", vo.getShValue());
 		
+		return "redirect:/member/memberList";
+	}
+	
+	@RequestMapping(value = "memberMultiUele") /* check box 삭제 */
+	public String memberMultiUele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception{
+	
+		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		
+		for(String checkboxSeq : checkboxSeqArray) {
+			vo.setSeq(checkboxSeq);
+			service.updateDelet(vo);
+		}
+	
 		return "redirect:/member/memberList";
 	}
 }

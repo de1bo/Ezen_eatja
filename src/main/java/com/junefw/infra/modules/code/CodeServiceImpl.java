@@ -1,9 +1,14 @@
 package com.junefw.infra.modules.code;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.junefw.infra.modules.member.Member;
 
 @Service
 public class CodeServiceImpl implements CodeService{
@@ -70,6 +75,39 @@ public class CodeServiceImpl implements CodeService{
 		return dao.updateCode(dto);
 	}
 	
+	@PostConstruct
+	public void selectListCachedCodeArrayList() throws Exception {
+		
+		List<Code> codeListFromDb = (ArrayList<Code>) dao.selectListCachedCodeArrayList();
+		
+		Code.cachedCodeArrayList.clear();
+		Code.cachedCodeArrayList.addAll(codeListFromDb);
+		System.out.println("cachedCodeArrayList: " + Code.cachedCodeArrayList.size() + " chached ! ");
+		
+	}
+	
+	public static List<Code> selectListCachedCode(String infrCodeGroup_ifcgSeq) throws Exception {
+		List<Code> item = new ArrayList<Code>();
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if (codeRow.getIfcgSeq().equals(infrCodeGroup_ifcgSeq)) {
+				item.add(codeRow);
+			} else {
+				// by pass
+			}
+		}
+		return item;
+	}
+	public static List<Code> selectOneCachedCode(String ifcdSeq) throws Exception {
+		List<Code> item = new ArrayList<Code>();
+		for(Code codeRow : Code.cachedCodeArrayList) {
+			if(codeRow.getIfcdSeq().equals(ifcdSeq)) {
+				item.add(codeRow);
+			} else {
+				// by pass
+			}
+		}
+		return item;
+	}
 
 	
 	

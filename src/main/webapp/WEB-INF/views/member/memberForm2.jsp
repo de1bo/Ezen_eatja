@@ -156,6 +156,7 @@
       </li>
       <li>
       <input type="submit" class="form-control" value="수정 완료">
+      <button class="form-control"><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">수정 취소</a></button>
       </li>
     </ul>
     <hr>
@@ -291,11 +292,13 @@
 	      <div class="mb-3 row">
 	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
     			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control" id="staticEmail" name="regDateTime" value="<c:out value="${item.regDateTime}"/>">
+	       <input type="text" readonly class="form-control" id="" name="" value="2022-03-29">
+<%-- 	       <input type="text" readonly class="form-control" id="staticEmail" name="regDateTime" value="<c:out value="${item.regDateTime}"/>"> --%>
 	       </div>
 	       <label for="staticEmail" class="col-sm-2 col-form-label">모바일 수정 날짜</label>
 	       <div class="col-sm-4">
-	       <input type="text" readonly class="form-control" id="staticEmail" name="modDateTime" value="<c:out value="${item.modDateTime}"/>">
+	       <input type="text" readonly class="form-control" id="" name="" value="2022-03-29">
+<%-- 	       <input type="text" readonly class="form-control" id="staticEmail" name="modDateTime" value="<c:out value="${item.modDateTime}"/>"> --%>
 	      </div>
 	      </div>
 	      </div>

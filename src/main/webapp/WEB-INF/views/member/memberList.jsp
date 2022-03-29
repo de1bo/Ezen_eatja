@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     <!-- for문 사용 태그 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    <!-- 날짜 태그 -->
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 		
+		<%-- <jsp:useBean id="CodeServiceImpl" class="com.junefw.infra.modules.code.CodeServiceImpl"/> --%><!-- gender -->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -70,7 +71,11 @@
   <div style="padding: 5%">
 	<h1 id="jal" style="padding: 15px;" >사용자 관리</h1>
 	  <table class="border border-3">
-	  <form id="" name="" method="get" action="/infra/member/memberList">
+	  <form id="formList" name="formList" method="get" action="/infra/member/memberList">
+	  <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>"><!-- Post방식 -->
+	  <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> <!-- multidele -->
+	  <input type="hidden" name="checkboxSeqArray">	<!-- multidele -->
+	  <input type="hidden" id="seq" name="seq" >
 	  <div class="container"> 	
 	  <tr class="row row-cols-1 row-cols-sm-2 row-cols-md-4">    
 	  	<td>
@@ -99,14 +104,16 @@
 	    <td>
 		    <div class="col">
 		    	<div class="col p-2">
-					<input type="text" name="shDateStart" id="shDateStart" class="form-control" placeholder="시작일" value="<c:out value="${vo.shDateStart}"/>">
+					<fmt:parseDate var="shDateStart" value="${vo.shDateStart }" pattern="yyyy-MM-dd HH:mm:ss"/>
+            		<input type="text" id="shDateStart" name="shDateStart" value="<fmt:formatDate value="${shDateStart }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control form-control-sm" autocomplete="off">
 				</div>
 		    </div>
 		</td>
 	    <td>
 		    <div class="col">
 		    	<div class="col p-2">
-					<input type="text" name="shDateEnd" id="shDateEnd" class="form-control" placeholder="종료일" value="<c:out value="${vo.shDateEnd}"/>">
+		    		<fmt:parseDate var="shDateEnd" value="${vo.shDateEnd }" pattern="yyyy-MM-dd HH:mm:ss"/>
+					<input type="text" id="shDateEnd" name="shDateEnd" value="<fmt:formatDate value="${shDateEnd }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control form-control-sm" autocomplete="off">
 				</div>
 		    </div>
 	    </td>
@@ -129,14 +136,12 @@
 		   		</div>
 			</td>
 			<td>
-			<form id="" name="" method="get" action="/infra/member/memberList">
 				<div class="col">
 		    		<div class="col p-2">
 						<button type="submit" id="btnSubmit" name="search" class="btn btn-warning"><img src="/infra/resources/images/search.svg" width="25px" height="25px"></button>
 						<button type="submit" name="search" class="btn btn-danger"><img src="/infra/resources/images/refresh.png" width="25px" height="25px"></button>
 					</div>			
 				</div>
-				</form>
 			</td>
 	  </tr>
 	  </div>
@@ -153,7 +158,7 @@
 		<c:out value="${vo.rowNumToShow}"/>/<c:out value="${vo.totalRows}"/>개의 검색결과	
 		<table class="table table-hover" style="text-align: center;">
 		  <tr class="table table-success table-striped">
-		  	<td><input type="checkbox"></td>
+		  	<td><input type="checkbox" id="checkboxAll" name="" value="" class="form-check-input"></td>
 		  	<td>No.</td>
 		  	<td>이름</td>
 		  	<td>아이디</td>
@@ -162,6 +167,7 @@
 		  	<td>모바일 마케팅 동의</td>
 		  	<td>이메일 마케팅 동의</td>
 		  </tr>
+		   <%-- <c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/> <%-- gender --%>
 		  <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>
@@ -171,12 +177,31 @@
 		  <c:otherwise>
 		  <c:forEach items="${list}" var="item" varStatus="status">
 		  <tr>
-		  	<td><input type="checkbox"></td>
+		  	<td><input type="checkbox" name="checkboxSeq"></td>
 		  	<td><c:out value="${item.seq}"/></td>
 		  	<td><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"><c:out value="${item.ifmmName}"/></td>
+		  	<%-- <td><a href="javascript:goForm(<c:out value="${item.seq}"/>)"><c:out value="${item.ifmmName}"/></a></td> --%>
 		  	<td><c:out value="${item.ifmmId}"/></td>
-		  	<td><c:out value="${item.ifmmGenderCd}"/></td>
-		  	<td>경기도 광명시</td>
+		  	<td>
+		  		<%-- <c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">gender
+		  			<c:if test="${item.ifmmGenderCd eq itemGender.ifcdSeq}"><c:out value="${itemGenderCd.ifcdName}"/></c:if>
+		  		</c:forEach> --%>
+		  	</td>
+		  	<td>
+	  		   <c:set var="numberPhone" value="${item.ifmpNumber }"/>
+               	<c:choose>
+               		<c:when test="${fn:length(numberPhone) eq 10 }">
+						<c:out value="${fn:substring(numberPhone,0,3)}"/>
+						- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+						- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+               		</c:when>
+               		<c:otherwise>
+						<c:out value="${fn:substring(numberPhone,0,3)}"/>
+						- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+						- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+               		</c:otherwise>
+              	</c:choose>
+		  	</td>
 		  	<td>거부</td>
 		  	<td>거부</td>
 		  </tr>
@@ -211,8 +236,8 @@
 	</nav>
 	
 	
-	<button type="button" class="btn btn-danger" style=" float:left; border-bottom: 10px;"><img src="/infra/resources/images/trash-icon.png" width="25px" height="25px"></button>
-	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><img src="/infra/resources/images/plus-sign.png" width="25px" height="25px"><a href="/infra/member/memberForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">등록</a></button>
+	<button type="button" class="btn btn-danger" id="btnModalDelete" style=" float:left; border-bottom: 10px;"><img src="/infra/resources/images/trash-icon.png" width="25px" height="25px"></button>
+	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><img src="/infra/resources/images/plus-sign.png" width="25px" height="25px"><a href="/infra/member/AdminForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">등록</a></button>
 	</div>
 </div>
 	<footer class="text-muted py-5">
@@ -226,7 +251,6 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/infra/resources/js/validation.js"></script>]
 
 <!-- <script type="text/javascript">
 	$("#btnSubmit").on("click", function(){	
@@ -239,5 +263,47 @@
 		});
 
 	</script> -->
+<!-- 	<script type="text/javascript">
+	$("#btnSubmit").on("click", function(){	
+	});
+	abc = function(seq){
+			
+			alert(seq);
+			// form객체를 가져온다.
+			$("#thisPage").val(seq);
+			$("#formList").submit();
+			// 그 가져온 객체를 전달 한다.
+		}
+		
+		goForm = function(seq1){
+			alert(seq1);
+			
+			$("#seq").val(seq1);
+			$("#formList").att("action","/infra/member/memberView");
+			$("#formList").submit();
+			
+		}
+		
+		
+	</script> -->
+	<script>
+	$("#btnModalDelete").on("Click", function(){
+		$("input[name=checkboxSeq]:checked").each(function() { 
+			checkboxSeqArray.push($(this).val());
+		});
+		
+		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+							
+		form.attr("action", goUrlMultiDele).submit();
+	});
+	
+	
+	$("#checkboxAll").click(function() {
+		if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
+		else $("input[name=checkboxSeq]").prop("checked", false);
+	});
+	
+	
+	</script>
 </body>
 </html>

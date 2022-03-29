@@ -1,8 +1,11 @@
 package com.junefw.infra.modules.member;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Member {
+	// infrmember
 	private Integer seq;
 	private String ifmmName="";
 	private String ifmmId="";
@@ -10,17 +13,24 @@ public class Member {
 	private Integer ifmmDelNy;
 	private String ifmmPassword;
 	private String ifmmBirthday;
-	private String ifmpNumber;
-	private String ifmpHomeTel;
 	private String ifmmRecommendSeq;
-	private String imadAddress1;
-	private String imadAddress2;
-	private String ifmeEmailAccount;
-	private String ifmeEmailDomainCd;
 	private Date regDateTime;
 	private Date modDateTime;
 	
+	// email
+	private String ifmeEmailAccount;
+	private String ifmeEmailDomainCd;
 	
+	//phone
+	private String ifmpNumber;
+	private String ifmpHomeTel;
+	
+	// address
+	private String imadAddress1;
+	private String imadAddress2;
+	
+	
+	static List<Member> cachedCodeArrayList = new ArrayList<Member>();
 	private String ifcdName;
 	
 	

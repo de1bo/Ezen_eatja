@@ -1,0 +1,271 @@
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>관리자 회원가입</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/infra/resources/css/form-validation.css" rel="stylesheet">
+  </head>
+  <header>
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+      <form class="navbar-nav me-auto mb-2 mb-md-0">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="button">Search</button>
+        </form>
+        
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><h5>고객 관리</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><h5>메인메뉴</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><h5>리뷰</h5></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><h5>고객센터</h5></a>
+          </li>
+        </ul>
+        
+      </div>
+    </div>
+  </nav>
+</header>
+  <body class="bg-light" style="padding-top: 5%">
+    
+<div class="container">
+  <main>
+  
+    <div class="py-5 text-center">
+      <img class="d-block mx-auto mb-4" src="/infra/resources/images/place-setting.svg" alt="" width="72" height="57">
+      <h2>회원가입</h2>
+      <p class="lead">관리자용 회원가입 폼입니다.</p>
+    </div>
+
+    <div class="row g-12">
+      <div class="">
+        <form  method="post"  action="/infra/member/memberInst" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-12">
+              <label for="ifmmName" class="form-label">이름</label>
+                <input type="text" class="form-control" name="ifmmName" id="ifmmName" placeholder="이름" required>
+              <div class="invalid-feedback">
+                  이름 입력
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="ifmmid" class="form-label">아이디</label>
+                <input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="아이디" required>
+              <div class="invalid-feedback">
+                  아이디 입력
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="ifmmPassword" class="form-label">비밀번호</label>
+                <input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="비밀번호" required>
+              <div class="invalid-feedback">
+                  비밀번호 입력
+              </div>
+            </div>
+
+            <div class="col-12">
+            		<label for="gender" class="form-label">성별</label><br>
+	                <input type="radio" class="btn-check" id="Gender1" name="ifmmGenderCd" value="1" required>
+	                <label class="btn btn-outline-primary" for="Gender1">남</label> 
+	                <input type="radio" class="btn-check" id="Gender2" name="ifmmGenderCd" value="2" autocomplete="off" required>
+	                <label class="btn btn-outline-primary" for="Gender2">녀</label>
+              <div class="invalid-feedback">
+                성별입력
+              </div>
+            </div>
+			<div class="col-12">
+				<label for="birthday" class="form-label">생일</label>
+		        <input type="date" class="form-control" id="ifmmBirthday" name="ifmmBirthday" required>
+		         <div class="invalid-feedback">
+                생일입력
+              </div>
+		    </div>
+		    <div class="col-12">
+		   		 <label for="nation" class="form-label">추천인</label>
+	          	 <input type="text" class="form-control" id="ifmmRecommendSeq" name="ifmmRecommendSeq" placeholder="안넣으면 수정시 에러" required>
+	          	  <div class="invalid-feedback">
+                추천인 입력
+              </div>
+	        </div>
+            <!-- <div class="col-12">
+              <label for="address2" class="form-label">Address 2 <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            </div>
+
+            <div class="col-md-5">
+              <label for="country" class="form-label">Country</label>
+              <select class="form-select" id="country" required>
+                <option value="">Choose...</option>
+                <option>United States</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="state" class="form-label">State</label>
+              <select class="form-select" id="state" required>
+                <option value="">Choose...</option>
+                <option>California</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="zip" class="form-label">Zip</label>
+              <input type="text" class="form-control" id="zip" placeholder="" required>
+              <div class="invalid-feedback">
+                Zip code required.
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="same-address">
+            <label class="form-check-label" for="same-address">Shipping address is the same as my billing address</label>
+          </div>
+
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="save-info">
+            <label class="form-check-label" for="save-info">Save this information for next time</label>
+          </div>
+
+          <hr class="my-4">
+
+          <h4 class="mb-3">Payment</h4>
+
+          <div class="my-3">
+            <div class="form-check">
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <label class="form-check-label" for="credit">Credit card</label>
+            </div>
+            <div class="form-check">
+              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="debit">Debit card</label>
+            </div>
+            <div class="form-check">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required>
+              <label class="form-check-label" for="paypal">PayPal</label>
+            </div>
+          </div>
+
+          <div class="row gy-3">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">Name on card</label>
+              <input type="text" class="form-control" id="cc-name" placeholder="" required>
+              <small class="text-muted">Full name as displayed on card</small>
+              <div class="invalid-feedback">
+                Name on card is required
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">Credit card number</label>
+              <input type="text" class="form-control" id="cc-number" placeholder="" required>
+              <div class="invalid-feedback">
+                Credit card number is required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-expiration" class="form-label">Expiration</label>
+              <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+              <div class="invalid-feedback">
+                Expiration date required
+              </div>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+              <div class="invalid-feedback">
+                Security code required
+              </div>
+            </div>
+          </div> -->
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">등록하기</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2017–2021 Company Name</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+</div>
+
+
+    <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src="/infra/resources/js/form-validation.js"></script>
+  </body>
+</html>

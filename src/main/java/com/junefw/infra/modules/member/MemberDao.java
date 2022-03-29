@@ -23,4 +23,5 @@ public class MemberDao {
 	public int update(Member dto) {return sqlSession.update( namespace + ".update", dto);}
 	public int delete(MemberVo vo) {return sqlSession.delete( namespace + ".delete", vo);}
 	public int updateDelet(MemberVo vo) {return sqlSession.update(namespace + ".updateDelet", vo);}
+	public List<Member> selectListForCache() { List<Member> list = sqlSession.selectList(namespace + ".selectListForCache", ""); return list; }
 }
