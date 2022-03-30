@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class LoginoutController {
+public class indexController {
 
-	@RequestMapping(value = "/loginout/loginoutLogin")
+	@RequestMapping(value = "/index/indexView")
 //	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
-	public String Login() throws Exception {
+	public String indexView() throws Exception {
 
 		
 
-		return "/loginout/loginoutLogin";
+		return "/index/indexView";
 	}
 	
 }

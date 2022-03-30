@@ -124,9 +124,9 @@
               
               
                   	<label for="gender" class="form-label">성별</label><br>
-	                <input type="radio" class="btn-check" id="Gender1" name="ifmmGenderCd" value="1">
+	                <input type="radio" class="btn-check" id="Gender1" name="ifmmGenderCd" value="5">
 	                <label class="btn btn-outline-primary" for="Gender1">남</label> 
-	                <input type="radio" class="btn-check" id="Gender2" name="ifmmGenderCd" value="2" autocomplete="off">
+	                <input type="radio" class="btn-check" id="Gender2" name="ifmmGenderCd" value="6" autocomplete="off">
 	                <label class="btn btn-outline-primary" for="Gender2">녀</label>
                 </div>
                 
@@ -134,6 +134,7 @@
 	               	<label for="birthday" class="form-label">생일</label>
 	               	<input type="date" class="form-control" id="ifmmBirthday" name="ifmmBirthday">
                </div>
+               
                <label for="tel" class="form-label">휴대폰</label>
 				 <div class="input-group">
 				 <div class="col-md-2">

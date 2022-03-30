@@ -42,6 +42,13 @@ public class MemberServiceImpl implements MemberService{
 		
 		return dao.insert(dto);
 	}
+	
+	@Override
+	public int insertAddress(Member dto) throws Exception {
+		
+		return dao.insert(dto);
+	}
+	
 	private void setRegMod(Member dto) {
 		// TODO Auto-generated method stub
 		
@@ -89,5 +96,16 @@ public class MemberServiceImpl implements MemberService{
 		}
 		return item;
 	}
+	@Override
+	public Member selectOneId(Member dto) throws Exception {
+	return dao.selectOneId(dto);
+	}
+	
+	@Override
+	public Member selectOneLogin(Member dto) throws Exception {
+	return dao.selectOneLogin(dto);
+	}
+	
+	
 	
 }

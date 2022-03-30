@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Member {
 	// infrmember
-	private Integer seq;
+	private String seq;
 	private String ifmmName="";
 	private String ifmmId="";
 	private String ifmmGenderCd;
@@ -26,6 +26,7 @@ public class Member {
 	private String ifmpHomeTel;
 	
 	// address
+	private String imadSeq;
 	private String imadAddress1;
 	private String imadAddress2;
 	
@@ -51,14 +52,23 @@ public class Member {
 	
 	
 	// ---------
-	public Integer getSeq() {
+	
+	public String getSeq() {
 		return seq;
 	}
-	public void setSeq(Integer seq) {
+	public void setSeq(String seq) {
 		this.seq = seq;
 	}
+	
 	public String getIfmmName() {
 		return ifmmName;
+	}
+	
+	public static List<Member> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Member> cachedCodeArrayList) {
+		Member.cachedCodeArrayList = cachedCodeArrayList;
 	}
 	public void setIfmmName(String ifmmName) {
 		this.ifmmName = ifmmName;
@@ -140,6 +150,12 @@ public class Member {
 	}
 	public void setIfmmRecommendSeq(String ifmmRecommendSeq) {
 		this.ifmmRecommendSeq = ifmmRecommendSeq;
+	}
+	public String getImadSeq() {
+		return imadSeq;
+	}
+	public void setImadSeq(String imadSeq) {
+		this.imadSeq = imadSeq;
 	}
 
 	

@@ -213,10 +213,10 @@
 	      </div><br><br>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">주소</label>
     			<div class="col-sm-3">
-	       <input type="text" readonly class="form-control" id="staticEmail" value="주소1"/>
+	       <input type="text" readonly class="form-control" id="imadAddress1" name="imadAddress1" value="<c:out value="${item.imadAddress1}"/>"/>
 	       </div>
 	       <div class="col-sm-7">
-	       <input type="text" readonly class="form-control" id="staticEmail" value="주소2"/>
+	       <input type="text" readonly class="form-control" id="imadAddress2" name="imadAddress2" value="<c:out value="${item.imadAddress2}"/>"/>
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
     			<div class="col-sm-3">

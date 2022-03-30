@@ -9,6 +9,7 @@
     <resultMap id="resultMapObj" type="com.junefw.infra.modules.member.Member"></resultMap>
 <sql id="selectCommon">
 		FROM eatja.infrMember a
+		left join eatja.infrMemberAddress as b on b.infrMember_Seq = a.seq and b.ifmaDelNy = 0
 		left join eatja.infrMemberPhone as c on c.infrMember_Seq = a.seq and c.ifmpDelNy = 0
 			WHERE 1=1
 				<choose>
@@ -41,6 +42,7 @@
 				,a.ifmmDelNy
 				,a.ifmmGenderCd
 				,c.ifmpNumber
+				,b.imadAddress1
 				<include refid="selectCommon"/>
 				
 				limit #{startRnumForMysql}, #{rowNumToShow}
@@ -80,11 +82,26 @@
 			,#{ifmmRecommendSeq}
 			,#{regDateTime}
 			,#{modDateTime}
-			)
+			);
 			<selectKey resultType="String" keyProperty="seq" order="AFTER">
 			SELECT last_insert_id()
-		</selectKey>
+			</selectKey>
 	</insert>
+	<insert id="insertAddress">
+	INSERT INTO infrMemberaddress (
+			,imadAddress1
+			,imadAddress2
+			,ifmaDelNy
+			,regDateTime
+			,modDateTime
+		) VALUES (
+			,#{imadAddress1}
+			,#{imadAddress2}
+			,0
+			,#{regDateTime}
+			,#{modDateTime}
+		)
+		</insert>
 	<select id="selectOne" resultMap="resultMapObj">
 		<!-- select
 			a.seq
@@ -106,8 +123,10 @@
 				,a.modDateTime
 				,a.ifmmRecommendSeq
 				,a.ifmmDelNy
+				,b.imadAddress1
 			FROM
 				infrMember a
+				left join eatja.infrMemberAddress as b on b.infrMember_Seq = a.seq and b.ifmaDelNy = 0
 			WHERE 1=1
 				and ifmmDelNy = 0
 				and seq = #{seq}
@@ -138,6 +157,29 @@
 			WHERE 1=1
 				AND seq = #{seq}
 	</delete>
+	<!-- Login -->
+	<select id="selectOneId" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.ifmmId
+		FROM
+			infrMember a
+		WHERE 1=1
+			AND a.ifmmId = #{ifmmId}
+	</select>
+	
+	
+	<select id="selectOneLogin" resultMap="resultMapObj">
+		SELECT
+			a.seq
+			,a.ifmmId
+			,a.ifmmName
+		FROM
+			infrMember a
+		WHERE 1=1
+			AND a.ifmmId = #{ifmmId}
+			AND a.ifmmPassword = #{ifmmPassword}
+	</select>
 	
 	
 </mapper>

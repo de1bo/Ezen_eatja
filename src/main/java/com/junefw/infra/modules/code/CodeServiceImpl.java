@@ -89,7 +89,7 @@ public class CodeServiceImpl implements CodeService{
 	public static List<Code> selectListCachedCode(String infrCodeGroup_ifcgSeq) throws Exception {
 		List<Code> item = new ArrayList<Code>();
 		for(Code codeRow : Code.cachedCodeArrayList) {
-			if (codeRow.getIfcgSeq().equals(infrCodeGroup_ifcgSeq)) {
+			if (codeRow.getInfrCodeGroup_ifcgSeq().equals(infrCodeGroup_ifcgSeq)) {
 				item.add(codeRow);
 			} else {
 				// by pass
@@ -97,11 +97,11 @@ public class CodeServiceImpl implements CodeService{
 		}
 		return item;
 	}
-	public static List<Code> selectOneCachedCode(String ifcdSeq) throws Exception {
-		List<Code> item = new ArrayList<Code>();
+	public static Code selectOneCachedCode(String ifcdSeq) throws Exception {
+		Code item = new Code();
 		for(Code codeRow : Code.cachedCodeArrayList) {
 			if(codeRow.getIfcdSeq().equals(ifcdSeq)) {
-				item.add(codeRow);
+				item = codeRow;
 			} else {
 				// by pass
 			}

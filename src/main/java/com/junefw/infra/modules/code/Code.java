@@ -17,6 +17,8 @@ public class Code {
 	private String ifcdName;
 	private String ifcdNameEng;
 	private Integer ifcdDelNy;
+	private Integer ifcdOrder;
+	private Integer ifcdUseNy;
 	private String infrCodeGroup_ifcgSeq;
 //	private String ifcgSeq;
 	
@@ -79,6 +81,24 @@ public class Code {
 	}
 	public void setIfcdNameEng(String ifcdNameEng) {
 		this.ifcdNameEng = ifcdNameEng;
+	}
+	public Integer getIfcdOrder() {
+		return ifcdOrder;
+	}
+	public void setIfcdOrder(Integer ifcdOrder) {
+		this.ifcdOrder = ifcdOrder;
+	}
+	public static List<Code> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Code> cachedCodeArrayList) {
+		Code.cachedCodeArrayList = cachedCodeArrayList;
+	}
+	public Integer getIfcdUseNy() {
+		return ifcdUseNy;
+	}
+	public void setIfcdUseNy(Integer ifcdUseNy) {
+		this.ifcdUseNy = ifcdUseNy;
 	}
 	
 	

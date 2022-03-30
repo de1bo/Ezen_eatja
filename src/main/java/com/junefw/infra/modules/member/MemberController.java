@@ -1,6 +1,10 @@
 package com.junefw.infra.modules.member;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.junefw.infra.common.constants.Constants;
@@ -70,10 +75,13 @@ public class MemberController {
 
 		// 입력을 작동시킨다.
 		int result = service.insert(dto);
+		int address = service.insertAddress(dto); 
 		
 		System.out.println("result: " + result);
 		
-		redirectAttributes.addAttribute("ifcgSeq", dto.getSeq());	// get
+		System.out.println("address: " + address);
+		
+		redirectAttributes.addAttribute("seq", dto.getSeq());	// get
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());	// get
 		redirectAttributes.addAttribute("shOption", vo.getShOption());	// get
 		redirectAttributes.addAttribute("shValue", vo.getShValue());	// get
@@ -86,7 +94,7 @@ public class MemberController {
 	public String MemberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
 		System.out.println("vo.getSeq"+vo.getSeq());
 		
-		
+
 		System.out.println("############################");
 		System.out.println("vo.getShOption(): " + vo.getShOption());
 		System.out.println("vo.getShValue(): " + vo.getShValue());
@@ -140,14 +148,6 @@ public class MemberController {
 	public String memberNele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception{
 		service.updateDelet(vo);
 		
-		
-		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
-		
-		for(String checkboxSeq : checkboxSeqArray) {
-			vo.setSeq(checkboxSeq);
-			service.updateDelet(vo);
-			}
-		
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
 		redirectAttributes.addAttribute("shOption", vo.getShOption());
 		redirectAttributes.addAttribute("shValue", vo.getShValue());
@@ -155,7 +155,7 @@ public class MemberController {
 		return "redirect:/member/memberList";
 	}
 	
-	@RequestMapping(value = "memberMultiUele") /* check box 삭제 */
+	@RequestMapping(value = "/member/memberMultiUele") /* check box 삭제 */
 	public String memberMultiUele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception{
 	
 		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
@@ -167,4 +167,47 @@ public class MemberController {
 	
 		return "redirect:/member/memberList";
 	}
+	
+	@RequestMapping(value = "/member/memberMultiDele") /* check box 삭제 */
+	public String memberMultiDele(MemberVo vo, RedirectAttributes redirectAttributes) throws Exception{
+	
+		String[] checkboxSeqArray = vo.getCheckboxSeqArray();
+		
+		for(String checkboxSeq : checkboxSeqArray) {
+			vo.setSeq(checkboxSeq);
+			service.updateDelet(vo);
+		}
+	
+		return "redirect:/member/memberList";
+	}
+	
+		@RequestMapping(value = "/member/loginForm")
+//		public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+		public String Login() throws Exception {
+
+			
+
+			return "/member/loginForm";
+		}
+		
+		@ResponseBody
+		@RequestMapping(value = "/member/loginProc")
+		public Map<String, Object> loginProc(Member dto, HttpSession httpSession) throws Exception {
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			
+			Member itemMember = service.selectOneLogin(dto);
+
+			
+			
+			if(itemMember != null) {
+
+					
+					returnMap.put("item", "success");
+				} else {
+					returnMap.put("item", "fail");
+				
+			}
+			return returnMap;
+		}
+		
 }

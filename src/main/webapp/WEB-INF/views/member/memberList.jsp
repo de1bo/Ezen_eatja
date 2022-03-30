@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 		
-		<%-- <jsp:useBean id="CodeServiceImpl" class="com.junefw.infra.modules.code.CodeServiceImpl"/> --%><!-- gender -->
+		<jsp:useBean id="CodeServiceImpl" class="com.junefw.infra.modules.code.CodeServiceImpl"/><!-- gender -->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -37,41 +37,40 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
       <form class="navbar-nav me-auto mb-2 mb-md-0">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button> -->
         </form>
         
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#"><h5>고객 관리</h5></a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#"><h5>메인메뉴</h5></a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#"><h5>리뷰</h5></a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="#"><h5>고객센터</h5></a>
-          </li>
-        </ul>
-        
+          </li> -->
+        </ul>      
       </div>
     </div>
   </nav>
 </header>
 </main>
 <div id="pd">
+<form id="formList" name="formList" method="post" action="/infra/member/memberList">
   <div style="padding: 5%">
 	<h1 id="jal" style="padding: 15px;" >사용자 관리</h1>
 	  <table class="border border-3">
-	  <form id="formList" name="formList" method="get" action="/infra/member/memberList">
 	  <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>"><!-- Post방식 -->
 	  <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> <!-- multidele -->
 	  <input type="hidden" name="checkboxSeqArray">	<!-- multidele -->
@@ -145,7 +144,7 @@
 			</td>
 	  </tr>
 	  </div>
-	  </form>
+	  
 	</table>
 	<br><br>
         	<select class="form-select" aria-label="Default select example" style="width:150px; float:right; border-bottom: 10px;">
@@ -163,11 +162,11 @@
 		  	<td>이름</td>
 		  	<td>아이디</td>
 		  	<td>성별</td>
-		  	<td>주소</td>
+		  	<td>전화번호</td>
 		  	<td>모바일 마케팅 동의</td>
 		  	<td>이메일 마케팅 동의</td>
 		  </tr>
-		   <%-- <c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/> <%-- gender --%>
+		   <c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/>  <!-- gender -->
 		  <c:choose>
 	<c:when test="${fn:length(list) eq 0}">
 		<tr>
@@ -179,13 +178,13 @@
 		  <tr>
 		  	<td><input type="checkbox" name="checkboxSeq"></td>
 		  	<td><c:out value="${item.seq}"/></td>
-		  	<td><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"><c:out value="${item.ifmmName}"/></td>
-		  	<%-- <td><a href="javascript:goForm(<c:out value="${item.seq}"/>)"><c:out value="${item.ifmmName}"/></a></td> --%>
+		  	<%-- <td><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>"><c:out value="${item.ifmmName}"/></td> --%>
+		  	<td><a href="javascript:goForm(<c:out value="${item.seq}"/>)"><c:out value="${item.ifmmName}"/></a></td>
 		  	<td><c:out value="${item.ifmmId}"/></td>
 		  	<td>
-		  		<%-- <c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">gender
-		  			<c:if test="${item.ifmmGenderCd eq itemGender.ifcdSeq}"><c:out value="${itemGenderCd.ifcdName}"/></c:if>
-		  		</c:forEach> --%>
+		  		<c:forEach items="${listCodeGender}" var="itemGender" varStatus="statusGender">
+		  			<c:if test="${item.ifmmGenderCd eq itemGender.ifcdSeq}"><c:out value="${itemGender.ifcdName}"/></c:if>
+		  		</c:forEach>
 		  	</td>
 		  	<td>
 	  		   <c:set var="numberPhone" value="${item.ifmpNumber }"/>
@@ -236,19 +235,11 @@
 	</nav>
 	
 	
-	<button type="button" class="btn btn-danger" id="btnModalDelete" style=" float:left; border-bottom: 10px;"><img src="/infra/resources/images/trash-icon.png" width="25px" height="25px"></button>
+	<button type="submit" class="btn btn-danger" id="btnDelete" style=" float:left; border-bottom: 10px;"><img src="/infra/resources/images/trash-icon.png" width="25px" height="25px"></button>
 	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><img src="/infra/resources/images/plus-sign.png" width="25px" height="25px"><a href="/infra/member/AdminForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">등록</a></button>
 	</div>
+	</form>
 </div>
-	<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-  </div>
-</footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -263,38 +254,41 @@
 		});
 
 	</script> -->
-<!-- 	<script type="text/javascript">
+	<script type="text/javascript">
 	$("#btnSubmit").on("click", function(){	
 	});
-	abc = function(seq){
-			
-			alert(seq);
-			// form객체를 가져온다.
-			$("#thisPage").val(seq);
-			$("#formList").submit();
-			// 그 가져온 객체를 전달 한다.
-		}
+	goList = function(seq) {
+		alert(seq);
+		// form 객체 를 가져 온다.
+		$("#thisPage").val(seq);
+		$("#formList").submit();
+		// 그 가져온 객체를 전달 한다.
+	}
 		
 		goForm = function(seq1){
 			alert(seq1);
 			
 			$("#seq").val(seq1);
-			$("#formList").att("action","/infra/member/memberView");
+			$("#formList").attr("action","/infra/member/memberView");
 			$("#formList").submit();
 			
 		}
 		
 		
-	</script> -->
+	</script>
 	<script>
-	$("#btnModalDelete").on("Click", function(){
-		$("input[name=checkboxSeq]:checked").each(function() { 
-			checkboxSeqArray.push($(this).val());
+	var goUrlMultiDele = "/member/memberMultiDele";
+	
+	var seq= $("input:hidden[name=ifmmSeq]");
+	
+	$("#btnDelete").on("Click", function(){
+		$("input[name=checkboxSeq]:checked").each(function() { 		// 이름으로 받은 해당 객체들을 체크가 되어있는지 확인
+			checkboxSeqArray.push($(this).val());		// 위에 선언된 객체에다가 c:out에서 선택된 값을 넣음 0123
 		});
 		
-		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);
+		$("input:hidden[name=checkboxSeqArray]").val(checkboxSeqArray);		//
 							
-		form.attr("action", goUrlMultiDele).submit();
+		$("#formList").attr("action", "/member/memberMultiDele").submit();  // form에 있는 정보를 memermultidele로 보냄
 	});
 	
 	

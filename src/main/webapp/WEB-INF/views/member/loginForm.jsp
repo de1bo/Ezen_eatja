@@ -103,11 +103,11 @@
     	<h1 id="jal"><strong>LOGIN</strong></h1><br>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="name@example.com">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="Password">
       <label for="floatingPassword">Password</label>
     </div>
 
@@ -115,7 +115,7 @@
   		<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
   		<label class="form-check-label" for="flexSwitchCheckChecked">자동 로그인</label>
 	</div><br><br><br>
-    	<button class="w-100 btn btn-info" type="submit" style="color:white"><strong>로그인</strong></button>
+    	<button class="w-100 btn btn-info" type="button" id="btnLogin" style="color:white"><strong>로그인</strong></button>
     	<br><br>
     	<button class="w-100 btn btn-secondary" type="button" style="color:white" onclick="location.href='../member/memberForm.html'"><strong>회원가입</strong></button>
     	<br><hr>
@@ -135,6 +135,27 @@ $(document).ready(function(){
 	});
 </script>
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#btnLogin").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/infra/member/loginProc"
+			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPassword" : $("#ifmmPassword").val()}
+			,success: function(response) {
+				if(response.item == "success") {
+					location.href = "/infra/index/indexView";
+				} else {
+					alert("회원없음");
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+</script>
 </body>
 </html>
