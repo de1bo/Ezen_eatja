@@ -1,7 +1,15 @@
-package com.junefw.infra.modules.loginout;
+package com.junefw.infra.modules.index;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.junefw.infra.modules.member.Member;
 
 
 

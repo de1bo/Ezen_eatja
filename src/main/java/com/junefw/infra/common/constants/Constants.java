@@ -7,4 +7,8 @@ public class Constants {
 
 	
 	public static final int DATE_INTERVAL = -60;
+	
+	
+	//로그인
+	public static final String URL_LOGINFORM = "/infra/member/loginForm";
 }

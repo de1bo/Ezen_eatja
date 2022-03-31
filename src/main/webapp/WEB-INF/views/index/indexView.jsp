@@ -65,10 +65,35 @@
   </nav>
 </header>
 <div style="padding-top: 5%;">
-	sessSeq:
-	<br>sessName:
-	<br>sessId: 
-	<button></button>
+	sessSeq: <c:out value="${sessSeq }"/><br>
+	sessName: <c:out value="${sessName }"/><br>
+	sessId: <c:out value="${sessId }"/><br>
+	<c:if test="${not empty sessSeq}">
+	<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i>로그아웃</button>
+</c:if>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#btnLogout").on("click", function(){
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/infra/member/logoutProc"
+				,success: function(response) {
+					if(response.item == "success") {
+						alert("로그아웃 실패");
+						location.href = "/infra/member/loginForm";
+					} else {
+						alert("로그아웃 성공");
+						location.href = "/infra/member/loginForm";
+					}
+				}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+</script>
 </body>
 </html>

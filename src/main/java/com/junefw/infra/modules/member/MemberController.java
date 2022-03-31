@@ -76,12 +76,12 @@ public class MemberController {
 		// 입력을 작동시킨다.
 		
 		int result = service.insert(dto);
-		int address = service.insertAddress(dto);
+		/* int address = service.insertAddress(dto); */
 		 
 		
 		System.out.println("result: " + result);
 		
-		System.out.println("address: " + address);
+		/* System.out.println("address: " + address); */
 		
 		redirectAttributes.addAttribute("seq", dto.getSeq());	// get
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());	// get
@@ -203,6 +203,9 @@ public class MemberController {
 			
 			if(itemMember != null) {
 
+				httpSession.setAttribute("sessSeq", itemMember.getSeq());
+				httpSession.setAttribute("sessId", itemMember.getIfmmId());
+				httpSession.setAttribute("sessName", itemMember.getIfmmName());
 					
 					returnMap.put("item", "success");
 				} else {
@@ -212,4 +215,11 @@ public class MemberController {
 			return returnMap;
 		}
 		
+		@ResponseBody
+		@RequestMapping(value = "/member/logoutProc")
+		public Map<String, Object> logoutProc(Member dto, HttpSession httpSession) throws Exception {
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			httpSession.invalidate();
+			return returnMap;
+		}
 }
