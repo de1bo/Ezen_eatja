@@ -45,7 +45,15 @@ public class MemberServiceImpl implements MemberService{
 	
 	@Override
 	public int insertAddress(Member dto) throws Exception {
-		
+		try {
+			dto.setRegDateTime(UtilDateTime.nowDate());
+			dto.setModDateTime(UtilDateTime.nowDate());
+			
+			
+			setRegMod(dto);
+		} finally{
+			
+		}
 		return dao.insert(dto);
 	}
 	

@@ -29,6 +29,7 @@ public class Member {
 	private String imadSeq;
 	private String imadAddress1;
 	private String imadAddress2;
+	private Integer ifmaDelNy;
 	
 	
 	static List<Member> cachedCodeArrayList = new ArrayList<Member>();
@@ -157,13 +158,12 @@ public class Member {
 	public void setImadSeq(String imadSeq) {
 		this.imadSeq = imadSeq;
 	}
-
-	
-	
-	
-	
-	
-	
+	public Integer getIfmaDelNy() {
+		return ifmaDelNy;
+	}
+	public void setIfmaDelNy(Integer ifmaDelNy) {
+		this.ifmaDelNy = ifmaDelNy;
+	}
 	
 	
 }

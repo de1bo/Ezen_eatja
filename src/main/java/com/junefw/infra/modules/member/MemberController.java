@@ -74,8 +74,10 @@ public class MemberController {
 		System.out.println("dto.getIfmmName(): " + dto.getIfmmName());
 
 		// 입력을 작동시킨다.
+		
 		int result = service.insert(dto);
-		int address = service.insertAddress(dto); 
+		int address = service.insertAddress(dto);
+		 
 		
 		System.out.println("result: " + result);
 		

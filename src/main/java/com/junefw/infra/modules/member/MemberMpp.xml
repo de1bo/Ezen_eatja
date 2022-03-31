@@ -89,17 +89,19 @@
 	</insert>
 	<insert id="insertAddress">
 	INSERT INTO infrMemberaddress (
-			,imadAddress1
+			imadAddress1
 			,imadAddress2
 			,ifmaDelNy
 			,regDateTime
 			,modDateTime
+			,seq
 		) VALUES (
-			,#{imadAddress1}
+			#{imadAddress1}
 			,#{imadAddress2}
 			,0
 			,#{regDateTime}
 			,#{modDateTime}
+			,#{seq}
 		)
 		</insert>
 	<select id="selectOne" resultMap="resultMapObj">
