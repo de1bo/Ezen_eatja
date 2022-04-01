@@ -76,12 +76,11 @@ public class MemberController {
 		// 입력을 작동시킨다.
 		
 		int result = service.insert(dto);
-		/* int address = service.insertAddress(dto); */
+		 service.insertAddress(dto);
+		 service.insertPhone(dto); 
 		 
 		
 		System.out.println("result: " + result);
-		
-		/* System.out.println("address: " + address); */
 		
 		redirectAttributes.addAttribute("seq", dto.getSeq());	// get
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());	// get

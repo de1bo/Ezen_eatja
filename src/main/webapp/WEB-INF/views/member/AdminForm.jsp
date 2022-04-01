@@ -146,7 +146,7 @@
              <div class="col-12">
               <div class="row mt-sm-12">
 	          	<div class="col-sm-12 mt-3 mt-sm-0">
-	          	<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+	          	<input type="text" class="form-control" id="imadZipcode" name="imadZipcode" placeholder="우편번호">
 					<input type="button" class="form-control" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
 					<input type="text" class="form-control" id="imadAddress1" name="imadAddress1" placeholder="주소"><br>
 					<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
@@ -312,7 +312,7 @@
                     document.getElementById("sample6_extraAddress").value = '';
                 }
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById('imadZipcode').value = data.zonecode;
                 document.getElementById("imadAddress1").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("imadAddress2").focus();

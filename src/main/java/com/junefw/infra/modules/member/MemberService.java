@@ -13,7 +13,9 @@ public interface MemberService {
 	int delete(MemberVo vo) throws Exception;
 	int updateDelet(MemberVo vo) throws Exception;
 	
+	// 파생 테이블
 	public int insertAddress(Member dto) throws Exception;
+	public int insertPhone(Member dto) throws Exception;
 	
 	
 	public Member selectOneId(Member dto) throws Exception;

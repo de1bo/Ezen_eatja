@@ -22,13 +22,18 @@ public class Member {
 	private String ifmeEmailDomainCd;
 	
 	//phone
+	private Integer ifmpDelNy;
+	private Integer ifmpTelecomCd;
 	private String ifmpNumber;
 	private String ifmpHomeTel;
+	private Integer infrMember_Seq;
 	
 	// address
 	private String imadSeq;
+	private String imadZipcode;
 	private String imadAddress1;
 	private String imadAddress2;
+	private String imadDefaultNy;
 	private Integer ifmaDelNy;
 	
 	
@@ -163,6 +168,36 @@ public class Member {
 	}
 	public void setIfmaDelNy(Integer ifmaDelNy) {
 		this.ifmaDelNy = ifmaDelNy;
+	}
+	public String getImadDefaultNy() {
+		return imadDefaultNy;
+	}
+	public void setImadDefaultNy(String imadDefaultNy) {
+		this.imadDefaultNy = imadDefaultNy;
+	}
+	public String getImadZipcode() {
+		return imadZipcode;
+	}
+	public void setImadZipcode(String imadZipcode) {
+		this.imadZipcode = imadZipcode;
+	}
+	public Integer getIfmpDelNy() {
+		return ifmpDelNy;
+	}
+	public void setIfmpDelNy(Integer ifmpDelNy) {
+		this.ifmpDelNy = ifmpDelNy;
+	}
+	public Integer getIfmpTelecomCd() {
+		return ifmpTelecomCd;
+	}
+	public void setIfmpTelecomCd(Integer ifmpTelecomCd) {
+		this.ifmpTelecomCd = ifmpTelecomCd;
+	}
+	public Integer getInfrMember_Seq() {
+		return infrMember_Seq;
+	}
+	public void setInfrMember_Seq(Integer infrMember_Seq) {
+		this.infrMember_Seq = infrMember_Seq;
 	}
 	
 	

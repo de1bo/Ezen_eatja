@@ -89,32 +89,47 @@
 	</insert>
 	<insert id="insertAddress">
 	INSERT INTO infrMemberaddress (
-			imadAddress1
+			imadZipcode
+			,imadAddress1
 			,imadAddress2
+			,imadDefaultNy
 			,ifmaDelNy
 			,regDateTime
 			,modDateTime
-			,seq
+			,infrMember_Seq
 		) VALUES (
-			#{imadAddress1}
+			 #{imadZipcode}
+			,#{imadAddress1}
 			,#{imadAddress2}
+			,1
 			,0
 			,#{regDateTime}
 			,#{modDateTime}
 			,#{seq}
 		)
 		</insert>
-	<select id="selectOne" resultMap="resultMapObj">
-		<!-- select
-			a.seq
-		    , a.ifmmName
-		    , a.ifmmDelNy
-		from
-			infrMember a
-		where 1=1
-			and ifmmDelNy = 0
-			and seq = #{seq} -->
-			
+		<insert id="insertPhone">
+		INSERT INTO infrMemberphone(
+			ifmpDelNy
+			,ifmpTelecomCd
+			,ifmpNumber
+			,ifmpHomeTel
+			,regDateTime
+			,modDateTime
+			,infrMember_Seq
+		) VALUES (
+			0
+			,#{ifmpTelecomCd}
+			,#{ifmpNumber}
+			,#{ifmpHomeTel}
+			,#{regDateTime}
+			,#{modDateTime}
+			,#{seq}
+		)
+		
+		</insert>
+		
+	<select id="selectOne" resultMap="resultMapObj">			
 			SELECT
 				a.seq
 				,a.ifmmName
@@ -126,6 +141,7 @@
 				,a.ifmmRecommendSeq
 				,a.ifmmDelNy
 				,b.imadAddress1
+				,b.imadAddress2
 			FROM
 				infrMember a
 				left join eatja.infrMemberAddress as b on b.infrMember_Seq = a.seq and b.ifmaDelNy = 0

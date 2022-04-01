@@ -148,7 +148,7 @@
 				</div>
 				
 				<div class="col-md-4">
-	               	       <input type="tel" id="ifmpNumber" name="ifmpNumber" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+	               	       <input type="tel" id="ifmpNumber" name="ifmpNumber" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000"maxlength="13">
 	           	</div>
 	           	<div class="col-md-4">
 	           	<button class="btn btn-outline-primary">인증</button>
@@ -160,7 +160,7 @@
 	          	</div>
 	          	<div class="col-md-6">
 	           		 <label for="tel" class="form-label">전화번호</label>
-	         	     <input type="tel" id="ifmpHomeTel" name="ifmpHomeTel" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13">
+	         	     <input type="tel" id="ifmpHomeTel" name="ifmpHomeTel" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" maxlength="13">
 	          	</div>
 	          <!-- 	<div class="row mt-sm-4">
 	          		<div class="col-sm-6 mt-3 mt-sm-0">
@@ -182,9 +182,9 @@
 	          	<div class="col-sm-6 mt-3 mt-sm-0">
 	          	<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
 					<input type="button" class="form-control" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-					<input type="text" class="form-control" id="sample6_address" placeholder="주소"><br>
+					<input type="text" class="form-control" id="imadAddress1" name="imadAddress1" placeholder="주소"><br>
 					<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
-					<input type="text" class="form-control" id="sample6_detailAddress" placeholder="상세주소">
+					<input type="text" class="form-control" id="imadAddress2" name="imadAddress2" placeholder="상세주소">
 					</div>
 				</div>
                			<label for="email" class="form-label">이메일</label>
@@ -376,9 +376,9 @@
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
+                document.getElementById("imadAddress1").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                document.getElementById("imadAddress2").focus();
             }
         }).open();
     }

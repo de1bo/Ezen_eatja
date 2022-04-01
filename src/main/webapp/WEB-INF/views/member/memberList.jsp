@@ -18,6 +18,9 @@
 #pd{
 	padding: 5%;
 }
+.ft{
+	text-color: white;
+}
 </style>
 <title>고객 리스트</title>
 <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
@@ -37,17 +40,28 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
       <form class="navbar-nav me-auto mb-2 mb-md-0">
+     <div class="nav-link" id="#jal"><h3>EAT JA</h3></div>
           <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button> -->
         </form>
         
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><h5>고객 관리</h5></a>
+          <img src="../">
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#"><h5>메인메뉴</h5></a>
-          </li> -->
+          <li class="nav-item">  	
+  			 <div class="right nav-link" style="padding-right: 30px;">
+		   		<c:out value="${sessName}"/><br>
+		   		<c:out value="${sessId}"/>
+		   		</div>
+   			</li>
+          <li class="nav-item">
+            <select class="form-select" >
+				    <option selected>언어</option>
+				    <option value="1">영어</option>
+				    <option value="2">한국어</option>
+				</select>
+          </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
           </li> -->
@@ -104,7 +118,7 @@
 		    <div class="col">
 		    	<div class="col p-2">
 					<fmt:parseDate var="shDateStart" value="${vo.shDateStart }" pattern="yyyy-MM-dd HH:mm:ss"/>
-            		<input type="text" id="shDateStart" name="shDateStart" value="<fmt:formatDate value="${shDateStart }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control form-control-sm" autocomplete="off">
+            		<input type="text" id="shDateStart" name="shDateStart" value="<fmt:formatDate value="${shDateStart }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control" autocomplete="off">
 				</div>
 		    </div>
 		</td>
@@ -112,7 +126,7 @@
 		    <div class="col">
 		    	<div class="col p-2">
 		    		<fmt:parseDate var="shDateEnd" value="${vo.shDateEnd }" pattern="yyyy-MM-dd HH:mm:ss"/>
-					<input type="text" id="shDateEnd" name="shDateEnd" value="<fmt:formatDate value="${shDateEnd }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control form-control-sm" autocomplete="off">
+					<input type="text" id="shDateEnd" name="shDateEnd" value="<fmt:formatDate value="${shDateEnd }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control" autocomplete="off">
 				</div>
 		    </div>
 	    </td>
