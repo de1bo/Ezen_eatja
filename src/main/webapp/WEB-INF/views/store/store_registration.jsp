@@ -12,7 +12,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>매장등록</title>
 	<link href="/infra/resources/css/store/style.css" rel="stylesheet">
-	<link href="/infra/resources/css/store/icons.css" rel="stylesheet">
 	<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
 @font-face {
@@ -33,11 +32,11 @@
 </head>
 <body>
 <header>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark flex-column">
     <div class="container-fluid">
       <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <div class="navbar-toggler-icon"></div>
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
       <form class="navbar-nav me-auto mb-2 mb-md-0">
@@ -67,7 +66,7 @@
   </nav>
 </header>
 <div class="bgImg">
-<h1 class="display-1"><strong>매장 등록</strong></h1>
+<h1 class="display-1 jal">매장 등록</h1>
 		<h2>Eatja와 함께하는 매장의 수</h2>
 		<ul class="countdown">
                     <li>
@@ -80,14 +79,15 @@
                 </div>
 
 	<div class="register">
-                <div class="row">
+                <div class="row g-0">
                     <div class="col-md-3 register-left">
-                        <img src="/infra/resources/images/place-setting.svg" style="width: 90%; height:auto;"  alt="img"> 
-                        <p>매장을 등록하고 EAT JA와 함께하세요</p>
-                        <input type="submit" name="" value="Login"/><br/>
+                        <img src="/infra/resources/images/place-setting.svg" style="width: 80%; height:auto;"  alt="img"> 
+                        <p class="lead">매장을 등록하고 EAT JA와 함께하세요!</p>
+                        <h6>입력을 마치셨다면 하단의 매장 등록을 눌러주세요.</h6>
+                        <input type="submit" class="btnRegister" value="매장 등록"><br/>
                     </div>
                     <div class="col-md-9 register-right">
-                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">매장 정보</a>
                             </li>
@@ -99,6 +99,12 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading jal">매장 정보 입력</h3>
                                 <div class="row register-form">
+                                <div class="col-md-12">
+	                                <div class="form-group" align="center">
+	                                	<label for="name" class="form-label">이미지 등록</label><br>
+                        				<input type="file" class="form-control" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+	                                </div>
+                                </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                         	<label for="name" class="form-label">매장 이름</label>
@@ -139,7 +145,7 @@
                                     <div class="col-md-6">
                                     	<div class="form-group">
                                         	<label for="name" class="form-label">매장 주소</label>
-                                            <div class="row">
+                                            <div class="row g-0">
 									          	<div class="">
 									          	<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
 													<input type="button" class="form-control" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
@@ -155,8 +161,11 @@
                                 </div>
                                
                                 <div class="row register-form" align="center">
+                                	<div class="row g-0">
                                     <div class="col">
-<script language="javascript">
+                                    <font color="#FF0000">*</font>추가버튼을 클릭해 보세요.
+         <input name="addButton" type="button" class="form-control btn btn-success" style="cursor:hand" onClick="insRow()" value="추가">
+<script>
 var oTbl;
 //Row 추가
 function insRow() {
@@ -166,7 +175,7 @@ function insRow() {
   var oCell = oRow.insertCell();
 
   //삽입될 Form Tag
-  var frmTag = "<br><div class='input-group'><div class='ft'><h3>메뉴: </h3></div><input type=text class='form-control' name=addText style=width:100px; height:20px;><div class='ft'><h3>가격: </h3></div><input type=text class='form-control' name=addText style=width:100px; height:20px;></div><br>";
+  var frmTag = "<br><div class='input-group'><h3 class='ft'>메뉴: </h3><input type=text class='form-control' name=addText><h3 class='ft'>가격: </h3><input type=text class='form-control' name=addText></div><br>";
   frmTag += "<input type=button value='삭제' class='form-control btn btn-danger' onClick='removeRow()' style='cursor:hand'>";
   oCell.innerHTML = frmTag;
 }
@@ -191,38 +200,35 @@ function frmCheck()
    }
  }
 </script>
-<form name="form" method="post">
-<table width="500" border="0" cellspacing="0" cellpadding="0">
+<table border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td colspan="2" align="center" bgcolor="#FFFFFF">
-      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <td colspan="2" align="center">
+      <table border="0" cellpadding="0" cellspacing="0">
         <tr>
-         <td colspan="5" bgcolor="#FFFFFF" height="25" align="center">
-         <font color="#FF0000">*</font>추가버튼을 클릭해 보세요.
-         <input name="addButton" type="button" class="form-control btn btn-success" style="cursor:hand" onClick="insRow()" value="추가">
+         <td colspan="5" height="25" align="center">
          </td>
         </tr>
         <tr>
          <td height="25">
-           <table id="addTable" width="500" cellspacing="0" cellpadding="0" bgcolor="#FFFFFF" border="0" align="center">
+           <table id="addTable" cellspacing="0" cellpadding="0" border="0">
             <tr>
               <td align="center"></td>
             </tr>
-          </table></td>
+          </table>
+          </td>
         </tr>
        </table>
       </td>
    </tr>
  </table>
- <table width="400" border="0" cellspacing="0" cellpadding="0">
+ <table border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td height="10">
-      
       </td>
     </tr>
  </table>
-</form>
-<input type="submit" class="btnRegister"  value="매장 등록"/>
+<input type="button" class="btn-secondary btnRegister"  value="등록 취소"/>
+                            		</div>
                             		</div>
                             	</div>
                         </div>
@@ -230,6 +236,9 @@ function frmCheck()
                 </div>
             </div>
             </div>
+           </div> 
+           </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

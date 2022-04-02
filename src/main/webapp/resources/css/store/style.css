@@ -8,7 +8,6 @@
     -webkit-animation: mover 2s infinite  alternate;
     animation: mover 1s infinite  alternate;
     text-align: center;
-   /*  position: relative; */
 }
 .register{
     background: url(/infra/resources/images/floor.jpg) center;
@@ -17,7 +16,6 @@
 .register-left{
     text-align: center;
     color: #fff;
-    margin-top: 4%;
 }
 .register-left input{
     border: none;
