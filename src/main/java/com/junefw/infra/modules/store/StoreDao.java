@@ -14,9 +14,10 @@ public class StoreDao {
 //	@Resource(name = "sqlSession")
 	private SqlSession sqlSession;
 	
-	private static String namespace = "com.junefw.infra.modules.Store.StoreMpp";
+	private static String namespace = "com.junefw.infra.modules.store.StoreMpp";
 	
 	public int insert(Store dto) {return sqlSession.insert( namespace + ".insert", dto);}
 	public int insertStoreTel(Store dto) {return sqlSession.insert( namespace + ".insertStoreTel", dto);}
+	public int insertStoreLocation(Store dto) {return sqlSession.insert( namespace + ".insertStoreLocation", dto);}
 	
 }

@@ -32,10 +32,12 @@ public class StoreController {
 		// 입력을 작동시킨다.
 		
 		int result = service.insert(dto);
+		service.insertStoreTel(dto);
+		service.insertStoreLocation(dto);
 		 
 		
 		System.out.println("result: " + result);
 
-		return "redirect:/store/storeList";
+		return "redirect:/member/memberList";
 	}
 }

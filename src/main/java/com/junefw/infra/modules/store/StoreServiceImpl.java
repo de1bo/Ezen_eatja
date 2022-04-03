@@ -37,6 +37,11 @@ public class StoreServiceImpl implements StoreService{
 	
 		return dao.insertStoreTel(dto);
 	}
+	@Override
+	public int insertStoreLocation(Store dto) throws Exception {
+	
+		return dao.insertStoreLocation(dto);
+	}
 	
 	
 	private void setRegMod(Store dto) {

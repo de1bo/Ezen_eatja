@@ -36,7 +36,7 @@
 	
 	
 	<insert id="insert">
-			INSERT INTO infrMember (
+			INSERT INTO storeInfo (
 			stifSeq
 			,stifName
 			,stifDesc
@@ -57,13 +57,14 @@
 			,#{regDateTime}
 			,#{modDateTime}
 			);
-			<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			
+			<selectKey resultType="String" keyProperty="stifSeq" order="AFTER">		<!-- 파생테이블 seq값을 넣을 수 있도록 해준다 -->
 			SELECT last_insert_id()
 			</selectKey>
 	</insert>
 	
 	<insert id="insertStoreTel">
-		INSERT INTO infrMemberaddress (
+		INSERT INTO storeTel (
 			stphDelNy
 			,stphNumberTypeCd
 			,stphNumber
@@ -79,5 +80,23 @@
 			,#{stifSeq}
 		)
 	</insert>
-	
+	<insert id="insertStoreLocation">
+	INSERT INTO storeLocation (
+		stlcDelNy
+		,stlcName
+		,stlcIat
+		,stlcIng
+		,regDateTime
+		,modDateTime
+		,StoreInfo_stifSeq
+	) VALUES (
+		0
+		,#{stlcName}
+		,#{stlcIat}
+		,#{stlcIng}
+		,#{regDateTime}
+		,#{modDateTime}
+		,#{stifSeq}
+	)
+	</insert>
 </mapper>

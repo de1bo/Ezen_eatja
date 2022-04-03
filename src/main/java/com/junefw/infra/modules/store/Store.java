@@ -7,9 +7,9 @@ import java.util.List;
 public class Store {
 	// Store
 	private String stifSeq;
-	private String stifname;
+	private String stifName;
 	private String stifDelNy;
-	private String stifdesc;
+	private String stifDesc;
 	private String stifAddress1;
 	private String stifAddress2;
 	private String stifOC;
@@ -23,6 +23,14 @@ public class Store {
 	private String stphNumber;
 	private String StoreInfo_stifSeq;
 	
+	// storeLocation
+	private String stlcSeq;
+	private String stlcDelNy;
+	private String stlcName;
+	private String stlcIat;
+	private String stlcIng;
+	/* private String StoreInfo_stifSeq; */
+	
 	// common
 	private Date regDateTime;
 	private Date modDateTime;
@@ -34,18 +42,17 @@ public class Store {
 	
 	// --------------------------
 	
-	
 	public String getStifSeq() {
 		return stifSeq;
 	}
 	public void setStifSeq(String stifSeq) {
 		this.stifSeq = stifSeq;
 	}
-	public String getStifname() {
-		return stifname;
+	public String getStifName() {
+		return stifName;
 	}
-	public void setStifname(String stifname) {
-		this.stifname = stifname;
+	public void setStifName(String stifName) {
+		this.stifName = stifName;
 	}
 	public String getStifDelNy() {
 		return stifDelNy;
@@ -53,11 +60,11 @@ public class Store {
 	public void setStifDelNy(String stifDelNy) {
 		this.stifDelNy = stifDelNy;
 	}
-	public String getStifdesc() {
-		return stifdesc;
+	public String getStifDesc() {
+		return stifDesc;
 	}
-	public void setStifdesc(String stifdesc) {
-		this.stifdesc = stifdesc;
+	public void setStifDesc(String stifDesc) {
+		this.stifDesc = stifDesc;
 	}
 	public String getStifAddress1() {
 		return stifAddress1;
@@ -82,30 +89,6 @@ public class Store {
 	}
 	public void setStifFoodTypeCd(String stifFoodTypeCd) {
 		this.stifFoodTypeCd = stifFoodTypeCd;
-	}
-	public Date getRegDateTime() {
-		return regDateTime;
-	}
-	public void setRegDateTime(Date regDateTime) {
-		this.regDateTime = regDateTime;
-	}
-	public Date getModDateTime() {
-		return modDateTime;
-	}
-	public void setModDateTime(Date modDateTime) {
-		this.modDateTime = modDateTime;
-	}
-	public static List<Store> getCachedCodeArrayList() {
-		return cachedCodeArrayList;
-	}
-	public static void setCachedCodeArrayList(List<Store> cachedCodeArrayList) {
-		Store.cachedCodeArrayList = cachedCodeArrayList;
-	}
-	public String getIfcdName() {
-		return ifcdName;
-	}
-	public void setIfcdName(String ifcdName) {
-		this.ifcdName = ifcdName;
 	}
 	public String getStphSeq() {
 		return stphSeq;
@@ -137,8 +120,64 @@ public class Store {
 	public void setStoreInfo_stifSeq(String storeInfo_stifSeq) {
 		StoreInfo_stifSeq = storeInfo_stifSeq;
 	}
+	public Date getRegDateTime() {
+		return regDateTime;
+	}
+	public void setRegDateTime(Date regDateTime) {
+		this.regDateTime = regDateTime;
+	}
+	public Date getModDateTime() {
+		return modDateTime;
+	}
+	public void setModDateTime(Date modDateTime) {
+		this.modDateTime = modDateTime;
+	}
+	public static List<Store> getCachedCodeArrayList() {
+		return cachedCodeArrayList;
+	}
+	public static void setCachedCodeArrayList(List<Store> cachedCodeArrayList) {
+		Store.cachedCodeArrayList = cachedCodeArrayList;
+	}
+	public String getIfcdName() {
+		return ifcdName;
+	}
+	public void setIfcdName(String ifcdName) {
+		this.ifcdName = ifcdName;
+	}
+	public String getStlcSeq() {
+		return stlcSeq;
+	}
+	public void setStlcSeq(String stlcSeq) {
+		this.stlcSeq = stlcSeq;
+	}
+	public String getStlcDelNy() {
+		return stlcDelNy;
+	}
+	public void setStlcDelNy(String stlcDelNy) {
+		this.stlcDelNy = stlcDelNy;
+	}
+	public String getStlcName() {
+		return stlcName;
+	}
+	public void setStlcName(String stlcName) {
+		this.stlcName = stlcName;
+	}
+	public String getStlcIat() {
+		return stlcIat;
+	}
+	public void setStlcIat(String stlcIat) {
+		this.stlcIat = stlcIat;
+	}
+	public String getStlcIng() {
+		return stlcIng;
+	}
+	public void setStlcIng(String stlcIng) {
+		this.stlcIng = stlcIng;
+	}
 	
 	
+
+
 	
 	
 	

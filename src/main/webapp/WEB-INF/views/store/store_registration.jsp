@@ -113,7 +113,7 @@
                                         </div>
                                         <div class="form-group">
                                       		<label for="name" class="form-label">매장 전화번호</label>
-                                            <input type="password" class="form-control" placeholder="매장 전화번호" value="" />
+                                            <input type="text" class="form-control" id="stphNumber" name="stphNumber" placeholder="매장 전화번호" value="" />
                                         </div>
                                         <div class="form-group">
                                             <label for="name" class="form-label">매장 영업시간</label>
@@ -163,6 +163,15 @@
                         				<textarea name="stifdesc" id="stifdesc" class="form-control" cols="50" rows="5"></textarea>
 	                                </div>
                                 </div>
+                                <div class="col-md-6">
+                                    	<div class="form-group">
+                                <div id="locationField">
+							  <input id="autocomplete" placeholder="매장 주소를 입력하시고 여기를 클릭해주세요." type="text" style="width:95%; height:30px">
+							</div>
+							<input class="field form-control" id="stlcIat" name="stlcIat" readonly/>
+							<input class="field form-control" id="stlcIng" name="stlcIng" readonly/>
+							</div>
+							</div>
                                      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
                                 <h3 class="register-heading jal">메뉴 등록</h3>
                                 </div>
@@ -246,7 +255,7 @@ function frmCheck()
            </div> 
            </form>
            </div>
-                       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 주소관련 -->
 	<script>
@@ -295,11 +304,27 @@ function frmCheck()
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample6_postcode').value = data.zonecode;
                 document.getElementById("stifAddress1").value = addr;
+                document.getElementById("autocomplete").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("stifAddress2").focus();
             }
         }).open();
+    
+    }
+    // geoCoding
+    var placeSearch, autocomplete;
+    function initAutocomplete() {
+      autocomplete = new google.maps.places.Autocomplete(
+                                          (document.getElementById('autocomplete')),{types: ['geocode']});
+      autocomplete.addListener('place_changed', fillInAddress);
+    }
+    
+    function fillInAddress() {
+      var place = autocomplete.getPlace();
+        document.getElementById("stlcIat").value=place.geometry.location.lat();
+        document.getElementById("stlcIng").value=place.geometry.location.lng();
     }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB19BIw2LkbwyGhE7i9vf15KwS7Ejvjt0Y&libraries=places&callback=initAutocomplete" async defer></script>
 </body>
 </html>

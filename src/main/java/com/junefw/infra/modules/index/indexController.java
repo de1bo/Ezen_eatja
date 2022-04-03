@@ -25,4 +25,13 @@ public class indexController {
 		return "/index/indexView";
 	}
 	
+	@RequestMapping(value = "/index/indexMain")
+//	public String memberList(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
+	public String indexMain() throws Exception {
+
+		
+
+		return "/index/indexMain";
+	}
+	
 }
