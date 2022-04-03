@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-
+<jsp:useBean id="CodeServiceImpl" class="com.junefw.infra.modules.code.CodeServiceImpl"/><!-- gender -->
 
 <!DOCTYPE HTML>
 <html>
@@ -19,9 +19,9 @@
 </style>
 <title>회원가입</title>
 <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"> 
-<script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>
-<script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+<link href="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"> <!-- 달력 -->
+<script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script>	<!-- 달력 -->
+<script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script> <!-- 달력 -->
 <link href="/infra/resources/css/style.css" rel="stylesheet">
 
 
@@ -137,23 +137,25 @@
                 
                <div class="col-md-6">
 	               	<label for="birthday" class="form-label">생일</label>
-	               	<input type="text" class="form-control" id="abcDate" name="abcDate">
+	               	<input type="text" class="form-control" id="ifmmBirthday" name="ifmmBirthday">
                </div>
                
                <label for="tel" class="form-label">휴대폰</label>
 				 <div class="input-group">
-				 <div class="col-md-2">
-					<select class="form-select" id="ifmpTelecomCd" name="ifmpTelecomCd">
-						    <option selected>통신사</option>
-						    <option value="1">SKT</option>
-						    <option value="2">KT</option>
-						    <option value="3">LGU+</option>
-						    <option value="4">알뜰폰</option>
-					 </select>
+				 <div class="col-md-2">	 
+				 <select id="ifmpTelecomCd" name="ifmpTelecomCd" class="form-select form-select-sm">
+				 <c:forEach items="${listCodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+				 	<option value="">::선택::</option>
+				 	<option value="18"><c:if test="${item.ifmpTelecomCd}"><c:out value="${itemTelecom.ifcdName}"/></c:if></option>
+				 	<option value="19">KT</option>
+				 	<option value="20">LGU+</option>
+				 	</c:forEach>
+				 </select>
+				 
 				</div>
 				
 				<div class="col-md-4">
-	               	       <input type="tel" id="ifmpNumber" name="ifmpNumber" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000"maxlength="13">
+	               	       <input type="text" id="ifmpNumber" name="ifmpNumber" class="form-control" value="" title="전화번호를 입력하세요." placeholder="00*-000*-0000"maxlength="13">
 	           	</div>
 	           	<div class="col-md-4">
 	           	<button class="btn btn-outline-primary">인증</button>
@@ -260,7 +262,7 @@
 <script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script> <!-- 이녀석 여기다가 안놓으면 에러남 -->
 <script type="text/javascript">
 	$(document).ready(function(){
-		 $("#abcDate").datepicker();
+		 $("#ifmmBirthday").datepicker();
 	}); 
 
 	$.datepicker.setDefaults({

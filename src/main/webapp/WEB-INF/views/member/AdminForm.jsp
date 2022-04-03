@@ -16,6 +16,8 @@
     <title>관리자 회원가입</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/checkout/">
+    <link href="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.css" rel="stylesheet"> <!-- 달력 -->
+    <script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script> <!-- 달력 -->
 
     
 
@@ -130,8 +132,8 @@
               </div>
             </div>
 			<div class="col-12">
-				<label for="birthday" class="form-label">생일</label>
-		        <input type="date" class="form-control" id="ifmmBirthday" name="ifmmBirthday" required>
+					<label for="birthday" class="form-label">생일</label>
+	               	<input type="text" class="form-control" id="ifmmBirthday" name="ifmmBirthday">
 		         <div class="invalid-feedback">
                 생일입력
               </div>
@@ -271,10 +273,30 @@
 </div>
 
 
-    <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+    
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/infra/resources/js/form-validation.js"></script>
+	<script src="/infra/resources/jquery/jquery-ui-1.13.1.custom/jquery-ui.js"></script> <!-- 이녀석 여기다가 안놓으면 에러남 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		 $("#ifmmBirthday").datepicker();
+	}); 
 
-      <script src="/infra/resources/js/form-validation.js"></script>
-      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	$.datepicker.setDefaults({
+	    dateFormat: 'yy-mm-dd',
+	    prevText: '이전 달',
+	    nextText: '다음 달',
+	    monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+	    dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+	    dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+	    showMonthAfterYear: true,
+	    yearSuffix: '년'
+	});
+</script>
+	<script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+      <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> 
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({
@@ -320,5 +342,6 @@
         }).open();
     }
 </script>
+
   </body>
 </html>
