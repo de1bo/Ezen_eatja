@@ -1,6 +1,6 @@
-package com.junefw.infra.modules.store;
+package com.junefw.infra.modules.index;
 
-public class StoreVo {
+public class IndexVo {
 
 	
 	// date
@@ -17,15 +17,14 @@ public class StoreVo {
 	// common
 		private String shOption;
 		
-// location
-		private String stlcIng;
-		private String stlcIat;
+
 
 		private String shValue;
 		
 		private String modDateTime;
 		private String regDateTime;
 		
+		private String[] checkboxSeqArray;
 		
 //		paging
 		private int thisPage = 1;									// 현재 페이지
@@ -282,26 +281,14 @@ public class StoreVo {
 		}
 
 
-		public String getStlcIng() {
-			return stlcIng;
+		public String[] getCheckboxSeqArray() {
+			return checkboxSeqArray;
 		}
 
 
-		public void setStlcIng(String stlcIng) {
-			this.stlcIng = stlcIng;
+		public void setCheckboxSeqArray(String[] checkboxSeqArray) {
+			this.checkboxSeqArray = checkboxSeqArray;
 		}
-
-
-		public String getStlcIat() {
-			return stlcIat;
-		}
-
-
-		public void setStlcIat(String stlcIat) {
-			this.stlcIat = stlcIat;
-		}
-
-
 	
 	
 }

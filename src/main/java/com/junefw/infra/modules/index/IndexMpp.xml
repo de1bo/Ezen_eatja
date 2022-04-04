@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.junefw.infra.modules.index.IndexMpp">
+
+    <resultMap id="resultMapObj" type="com.junefw.infra.modules.index.Index"></resultMap>
+	
+	<!-- <select id="selectOneCount" resultType="Integer">
+			SELECT 
+				count(*)
+			<include refid="selectCommon"/>
+	</select> -->
+	<select id="selectList" resultMap="resultMapObj">
+			SELECT 
+				a.stlcSeq
+				,a.stlcName
+				,a.stlcIat
+				,a.stlcIng
+			FROM StoreLocation a
+			WHERE 1=1
+				 
+	</select>
+	
+	<select id="locationCount" resultType="Integer">
+			SELECT 
+				count(*)
+			FROM
+				StoreLocation
+			WHERE 1=1
+	</select>
+	
+</mapper>

@@ -85,7 +85,7 @@
 <!-- <div id="map"></div> -->
 <!-- container 부분 -->
 <div class="album py-5 bg-light">
-
+<form id="formList" name="formList" method="post" action="/infra/index/indexMain">
     <div class="container">
     <h1 id="jal" style="padding-top: 50px; text-align:center;" >먹거리 지도</h1>
 <div class="p-4 p-md-5 mb-4" id="map">
@@ -139,7 +139,7 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   
                 </div>
-                <small class="text-muted">9 mins</small>
+               
               </div>
             </div>
           </div>
@@ -244,6 +244,7 @@
         </div>
       </div>
     </div>
+    </form>
   </div>
 <footer class="text-muted py-5">
   <div class="container">
@@ -295,20 +296,40 @@ function initMap() {
 		
 		
 		// store 위치 마커
-	 for (var i = 0; i < locations.length; i++) {
-		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,locations[i].lat,locations[i].lng);
+/* for(var st = ${item.stlcSeq}; st < ${vo.totalRows}; st++) { */
+/* 	place:${item.stlcName},
+	lat: ${item.stlcIat},
+	lng: ${item.stlcIng}, */
+	<c:forEach items="${list}" var="item" varStatus="status">
+	 for (var i = 0; i < ${vo.totalRows}[]; i++) {
+		 var items= ${list};
+		 var  item;
+		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,37.432574,126.880620);
+		 
 		 if(d < 500){
         var marker = new google.maps.Marker({
             map: map,
-            label: locations[i].place,
-            position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+            label: '집',
+            position: new google.maps.LatLng(${item.stlcIat}[i],${item.stlcIat}[i]),
         });
 		 }
         
-    } 
-		
-	
-	 
+</c:forEach> 
+/* }		 */
+/* 	// 정상작동 코드 start
+for (var i = 0; i < locations.length; i++) {
+	 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
+	 if(d < 500){
+   var marker = new google.maps.Marker({
+       map: map,
+       label: locations[i].place,
+       position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+   });
+	 }
+   
+} 
+//정상작동 코드 end */
+
 	// 현재 위치를 찾는 버튼 start
 	infoWindow = new google.maps.InfoWindow();
 	  
@@ -350,11 +371,11 @@ function initMap() {
 }
 
 // 위치 정보를 저장하는 상수 임시 더미데이터 넣어둠
-const locations = [
+ /* const locations = [
     { place:"서울역", lat: 37.5546788, lng: 126.9706069 },
     { place:"서울특별시청", lat: 37.5668260, lng: 126.9786567 },
     { place:"집쪽", lat: 37.432574, lng: 126.880620 },
-];
+];  */
 
 // 현재위치 검색 error 발생시 실행
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
