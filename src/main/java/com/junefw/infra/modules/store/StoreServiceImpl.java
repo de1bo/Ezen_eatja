@@ -16,6 +16,10 @@ public class StoreServiceImpl implements StoreService{
 	@Autowired
 	StoreDao dao;
 	
+	@Override
+	public int selectOneCount(StoreVo vo) throws Exception {
+		return dao.selectOneCount(vo);
+	}
 
 	@Override
 	public int insert(Store dto) throws Exception {
@@ -41,6 +45,11 @@ public class StoreServiceImpl implements StoreService{
 	public int insertStoreLocation(Store dto) throws Exception {
 	
 		return dao.insertStoreLocation(dto);
+	}
+	@Override
+	public int insertStoreMenu(Store dto) throws Exception {
+		
+		return dao.insertStoreMenu(dto);
 	}
 	
 	

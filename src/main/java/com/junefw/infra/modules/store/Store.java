@@ -31,6 +31,12 @@ public class Store {
 	private String stlcIng;
 	/* private String StoreInfo_stifSeq; */
 	
+	// storeMenu
+	private String stmnSeq;
+	private String stmnName;
+	private String stmnPrice;
+	private String stmnDelNy;
+	
 	// common
 	private Date regDateTime;
 	private Date modDateTime;
@@ -173,6 +179,30 @@ public class Store {
 	}
 	public void setStlcIng(String stlcIng) {
 		this.stlcIng = stlcIng;
+	}
+	public String getStmnName() {
+		return stmnName;
+	}
+	public void setStmnName(String stmnName) {
+		this.stmnName = stmnName;
+	}
+	public String getStmnPrice() {
+		return stmnPrice;
+	}
+	public void setStmnPrice(String stmnPrice) {
+		this.stmnPrice = stmnPrice;
+	}
+	public String getStmnDelNy() {
+		return stmnDelNy;
+	}
+	public void setStmnDelNy(String stmnDelNy) {
+		this.stmnDelNy = stmnDelNy;
+	}
+	public String getStmnSeq() {
+		return stmnSeq;
+	}
+	public void setStmnSeq(String stmnSeq) {
+		this.stmnSeq = stmnSeq;
 	}
 	
 	

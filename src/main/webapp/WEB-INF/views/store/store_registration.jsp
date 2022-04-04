@@ -85,7 +85,7 @@
                         <img src="/infra/resources/images/place-setting.svg" style="width: 80%; height:auto;"  alt="img"> 
                         <p class="lead">매장을 등록하고 EAT JA와 함께하세요!</p>
                         <h6>입력을 마치셨다면 하단의 매장 등록을 눌러주세요.</h6>
-                        <input type="submit" class="btnRegister" value="매장 등록"><br/>
+                        <input type="submit" class="btnRegister btn-success" value="매장 등록"><br/>
                     </div>
                     <div class="col-md-9 register-right">
                     <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -183,15 +183,17 @@
          <input name="addButton" type="button" class="form-control btn btn-success" style="cursor:hand" onClick="insRow()" value="추가">
 <script>
 var oTbl;
+
 //Row 추가
 function insRow() {
   oTbl = document.getElementById("addTable");
   var oRow = oTbl.insertRow();
   oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
   var oCell = oRow.insertCell();
-
+ 
+  /* var seq = oTbl.${vo.totalRows} + 1; */
   //삽입될 Form Tag
-  var frmTag = "<br><div class='input-group'><h3 class='ft'>메뉴: </h3><input type=text class='form-control' name=addText><h3 class='ft'>가격: </h3><input type=text class='form-control' name=addText></div><br>";
+  var frmTag = "<br><div class='input-group' name=addText ><input type='text' id='stmnSeq' name='stmnSeq' value='${vo.totalRows}'><h3 class='ft'>메뉴: </h3><input type=text class='form-control' id='stmnName' name='stmnName'><h3 class='ft'>가격: </h3><input type=text class='form-control' id='stmnPrice' name='stmnPrice'></div><br>";
   frmTag += "<input type=button value='삭제' class='form-control btn btn-danger' onClick='removeRow()' style='cursor:hand'>";
   oCell.innerHTML = frmTag;
 }

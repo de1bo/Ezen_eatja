@@ -33,7 +33,13 @@
 				count(*)
 			<include refid="selectCommon"/>
 	</select> -->
-	
+	<select id="selectOneCount" resultType="Integer">
+			SELECT 
+				count(*)
+			FROM
+				StoreMenu
+			WHERE 1=1
+	</select>
 	
 	<insert id="insert">
 			INSERT INTO storeInfo (
@@ -94,6 +100,25 @@
 		,#{stlcName}
 		,#{stlcIat}
 		,#{stlcIng}
+		,#{regDateTime}
+		,#{modDateTime}
+		,#{stifSeq}
+	)
+	</insert>
+	<insert id="insertStoreMenu">
+	INSERT INTO StoreMenu (
+		 stmnSeq
+		,stmnName
+		,stmnPrice
+		,stmnDelNy
+		,regDateTime
+		,modDateTime
+		,StoreInfo_stifSeq
+	) VALUES (
+		#{stmnSeq}
+		,#{stmnName}
+		,#{stmnPrice}
+		,0
 		,#{regDateTime}
 		,#{modDateTime}
 		,#{stifSeq}

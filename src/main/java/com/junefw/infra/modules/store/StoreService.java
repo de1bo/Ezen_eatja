@@ -7,9 +7,11 @@ public interface StoreService {
 	
 	public int insert(Store dto) throws Exception;
 	
-
+	// 수동 increment start
+	int selectOneCount(StoreVo vo) throws Exception;
 	
 	// 파생
 	public int insertStoreTel(Store dto) throws Exception;
 	public int insertStoreLocation(Store dto) throws Exception;
+	public int insertStoreMenu(Store dto) throws Exception;
 }
