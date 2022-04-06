@@ -10,6 +10,8 @@
 <head>
 <meta charset="uTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="696012039785-p7olgqe31q7lnvf6i4uj6413ul1nuupd.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 <title>로그인</title>
 <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="/infra/resources/js/jquery-1.11.2.min.js"></script>
@@ -121,7 +123,8 @@
     	<br><hr>
     <div id="jal">간편 로그인</div>
     <br>
-    <button type="button" class="img-border"><img src="/infra/resources/images/kakaologin.png"></button>
+     <div class="g-signin2" id="googleLogin" data-onsuccess="onSignIn" data-theme="dark"></div>
+     <a href="#" onclick="signOut();">Sign out</a>
     <p class="mt-5 mb-3 text-muted">&copy;2022–2022</p>
   </form>
 </main>    
@@ -156,6 +159,32 @@ $(document).ready(function(){
 			}
 		});
 	});
+</script>
+<!-- google signin api -->
+<script>
+$("#googleLogin").on("click", function(){
+	var googleUser;
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+        });
+    </script>
+    <script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
 </script>
 </body>
 </html>

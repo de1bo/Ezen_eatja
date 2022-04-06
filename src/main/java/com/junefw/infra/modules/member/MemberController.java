@@ -221,4 +221,6 @@ public class MemberController {
 			httpSession.invalidate();
 			return returnMap;
 		}
+		
+
 }

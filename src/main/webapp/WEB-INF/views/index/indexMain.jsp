@@ -70,6 +70,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
           </li>
+           <li class="nav-item">
+            <a class="nav-link" href="/infra/store/store_registration"><h5>매장 등록</h5></a>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><h5>리뷰</h5></a>
           </li>
@@ -301,9 +304,7 @@ function initMap() {
 	lat: ${item.stlcIat},
 	lng: ${item.stlcIng}, */
 	<c:forEach items="${list}" var="item" varStatus="status">
-	 for (var i = ${item.stlcSeq}; i < ${vo.totalRows}; i++) {
-		 var items= ${list};
-		 var  item;
+	 for (var i = 0; i < 1; i++) {
 		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,${item.stlcIat},${item.stlcIat});
 		 
 		 if(d < 500){

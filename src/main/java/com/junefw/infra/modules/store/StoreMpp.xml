@@ -37,7 +37,7 @@
 			SELECT 
 				count(*)
 			FROM
-				StoreLocation
+				StoreMenu
 			WHERE 1=1
 	</select>
 	

@@ -43,6 +43,12 @@ public class Member {
 	private String imadDefaultNy;
 	private Integer ifmaDelNy;
 	
+	// google
+	private String Id;
+	private String Pw;
+	private String Username;
+	
+	
 	
 	static List<Member> cachedCodeArrayList = new ArrayList<Member>();
 	private String ifcdName;
@@ -235,6 +241,24 @@ public class Member {
 	}
 	public void setIfmpNumberArray(String[] ifmpNumberArray) {
 		this.ifmpNumberArray = ifmpNumberArray;
+	}
+	public String getId() {
+		return Id;
+	}
+	public void setId(String id) {
+		Id = id;
+	}
+	public String getPw() {
+		return Pw;
+	}
+	public void setPw(String pw) {
+		Pw = pw;
+	}
+	public String getUsername() {
+		return Username;
+	}
+	public void setUsername(String username) {
+		Username = username;
 	}
 	
 	

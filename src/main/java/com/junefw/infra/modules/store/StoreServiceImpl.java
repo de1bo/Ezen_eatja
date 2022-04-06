@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.junefw.infra.common.util.UtilDateTime;
+import com.junefw.infra.modules.member.MemberVo;
 
 @Service
 public class StoreServiceImpl implements StoreService{
@@ -57,5 +58,7 @@ public class StoreServiceImpl implements StoreService{
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
 	
 }
