@@ -43,6 +43,9 @@ public class IndexController {
 		  model.addAttribute("list", list); } else { // by pass }
 		 
 		 }
+		  
+		  
+		  
 		return "/index/indexMain";
 	
 	}

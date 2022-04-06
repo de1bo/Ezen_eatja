@@ -14,14 +14,6 @@ public class Index {
 	private String stifAddress2;
 	private String stifOC;
 	private String stifFoodTypeCd;
-
-	
-	// storeTel
-	private String stphSeq;
-	private String stphDelNy;
-	private String stphNumberTypeCd;
-	private String stphNumber;
-	private String StoreInfo_stifSeq;
 	
 	// storeLocation
 	private String stlcSeq;
@@ -95,36 +87,6 @@ public class Index {
 	}
 	public void setStifFoodTypeCd(String stifFoodTypeCd) {
 		this.stifFoodTypeCd = stifFoodTypeCd;
-	}
-	public String getStphSeq() {
-		return stphSeq;
-	}
-	public void setStphSeq(String stphSeq) {
-		this.stphSeq = stphSeq;
-	}
-	public String getStphDelNy() {
-		return stphDelNy;
-	}
-	public void setStphDelNy(String stphDelNy) {
-		this.stphDelNy = stphDelNy;
-	}
-	public String getStphNumberTypeCd() {
-		return stphNumberTypeCd;
-	}
-	public void setStphNumberTypeCd(String stphNumberTypeCd) {
-		this.stphNumberTypeCd = stphNumberTypeCd;
-	}
-	public String getStphNumber() {
-		return stphNumber;
-	}
-	public void setStphNumber(String stphNumber) {
-		this.stphNumber = stphNumber;
-	}
-	public String getStoreInfo_stifSeq() {
-		return StoreInfo_stifSeq;
-	}
-	public void setStoreInfo_stifSeq(String storeInfo_stifSeq) {
-		StoreInfo_stifSeq = storeInfo_stifSeq;
 	}
 	public Date getRegDateTime() {
 		return regDateTime;

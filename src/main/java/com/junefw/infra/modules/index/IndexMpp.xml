@@ -15,13 +15,15 @@
 	</select> -->
 	<select id="selectList" resultMap="resultMapObj">
 			SELECT 
-				a.stlcSeq
-				,a.stlcName
-				,a.stlcIat
-				,a.stlcIng
-			FROM StoreLocation a
+				stlcSeq
+				,stlcName
+				,stlcIat
+				,stlcIng
+			FROM 
+				StoreLocation
 			WHERE 1=1
-				 
+				 AND stlcDelNy = 0
+				 AND stlcSeq = #{stlcSeq}
 	</select>
 	
 	<select id="locationCount" resultType="Integer">

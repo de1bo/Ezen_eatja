@@ -17,7 +17,7 @@ public class IndexVo {
 	// common
 		private String shOption;
 		
-
+		private String stlcSeq;
 
 		private String shValue;
 		
@@ -269,6 +269,16 @@ public class IndexVo {
 		}
 
 
+
+
+		public String getStlcSeq() {
+			return stlcSeq;
+		}
+
+
+		public void setStlcSeq(String stlcSeq) {
+			this.stlcSeq = stlcSeq;
+		}
 
 
 		public String getRegDateTime() {

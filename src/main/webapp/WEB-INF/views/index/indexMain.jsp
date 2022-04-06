@@ -301,16 +301,16 @@ function initMap() {
 	lat: ${item.stlcIat},
 	lng: ${item.stlcIng}, */
 	<c:forEach items="${list}" var="item" varStatus="status">
-	 for (var i = 0; i < ${vo.totalRows}[]; i++) {
+	 for (var i = ${item.stlcSeq}; i < ${vo.totalRows}; i++) {
 		 var items= ${list};
 		 var  item;
-		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,37.432574,126.880620);
+		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,${item.stlcIat},${item.stlcIat});
 		 
 		 if(d < 500){
         var marker = new google.maps.Marker({
             map: map,
-            label: '집',
-            position: new google.maps.LatLng(${item.stlcIat}[i],${item.stlcIat}[i]),
+            label: ${item.stlcName},
+            position: new google.maps.LatLng(${item.stlcIat},${item.stlcIat}),
         });
 		 }
         
