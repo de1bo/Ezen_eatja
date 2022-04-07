@@ -304,9 +304,8 @@ function initMap() {
 	lat: ${item.stlcIat},
 	lng: ${item.stlcIng}, */
 	<c:forEach items="${list}" var="item" varStatus="status">
-	 for (var i = 0; i < 1; i++) {
+	 for (var i = 0; i < ${status.end}; i++) {
 		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,${item.stlcIat},${item.stlcIat});
-		 
 		 if(d < 500){
         var marker = new google.maps.Marker({
             map: map,
@@ -314,7 +313,6 @@ function initMap() {
             position: new google.maps.LatLng(${item.stlcIat},${item.stlcIat}),
         });
 		 }
-        
 </c:forEach> 
 /* }		 */
 /* 	// 정상작동 코드 start

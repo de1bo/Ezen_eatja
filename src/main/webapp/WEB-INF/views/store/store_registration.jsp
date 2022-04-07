@@ -321,18 +321,16 @@ function frmCheck()
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 document.getElementById('sample6_postcode').value = data.zonecode;
                 document.getElementById("stifAddress1").value = addr;
-                document.getElementById("address").value = addr; // 우편번호 주소를 입력받음
                 // 커서를 상세주소 필드로 이동한다.
                 document.getElementById("stifAddress2").focus();
                 
                 // 자동 GeoCoder 성공 start
-                var gap = address.value; // 주소검색어를 가져옴
                 
                 // 주소-좌표 변환 객체를 생성
                 var geocoder = new daum.maps.services.Geocoder();
 
                 // 주소로 좌표를 검색
-                geocoder.addressSearch(gap, function(result, status) {
+                geocoder.addressSearch(addr, function(result, status) {
                  
                  // 정상적으로 검색이 완료됐으면,
                  if (status == daum.maps.services.Status.OK) {

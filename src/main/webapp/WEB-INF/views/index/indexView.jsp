@@ -72,6 +72,7 @@
 	<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i>로그아웃</button>
 </c:if>
 </div>
+    <a href="/infra/member/loginForm" onclick="signOut();">Sign out</a>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 	$("#btnLogout").on("click", function(){
