@@ -44,7 +44,6 @@
 				,c.ifmpNumber
 				,b.imadAddress1
 				<include refid="selectCommon"/>
-				
 				limit #{startRnumForMysql}, #{rowNumToShow}
 				 
 	</select>

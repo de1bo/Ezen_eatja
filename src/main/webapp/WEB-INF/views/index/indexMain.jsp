@@ -303,16 +303,22 @@ function initMap() {
 /* 	place:${item.stlcName},
 	lat: ${item.stlcIat},
 	lng: ${item.stlcIng}, */
-	<c:forEach items="${list}" var="item" varStatus="status">
-	 for (var i = 0; i < ${status.end}; i++) {
-		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,${item.stlcIat},${item.stlcIat});
+	<c:forEach items='${list}' var='item' varStatus='status'>
+	var name = '${item.stlcName}';
+	var Iat = ${item.stlcIat};
+	var lng = ${item.stlcIng};
+	
+	
+	 for (var i = 0; i < 35; i++) {
+		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,Iat,lng);
 		 if(d < 500){
         var marker = new google.maps.Marker({
             map: map,
-            label: ${item.stlcName},
-            position: new google.maps.LatLng(${item.stlcIat},${item.stlcIat}),
+            label: name,
+            position: new google.maps.LatLng(Iat,lng),
         });
 		 }
+	 }
 </c:forEach> 
 /* }		 */
 /* 	// 정상작동 코드 start

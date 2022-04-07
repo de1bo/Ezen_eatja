@@ -14,7 +14,7 @@
 <style type="text/css">
 	#jal {
 	font-family: "jal";
-}`
+}
 #pd{
 	padding: 5%;
 }
