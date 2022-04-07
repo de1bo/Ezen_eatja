@@ -97,7 +97,7 @@
 		,StoreInfo_stifSeq
 	) VALUES (
 		0
-		,#{stlcName}
+		,#{stifName}
 		,#{stlcIat}
 		,#{stlcIng}
 		,#{regDateTime}

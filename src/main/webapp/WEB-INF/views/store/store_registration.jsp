@@ -109,7 +109,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                         	<label for="name" class="form-label">매장 이름</label>
-                                            <input type="text" class="form-control" id="stifname" name="stifname" placeholder="매장 이름" value="" />
+                                            <input type="text" class="form-control" id="stifName" name="stifName" placeholder="매장 이름" value="" />
                                         </div>
                                         <div class="form-group">
                                       		<label for="name" class="form-label">매장 전화번호</label>
@@ -160,7 +160,7 @@
                                     <div class="col-md-12">
 	                                <div class="form-group" align="center">
 	                                	<label for="name" class="form-label">매장 소개</label><br>
-                        				<textarea name="stifdesc" id="stifdesc" class="form-control" cols="50" rows="5"></textarea>
+                        				<textarea name="stifDesc" id="stifDesc" class="form-control" cols="50" rows="5"></textarea>
 	                                </div>
                                 </div>
                                 <div class="col-md-6">

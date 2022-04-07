@@ -45,7 +45,6 @@
 	}
     </style>
 </head>
-
 <body>
 <header>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
@@ -307,9 +306,9 @@ function initMap() {
 	var name = '${item.stlcName}';
 	var Iat = ${item.stlcIat};
 	var lng = ${item.stlcIng};
+	var end = ${vo.totalRows};
 	
-	
-	 for (var i = 0; i < 35; i++) {
+	 for (var i = 0; i < end; i++) {
 		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,Iat,lng);
 		 if(d < 500){
         var marker = new google.maps.Marker({
@@ -374,13 +373,6 @@ for (var i = 0; i < locations.length; i++) {
   });
 	// 현재 위치를 찾는 버튼 end
 }
-
-// 위치 정보를 저장하는 상수 임시 더미데이터 넣어둠
- /* const locations = [
-    { place:"서울역", lat: 37.5546788, lng: 126.9706069 },
-    { place:"서울특별시청", lat: 37.5668260, lng: 126.9786567 },
-    { place:"집쪽", lat: 37.432574, lng: 126.880620 },
-];  */
 
 // 현재위치 검색 error 발생시 실행
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
