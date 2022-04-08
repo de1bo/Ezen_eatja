@@ -124,4 +124,28 @@
 		,#{stifSeq}
 	)
 	</insert>
+	
+	<insert id="insertUploaded">
+		INSERT INTO ${tableName} (
+		type
+		,defaultNy
+		,sort
+		,originalName
+		,uuidName
+		,ext
+		,size
+		,delNy
+		,pseq
+		) values (
+			#{type}
+			,#{defaultNy}
+			,#{sort}
+			,#{originalName}
+			,#{uuidName}
+			,#{ext}
+			,#{size}
+			,0
+			,#{pseq}
+		)
+	</insert>
 </mapper>

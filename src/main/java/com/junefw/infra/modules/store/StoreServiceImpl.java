@@ -7,8 +7,10 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.junefw.infra.common.util.UtilDateTime;
+import com.junefw.infra.common.util.UtilUpload;
 import com.junefw.infra.modules.member.MemberVo;
 
 @Service
@@ -31,6 +33,40 @@ public class StoreServiceImpl implements StoreService{
 			
 			
 			setRegMod(dto);
+			
+			
+			int j = 0;
+			for(MultipartFile multipartFile : dto.getFile0() ) {
+				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+				UtilUpload.upload(multipartFile, pathModule, dto);
+				
+				dto.setTableName("infrMemberUploaded");
+				dto.setType(0);
+				dto.setDefaultNy(0);
+				dto.setSort(j);
+				dto.setDefaultNy(0);
+				dto.setPseq(dto.getStifSeq());
+				
+				dao.insertUploaded(dto);
+				j++;
+			}
+			
+			j = 0;
+			for(MultipartFile multipartFile : dto.getFile1 ()) {
+				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
+				UtilUpload.upload(multipartFile, pathModule, dto);
+				
+				dto.setTableName("infrMemberUploaded");
+				dto.setType(1);
+				dto.setDefaultNy(0);
+				dto.setSort(j);
+				dto.setDefaultNy(0);
+				dto.setPseq(dto.getStifSeq());
+				
+				dao.insertUploaded(dto);
+				j++;
+			}
+			
 		} finally{
 			
 		}
@@ -57,6 +93,12 @@ public class StoreServiceImpl implements StoreService{
 	private void setRegMod(Store dto) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public int insertUploaded(Store dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.insertUploaded(dto);
 	}
 	
 	

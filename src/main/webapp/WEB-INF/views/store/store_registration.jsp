@@ -13,6 +13,9 @@
 	<title>매장등록</title>
 	<link href="/infra/resources/css/store/style.css" rel="stylesheet">
 	<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+	            <script src = "/infra/resources/js/common.js"></script><!-- image -->
+			<script src = "/infra/resources/js/commonXdmin.js"></script><!-- image -->
+			<script src = "/infra/resources/js/constantsXdmin.js"></script><!-- image -->
 <style>
 @font-face {
 		src: url("/infra/resources/fonts/pafreca.ttf");
@@ -66,7 +69,7 @@
   </nav>
 </header>
 <div class="bgImg">
-<form method="post" action="/infra/store/storeInst">
+<form method="post" action="/infra/store/storeInst" enctype="multipart/form-data">
 <h1 class="display-1 jal">매장 등록</h1>
 		<h2>Eatja와 함께하는 매장의 수</h2>
 		<ul class="countdown">
@@ -101,9 +104,8 @@
                                 <h3 class="register-heading jal">매장 정보 입력</h3>
                                 <div class="row register-form">
                                 <div class="col-md-12">
-	                                <div class="form-group" align="center">
-	                                	<label for="name" class="form-label">이미지 등록</label><br>
-                        				<input type="file" class="form-control" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+	                                <div class="form-group">
+	                                		
 	                                </div>
                                 </div>
                                     <div class="col-md-6">
@@ -251,6 +253,23 @@ function frmCheck()
                             		</div>
                             		</div>
                             	</div>
+                            	
+                            	<div class="col-sm-6 mt-3 mt-sm-0">
+												<label for="file0" class="form-label input-file-button">이미지 첨부</label>
+												<input class="form-control form-control-sm" id="file0" name="file0" type="file"	multiple="multiple" style="display: none;" onchange="upload(0, 2);">
+												<div class="addScroll">
+													<ul id="ulFile0" class="list-group">
+													</ul>
+												</div>
+								</div>
+								<div class="col-sm-6 mt-3 mt-sm-0">
+												<label for="file1" class="form-label input-file-button">파일첨부</label>
+												<input class="form-control form-control-sm" id="file1" name="file1" type="file"	multiple="multiple" style="display: none;" onchange="upload(1, 1);">
+												<div class="addScroll">
+													<ul id="ulFile1" class="list-group">
+													</ul>
+												</div>
+								</div>
                         </div>
                     </div>
                 </div>
@@ -262,7 +281,52 @@ function frmCheck()
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 주소관련 -->
+<script>
+upload = function(seq,div){
+	
+	$("#ulFile" + seq).children().remove();
+	
+	var fileCount = $("input[type=file]")[seq].files.length;
+	
+	if(checkUploadedTotalFileNumber(fileCount, seq) == false) {return false;}
+	
+	var totalFileSize;
+	for(var i = 0; i < fileCount; i++){
+		if(div==1){
+			if(checkUploadedAllExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		}else if(div==2){
+			if(checkUploadedImageExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		}else {
+			return false;
+		}
+		
+		if(checkUploadedEachFileSize($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		totalFileSize += $("input[type=file]")[seq].files[i].size;
+	}
+	if(checkUploadedTotalFileSize(totalFileSize, seq) == false) {return false;}
+	
+	for(var i=0; i<fileCount; i++){
+		addUploadLi(seq, i, $("input[type=file]")[seq].files[i].name);
+	}
+}
 
+addUploadLi = function(seq,index,name){
+	
+	var ul_list = $("#ulFile0");
+	
+	li = '<li id="li_'+seq+'_'+index+'" class="list-group-item d-flex justify-content-between align-item-center">';
+	li = li + name;
+	li = li + '<span class="badge bg-danger rounded-pill" onClick="delLi('+ seq +','+index +')"><i class="bi bi-x-circle"></i></span>';
+	li = li + '</li>';
+	
+	$("#ulFile"+seq).append(li);
+}
+
+delLi = function(seq, index){
+	$("#li_"+seq+"_"+index).remove();
+}
+	
+</script>
 	<script>
 		var myModal = document.getElementById('myModal')
 		var myInput = document.getElementById('myInput')
@@ -359,10 +423,7 @@ function frmCheck()
     }
 </script>
             
-<script>
 
-
-</script>
 
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRvzJwvLNg3tSBW1V3iIGxE47uYc2YxsI&libraries=places&callback=initAutocomplete" async defer></script> --> <!-- google key -->
 </body>

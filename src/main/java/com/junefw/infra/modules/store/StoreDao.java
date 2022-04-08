@@ -23,5 +23,8 @@ public class StoreDao {
 	public int insertStoreTel(Store dto) {return sqlSession.insert( namespace + ".insertStoreTel", dto);}
 	public int insertStoreLocation(Store dto) {return sqlSession.insert( namespace + ".insertStoreLocation", dto);}
 	public int insertStoreMenu(Store dto) {return sqlSession.insert( namespace + ".insertStoreMenu", dto);}
+
+	
+	public int insertUploaded(Store dto) {return sqlSession.insert( "Base" + ".insertUploaded", dto);}
 	
 }

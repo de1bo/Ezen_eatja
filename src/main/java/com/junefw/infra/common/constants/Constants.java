@@ -11,4 +11,6 @@ public class Constants {
 	
 	//로그인
 	public static final String URL_LOGINFORM = "/infra/member/loginForm";
+	
+	public static final String UPLOAD_PATH_PREFIX = "D://factory/ws_sts_4130/Ezen_eatja/src/main/webapp/resources/uploaded";
 }

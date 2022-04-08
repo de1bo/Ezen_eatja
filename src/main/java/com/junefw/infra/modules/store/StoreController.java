@@ -43,6 +43,7 @@ public class StoreController {
 		service.insertStoreTel(dto);
 		service.insertStoreLocation(dto);
 		int result2 = service.insertStoreMenu(dto);
+		service.insertStoreLocation(dto);
 		 
 		
 		System.out.println("result: " + result);

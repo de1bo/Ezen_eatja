@@ -14,4 +14,5 @@ public interface StoreService {
 	public int insertStoreTel(Store dto) throws Exception;
 	public int insertStoreLocation(Store dto) throws Exception;
 	public int insertStoreMenu(Store dto) throws Exception;
+	public int insertUploaded(Store dto) throws Exception;
 }
