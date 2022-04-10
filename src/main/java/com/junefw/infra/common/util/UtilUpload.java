@@ -12,6 +12,7 @@ public class UtilUpload {
 
 	public static void upload (MultipartFile multipartFile, String className, Store dto) throws Exception {
 		String fileName = multipartFile.getOriginalFilename();
+		System.out.println("fileName::::::::::::: "+fileName);
 		String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
 		String uuid = UUID.randomUUID().toString();
 		String uuidFileName = uuid + "." + ext;

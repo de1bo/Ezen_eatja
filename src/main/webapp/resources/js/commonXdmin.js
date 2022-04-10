@@ -1,4 +1,6 @@
-document.write("<script src='/resources/common/js/constants.js'></script>");
+document.write("<script src='/infra/resources/js/common.js'></script>");
+document.write("<script src='/infra/resources/js/constantsXdmin.js'></script>");
+
 
 
 checkUploadedTotalFileNumber = function(totalSize, seq){
@@ -11,7 +13,7 @@ checkUploadedTotalFileNumber = function(totalSize, seq){
 
 checkUploadedImageExt = function(obj, seq){
 	var ext = obj.split('.').pop().toLowerCase();
-	if(extArrayImage.indexOf(ext) == 1){
+	if(extArrayImage.indexOf(ext) == -1){
 		alert("허용된 확장자가 아닙니다.");
 		$("#file" + seq).val("");
 		return false;
@@ -20,7 +22,7 @@ checkUploadedImageExt = function(obj, seq){
 
 checkUploadedAllExt = function(obj, seq){
 	var ext = obj.split('.').pop().toLowerCase();
-	if(extArrayAll.indexOf(ext) == 1){
+	if(extArrayAll.indexOf(ext) == -1){
 		alert("허용된 확장자가 아닙니다.");
 		$("#file" + seq).val("");
 		return false;
@@ -36,8 +38,8 @@ checkUploadedEachFileSize = function(obj, seq){
 }
 
 checkUploadedTotalFileSize = function(totalSize, seq){
-	if(total > MAX_TOTAL_FILE_SIZE){
-		alert("전체 용랴ㅑㅇ은 10M를 넘을 수 없습니다.");
+	if(totalSize > MAX_TOTAL_FILE_SIZE){
+		alert("전체 용랴ㅑㅇ은 120M를 넘을 수 없습니다.");
 		$("#file"+seq).val("");
 		return false;
 	}

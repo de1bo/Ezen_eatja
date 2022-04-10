@@ -32,6 +32,8 @@ public class Base {
 	private Date modDateTime;
 	private Date modDateTimeSvr;
 	
+	private String originalFileName;
+	private String uuidFileName;
 	
 	
 	// ----------------------------------
@@ -175,6 +177,18 @@ public class Base {
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+	public String getUuidFileName() {
+		return uuidFileName;
+	}
+	public void setUuidFileName(String uuidFileName) {
+		this.uuidFileName = uuidFileName;
 	}
 
 

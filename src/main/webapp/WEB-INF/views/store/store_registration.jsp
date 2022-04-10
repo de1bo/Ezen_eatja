@@ -167,12 +167,10 @@
                                 </div>
                                 <div class="col-md-6">
                                     	<div class="form-group">
-                                <div id="locationField">
-							  <input id="address" placeholder="매장 주소를 입력하시고 여기를 클릭해주세요." type="text"  style="width:95%; height:30px">
-							</div>
+
+							</div>                                <div id="locationField">
 							<input class="field form-control" id="stlcIat" name="stlcIat" readonly/>
 							<input class="field form-control" id="stlcIng" name="stlcIng" readonly/>
-							</div>
 							</div>
                                      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
                                 <h3 class="register-heading jal">메뉴 등록</h3>
@@ -256,7 +254,7 @@ function frmCheck()
                             	
                             	<div class="col-sm-6 mt-3 mt-sm-0">
 												<label for="file0" class="form-label input-file-button">이미지 첨부</label>
-												<input class="form-control form-control-sm" id="file0" name="file0" type="file"	multiple="multiple" style="display: none;" onchange="upload(0, 2);">
+												<input class="form-control form-control-sm" id="file0" name="file0" type="file" multiple="multiple" style="display: none;" onChange="upload(0, 2);">
 												<div class="addScroll">
 													<ul id="ulFile0" class="list-group">
 													</ul>
@@ -264,7 +262,7 @@ function frmCheck()
 								</div>
 								<div class="col-sm-6 mt-3 mt-sm-0">
 												<label for="file1" class="form-label input-file-button">파일첨부</label>
-												<input class="form-control form-control-sm" id="file1" name="file1" type="file"	multiple="multiple" style="display: none;" onchange="upload(1, 1);">
+												<input class="form-control form-control-sm" id="file1" name="file1" type="file" multiple="multiple" style="display: none;" onChange="upload(1, 1);">
 												<div class="addScroll">
 													<ul id="ulFile1" class="list-group">
 													</ul>

@@ -25,6 +25,6 @@ public class StoreDao {
 	public int insertStoreMenu(Store dto) {return sqlSession.insert( namespace + ".insertStoreMenu", dto);}
 
 	
-	public int insertUploaded(Store dto) {return sqlSession.insert( "Base" + ".insertUploaded", dto);}
+	public int insertUploaded(Store dto) {return sqlSession.insert( namespace + ".insertUploaded", dto);}
 	
 }

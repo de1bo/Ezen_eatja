@@ -28,18 +28,20 @@ public class StoreServiceImpl implements StoreService{
 	public int insert(Store dto) throws Exception {
 		
 		try {
-			dto.setRegDateTime(UtilDateTime.nowDate());
-			dto.setModDateTime(UtilDateTime.nowDate());
-			
 			
 			setRegMod(dto);
+			
+			dto.setRegDateTime(UtilDateTime.nowDate());
+			dto.setModDateTime(UtilDateTime.nowDate());
+			dao.insert(dto);
+			
+			
 			
 			
 			int j = 0;
 			for(MultipartFile multipartFile : dto.getFile0() ) {
 				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
 				UtilUpload.upload(multipartFile, pathModule, dto);
-				
 				dto.setTableName("infrMemberUploaded");
 				dto.setType(0);
 				dto.setDefaultNy(0);
@@ -70,7 +72,7 @@ public class StoreServiceImpl implements StoreService{
 		} finally{
 			
 		}
-		return dao.insert(dto);
+		return 0;
 	}
 
 	@Override

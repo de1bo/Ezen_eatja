@@ -1,4 +1,6 @@
-var exArrayImage = new Array();
+document.write("<script src='/infra/resources/js/constants.js'></script>");
+
+var extArrayImage = new Array();
 extArrayImage = ["jpg", "gif", "png", "jpeg", "bmp", "tif"];
 
 var extArrayAll = new Array();
