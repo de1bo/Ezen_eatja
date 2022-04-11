@@ -96,5 +96,18 @@
 		});
 	});
 </script>
+<script>
+	window.Kakao.init('de96e57d26e4344aa147440cc4a132a7');
+	function kakaoLogout() {
+		if (!Kakao.Auth.getAccessToken()) {
+		    console.log('Not logged in.');
+		    return;
+	    }
+	    Kakao.Auth.logout(function(response) {
+			alert(response +' logout');
+		    window.location.href='/'
+	    });
+	};
+</script>
 </body>
 </html>

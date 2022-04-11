@@ -235,19 +235,25 @@ public class MemberController {
 			
 			returnMap.put("item", "success");
 			
-			return returnMap;
-			
-			
-			/*
-			 * if(rtMember != null) { // rtMember = service.selectOneLogin(dto);
-			 * httpSession.setAttribute("sessSeq", rtMember.getIfmmSeq());
-			 * httpSession.setAttribute("sessId", rtMember.getIfmmId());
-			 * httpSession.setAttribute("sessName", rtMember.getIfmmName());
-			 * 
-			 * returnMap.put("rt", "success"); } else { returnMap.put("rt", "fail"); }
-			 * return returnMap;
-			 */
-			
-			
+			return returnMap;	
 		}
+		
+		
+		@ResponseBody //카카오 로그인
+		@RequestMapping(value = "/member/KakaoLgProc")
+		public Map<String, Object> KakaoLgProc(@RequestParam("ifmmName")String name, Member dto, HttpSession httpSession) throws Exception {
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			
+			System.out.println(name);
+			httpSession.setAttribute("sessName", name);
+			httpSession.setAttribute("sessId","카카오 회원입니다");
+			httpSession.setAttribute("sessSeq","카카오 회원입니다");
+			
+			returnMap.put("item", "success");
+			
+			return returnMap;	
+		}
+		
+		
+		
 }

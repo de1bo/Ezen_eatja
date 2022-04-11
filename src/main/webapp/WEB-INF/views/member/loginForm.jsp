@@ -130,6 +130,7 @@
   </a>
  </li>
 </ul>
+  <a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
     <p class="mt-5 mb-3 text-muted">&copy;2022–2022</p>
   </form>
 </main>    
@@ -226,5 +227,31 @@ function onSignInFailure(t){
 }
 </script>
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+    <script>
+        window.Kakao.init('de96e57d26e4344aa147440cc4a132a7');
+        console.log(Kakao.isInitialized()); 
+        function kakaoLogin() {
+            window.Kakao.Auth.login({
+                scope: 'profile_nickname, account_email, gender, age_range, birthday', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.	profile을 profile_nickname으로 변경하니 오류 해결
+                success: function(response) {
+                    console.log(response) // 로그인 성공하면 받아오는 데이터
+                    window.Kakao.API.request({ // 사용자 정보 가져오기 
+                        url: '/v2/user/me',
+                        success: (res) => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account)
+                        }
+                    });
+                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
+                },
+                fail: function(error) {
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+
 </body>
 </html>
