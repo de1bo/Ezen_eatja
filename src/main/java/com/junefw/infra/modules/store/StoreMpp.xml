@@ -107,6 +107,9 @@
 			,ext
 			,size
 			,delNy
+			,year
+			,month
+			,day
 			,regDateTime
 			,pseq
 		) values (
@@ -118,6 +121,9 @@
 			,#{ext}
 			,#{size}
 			,0
+			,#{year}
+			,#{month}
+			,#{day}
 			,#{regDateTime}
 			,#{pseq}
 		)
