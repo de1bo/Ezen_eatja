@@ -65,6 +65,8 @@ public class StoreServiceImpl implements StoreService{
 				dto.setDefaultNy(0);
 				dto.setPseq(dto.getStifSeq());
 				
+
+				
 				dao.insertUploaded(dto);
 				j++;
 			}

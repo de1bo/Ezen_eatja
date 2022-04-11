@@ -103,9 +103,29 @@
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading jal">매장 정보 입력</h3>
                                 <div class="row register-form">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
 	                                <div class="form-group">
-	                                		
+	                                		<div class="col-sm-6 mt-3 mt-sm-0">
+												<label for="file0" class="form-label input-file-button">이미지 첨부</label>
+												<input class="form-control form-control-sm" id="file0" name="file0" type="file" multiple="multiple" onChange="upload(0, 2);">
+												<div class="addScroll">
+													<ul id="ulFile0" class="list-group">
+													</ul>
+												</div>
+								</div>
+								
+	                                </div>
+                                </div>
+                                <div class="col-md-6">
+	                                <div class="form-group">
+	                                		<div class="col-sm-6 mt-3 mt-sm-0">
+												<label for="file1" class="form-label input-file-button">파일첨부</label>
+												<input class="form-control form-control-sm" id="file1" name="file1" type="file" multiple="multiple" onChange="upload(1, 1);">
+												<div class="addScroll">
+													<ul id="ulFile1" class="list-group">
+													</ul>
+												</div>
+								</div>
 	                                </div>
                                 </div>
                                     <div class="col-md-6">
@@ -165,12 +185,13 @@
                         				<textarea name="stifDesc" id="stifDesc" class="form-control" cols="50" rows="5"></textarea>
 	                                </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     	<div class="form-group">
 
-							</div>                                <div id="locationField">
-							<input class="field form-control" id="stlcIat" name="stlcIat" readonly/>
-							<input class="field form-control" id="stlcIng" name="stlcIng" readonly/>
+							</div>
+							 <div id="locationField">
+								<input class="field form-control" id="stlcIat" name="stlcIat" readonly/>
+								<input class="field form-control" id="stlcIng" name="stlcIng" readonly/>
 							</div>
                                      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
                                 <h3 class="register-heading jal">메뉴 등록</h3>
@@ -195,8 +216,8 @@ function insRow() {
  
   /* var seq = oTbl.${vo.totalRows} + 1; */
   //삽입될 Form Tag
-  var frmTag = "<br><div class='input-group' name=addText ><input type='text' id='stmnSeq' name='stmnSeq' value='${vo.totalRows}'><h3 class='ft'>메뉴: </h3><input type=text class='form-control' id='stmnName' name='stmnName'><h3 class='ft'>가격: </h3><input type=text class='form-control' id='stmnPrice' name='stmnPrice'></div><br>";
-  frmTag += "<input type=button value='삭제' class='form-control btn btn-danger' onClick='removeRow()' style='cursor:hand'>";
+  var frmTag = "<br><div class='input-group row row-cols-2 row-cols-lg-6' name=addText ><h3 class='ft'>메뉴: </h3><input type=text class='form-control col' id='stmnName' name='stmnName'><h3 class='ft'>가격: </h3><input type=text class='form-control col' id='stmnPrice' name='stmnPrice'><div class='col'><input type=button value='삭제' class='form-control btn btn-danger col' onClick='removeRow()' style='cursor:hand'></div></div>";
+  frmTag += "";
   oCell.innerHTML = frmTag;
 }
 //Row 삭제
@@ -252,7 +273,7 @@ function frmCheck()
                             		</div>
                             	</div>
                             	
-                            	<div class="col-sm-6 mt-3 mt-sm-0">
+                            	<!-- <div class="col-sm-6 mt-3 mt-sm-0">
 												<label for="file0" class="form-label input-file-button">이미지 첨부</label>
 												<input class="form-control form-control-sm" id="file0" name="file0" type="file" multiple="multiple" style="display: none;" onChange="upload(0, 2);">
 												<div class="addScroll">
@@ -267,7 +288,7 @@ function frmCheck()
 													<ul id="ulFile1" class="list-group">
 													</ul>
 												</div>
-								</div>
+								</div> -->
                         </div>
                     </div>
                 </div>

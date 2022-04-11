@@ -17,6 +17,7 @@ private String tableName;
 	private Integer sort;
 	private String originalName;
 	private String uuidName;
+	private String fileName;
 	private String ext;
 	private long size;
 	private Integer delNy;
@@ -391,6 +392,12 @@ private String tableName;
 	}
 	public void setModDateTimeSvr(Date modDateTimeSvr) {
 		this.modDateTimeSvr = modDateTimeSvr;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	
 	
