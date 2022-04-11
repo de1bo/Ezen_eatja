@@ -25,7 +25,6 @@
 			,stifOC
 			,stifFoodTypeCd
 			,regDateTime
-			,modDateTime
 			) VALUES (
 			#{stifSeq}
 			,#{stifName}
@@ -35,7 +34,6 @@
 			,#{stifOC}
 			,#{stifFoodTypeCd}
 			,#{regDateTime}
-			,#{modDateTime}
 			);
 			
 			<selectKey resultType="String" keyProperty="stifSeq" order="AFTER">		<!-- 파생테이블 seq값을 넣을 수 있도록 해준다 -->
@@ -109,6 +107,7 @@
 			,ext
 			,size
 			,delNy
+			,regDateTime
 			,pseq
 		) values (
 			#{type}
@@ -119,6 +118,7 @@
 			,#{ext}
 			,#{size}
 			,0
+			,#{regDateTime}
 			,#{pseq}
 		)
 	</insert>

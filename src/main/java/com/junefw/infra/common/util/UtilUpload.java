@@ -19,7 +19,7 @@ public class UtilUpload {
 		String pathModule = className;
 		String nowString = UtilDateTime.nowString();
 		String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10);
-		String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+		String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";	
 		
 		createPath(path);
 		
@@ -32,7 +32,7 @@ public class UtilUpload {
 		dto.setSize(multipartFile.getSize());
 	}
 	
-	
+	// Createpath를 이용해서 날짜별로 폴더가 생성됨
 	public static void createPath (String path) {
 		File uploadPath = new File(path);
 		

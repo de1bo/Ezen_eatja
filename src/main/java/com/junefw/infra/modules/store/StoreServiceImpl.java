@@ -102,6 +102,8 @@ public class StoreServiceImpl implements StoreService{
 	@Override
 	public int insertUploaded(Store dto) throws Exception {
 		// TODO Auto-generated method stub
+		
+		
 		return dao.insertUploaded(dto);
 	}
 	
