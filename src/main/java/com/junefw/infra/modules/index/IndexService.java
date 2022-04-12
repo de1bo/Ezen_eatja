@@ -7,6 +7,7 @@ public interface IndexService {
 	
 	// 수동 increment start
 	int locationCount(IndexVo vo) throws Exception;
-	 List<Index> selectList(IndexVo vo) throws Exception; 
+	List<Index> selectList(IndexVo vo) throws Exception; 
+	List<Index> selectImgList(IndexVo vo) throws Exception;
 	
 }

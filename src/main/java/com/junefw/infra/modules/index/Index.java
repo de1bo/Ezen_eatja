@@ -37,6 +37,21 @@ public class Index {
 	private String ifcdName;
 	
 	
+	//image
+	private String Seq;
+	private String type;
+	private String defaultNy;
+	private String sort;
+	private String originalName;
+	private String uuidName;
+	private String ext;
+	private String size;
+	private String delNy;
+	private String pseq;
+	private String year;
+	private String month;
+	private String day;
+	
 	
 	// --------------------------
 	
@@ -165,6 +180,84 @@ public class Index {
 	}
 	public void setStlcIng(double stlcIng) {
 		this.stlcIng = stlcIng;
+	}
+	public String getSeq() {
+		return Seq;
+	}
+	public void setSeq(String seq) {
+		Seq = seq;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getDefaultNy() {
+		return defaultNy;
+	}
+	public void setDefaultNy(String defaultNy) {
+		this.defaultNy = defaultNy;
+	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+	public String getOriginalName() {
+		return originalName;
+	}
+	public void setOriginalName(String originalName) {
+		this.originalName = originalName;
+	}
+	public String getUuidName() {
+		return uuidName;
+	}
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
+	}
+	public String getExt() {
+		return ext;
+	}
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+	public String getSize() {
+		return size;
+	}
+	public void setSize(String size) {
+		this.size = size;
+	}
+	public String getDelNy() {
+		return delNy;
+	}
+	public void setDelNy(String delNy) {
+		this.delNy = delNy;
+	}
+	public String getPseq() {
+		return pseq;
+	}
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
+	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getDay() {
+		return day;
+	}
+	public void setDay(String day) {
+		this.day = day;
 	}
 	
 	

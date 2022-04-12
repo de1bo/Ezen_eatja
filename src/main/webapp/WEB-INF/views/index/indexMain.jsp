@@ -99,13 +99,13 @@
   <hr>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
+       	 <c:forEach items="${list}" var="item" varStatus="status">
           <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image href="/infra/resources/uploaded/<c:out value="${item.uuidFileName}"/>"><img src="/infra/resources/uploaded/<c:out value="${item.uuidFileName}"/>" height="100%" width="100%"/></image></svg>
-
+            	<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image href="/infra/resources/uploaded/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" height="100%" width="100%"/></image></svg>
             <div class="card-body">
               <p class="card-text">식당 소개</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
+                <div class="btn-group">s
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                   
                 </div>
@@ -113,6 +113,7 @@
               </div>
             </div>
           </div>
+          </c:forEach>
         </div>
         <div class="col">
           <div class="card shadow-sm">

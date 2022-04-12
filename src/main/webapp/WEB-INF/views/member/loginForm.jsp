@@ -233,17 +233,35 @@ function onSignInFailure(t){
         console.log(Kakao.isInitialized()); 
         function kakaoLogin() {
             window.Kakao.Auth.login({
-                scope: 'profile_nickname, account_email, gender, age_range, birthday', //동의항목 페이지에 있는 개인정보 보호 테이블의 활성화된 ID값을 넣습니다.	profile을 profile_nickname으로 변경하니 오류 해결
+                scope: 'profile_nickname, account_email, gender, age_range, birthday', //동의 항목 값들 세팅
                 success: function(response) {
-                    console.log(response) // 로그인 성공하면 받아오는 데이터
+                    console.log(response) // 로그인 성공하면 받아오는 데이터 출력
                     window.Kakao.API.request({ // 사용자 정보 가져오기 
                         url: '/v2/user/me',
                         success: (res) => {
-                            const kakao_account = res.kakao_account;
-                            console.log(kakao_account)
+                            const kakao_account = res.kakao_account; 
+                            const profile_nickname = res.properties.nickname; 
+                            console.log(kakao_account)		// 받아온 정보들을 출력
+                            console.log(profile_nickname)		// 받아온 정보들을 출력
+                            $.ajax({
+                    			async: true 
+                    			,cache: false
+                    			,type: "post"
+                    			,url: "/infra/member/KakaoLgProc"
+                    			,data : {"ifmmName" : res.properties.nickname}		// 넘겨줄 데이터를 설정
+                    			,success: function(response) {
+                    				if(response.item == "success") {
+                    					location.href = "/infra/index/indexView";
+                    				} else {
+                    					alert("카카오 로그인 실패");
+                    				}
+                    			}
+                    			,error : function(jqXHR, textStatus, errorThrown){
+                    				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+                    			}
+                    		})
                         }
                     });
-                    // window.location.href='/ex/kakao_login.html' //리다이렉트 되는 코드
                 },
                 fail: function(error) {
                     console.log(error);

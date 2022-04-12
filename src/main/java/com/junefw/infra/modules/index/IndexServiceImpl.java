@@ -27,6 +27,10 @@ public class IndexServiceImpl implements IndexService{
 
 		return dao.selectList(vo);
 	}
-	 
+	  @Override
+	  public List<Index> selectImgList(IndexVo vo) throws Exception {
+
+		return dao.selectImgList(vo);
+	}
 
 }
