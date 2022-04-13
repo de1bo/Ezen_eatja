@@ -37,12 +37,18 @@ public class IndexController {
 
 		int count = service.locationCount(vo);
 		vo.setParamsPaging(count);
-
 		
-		  if(count != 0) { List<Index> list = service.selectList(vo);
-		  model.addAttribute("list", list); } else { // by pass }
+		
+		  if(count != 0) {
+			  List<Index> list = service.selectList(vo);
+			  List<Index> listImg = service.selectImgList(vo);
+			  
+			  model.addAttribute("list", list);
+			  model.addAttribute("listImg", listImg);
+		  } else { 
+			  // by pass 
+			  }
 		 
-		 }
 		  
 		  
 		  

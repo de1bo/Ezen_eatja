@@ -254,6 +254,21 @@ public class MemberController {
 			return returnMap;	
 		}
 		
+		@ResponseBody //페북 로그인
+		@RequestMapping(value = "/member/FBLgProc")
+		public Map<String, Object> FBLgProc(@RequestParam("ifmmName")String name, Member dto, HttpSession httpSession) throws Exception {
+			Map<String, Object> returnMap = new HashMap<String, Object>();
+			
+			System.out.println(name);
+			httpSession.setAttribute("sessName", name);
+			httpSession.setAttribute("sessId","페이스북 회원입니다");
+			httpSession.setAttribute("sessSeq","페이스북 회원입니다");
+			
+			returnMap.put("item", "success");
+			
+			return returnMap;	
+		}
+		
 		
 		
 }

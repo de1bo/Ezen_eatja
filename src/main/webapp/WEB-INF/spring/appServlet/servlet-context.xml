@@ -31,6 +31,7 @@
 			<exclude-mapping path="/member/loginProc" />
 			<exclude-mapping path="/member/GloginProc" />	<!-- google 로그인 관련 -->
 			<exclude-mapping path="/member/KakaoLgProc" />	<!-- kakao 로그인 관련 -->
+			<exclude-mapping path="/member/FBLgProc" />	<!-- 페북 로그인 관련 -->
 			<exclude-mapping path="/index/indexView" />
 			<exclude-mapping path="/member/memberForm" />
 			<exclude-mapping path="/member/findIdPwdForm" />

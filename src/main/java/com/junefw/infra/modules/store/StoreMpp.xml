@@ -16,7 +16,7 @@
 	</select>
 	
 	<insert id="insert">
-			INSERT INTO storeInfo (
+			INSERT INTO StoreInfo (
 			stifSeq
 			,stifName
 			,stifDesc
@@ -42,7 +42,7 @@
 	</insert>
 	
 	<insert id="insertStoreTel">
-		INSERT INTO storeTel (
+		INSERT INTO StoreTel (
 			stphDelNy
 			,stphNumberTypeCd
 			,stphNumber
@@ -59,7 +59,7 @@
 		)
 	</insert>
 	<insert id="insertStoreLocation">
-	INSERT INTO storeLocation (
+	INSERT INTO StoreLocation (
 		stlcDelNy
 		,stlcName
 		,stlcIat

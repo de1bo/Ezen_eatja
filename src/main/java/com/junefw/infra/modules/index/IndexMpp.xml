@@ -35,9 +35,10 @@
 				,month
 				,day
 			FROM 
-				infrmemberuploaded
+				infrMemberUploaded
 			WHERE 1=1
 				 AND delNy = 0
+				 AND type = 0
 	</select>
 	
 	

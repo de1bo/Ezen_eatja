@@ -84,13 +84,13 @@
     </div>
   </nav>
 </header>
-<!-- <div id="map"></div> -->
 <!-- container 부분 -->
 <div class="album py-5 bg-light">
 <form id="formList" name="formList" method="post" action="/infra/index/indexMain">
     <div class="container">
     <h1 id="jal" style="padding-top: 50px; text-align:center;" >먹거리 지도</h1>
 <div class="p-4 p-md-5 mb-4" id="map">
+
 <div id="map-canvas"></div>
  <div class="col-md-6 px-0" style="height: 100%;">
     </div>
@@ -98,157 +98,28 @@
   <h2 id="jal" style="padding-top: 50px; text-align:center;">주변 먹거리</h2>
   <hr>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <c:forEach items="${listImg}" var="item" varStatus="status">
         <div class="col">
-       	 <c:forEach items="${list}" var="item" varStatus="status">
           <div class="card shadow-sm">
-            	<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><image href="/infra/resources/uploaded/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" height="100%" width="100%"/></image></svg>
+            	<a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a>
             <div class="card-body">
               <p class="card-text">식당 소개</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">s
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-          </c:forEach>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
+                  <p><em>지도 영역이 변경되면 지도 정보가 표출됩니다</em></p> 
+<p id="result"></p>
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-               
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
+        </c:forEach>
         </div>
       </div>
-    </div>
     </form>
-  </div>
+    </div>
 <footer class="text-muted py-5">
   <div class="container">
     <p class="float-end mb-1">
@@ -257,14 +128,13 @@
     <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
     <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
   </div>
-</footer>
-<img src="/infra/resources/images/regist.png" alt="/infra/resources/images/ro1.jpg" style="width: 100%; padding-top: 50px;">	 
+</footer> 
 	 
-	 
+	 <!-- google 부분 start -->
 <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffnYjApY7cl96nlyHHwrDzzdn3VWBxKk&callback=initMap&v=weekly" async>
  </script>
-<script>
+<!-- <script>
 let map, infoWindow;
 
 function initMap() {
@@ -299,10 +169,6 @@ function initMap() {
 		
 		
 		// store 위치 마커
-/* for(var st = ${item.stlcSeq}; st < ${vo.totalRows}; st++) { */
-/* 	place:${item.stlcName},
-	lat: ${item.stlcIat},
-	lng: ${item.stlcIng}, */
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
 	var Iat = ${item.stlcIat};
@@ -320,20 +186,6 @@ function initMap() {
 		 }
 	 }
 </c:forEach> 
-/* }		 */
-/* 	// 정상작동 코드 start
-for (var i = 0; i < locations.length; i++) {
-	 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
-	 if(d < 500){
-   var marker = new google.maps.Marker({
-       map: map,
-       label: locations[i].place,
-       position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
-   });
-	 }
-   
-} 
-//정상작동 코드 end */
 
 	// 현재 위치를 찾는 버튼 start
 	infoWindow = new google.maps.InfoWindow();
@@ -402,8 +254,138 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 	return d;
 	}
 	
+</script> -->
+<!-- google 부분 end -->
+<script>
+let map, infoWindow;
 
+function initMap() {
+	// 현재 위치 가져오기
+	navigator.geolocation.getCurrentPosition(
+	        (position) => {
+	          const pos = {
+	            lat: position.coords.latitude,
+	            lng: position.coords.longitude,
+	            
+	          };
+	          
+	const map = new google.maps.Map(document.getElementById("map"), {
+	center: pos,
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+	});
+	// 화면 위치 좌표 start
+	google.maps.event.addListener(map, 'bounds_changed', function() {
+		
+		var bounds = map.getBounds();
+	    
+	    // 영역정보의 남서쪽 정보를 얻어옵니다 
+	    var swLatlng = bounds.getSouthWest();
+	    
+	    // 영역정보의 북동쪽 정보를 얻어옵니다 
+	    var neLatlng = bounds.getNorthEast();
+	    
+	    var message = '<p>영역좌표는 남서쪽 위도, 경도는  ' + swLatlng.toString() + '이고 <br>'; 
+	    message += '북동쪽 위도, 경도는  ' + neLatlng.toString() + '입니다 </p>'; 
+	    
+	    var resultDiv = document.getElementById('result');   
+	    resultDiv.innerHTML = message;
+	});
+	// 화면 위치 좌표 end
+	// 현재위치 circle
+	var marker = new google.maps.Marker({
+		map: map,
+		position: new google.maps.LatLng(pos),
+		title: 'Some location'
+	});
+	
+		
+		
+		// store 위치 마커
+	/* <c:forEach items='${list}' var='item' varStatus='status'>
+	var name = '${item.stlcName}';
+	var Iat = ${item.stlcIat};
+	var lng = ${item.stlcIng};
+	var end = ${vo.totalRows};
+	
+	 for (var i = 0; i < end; i++) {
+        var marker = new google.maps.Marker({
+            map: map,
+            label: name,
+            position: new google.maps.LatLng(Iat,lng),
+        });
+	 }
+</c:forEach>  */
+
+	// 현재 위치를 찾는 버튼 start
+	infoWindow = new google.maps.InfoWindow();
+	  
+	  
+	  const locationButton = document.createElement("button");
+	  locationButton.textContent = "현재위치";
+	  locationButton.classList.add("custom-map-control-button");
+	  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+	  
+	  locationButton.addEventListener("click", () => {
+		    // Try HTML5 geolocation.  
+		    if (navigator.geolocation) {
+		      navigator.geolocation.getCurrentPosition(
+		        (position) => {
+		          const pos = {
+		            lat: position.coords.latitude,
+		            lng: position.coords.longitude,
+		          };
+		          
+		          
+		        
+		          infoWindow.setPosition(pos);
+		          infoWindow.setContent("현재위치");
+		          infoWindow.open(map);
+		          map.setCenter(pos);
+		          
+		        },
+		        () => {
+		          handleLocationError(true, infoWindow, map.getCenter());
+		        }
+		      );
+		    } else {
+		      // 현재위치를 지원하지 않을때 실행
+		      handleLocationError(false, infoWindow, map.getCenter());
+		    }
+		  });
+  });
+	// 현재 위치를 찾는 버튼 end
+}
+
+// 현재위치 검색 error 발생시 실행
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
+  infoWindow.open(map);
+}
+
+
+//위도경도 거리계산식		(현재 위도, 현재 경도, 상대 위도, 상대 경도)
+function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+	
+	function deg2rad(deg) {
+		return deg * (Math.PI/180)
+	}
+	
+	var R = 6371; // Radius of the earth in km
+	var dLat = deg2rad(lat2-lat1);// deg2rad below
+	var dLon = deg2rad(lng2-lng1);
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	var d = R * c * 1000; // Distance in meters
+	return d;
+	}
 </script>
+
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 

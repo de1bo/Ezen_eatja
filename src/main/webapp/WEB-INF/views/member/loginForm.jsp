@@ -131,6 +131,7 @@
  </li>
 </ul>
   <a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
+<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
     <p class="mt-5 mb-3 text-muted">&copy;2022–2022</p>
   </form>
 </main>    
@@ -269,7 +270,65 @@ function onSignInFailure(t){
             });
         }
     </script>
+<script>
+function checkLoginState() {               					//로그인 클릭시 호출
+	    FB.getLoginStatus(function(response) {  
+	      statusChangeCallback(response);
+	    });
+	  }
 
+function statusChangeCallback(response) { 					// FB.getLoginStatus()의 결과호출
+	
+ console.log(response);             			 			//사용자의 현재 로그인 상태.
+	if (response.status === 'connected') {   				// 웹페이지와 페이스북에 로그인이 되어있다면
+		testAPI();  
+	} else {         			                       		// 웹페이지와 페이스북에 로그인이 되어있지 않다면
+		console.log('Please log into this webpage.'); 
+	}
+}
+
+function fnFbCustomLogin(){
+	FB.login(function(response) {
+		if (response.status === 'connected') {
+			FB.api('/me', 'get', {fields: 'name,email'}, function(r) {
+				console.log(r);
+				$.ajax({
+					async: true 
+					,cache: false
+					,type: "post"
+					,url: "/infra/member/FBLgProc"
+					,data : {"ifmmName" : r.name}		// 넘겨줄 데이터를 설정
+					,success: function(response) {
+						if(response.item == "success") {
+							location.href = "/infra/index/indexView";
+						} else {
+							alert("페이스북 로그인 실패");
+						}
+					}
+					,error : function(jqXHR, textStatus, errorThrown){
+						alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+					}
+				}) 
+			})
+		} 
+	}, {scope: 'public_profile,email'});		//profile, email 권한을 나중에 추가하려는 경우 FB.login() 함수로 다시 실행할 수 있다.
+}
+
+window.fbAsyncInit = function() {
+	FB.init({
+		appId      : '1364487504067524', // 내 앱 ID.
+		cookie     : true,
+		xfbml      : true,
+		version    : 'v13.0'
+	});
+	FB.getLoginStatus(function(response) {   
+		statusChangeCallback(response);        // 로그인 상태를 말해줌
+	});
+}; 
+</script>
+<!-- Load the JS SDK asynchronously -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v10.0&appId=683045926144522" nonce="SiOBIhLG"></script>
 
 </body>
 </html>
