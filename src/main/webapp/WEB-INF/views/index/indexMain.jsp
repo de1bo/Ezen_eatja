@@ -256,110 +256,122 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 	
 </script> -->
 <!-- google 부분 end -->
- <script>
- let map, infoWindow;
+<script>
+let map, infoWindow;
 
- function initMap() {
-		// 현재 위치 가져오기
-		navigator.geolocation.getCurrentPosition(
-		        (position) => {
-		          const pos = {
-		            lat: position.coords.latitude,
-		            lng: position.coords.longitude,
-		            
-		          };
-		          
-		const map = new google.maps.Map(document.getElementById("map"), {
-		center: pos,
-	    zoom: 15,
-	    
-		});
-
-	var bounds = map.getBounds(),
-	    southWest = bounds.getSW(),
-	    northEast = bounds.getNE(),
-	    lngSpan = northEast.lng() - southWest.lng(),
-	    latSpan = northEast.lat() - southWest.lat();
-
-
-	    var marker = new google.maps.Marker({
-	        map: map,
-	        position: new google.maps.LatLng(pos),
-	        title: 'Some location'
-	    });
-
-	google.maps.Event.addListener(map, 'idle', function() {
-	    updateMarkers(map, markers);
+function initMap() {
+	// 현재 위치 가져오기
+	navigator.geolocation.getCurrentPosition(
+	        (position) => {
+	          const pos = {
+	            lat: position.coords.latitude,
+	            lng: position.coords.longitude,
+	            
+	          };
+	          
+	const map = new google.maps.Map(document.getElementById("map"), {
+	center: pos,
+    zoom: 15,
 	});
-
-	function updateMarkers(map, markers) {
-
-	    var mapBounds = map.getBounds();
-	    var marker, position;
-
+	// 화면 위치 좌표 start
+	google.maps.event.addListener(map, 'bounds_changed', function() {
+		
+		var bounds = map.getBounds();
+	    // 영역정보의 남서쪽 정보를 얻어옵니다 
+	    var swLatlng = bounds.getSouthWest(); 
+	    // 영역정보의 북동쪽 정보를 얻어옵니다 
+	    var neLatlng = bounds.getNorthEast();
+	    // 1b에 맵의 남서쪽, 북동쪽 정보를 담음
+	    lb = new google.maps.LatLngBounds(swLatlng, neLatlng),
+		
+		// store 위치 마커
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
 	var Iat = ${item.stlcIat};
 	var lng = ${item.stlcIng};
 	var end = ${vo.totalRows};
-
-
-	    for (var i = 0; i < end; i++) {
-
-	        var marker = new google.maps.Marker({
-	            map: map,
-	            label: name,
-	            position = new google.maps.LatLng(Iat,lng)
-	        });
-	        if (mapBounds.hasLatLng(position)) {
-	            showMarker(map, marker);
-	        } else {
-	            hideMarker(map, marker);
-	        }
-	    }
+	
+	 for (var i = 0; i < end; i++) {
+		 var l1 = new google.maps.LatLng(Iat,lng),	// db안에 있는 위도 경도를 가져옴
+		 if(lb.contain(l1) == true){		// 1b안에 l1이 포함되는게 true면 마커 실행
+        var marker = new google.maps.Marker({
+            map: map,
+            label: name,
+            position: new google.maps.LatLng(Iat,lng),
+        });
+		 }
+	 }
+	
+</c:forEach> 
 	}
-	</c:forEach>
-	function showMarker(map, marker) {
+	// 현재 위치를 찾는 버튼 start
+	infoWindow = new google.maps.InfoWindow();
+	  
+	  
+	  const locationButton = document.createElement("button");
+	  locationButton.textContent = "현재위치";
+	  locationButton.classList.add("custom-map-control-button");
+	  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+	  
+	  locationButton.addEventListener("click", () => {
+		    // Try HTML5 geolocation.  
+		    if (navigator.geolocation) {
+		      navigator.geolocation.getCurrentPosition(
+		        (position) => {
+		          const pos = {
+		            lat: position.coords.latitude,
+		            lng: position.coords.longitude,
+		          };
+		          
+		          
+		        
+		          infoWindow.setPosition(pos);
+		          infoWindow.setContent("현재위치");
+		          infoWindow.open(map);
+		          map.setCenter(pos);
+		          
+		        },
+		        () => {
+		          handleLocationError(true, infoWindow, map.getCenter());
+		        }
+		      );
+		    } else {
+		      // 현재위치를 지원하지 않을때 실행
+		      handleLocationError(false, infoWindow, map.getCenter());
+		    }
+		  });
+  });
+	// 현재 위치를 찾는 버튼 end
+}
 
-	    if (marker.getMap()) return;
-	    marker.setMap(map);
+// 현재위치 검색 error 발생시 실행
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
+  infoWindow.open(map);
+}
+
+//위도경도 거리계산식		(현재 위도, 현재 경도, 상대 위도, 상대 경도)
+function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+	
+	function deg2rad(deg) {
+		return deg * (Math.PI/180)
 	}
-
-	function hideMarker(map, marker) {
-
-	    if (!marker.getMap()) return;
-	    marker.setMap(null);
+	
+	var R = 6371; // Radius of the earth in km
+	var dLat = deg2rad(lat2-lat1);// deg2rad below
+	var dLon = deg2rad(lng2-lng1);
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	var d = R * c * 1000; // Distance in meters
+	return d;
 	}
-
- // 현재위치 검색 error 발생시 실행
- function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-   infoWindow.setPosition(pos);
-   infoWindow.setContent(
-     browserHasGeolocation
-       ? "Error: The Geolocation service failed."
-       : "Error: Your browser doesn't support geolocation."
-   );
-   infoWindow.open(map);
- }
-
- //위도경도 거리계산식		(현재 위도, 현재 경도, 상대 위도, 상대 경도)
- function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
- 	
- 	function deg2rad(deg) {
- 		return deg * (Math.PI/180)
- 	}
- 	
- 	var R = 6371; // Radius of the earth in km
- 	var dLat = deg2rad(lat2-lat1);// deg2rad below
- 	var dLon = deg2rad(lng2-lng1);
- 	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
- 	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
- 	var d = R * c * 1000; // Distance in meters
- 	return d;
- 	}
-		        });
- }
-</script> 
+	
+</script>
 
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
