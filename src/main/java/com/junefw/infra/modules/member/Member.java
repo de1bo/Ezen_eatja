@@ -32,8 +32,13 @@ public class Member {
 	
 	//phone array
 	private Integer[] ifmpDefaultNyArray;
+	private Integer[] ifmpDefaultNyArray0;
 	private Integer[] ifmpTelecomCdArray;
+	private Integer[] ifmpTelecomCdArray0;
 	private String[] ifmpNumberArray;
+	private String[] ifmpNumberArray0;
+	private Integer[] ifmpTelecom58;
+	private Integer[] ifmpNumber58;
 											
 	// address
 	private String imadSeq;
@@ -200,12 +205,6 @@ public class Member {
 	public void setIfmpDelNy(Integer ifmpDelNy) {
 		this.ifmpDelNy = ifmpDelNy;
 	}
-	public Integer getIfmpTelecomCd() {
-		return ifmpTelecomCd;
-	}
-	public void setIfmpTelecomCd(Integer ifmpTelecomCd) {
-		this.ifmpTelecomCd = ifmpTelecomCd;
-	}
 	public Integer getInfrMember_Seq() {
 		return infrMember_Seq;
 	}
@@ -236,12 +235,6 @@ public class Member {
 	public void setIfmpTelecomCdArray(Integer[] ifmpTelecomCdArray) {
 		this.ifmpTelecomCdArray = ifmpTelecomCdArray;
 	}
-	public String[] getIfmpNumberArray() {
-		return ifmpNumberArray;
-	}
-	public void setIfmpNumberArray(String[] ifmpNumberArray) {
-		this.ifmpNumberArray = ifmpNumberArray;
-	}
 	public String getId() {
 		return Id;
 	}
@@ -259,6 +252,50 @@ public class Member {
 	}
 	public void setUsername(String username) {
 		Username = username;
+	}
+	public Integer[] getIfmpDefaultNyArray0() {
+		return ifmpDefaultNyArray0;
+	}
+	public void setIfmpDefaultNyArray0(Integer[] ifmpDefaultNyArray0) {
+		this.ifmpDefaultNyArray0 = ifmpDefaultNyArray0;
+	}
+
+
+	public String[] getIfmpNumberArray() {
+		return ifmpNumberArray;
+	}
+	public void setIfmpNumberArray(String[] ifmpNumberArray) {
+		this.ifmpNumberArray = ifmpNumberArray;
+	}
+	public String[] getIfmpNumberArray0() {
+		return ifmpNumberArray0;
+	}
+	public void setIfmpNumberArray0(String[] ifmpNumberArray0) {
+		this.ifmpNumberArray0 = ifmpNumberArray0;
+	}
+	public Integer[] getIfmpTelecom58() {
+		return ifmpTelecom58;
+	}
+	public void setIfmpTelecom58(Integer[] ifmpTelecom58) {
+		this.ifmpTelecom58 = ifmpTelecom58;
+	}
+	public Integer[] getIfmpNumber58() {
+		return ifmpNumber58;
+	}
+	public void setIfmpNumber58(Integer[] ifmpNumber58) {
+		this.ifmpNumber58 = ifmpNumber58;
+	}
+	public Integer getIfmpTelecomCd() {
+		return ifmpTelecomCd;
+	}
+	public void setIfmpTelecomCd(Integer ifmpTelecomCd) {
+		this.ifmpTelecomCd = ifmpTelecomCd;
+	}
+	public Integer[] getIfmpTelecomCdArray0() {
+		return ifmpTelecomCdArray0;
+	}
+	public void setIfmpTelecomCdArray0(Integer[] ifmpTelecomCdArray0) {
+		this.ifmpTelecomCdArray0 = ifmpTelecomCdArray0;
 	}
 	
 	

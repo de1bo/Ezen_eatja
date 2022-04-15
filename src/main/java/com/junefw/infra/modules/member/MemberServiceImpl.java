@@ -36,6 +36,14 @@ public class MemberServiceImpl implements MemberService{
 			
 			
 			setRegMod(dto);
+			
+			
+			for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
+				dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
+				dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
+				dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
+				dao.insertPhone(dto);
+			}
 		} finally{
 			
 		}

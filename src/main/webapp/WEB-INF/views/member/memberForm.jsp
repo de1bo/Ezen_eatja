@@ -139,28 +139,20 @@
 	               	<label for="birthday" class="form-label">생일</label>
 	               	<input type="text" class="form-control" id="ifmmBirthday" name="ifmmBirthday">
                </div>
-               
-               <label for="tel" class="form-label">휴대폰</label>
-				 <div class="input-group">
-				 <div class="col-md-2">	 
-				 <select id="ifmpTelecomCd" name="ifmpTelecomCd" class="form-select form-select-sm">
-				 <c:forEach items="${listCodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
-				 	<option value="">::선택::</option>
-				 	<option value="18"><c:if test="${item.ifmpTelecomCd}"><c:out value="${itemTelecom.ifcdName}"/></c:if></option>
-				 	<option value="19">KT</option>
-				 	<option value="20">LGU+</option>
-				 	</c:forEach>
-				 </select>
-				 
-				</div>
-				
-				<div class="col-md-4">
-	               	       <input type="text" id="ifmpNumber" name="ifmpNumber" class="form-control" value="" title="전화번호를 입력하세요." placeholder="00*-000*-0000"maxlength="13">
-	           	</div>
-	           	<div class="col-md-4">
-	           	<button class="btn btn-outline-primary">인증</button>
-	           	</div>
-	            </div>
+ 				<input type="hidden" id="ifmpDefaultNyArray0" name="ifmpDefaultNyArray" value="1">
+ 				<input type="hidden" id="ifmpTypeCdArray0" name="ifmpTypeCdArray" value="54">
+ 				<input type="hidden" id="ifmpDeviceCdArray0" name="ifmpDeviceCdArray" value="58">	<!-- 필요없는 부분 --> 				
+ 				<label for="ifmpTelecomCdArray0" class="form-label">통신사</label>	
+ 				<select id="ifmpTelecomCdArray0" name="ifmpTelecomCdArray" class="form-select form-select-sm">
+ 					<option value="">::선택::</option>
+ 						<c:forEach items="${listCodeTelecom}" var="itemTelecom" varStatus="statusTelecom">
+ 					<option value="<c:out value="${itemTelecom.ifcdSeq}"/>" <c:if test="${20 eq itemTelecom.ifcdSeq }">selected</c:if>><c:out value="${itemTelecom.ifcdName }"/></option>
+ 						</c:forEach>	
+             	</select>
+             	
+             	<label for="ifmpNumberArray0" class="form-label">핸드폰</label>
+             	<input type="text" id="ifmpNumberArray0" name="ifmpNumberArray" value="<c:out value="${ifmpNumber}"/>" maxlength="11" placeholder="숫자만 (0104447777)" class="form-control form-control-sm">
+             	
 	            <div class="col-md-6">
 	          		<label for="nation" class="form-label">추천인</label>
 	          		<input type="text" class="form-control" id="ifmmRecommendSeq" name="ifmmRecommendSeq">
