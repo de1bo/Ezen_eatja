@@ -164,7 +164,12 @@
 				,a.ifmmName
 				,a.ifmmId
 				,a.ifmmPassword
+				,a.ifmmGenderCd
 				,a.ifmmBirthday
+				,a.ifmmRecommendSeq
+				,a.ifmmEmailConsentNy
+				,a.ifmmPushConsentNy
+				,a.ifmmPersonerinfoCd
 				,a.regDateTime
 				,a.modDateTime
 				,a.ifmmRecommendSeq

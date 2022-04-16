@@ -190,9 +190,9 @@
 	      </div>
 	      <label for="staticGender" class="col-sm-2 col-form-label">성별</label>
 	    	<div class="col-sm-4">
-		       <input type="radio" class="btn-check" name="options1" id="option1" checked disabled>
+		       <input type="radio" class="btn-check" name="ifmmGenderCd" id="option1"  <c:if test="${item.ifmmGenderCd==5}">checked</c:if> disabled>
 		       <label class="btn btn-outline-primary" for="option1">남</label> 
-		       <input type="radio" class="btn-check" name="options1" id="option2" autocomplete="off" disabled>
+		       <input type="radio" class="btn-check" name="ifmmGenderCd" id="option2" <c:if test="${item.ifmmGenderCd==6}">checked</c:if> autocomplete="off" disabled>
 		       <label class="btn btn-outline-primary" for="option2">녀</label>
 		     </div>
 		     	 <label for="staticBirth" class="col-sm-2 col-form-label">생일</label>
@@ -220,10 +220,10 @@
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
     			<div class="col-sm-3">
-	       <input type="email" readonly class="form-control" id="staticEmail" value="이메일 계쩡"/>
+	       <input type="email" readonly class="form-control" id="ifmeEmailAccount" name="ifmeEmailAccount" value="<c:out value="${item.ifmeEmailAccount}"/>"/>
 	      </div>
 	      <div class="col-sm-7">
-	       <input type="email" readonly class="form-control" id="staticEmail" value="이메일 도메인">
+	       <input type="email" readonly class="form-control" id="ifmeEmailDomainCd" name="ifmeEmailDomainCd" value="이메일 도메인">
 	      </div>
 	    </div>
 	  </div>
@@ -241,31 +241,32 @@
 						<tr>
 							<th>모바일 마케팅 수신 동의</th>
 							<td colspan="3" align="center">
-								<input type="radio" class="btn-check" name="options4" id="option7" autocomplete="off" checked disabled>
+								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option7" <c:if test="${item.ifmmPushConsentNy==40}">checked</c:if> autocomplete="off" disabled>
 								<label class="btn btn-outline-primary" for="option7">동의</label>
-								<input type="radio" class="btn-check" name="options4" id="option8" autocomplete="off" disabled>
+								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option8" <c:if test="${item.ifmmPushConsentNy==41}">checked</c:if> autocomplete="off" disabled>
 								<label class="btn btn-outline-primary" for="option8">거부</label>
 							</td>
 						</tr>
 						<tr>
 							<th>이메일 마케팅 수신 동의</th>
 							<td colspan="3" align="center">
-								<input type="radio" class="btn-check" name="options5" id="option9" autocomplete="off" checked disabled>
+								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option9" <c:if test="${item.ifmmEmailConsentNy==40}">checked</c:if> autocomplete="off" disabled>
 								<label class="btn btn-outline-primary" for="option9">동의</label>
-								<input type="radio" class="btn-check" name="options5" id="option10" autocomplete="off" disabled>
-								<label class="btn btn-outline-primary" for="option10">거부</label></td>
+								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option10" <c:if test="${item.ifmmEmailConsentNy==41}">checked</c:if> autocomplete="off" disabled>
+								<label class="btn btn-outline-primary" for="option10">거부</label>
+							</td>
 						</tr>
 						<tr>
 							<th>개인정보 유효 기간</th>
 							<td colspan="3" align="center">
-								<input type="radio" class="btn-check" name="options6" id="option11" autocomplete="off" checked disabled>
+								<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option11" <c:if test="${item.ifmmPersonerinfoCd==7}">checked</c:if> autocomplete="off" disabled>
 								<label class="btn btn-outline-primary" for="option11">1년</label> 
-								<input type="radio" class="btn-check" name="options6" id="option12" autocomplete="off" disabled>
+								<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option12" <c:if test="${item.ifmmPersonerinfoCd==8}">checked</c:if> autocomplete="off" disabled>
 								<label class="btn btn-outline-primary" for="option12">3년</label> 
-								<input type="radio" class="btn-check" name="options6" id="option13" autocomplete="off" disabled>
+								<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option13" <c:if test="${item.ifmmPersonerinfoCd==9}">checked</c:if> autocomplete="off" disabled>
 								<label class="btn btn-outline-primary" for="option13">5년</label> 
-								<input type="radio" class="btn-check" name="options6" id="option14" autocomplete="off" disabled>
-								<label class="btn btn-outline-primary" for="option14">10년</label> 
+								<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option14" <c:if test="${item.ifmmPersonerinfoCd==10}">checked</c:if> autocomplete="off" disabled>
+								<label class="btn btn-outline-primary" for="option14">회원 탈퇴시</label> 
 							</td>
 						</tr>
 					</table>
