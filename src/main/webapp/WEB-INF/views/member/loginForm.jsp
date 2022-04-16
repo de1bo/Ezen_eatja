@@ -119,7 +119,7 @@
 	</div><br><br><br>
     	<button class="w-100 btn btn-info" type="button" id="btnLogin" style="color:white"><strong>로그인</strong></button>
     	<br><br>
-    	<button class="w-100 btn btn-secondary" type="button" style="color:white" onclick="location.href='../member/memberForm'"><strong>회원가입</strong></button>
+    	<a href="/infra/member/memberForm" class="w-100 btn btn-secondary">회원가입</a>
     	<br><hr>
     <div id="jal">간편 로그인</div>
     <br>

@@ -61,6 +61,8 @@
 	<insert id="insert">
 			INSERT INTO infrMember (
 			seq
+			,ifmmAdminCd
+			,ifmmRegistTypeCd
 			,ifmmName
 			,ifmmDelNy
 			,ifmmId
@@ -68,10 +70,15 @@
 			,ifmmGenderCd
 			,ifmmBirthday
 			,ifmmRecommendSeq
+			,ifmmEmailConsentNy
+			,ifmmPushConsentNy
+			,ifmmPersonerinfoCd
 			,regDateTime
 			,modDateTime
 			) VALUES (
 			#{seq}
+			,2
+			,#{ifmmRegistTypeCd}
 			,#{ifmmName}
 			,0
 			,#{ifmmId}
@@ -79,6 +86,9 @@
 			,#{ifmmGenderCd}
 			,#{ifmmBirthday}
 			,#{ifmmRecommendSeq}
+			,#{ifmmEmailConsentNy}
+			,#{ifmmPushConsentNy}
+			,#{ifmmPersonerinfoCd}
 			,#{regDateTime}
 			,#{modDateTime}
 			);
@@ -87,7 +97,7 @@
 			</selectKey>
 	</insert>
 	<insert id="insertAddress">
-	INSERT INTO infrMemberaddress (
+	INSERT INTO infrMemberAddress (
 			imadZipcode
 			,imadAddress1
 			,imadAddress2
@@ -108,7 +118,7 @@
 		)
 		</insert>
 		<insert id="insertPhone">
-		INSERT INTO infrMemberphone(
+		INSERT INTO infrMemberPhone(
 			ifmpDelNy
 			,ifmpTelecomCd
 			,ifmpNumber
@@ -125,7 +135,27 @@
 			,#{modDateTime}
 			,#{seq}
 		)
-		
+		</insert>
+		<insert id="insertEmail">
+		INSERT INTO infrMemberEmail(
+			ifmeEmailAccount
+			,ifmeEmailDomainCd
+			,ifmeDelNy
+			,regDateTime
+			,regDateTimeSvr
+			,modDateTime
+			,modDateTimeSvr
+			,infrMember_Seq
+		) VALUES (
+			#{ifmeEmailAccount}
+			,#{ifmeEmailDomainCd}
+			,0
+			,#{regDateTime}
+			,#{regDateTime}
+			,#{modDateTime}
+			,#{modDateTime}
+			,#{seq}
+		)
 		</insert>
 		
 	<select id="selectOne" resultMap="resultMapObj">			

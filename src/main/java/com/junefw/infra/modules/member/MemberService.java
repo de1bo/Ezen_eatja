@@ -16,6 +16,7 @@ public interface MemberService {
 	// 파생 테이블
 	public int insertAddress(Member dto) throws Exception;
 	public int insertPhone(Member dto) throws Exception;
+	public int insertEmail(Member dto) throws Exception;
 	
 	
 	public Member selectOneId(Member dto) throws Exception;

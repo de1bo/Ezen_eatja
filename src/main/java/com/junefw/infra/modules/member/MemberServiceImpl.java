@@ -37,13 +37,6 @@ public class MemberServiceImpl implements MemberService{
 			
 			setRegMod(dto);
 			
-			
-			for(int i=0; i<dto.getIfmpNumberArray().length; i++) {
-				dto.setIfmpDefaultNy(dto.getIfmpDefaultNyArray()[i]);
-				dto.setIfmpTelecomCd(dto.getIfmpTelecomCdArray()[i]);
-				dto.setIfmpNumber(dto.getIfmpNumberArray()[i]);
-				dao.insertPhone(dto);
-			}
 		} finally{
 			
 		}
@@ -77,6 +70,19 @@ public class MemberServiceImpl implements MemberService{
 			
 		}
 		return dao.insertPhone(dto);
+	}
+	@Override
+	public int insertEmail(Member dto) throws Exception {
+		try {
+			dto.setRegDateTime(UtilDateTime.nowDate());
+			dto.setModDateTime(UtilDateTime.nowDate());
+			
+			
+			setRegMod(dto);
+		} finally{
+			
+		}
+		return dao.insertEmail(dto);
 	}
 	
 	private void setRegMod(Member dto) {

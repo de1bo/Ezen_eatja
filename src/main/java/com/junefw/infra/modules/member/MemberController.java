@@ -79,6 +79,7 @@ public class MemberController {
 		int result = service.insert(dto);
 		 service.insertAddress(dto);
 		 service.insertPhone(dto); 
+		 service.insertEmail(dto); 
 		 
 		
 		System.out.println("result: " + result);

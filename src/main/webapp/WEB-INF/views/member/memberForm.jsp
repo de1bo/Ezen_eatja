@@ -88,9 +88,9 @@
       <div class="col-md-4">
       </div>
       <div class="col-md-4" style="text-align: center;">
-	                <input type="radio" class="btn-check" id="RegistType1" name="ifmmRegistTypeCd"  autocomplete="off" name="ifmmRegistType">
+	                <input type="radio" class="btn-check" id="RegistType1" name="ifmmRegistTypeCd"  autocomplete="off" value="3">
 	                <label class="btn btn-outline-primary" for="RegistType1">일반 사용자</label> 
-	                <input type="radio" class="btn-check" id="RegistType2" name="ifmmRegistTypeCd"  autocomplete="off" name="ifmmRegistType">
+	                <input type="radio" class="btn-check" id="RegistType2" name="ifmmRegistTypeCd"  autocomplete="off" value="4">
 	                <label class="btn btn-outline-primary" for="RegistType2">사업자</label>
 	                </div>
 	                <div class="col-md-4">
@@ -139,7 +139,27 @@
 	               	<label for="birthday" class="form-label">생일</label>
 	               	<input type="text" class="form-control" id="ifmmBirthday" name="ifmmBirthday">
                </div>
- 				<input type="hidden" id="ifmpDefaultNyArray0" name="ifmpDefaultNyArray" value="1">
+               
+               <label for="tel" class="form-label">휴대폰</label>
+				 <div class="input-group">
+				 <div class="col-md-2">	 
+				 <select id="ifmpTelecomCd" name="ifmpTelecomCd" class="form-select form-select-sm">
+				 	<option value="">::선택::</option>
+				 	<option value="18">SKT</option>
+				 	<option value="19">KT</option>
+				 	<option value="20">LGU+</option>
+				 </select>
+				 
+				</div>
+				
+				<div class="col-md-4">
+	               	       <input type="text" id="ifmpNumber" name="ifmpNumber" class="form-control" value="" title="전화번호를 입력하세요." placeholder="00*-000*-0000" maxlength="13">
+	           	</div>
+	           	<div class="col-md-4">
+	           	<button class="btn btn-outline-primary">인증</button>
+	           	</div>
+	            </div>
+<%--  				<input type="hidden" id="ifmpDefaultNyArray0" name="ifmpDefaultNyArray" value="1">
  				<input type="hidden" id="ifmpTypeCdArray0" name="ifmpTypeCdArray" value="54">
  				<input type="hidden" id="ifmpDeviceCdArray0" name="ifmpDeviceCdArray" value="58">	<!-- 필요없는 부분 --> 				
  				<label for="ifmpTelecomCdArray0" class="form-label">통신사</label>	
@@ -152,7 +172,7 @@
              	
              	<label for="ifmpNumberArray0" class="form-label">핸드폰</label>
              	<input type="text" id="ifmpNumberArray0" name="ifmpNumberArray" value="<c:out value="${ifmpNumber}"/>" maxlength="11" placeholder="숫자만 (0104447777)" class="form-control form-control-sm">
-             	
+             	 --%>
 	            <div class="col-md-6">
 	          		<label for="nation" class="form-label">추천인</label>
 	          		<input type="text" class="form-control" id="ifmmRecommendSeq" name="ifmmRecommendSeq">
@@ -175,9 +195,9 @@
 				  	<input type="text" class="form-control" aria-label="Text input with dropdown button">
   						<select class="form-select" id="ifmeEmailDomainCd" name="ifmeEmailDomainCd">
 						    <option selected>Choose...</option>
-						    <option value="1">@naver.com</option>
-						    <option value="2">@google.com</option>
-						    <option value="3">@daum.com</option>
+						    <option value="14">@naver.com</option>
+						    <option value="15">@google.com</option>
+						    <option value="16">@daum.com</option>
 					  	</select>
 					</div>		
 				</div>
@@ -196,33 +216,33 @@
 
 						<tr>
 							<th>모바일 마케팅 수신 동의</th>
-							<td colspan="3" align="center"><input type="radio" class="btn-check" name="options4"
-								id="option7" autocomplete="off"> <label
-								class="btn btn-outline-primary" for="option7">동의</label> <input
-								type="radio" class="btn-check" name="options4" id="option8"
-								autocomplete="off"> <label
-								class="btn btn-outline-primary" for="option8">거부</label></td>
+							<td colspan="3" align="center">
+								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option7" value="40" autocomplete="off">
+								<label class="btn btn-outline-primary" for="option7">동의</label>
+								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option8" value="41" autocomplete="off">
+								<label class="btn btn-outline-primary" for="option8">거부</label>
+							</td>
 						</tr>
 						<tr>
 							<th>이메일 마케팅 수신 동의</th>
-							<td colspan="3" align="center"><input type="radio" class="btn-check" name="options5"
-								id="option9" autocomplete="off"> <label
-								class="btn btn-outline-primary" for="option9">동의</label> <input
-								type="radio" class="btn-check" name="options5" id="option10"
-								autocomplete="off"> <label
-								class="btn btn-outline-primary" for="option10">거부</label></td>
+							<td colspan="3" align="center">
+								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option9" value="40" autocomplete="off">
+								<label class="btn btn-outline-primary" for="option9">동의</label>
+								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option10" value="41" autocomplete="off">
+								<label class="btn btn-outline-primary" for="option10">거부</label>
+							</td>
 						</tr>
 						<tr>
 							<th>개인정보 유효 기간</th>
 							<td colspan="3" align="center">
-							<input type="radio" class="btn-check" name="options6" id="option11" autocomplete="off">
+							<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option11" value="7" autocomplete="off">
 							<label class="btn btn-outline-primary" for="option11">1년</label> 
-							<input type="radio" class="btn-check" name="options6" id="option12" autocomplete="off">
+							<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option12" value="8" autocomplete="off">
 							<label class="btn btn-outline-primary" for="option12">3년</label> 
-							<input type="radio" class="btn-check" name="options6" id="option13" autocomplete="off">
+							<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option13" value="9" autocomplete="off">
 							<label class="btn btn-outline-primary" for="option13">5년</label> 
-							<input type="radio" class="btn-check" name="options6" id="option14" autocomplete="off">
-							<label class="btn btn-outline-primary" for="option14">10년</label> 
+							<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option14" value="10" autocomplete="off">
+							<label class="btn btn-outline-primary" for="option14">회원 탈퇴시</label> 
 							</td>
 						</tr>
 					</table>
@@ -324,7 +344,3 @@
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
-
-
-	

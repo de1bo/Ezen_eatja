@@ -7,6 +7,8 @@ import java.util.List;
 public class Member {
 	// infrmember
 	private String seq;
+	private String ifmmAdminCd;
+	private String ifmmRegistTypeCd;
 	private String ifmmName="";
 	private String ifmmId="";
 	private String ifmmGenderCd;
@@ -14,6 +16,9 @@ public class Member {
 	private String ifmmPassword;
 	private String ifmmBirthday;
 	private String ifmmRecommendSeq;
+	private String ifmmEmailConsentNy;
+	private String ifmmPushConsentNy;
+	private String ifmmPersonerinfoCd;
 	private Date regDateTime;
 	private Date modDateTime;
 	
@@ -296,6 +301,36 @@ public class Member {
 	}
 	public void setIfmpTelecomCdArray0(Integer[] ifmpTelecomCdArray0) {
 		this.ifmpTelecomCdArray0 = ifmpTelecomCdArray0;
+	}
+	public String getIfmmEmailConsentNy() {
+		return ifmmEmailConsentNy;
+	}
+	public void setIfmmEmailConsentNy(String ifmmEmailConsentNy) {
+		this.ifmmEmailConsentNy = ifmmEmailConsentNy;
+	}
+	public String getIfmmPushConsentNy() {
+		return ifmmPushConsentNy;
+	}
+	public void setIfmmPushConsentNy(String ifmmPushConsentNy) {
+		this.ifmmPushConsentNy = ifmmPushConsentNy;
+	}
+	public String getIfmmPersonerinfoCd() {
+		return ifmmPersonerinfoCd;
+	}
+	public void setIfmmPersonerinfoCd(String ifmmPersonerinfoCd) {
+		this.ifmmPersonerinfoCd = ifmmPersonerinfoCd;
+	}
+	public String getIfmmAdminCd() {
+		return ifmmAdminCd;
+	}
+	public void setIfmmAdminCd(String ifmmAdminCd) {
+		this.ifmmAdminCd = ifmmAdminCd;
+	}
+	public String getIfmmRegistTypeCd() {
+		return ifmmRegistTypeCd;
+	}
+	public void setIfmmRegistTypeCd(String ifmmRegistTypeCd) {
+		this.ifmmRegistTypeCd = ifmmRegistTypeCd;
 	}
 	
 	
