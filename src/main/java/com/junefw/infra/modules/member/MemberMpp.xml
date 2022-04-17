@@ -200,8 +200,12 @@
 				ifmmName = #{ifmmName}
 				,ifmmId = #{ifmmId}
 				,ifmmPassword = #{ifmmPassword}
+				,ifmmGenderCd = #{ifmmGenderCd}
 				,ifmmBirthday = #{ifmmBirthday}
 				,ifmmRecommendSeq = #{ifmmRecommendSeq}
+				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
+				,ifmmPushConsentNy = #{ifmmPushConsentNy}
+				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}
 			WHERE 1=1
 				AND seq = #{seq}
 

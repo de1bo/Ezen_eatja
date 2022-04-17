@@ -31,6 +31,17 @@ public class StoreController {
 
 		return "/store/store_registration";
 	}
+	@RequestMapping(value = "/store/store_Info")
+	public String store_Info(@ModelAttribute("vo") StoreVo vo) throws Exception {
+		
+		// 수동 increment start
+		int count = service.selectOneCount(vo);
+		vo.setParamsPaging(count);
+		
+		// 수동 increment end
+		
+		return "/store/store_Info";
+	}
 	
 	
 	@RequestMapping(value = "/store/storeInst")
