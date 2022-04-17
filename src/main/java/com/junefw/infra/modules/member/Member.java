@@ -25,6 +25,7 @@ public class Member {
 	// email
 	private String ifmeEmailAccount;
 	private String ifmeEmailDomainCd;
+	private String EmailDomain;
 	
 	//phone
 	private String ifmpSeq;
@@ -331,6 +332,12 @@ public class Member {
 	}
 	public void setIfmmRegistTypeCd(String ifmmRegistTypeCd) {
 		this.ifmmRegistTypeCd = ifmmRegistTypeCd;
+	}
+	public String getEmailDomain() {
+		return EmailDomain;
+	}
+	public void setEmailDomain(String emailDomain) {
+		EmailDomain = emailDomain;
 	}
 	
 	

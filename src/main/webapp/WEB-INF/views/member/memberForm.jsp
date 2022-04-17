@@ -192,7 +192,7 @@
 				</div>
                			<label for="email" class="form-label">이메일</label>
              	 <div class="input-group mb-6">
-				  	<input type="text" class="form-control" aria-label="Text input with dropdown button">
+				  	<input type="text" class="form-control" id="ifmeEmailAccount" name="ifmeEmailAccount" aria-label="Text input with dropdown button">
   						<select class="form-select" id="ifmeEmailDomainCd" name="ifmeEmailDomainCd">
 						    <option selected>Choose...</option>
 						    <option value="14">@naver.com</option>

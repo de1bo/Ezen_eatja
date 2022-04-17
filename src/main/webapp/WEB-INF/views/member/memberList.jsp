@@ -215,8 +215,32 @@
                		</c:otherwise>
               	</c:choose>
 		  	</td>
-		  	<td>거부</td>
-		  	<td>거부</td>
+		  	<td>
+			  	<c:choose>
+				    <c:when test="${item.ifmmPushConsentNy == 40}">
+				        동의
+				    </c:when>
+				    <c:when test="${item.ifmmPushConsentNy == 41}">
+				        거부
+				    </c:when>
+				    <c:otherwise>
+				        NO DATA
+				    </c:otherwise>
+				</c:choose>
+			</td>
+		  	<td>
+		  		<c:choose>
+				    <c:when test="${item.ifmmEmailConsentNy == 40}">
+				        동의
+				    </c:when>
+				    <c:when test="${item.ifmmEmailConsentNy == 41}">
+				        거부
+				    </c:when>
+				    <c:otherwise>
+				        NO DATA
+				    </c:otherwise>
+				</c:choose>
+		  	</td>
 		  </tr>
 		  </c:forEach>
 	</c:otherwise>

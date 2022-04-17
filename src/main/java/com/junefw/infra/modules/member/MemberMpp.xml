@@ -41,6 +41,8 @@
 				,a.ifmmId
 				,a.ifmmDelNy
 				,a.ifmmGenderCd
+				,a.ifmmEmailConsentNy
+				,a.ifmmPushConsentNy
 				,c.ifmpNumber
 				,b.imadAddress1
 				<include refid="selectCommon"/>
@@ -176,9 +178,16 @@
 				,a.ifmmDelNy
 				,b.imadAddress1
 				,b.imadAddress2
+				,c.ifmeEmailAccount
+				,c.ifmeEmailDomainCd
+				,d.ifmpTelecomCd
+				,d.ifmpNumber
+				,d.ifmpHomeTel
 			FROM
 				infrMember a
 				left join eatja.infrMemberAddress as b on b.infrMember_Seq = a.seq and b.ifmaDelNy = 0
+				left join eatja.infrMemberEmail as c on c.infrMember_Seq = a.seq and c.ifmeDelNy = 0
+				left join eatja.infrMemberPhone as d on d.infrMember_Seq = a.seq and d.ifmpDelNy = 0
 			WHERE 1=1
 				and ifmmDelNy = 0
 				and seq = #{seq}

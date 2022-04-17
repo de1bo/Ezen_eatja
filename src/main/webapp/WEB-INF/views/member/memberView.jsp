@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Sidebars · Bootstrap v5.1</title>
+    <title>개인 정보</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
 
@@ -201,11 +201,11 @@
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">휴대폰</label>
     			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="번호">
+	       <input type="text" readonly class="form-control-plaintext" id="ifmpNumber" name="ifmpNumber" value="<c:out value="${item.ifmpNumber}"/>">
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
     			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="집전화">
+	       <input type="text" readonly class="form-control-plaintext" id="ifmpHomeTel" name="ifmpHomeTel" value="<c:out value="${item.ifmpHomeTel}"/>">
 	      </div>
 	      <label for="staticEmail" class="col-sm-2 col-form-label">추천인</label>
     			<div class="col-sm-4">
@@ -223,7 +223,7 @@
 	       <input type="email" readonly class="form-control" id="ifmeEmailAccount" name="ifmeEmailAccount" value="<c:out value="${item.ifmeEmailAccount}"/>"/>
 	      </div>
 	      <div class="col-sm-7">
-	       <input type="email" readonly class="form-control" id="ifmeEmailDomainCd" name="ifmeEmailDomainCd" value="이메일 도메인">
+	       <input type="email" readonly class="form-control" id="EmailDomain" name="" value="" />
 	      </div>
 	    </div>
 	  </div>
