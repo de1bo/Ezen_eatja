@@ -106,9 +106,8 @@
               <p class="card-text">식당 소개</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <p><em>지도 영역이 변경되면 지도 정보가 표출됩니다</em></p> 
-<p id="result"></p>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='javascript:goForm(<c:out value="${item.seq}"/>)'">View</button>
+					<!-- <p id="result"></p> -->
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
@@ -134,7 +133,7 @@
 <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffnYjApY7cl96nlyHHwrDzzdn3VWBxKk&callback=initMap&v=weekly" async>
  </script>
-<!-- <script>
+<script>
 let map, infoWindow;
 
 function initMap() {
@@ -254,9 +253,9 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 	return d;
 	}
 	
-</script> -->
+</script>
 <!-- google 부분 end -->
-<script>
+<!-- <script>
 let map, infoWindow;
 
 function initMap() {
@@ -371,8 +370,22 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 	return d;
 	}
 	
-</script>
-
+</script> -->
+<script type="text/javascript">
+	$("#btnSubmit").on("click", function(){	
+	});
+		
+		goForm = function(seq1){
+			alert(seq1);
+			
+			$("#stifSeq").val(seq1);
+			$("#formList").attr("action","/infra/store/store_Info");
+			$("#formList").submit();
+			
+		}
+		
+		
+	</script>
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 
