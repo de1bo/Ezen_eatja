@@ -35,9 +35,6 @@ public class StoreServiceImpl implements StoreService{
 			dto.setModDateTime(UtilDateTime.nowDate());
 			dao.insert(dto);
 			
-			
-			
-			
 			int j = 0;
 			for(MultipartFile multipartFile : dto.getFile0() ) {
 				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
@@ -77,6 +74,11 @@ public class StoreServiceImpl implements StoreService{
 		return 0;
 	}
 
+	@Override
+	public Store selectOne(StoreVo vo) throws Exception {
+	return dao.selectOne(vo);
+	}
+	
 	@Override
 	public int insertStoreTel(Store dto) throws Exception {
 	

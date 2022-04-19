@@ -18,6 +18,7 @@ public class StoreDao {
 	
 	// seq 수동 increment
 	public int selectOneCount(StoreVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
+	public Store selectOne(StoreVo vo) { return sqlSession.selectOne(namespace + ".selectOne", vo);}
 	
 	public int insert(Store dto) {return sqlSession.insert( namespace + ".insert", dto);}
 	public int insertStoreTel(Store dto) {return sqlSession.insert( namespace + ".insertStoreTel", dto);}

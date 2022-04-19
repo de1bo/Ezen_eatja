@@ -26,21 +26,32 @@
 	</select>
 	<select id="selectImgList" resultMap="resultMapObj">
 			SELECT 
-				seq
-				,type
-				,originalName
-				,uuidName
-				,pseq
-				,year
-				,month
-				,day
+				a.stifSeq
+				,a.stifDesc
+				,b.seq
+				,b.type
+				,b.originalName
+				,b.uuidName
+				,b.pseq
+				,b.year
+				,b.month
+				,b.day
 			FROM 
-				infrMemberUploaded
+				StoreInfo a
+				left join eatja.infrMemberUploaded as b on b.pseq = a.stifSeq and b.delNy = 0
 			WHERE 1=1
 				 AND delNy = 0
 				 AND type = 0
 	</select>
-	
+	<select id="selectStore" resultMap="resultMapObj">
+		SELECT
+			stifSeq
+			,stifDesc
+		FROM
+			StoreInfo
+		WHERE 1=1
+			AND stifDelNy = 0
+	</select>
 	
 	<select id="locationCount" resultType="Integer">
 			SELECT 

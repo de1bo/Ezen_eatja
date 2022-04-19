@@ -14,6 +14,9 @@ public class IndexVo {
 	private String seq;
 	private String shIfmmName;
 	private Integer shIfmmDelNy;
+	
+	private String stifSeq;
+	
 	// common
 		private String shOption;
 		
@@ -298,6 +301,16 @@ public class IndexVo {
 
 		public void setCheckboxSeqArray(String[] checkboxSeqArray) {
 			this.checkboxSeqArray = checkboxSeqArray;
+		}
+
+
+		public String getStifSeq() {
+			return stifSeq;
+		}
+
+
+		public void setStifSeq(String stifSeq) {
+			this.stifSeq = stifSeq;
 		}
 	
 	

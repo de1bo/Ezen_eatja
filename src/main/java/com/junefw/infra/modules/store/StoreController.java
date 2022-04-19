@@ -33,10 +33,13 @@ public class StoreController {
 	}
 	@RequestMapping(value = "/store/store_Info")
 	public String store_Info(@ModelAttribute("vo") StoreVo vo) throws Exception {
+		System.out.println("vo.getStifSeq"+vo.getStifSeq());
 		
 		// 수동 increment start
 		int count = service.selectOneCount(vo);
 		vo.setParamsPaging(count);
+		
+		Store item= service.selectOne(vo);
 		
 		// 수동 increment end
 		
@@ -60,4 +63,5 @@ public class StoreController {
 
 		return "redirect:/index/indexMain";
 	}
+	
 }

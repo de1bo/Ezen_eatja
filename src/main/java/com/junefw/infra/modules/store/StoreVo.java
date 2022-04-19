@@ -14,6 +14,9 @@ public class StoreVo {
 	private String seq;
 	private String shIfmmName;
 	private Integer shIfmmDelNy;
+	
+	private String stifSeq;
+	
 	// common
 		private String shOption;
 		
@@ -299,6 +302,16 @@ public class StoreVo {
 
 		public void setStlcIat(String stlcIat) {
 			this.stlcIat = stlcIat;
+		}
+
+
+		public String getStifSeq() {
+			return stifSeq;
+		}
+
+
+		public void setStifSeq(String stifSeq) {
+			this.stifSeq = stifSeq;
 		}
 
 

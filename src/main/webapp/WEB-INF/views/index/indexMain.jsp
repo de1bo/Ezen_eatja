@@ -106,7 +106,7 @@
               <p class="card-text">식당 소개</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='javascript:goForm(<c:out value="${item.seq}"/>)'">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='javascript:goForm(<c:out value="${item.stifSeq}"/>)'">View</button>
 					<!-- <p id="result"></p> -->
                 </div>
                 <small class="text-muted">9 mins</small>
