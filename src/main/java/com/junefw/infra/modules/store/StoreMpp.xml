@@ -128,4 +128,21 @@
 			,#{pseq}
 		)
 	</insert>
+	<select id="selectOne" resultMap="resultMapObj">
+		SELECT
+			a.stifSeq
+			,a.stifName
+			,a.stifDesc
+			,a.stifAddress1
+			,a.stifAddress2
+			,a.stifOC
+			,a.stifFoodTypeCd
+			,b.stphNumber
+		FROM
+			StoreInfo a
+			left join eatja.StoreTel as b on b.StoreInfo_stifSeq = a.stifSeq and b.stphDelNy = 0
+		WHERE 1=1
+			and stifDelNy = 0
+			and stifSeq = #{stifSeq}
+	</select>
 </mapper>

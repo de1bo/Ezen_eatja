@@ -210,16 +210,30 @@ image {
 <div class="container">
 	<div class="row">
 		<div class="col-sm-8">
-			<h2><strong>릴하우스</strong></h2>
+			<h2><strong><c:out value="${item.stifName}"/></strong></h2>
 			<hr>
 			<table>
 				<tr>
 					<th>주소:</th>
-					<td>서울특별시 영등포구 영등포로62길 10-1</td>
+					<td><c:out value="${item.stifAddress1}"/><c:out value="${item.stifAddress2}"/></td>
 				</tr>
 				<tr>
 					<th>전화번호:</th>
-					<td>010-5395-1151</td>
+					<td>
+						<c:set var="numberPhone" value="${item.stphNumber}"/>
+			               	<c:choose>
+			               		<c:when test="${fn:length(numberPhone) eq 10 }">
+									<c:out value="${fn:substring(numberPhone,0,3)}"/>
+									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
+									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
+			               		</c:when>
+			               		<c:otherwise>
+									<c:out value="${fn:substring(numberPhone,0,3)}"/>
+									- <c:out value="${fn:substring(numberPhone,3,7)}"/>
+									- <c:out value="${fn:substring(numberPhone,7,11)}"/>
+			               		</c:otherwise>
+			              	</c:choose>
+					</td>
 				</tr>
 				<tr>
 					<th>음식 종류:</th>
