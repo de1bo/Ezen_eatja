@@ -223,6 +223,7 @@
 								<label class="btn btn-outline-primary" for="option8">거부</label>
 							</td>
 						</tr>
+						
 						<tr>
 							<th>이메일 마케팅 수신 동의</th>
 							<td colspan="3" align="center">
