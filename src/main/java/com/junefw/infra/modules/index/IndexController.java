@@ -38,6 +38,7 @@ public class IndexController {
 		int count = service.locationCount(vo);
 		vo.setParamsPaging(count);
 		
+		
 		List<Index> list2 = service.selectStore(vo);
 		
 		  if(count != 0) {

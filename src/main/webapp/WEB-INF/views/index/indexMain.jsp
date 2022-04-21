@@ -87,6 +87,7 @@
 <!-- container 부분 -->
 <div class="album py-5 bg-light">
 <form id="formList" name="formList" method="post" action="/infra/index/indexMain">
+  <input type="hidden" id="stifSeq" name="stifSeq" > 
     <div class="container">
     <h1 id="jal" style="padding-top: 50px; text-align:center;" >먹거리 지도</h1>
 <div class="p-4 p-md-5 mb-4" id="map">
@@ -375,10 +376,10 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 	$("#btnSubmit").on("click", function(){	
 	});
 		
-		goForm = function(seq1){
-			alert(seq1);
+		goForm = function(seq){
+			alert(seq);
 			
-			$("#stifSeq").val(seq1);
+			$("#stifSeq").val(seq);
 			$("#formList").attr("action","/infra/store/store_Info");
 			$("#formList").submit();
 			
