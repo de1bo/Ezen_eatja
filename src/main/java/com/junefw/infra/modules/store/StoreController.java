@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -32,7 +33,7 @@ public class StoreController {
 		return "/store/store_registration";
 	}
 	@RequestMapping(value = "/store/store_Info")
-	public String store_Info(@ModelAttribute("vo") StoreVo vo) throws Exception {
+	public String store_Info(@ModelAttribute("vo") StoreVo vo, Model model) throws Exception {
 		System.out.println("vo.getStifSeq"+vo.getStifSeq());
 		
 		// 수동 increment start
@@ -40,6 +41,7 @@ public class StoreController {
 		vo.setParamsPaging(count);
 		
 		Store item= service.selectOne(vo);
+		model.addAttribute("item", item);
 		
 		// 수동 increment end
 		

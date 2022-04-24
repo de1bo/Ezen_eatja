@@ -206,8 +206,6 @@ function initMap() {
 		            lng: position.coords.longitude,
 		          };
 		          
-		          
-		        
 		          infoWindow.setPosition(pos);
 		          infoWindow.setContent("현재위치");
 		          infoWindow.open(map);
