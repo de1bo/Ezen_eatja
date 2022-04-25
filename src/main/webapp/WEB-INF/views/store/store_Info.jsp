@@ -236,8 +236,13 @@ image {
 					</td>
 				</tr>
 				<tr>
+				<c:set var="listCodeFood" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- gender -->
 					<th>음식 종류:</th>
-					<td>정통 중식 / 일반 중식</td>
+					<td>
+						<c:forEach items="${listCodeFood}" var="itemFood" varStatus="statusFood">
+				  			<c:if test="${item.stifFoodTypeCd eq itemFood.ifcdSeq}"><c:out value="${itemFood.ifcdName}"/></c:if>
+				  		</c:forEach>
+					</td>
 				</tr>
 				<tr>
 					<th>영업시간:</th>

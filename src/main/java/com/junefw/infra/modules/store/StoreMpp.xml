@@ -139,12 +139,21 @@
 			,a.stifAddress2
 			,a.stifOC
 			,a.stifFoodTypeCd
-			<!-- ,b.stphNumber -->
+			,b.stphNumber
 		FROM
 			StoreInfo a
-			<!-- left join eatja.StoreTel as b on b.StoreInfo_stifSeq = a.stifSeq and b.stphDelNy = 0 -->
+			left join eatja.StoreTel as b on b.StoreInfo_stifSeq = a.stifSeq and b.stphDelNy = 0
 		WHERE 1=1
 			AND stifDelNy = 0
 			AND stifSeq = #{stifSeq}
+	</select>
+	<select id="selectForCacheCode" resultMap="resultMapObj">
+		SELECT
+			ifcdSeq
+			, ifcdName
+		FROM
+			infrCode
+		WHERE 1=1
+			AND ifcdDelNy = 0
 	</select>
 </mapper>
