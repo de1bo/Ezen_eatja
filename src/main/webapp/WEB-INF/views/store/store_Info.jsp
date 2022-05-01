@@ -5,6 +5,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
+	<jsp:useBean id="CodeServiceImpl" class="com.junefw.infra.modules.code.CodeServiceImpl"/><!-- FoodCode -->
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -236,12 +238,12 @@ image {
 					</td>
 				</tr>
 				<tr>
-				<c:set var="listCodeFood" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- gender -->
 					<th>음식 종류:</th>
+					<c:set var="CodeFood" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- FoodCode -->
 					<td>
-						<c:forEach items="${listCodeFood}" var="itemFood" varStatus="statusFood">
-				  			<c:if test="${item.stifFoodTypeCd eq itemFood.ifcdSeq}"><c:out value="${itemFood.ifcdName}"/></c:if>
-				  		</c:forEach>
+					<c:forEach items="${CodeFood}" var="itemFoode" varStatus="statusFood">
+				  		<c:if test="${item.stifFoodTypeCd eq itemFoode.ifcdSeq}"><c:out value="${itemFoode.ifcdName}"/></c:if>
+				  	</c:forEach>
 					</td>
 				</tr>
 				<tr>
