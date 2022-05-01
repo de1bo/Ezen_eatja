@@ -9,10 +9,15 @@
 	<!-- <property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
 	<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy" />
 		<!-- <property name="url" value="jdbc:mysql://localhost:3306/eatja" /> -->
-		<property name="url" value="jdbc:log4jdbc:mysql://eatja.c3yqjopd0oxz.us-east-1.rds.amazonaws.com:33061/eatja" />
+		
+		<property name="url" value="jdbc:log4jdbc:mysql://localhost:3306/eatja" />
+		<property name="username" value="root" />
+		<property name="password" value="288016" />
+	</bean>
+		<!-- <property name="url" value="jdbc:log4jdbc:mysql://eatja.c3yqjopd0oxz.us-east-1.rds.amazonaws.com:33061/eatja" />	amazon
 		<property name="username" value="debo" />
 		<property name="password" value="kdh98045161" />
-	</bean>
+	</bean> -->
 	    
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
