@@ -21,8 +21,8 @@ public class StoreVo {
 		private String shOption;
 		
 // location
-		private String stlcIng;
-		private String stlcIat;
+		private String stlcLng;
+		private String stlcLat;
 
 		private String shValue;
 		
@@ -284,24 +284,23 @@ public class StoreVo {
 			this.regDateTime = regDateTime;
 		}
 
-
-		public String getStlcIng() {
-			return stlcIng;
+		public String getStlcLng() {
+			return stlcLng;
 		}
 
 
-		public void setStlcIng(String stlcIng) {
-			this.stlcIng = stlcIng;
+		public void setStlcLng(String stlcLng) {
+			this.stlcLng = stlcLng;
 		}
 
 
-		public String getStlcIat() {
-			return stlcIat;
+		public String getStlcLat() {
+			return stlcLat;
 		}
 
 
-		public void setStlcIat(String stlcIat) {
-			this.stlcIat = stlcIat;
+		public void setStlcLat(String stlcLat) {
+			this.stlcLat = stlcLat;
 		}
 
 

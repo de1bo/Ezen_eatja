@@ -190,8 +190,8 @@
 
 							</div>
 							 <div id="locationField">
-								<input class="field form-control" id="stlcIat" name="stlcIat" readonly/>
-								<input class="field form-control" id="stlcIng" name="stlcIng" readonly/>
+								<input class="field form-control" id="stlcIat" name="stlcLat" readonly/>
+								<input class="field form-control" id="stlcIng" name="stlcLng" readonly/>
 							</div>
                                      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
                                 <h3 class="register-heading jal">메뉴 등록</h3>
@@ -432,8 +432,8 @@ delLi = function(seq, index){
                   });
                   
                   // 위도 경도값 값 출력
-                  document.getElementById("stlcIat").value=x;
-                  document.getElementById("stlcIng").value=y;
+                  document.getElementById("stlcLat").value=x;
+                  document.getElementById("stlcLng").value=y;
                  }
                 });
              // 자동 GeoCoder 성공 

@@ -17,8 +17,8 @@
 			SELECT 
 				stlcSeq
 				,stlcName
-				,stlcIat
-				,stlcIng
+				,stlcLat
+				,stlcLng
 			FROM 
 				StoreLocation
 			WHERE 1=1

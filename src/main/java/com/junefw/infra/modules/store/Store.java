@@ -70,8 +70,8 @@ private String tableName;
 	private String stlcSeq;
 	private String stlcDelNy;
 	private String stlcName;
-	private String stlcIat;
-	private String stlcIng;
+	private String stlcLat;
+	private String stlcLng;
 	/* private String StoreInfo_stifSeq; */
 	
 	// storeMenu
@@ -211,17 +211,18 @@ private String tableName;
 	public void setStlcName(String stlcName) {
 		this.stlcName = stlcName;
 	}
-	public String getStlcIat() {
-		return stlcIat;
+
+	public String getStlcLat() {
+		return stlcLat;
 	}
-	public void setStlcIat(String stlcIat) {
-		this.stlcIat = stlcIat;
+	public void setStlcLat(String stlcLat) {
+		this.stlcLat = stlcLat;
 	}
-	public String getStlcIng() {
-		return stlcIng;
+	public String getStlcLng() {
+		return stlcLng;
 	}
-	public void setStlcIng(String stlcIng) {
-		this.stlcIng = stlcIng;
+	public void setStlcLng(String stlcLng) {
+		this.stlcLng = stlcLng;
 	}
 	public String getStmnName() {
 		return stmnName;

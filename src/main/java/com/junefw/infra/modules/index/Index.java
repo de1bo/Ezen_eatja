@@ -19,8 +19,8 @@ public class Index {
 	private String stlcSeq;
 	private String stlcDelNy;
 	private String stlcName;
-	private double stlcIat;
-	private double stlcIng;
+	private double stlcLat;
+	private double stlcLng;
 	/* private String StoreInfo_stifSeq; */
 	
 	// storeMenu
@@ -169,17 +169,19 @@ public class Index {
 	public void setStmnSeq(String stmnSeq) {
 		this.stmnSeq = stmnSeq;
 	}
-	public double getStlcIat() {
-		return stlcIat;
+	
+
+	public double getStlcLat() {
+		return stlcLat;
 	}
-	public void setStlcIat(double stlcIat) {
-		this.stlcIat = stlcIat;
+	public void setStlcLat(double stlcLat) {
+		this.stlcLat = stlcLat;
 	}
-	public double getStlcIng() {
-		return stlcIng;
+	public double getStlcLng() {
+		return stlcLng;
 	}
-	public void setStlcIng(double stlcIng) {
-		this.stlcIng = stlcIng;
+	public void setStlcLng(double stlcLng) {
+		this.stlcLng = stlcLng;
 	}
 	public String getSeq() {
 		return Seq;

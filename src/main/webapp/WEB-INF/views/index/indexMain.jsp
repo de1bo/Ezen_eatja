@@ -171,17 +171,17 @@ function initMap() {
 		// store 위치 마커
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
-	var Iat = ${item.stlcIat};
-	var lng = ${item.stlcIng};
+	var lat = ${item.stlcLat};
+	var lng = ${item.stlcLng};
 	var end = ${vo.totalRows};
 	
 	 for (var i = 0; i < end; i++) {
-		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,Iat,lng);
+		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
 		 if(d < 500){
         var marker = new google.maps.Marker({
             map: map,
             label: name,
-            position: new google.maps.LatLng(Iat,lng),
+            position: new google.maps.LatLng(lat,lng),
         });
 		 }
 	 }
@@ -285,17 +285,17 @@ function initMap() {
 		// store 위치 마커
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
-	var Iat = ${item.stlcIat};
-	var lng = ${item.stlcIng};
+	var Lat = ${item.stlcLat};
+	var Lng = ${item.stlcLng};
 	var end = ${vo.totalRows};
 	
 	 for (var i = 0; i < end; i++) {
-		 var l1 = new google.maps.LatLng(Iat,lng),	// db안에 있는 위도 경도를 가져옴
+		 var l1 = new google.maps.LatLng(Lat,Lng),	// db안에 있는 위도 경도를 가져옴
 		 if(lb.contain(l1) == true){		// 1b안에 l1이 포함되는게 true면 마커 실행
         var marker = new google.maps.Marker({
             map: map,
             label: name,
-            position: new google.maps.LatLng(Iat,lng),
+            position: new google.maps.LatLng(Lat,Lng),
         });
 		 }
 	 }

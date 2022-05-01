@@ -109,6 +109,4 @@ public class StoreServiceImpl implements StoreService{
 		return dao.insertUploaded(dto);
 	}
 	
-	
-	
 }

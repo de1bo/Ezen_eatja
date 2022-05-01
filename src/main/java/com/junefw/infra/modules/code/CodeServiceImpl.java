@@ -8,8 +8,6 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.junefw.infra.modules.member.Member;
-
 @Service
 public class CodeServiceImpl implements CodeService{
 
