@@ -248,11 +248,11 @@ image {
 				</tr>
 				<tr>
 					<th>영업시간:</th>
-					<td>정통 중식 / 일반 중식</td>
+					<td><c:out value="${item.stifOC}"/></td>
 				</tr>
 				<tr>
-					<th>휴일:</th>
-					<td>정통 중식 / 일반 중식</td>
+					<th>매장 소개</th>
+					<td><c:out value="${item.stifDesc}"/></td>
 				</tr>
 				<tr>
 					<th>메뉴:</th>
@@ -407,24 +407,29 @@ image {
  <script>
  let map;
 
- function initMap() {
 
+	
+ function initMap() {
+	 
+	 var name = '${item.stlcName}';
+		var lat = ${item.stlcLat};
+		var lng = ${item.stlcLng};
+	 
      const map = new google.maps.Map(document.getElementById("map"), {
          zoom: 14,
-         center: { lat: 37.5407622, lng: 127.0706095 },
+         center: { lat: lat, lng: lng },
      });
+     
+		
+		
+     console.log('lat', + lat);
 
-     for (var i = 0; i < locations.length; i++) {
          var marker = new google.maps.Marker({
              map: map,
-             label: locations[i].place,
-             position: new google.maps.LatLng(locations[i].lat, locations[i].lng),
+             label: name,
+             position: new google.maps.LatLng(lat,lng)
          });
-     }
  }
- const locations = [
-     { place:"릴하우스", lat: 37.539922, lng: 127.070609 },
- ];
 </script>
 <!-- 여기서부터 별점부분 -->
 <script>
