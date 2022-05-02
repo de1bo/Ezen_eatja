@@ -419,10 +419,6 @@ image {
          zoom: 14,
          center: { lat: lat, lng: lng },
      });
-     
-		
-		
-     console.log('lat', + lat);
 
          var marker = new google.maps.Marker({
              map: map,
