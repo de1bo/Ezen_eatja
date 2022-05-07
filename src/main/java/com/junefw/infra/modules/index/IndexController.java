@@ -58,13 +58,17 @@ public class IndexController {
 	
 	@ResponseBody //include로 테이블 따로 생성해서 넣고 지도는 ajax필요없고 게시판은 ajax로 동적생성해야한다 이때 데이터를 db값을 가져올건지 html을 전체 따올건지가 문제인데 html전체 따오는게 쉽다.
 	@RequestMapping(value = "/index/MapFormList")
-	public Map<String, Object> MapFormList(@RequestParam("ifmmName")String name, Member dto, HttpSession httpSession) throws Exception {
+	public Map<String, Object> MapFormList(Index dto, HttpSession httpSession, IndexVo vo, Model model) throws Exception {
 		Map<String, Object> returnMap = new HashMap<String, Object>();
 		
-		System.out.println(name);
-		httpSession.setAttribute("sessName", name);
-		httpSession.setAttribute("sessId","페이스북 회원입니다");
-		httpSession.setAttribute("sessSeq","페이스북 회원입니다");
+		System.out.println("dto.stifSeq()::::::::::::::: " + dto.getStifSeq());
+		
+		dto.setStifSeq(dto.getStifSeq());
+		
+		List<Index> selectList = service.selectList(vo);
+		model.addAttribute("selectList", selectList);
+		
+		httpSession.setAttribute("StifSeq", vo.getStifSeq());
 		
 		returnMap.put("item", "success");
 		

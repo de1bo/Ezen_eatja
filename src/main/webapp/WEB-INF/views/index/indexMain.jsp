@@ -88,6 +88,9 @@
 <div class="album py-5 bg-light">
 <form id="formList" name="formList" method="post" action="/infra/index/indexMain">
   <input type="hidden" id="stifSeq" name="stifSeq" > 
+  <input type="hidden" id="StoreInfo_stifSeq" name="StoreInfo_stifSeq" > 
+  <input type="hidden" id="stifName" name="stifName" > 
+  <input type="hidden" id="stifDesc" name="stifDesc" > 
     <div class="container">
     <h1 id="jal" style="padding-top: 50px; text-align:center;" >먹거리 지도</h1>
 <div class="p-4 p-md-5 mb-4" id="map">
@@ -98,7 +101,7 @@
   </div>
   <h2 id="jal" style="padding-top: 50px; text-align:center;">주변 먹거리</h2>
   <hr>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <%-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <c:forEach items="${listImg}" var="item" varStatus="status">
         <div class="col">
           <div class="card shadow-sm">
@@ -116,7 +119,8 @@
           </div>
         </div>
         </c:forEach>
-        </div>
+        </div> --%>
+        
       </div>
     </form>
     </div>
@@ -134,6 +138,7 @@
 <script
    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffnYjApY7cl96nlyHHwrDzzdn3VWBxKk&callback=initMap&v=weekly" async>
  </script>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 let map, infoWindow;
 
@@ -167,26 +172,52 @@ function initMap() {
 		circle.bindTo('center', marker, 'position');
 		
 		
-		
+	var arr = [] 
 		// store 위치 마커
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
 	var lat = ${item.stlcLat};
 	var lng = ${item.stlcLng};
 	var end = ${vo.totalRows};
-	
-	 for (var i = 0; i < end; i++) {
-		 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
-		 if(d < 500){
-        var marker = new google.maps.Marker({
-            map: map,
-            label: name,
-            position: new google.maps.LatLng(lat,lng),
-        });
-		 }
-	 }
-</c:forEach> 
+	var i = ${status.index};
+	 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
+	 if(d < 500){
+		 
+		 arr[i] = i
+		  $.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/infra/index/MapFormList"
+				,dataType:"JSON" 
+				,data : {"stifSeq" : ${status.index}}	//보내는 데이터
+				,success: function(data){ 
+					alert(${status.index});
+					/* $('#StoreInfo_stifSeq').empty();	// 기재된 내용 삭제 */
+					$('#stifSeq').empty();	// 기재된 내용 삭제
+					$('#stifName').empty();	// 기재된 내용 삭제
+					$('#stifDesc').empty();	// 기재된 내용 삭제
+					console.log("::::::stifSeq:::::::::::"+ ${status.index});
+					/* console.log("::::::stifSeqcount:::::::::::"+ j);
+					for(var i = 0; i < 4; i++){
 
+					}  */
+				} ,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+				
+			}); 
+		 
+	      var marker = new google.maps.Marker({
+	          map: map,
+	          label: name,
+	          position: new google.maps.LatLng(lat,lng),
+	      });
+	 }
+
+		
+	</c:forEach> 	
+			
 	// 현재 위치를 찾는 버튼 start
 	infoWindow = new google.maps.InfoWindow();
 	  

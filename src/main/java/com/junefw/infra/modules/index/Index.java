@@ -21,6 +21,7 @@ public class Index {
 	private String stlcName;
 	private double stlcLat;
 	private double stlcLng;
+	private String StoreInfo_stifSeq;
 	/* private String StoreInfo_stifSeq; */
 	
 	// storeMenu
@@ -260,6 +261,12 @@ public class Index {
 	}
 	public void setDay(String day) {
 		this.day = day;
+	}
+	public String getStoreInfo_stifSeq() {
+		return StoreInfo_stifSeq;
+	}
+	public void setStoreInfo_stifSeq(String storeInfo_stifSeq) {
+		StoreInfo_stifSeq = storeInfo_stifSeq;
 	}
 	
 	
