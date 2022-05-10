@@ -94,7 +94,7 @@ public class MemberController {
 
 	/*---------------------------------*/
 	@RequestMapping(value = "/member/memberView")
-	public String MemberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception{
+	public String MemberView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 		System.out.println("vo.getSeq"+vo.getSeq());
 		
 

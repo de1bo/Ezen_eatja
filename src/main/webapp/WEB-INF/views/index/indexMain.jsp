@@ -101,6 +101,7 @@
   </div>
   <h2 id="jal" style="padding-top: 50px; text-align:center;">주변 먹거리</h2>
   <hr>
+  <ul id="storeList"></ul>
       <%-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <c:forEach items="${listImg}" var="item" varStatus="status">
         <div class="col">
@@ -172,18 +173,20 @@ function initMap() {
 		circle.bindTo('center', marker, 'position');
 		
 		
-	var arr = [] 
+	var arr = []
+	var i = 0;
 		// store 위치 마커
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
 	var lat = ${item.stlcLat};
 	var lng = ${item.stlcLng};
 	var end = ${vo.totalRows};
-	var i = ${status.index};
+	
 	 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
 	 if(d < 500){
 		 
-		 arr[i] = i
+		 arr[i] = ${status.index}
+		 i++
 		  $.ajax({
 				async: true 
 				,cache: false
@@ -194,14 +197,21 @@ function initMap() {
 				,success: function(data){ 
 					alert(${status.index});
 					/* $('#StoreInfo_stifSeq').empty();	// 기재된 내용 삭제 */
+					$('#storeList').empty();
 					$('#stifSeq').empty();	// 기재된 내용 삭제
 					$('#stifName').empty();	// 기재된 내용 삭제
 					$('#stifDesc').empty();	// 기재된 내용 삭제
-					console.log("::::::stifSeq:::::::::::"+ ${status.index});
+					console.log("::::::stifSeq:::::::::::"+ arr[i]);
+					console.log("::::::s545:::::::::::"+ i); 
 					/* console.log("::::::stifSeqcount:::::::::::"+ j);
 					for(var i = 0; i < 4; i++){
 
 					}  */
+ 					for(var j = 0; j < i; j++){		// theater의 길이만큼 극장 목록 ui로 추가
+						$('#storeList').append('<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href="javascript:goForm(arr[i])"">View</button>');
+					}	// memSeq=1, mvsTheaterCd=91
+					
+					
 				} ,error : function(jqXHR, textStatus, errorThrown){
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 				}

@@ -45,7 +45,7 @@
             <a class="nav-link active" aria-current="page" href="#"><h5>고객 관리</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><h5>메인메뉴</h5></a>
+            <a class="nav-link" href="/infra/index/indexMain"><h5>메인메뉴</h5></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
