@@ -197,19 +197,13 @@ function initMap() {
 				,success: function(data){ 
 					alert(${status.index});
 					/* $('#StoreInfo_stifSeq').empty();	// 기재된 내용 삭제 */
-					$('#storeList').empty();
+/* 					$('#storeList').empty();
 					$('#stifSeq').empty();	// 기재된 내용 삭제
 					$('#stifName').empty();	// 기재된 내용 삭제
-					$('#stifDesc').empty();	// 기재된 내용 삭제
-					console.log("::::::stifSeq:::::::::::"+ arr[i]);
+					$('#stifDesc').empty();	// 기재된 내용 삭제 */
+					
 					console.log("::::::s545:::::::::::"+ i); 
-					/* console.log("::::::stifSeqcount:::::::::::"+ j);
-					for(var i = 0; i < 4; i++){
-
-					}  */
- 					for(var j = 0; j < i; j++){		// theater의 길이만큼 극장 목록 ui로 추가
-						$('#storeList').append('<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href="javascript:goForm(arr[i])"">View</button>');
-					}	// memSeq=1, mvsTheaterCd=91
+ 					
 					
 					
 				} ,error : function(jqXHR, textStatus, errorThrown){
@@ -224,10 +218,12 @@ function initMap() {
 	          position: new google.maps.LatLng(lat,lng),
 	      });
 	 }
-
-		
+	 
 	</c:forEach> 	
-			
+	for(var j = 0; j < i; j++){		// theater의 길이만큼 극장 목록 ui로 추가
+			console.log("::::::stifSeq:::::::::::"+ arr[j]);
+		$('#storeList').append('<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href="javascript:goForm(i)"">View</button>');
+	}	// memSeq=1, mvsTheaterCd=91
 	// 현재 위치를 찾는 버튼 start
 	infoWindow = new google.maps.InfoWindow();
 	  
