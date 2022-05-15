@@ -101,7 +101,8 @@
   </div>
   <h2 id="jal" style="padding-top: 50px; text-align:center;">주변 먹거리</h2>
   <hr>
-  <ul id="storeList"></ul>
+	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="storeList">
+	</div>
       <%-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       <c:forEach items="${listImg}" var="item" varStatus="status">
         <div class="col">
@@ -178,6 +179,7 @@ function initMap() {
 		// store 위치 마커
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
+	var Seq = ${item.stifSeq};
 	var lat = ${item.stlcLat};
 	var lng = ${item.stlcLng};
 	var end = ${vo.totalRows};
@@ -185,32 +187,30 @@ function initMap() {
 	 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
 	 if(d < 500){
 		 
-		 arr[i] = ${status.index}
-		 i++
-		  $.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				,url: "/infra/index/MapFormList"
-				,dataType:"JSON" 
-				,data : {"stifSeq" : ${status.index}}	//보내는 데이터
-				,success: function(data){ 
-					alert(${status.index});
-					/* $('#StoreInfo_stifSeq').empty();	// 기재된 내용 삭제 */
-/* 					$('#storeList').empty();
-					$('#stifSeq').empty();	// 기재된 내용 삭제
-					$('#stifName').empty();	// 기재된 내용 삭제
-					$('#stifDesc').empty();	// 기재된 내용 삭제 */
-					
-					console.log("::::::s545:::::::::::"+ i); 
- 					
-					
-					
-				} ,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-				}
-				
-			}); 
+/* 		 arr[i] = ${status.index}
+		 i++ */
+		 console.log("::::::stifSeq:::::::::::"+ Seq);
+		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm(<c:out value="${item.stifSeq}"/>)">View</button></div><small class="text-muted">9 mins</small></div></div></div></div>');
+		 
+		 <%-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+	      <c:forEach items="${listImg}" var="item" varStatus="status">
+	        <div class="col">
+	          <div class="card shadow-sm">
+	            	<a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a>
+	            <div class="card-body">
+	              <p class="card-text"><c:out value="${item.stifDesc}"/></p>
+	              <div class="d-flex justify-content-between align-items-center">
+	                <div class="btn-group">
+	                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='javascript:goForm(<c:out value="${item.stifSeq}"/>)'">View</button>
+						<!-- <p id="result"></p> -->
+	                </div>
+	                <small class="text-muted">9 mins</small>
+	              </div>
+	            </div>
+	          </div>
+	        </div>
+	        </c:forEach>
+	        </div> --%>
 		 
 	      var marker = new google.maps.Marker({
 	          map: map,
@@ -220,10 +220,10 @@ function initMap() {
 	 }
 	 
 	</c:forEach> 	
-	for(var j = 0; j < i; j++){		// theater의 길이만큼 극장 목록 ui로 추가
+/* 	for(var j = 0; j < i; j++){		// theater의 길이만큼 극장 목록 ui로 추가
 			console.log("::::::stifSeq:::::::::::"+ arr[j]);
-		$('#storeList').append('<button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href="javascript:goForm(i)"">View</button>');
-	}	// memSeq=1, mvsTheaterCd=91
+		$('#storeList').append('<input type="text" id="hiddenSeq" name="storeSeq" placeholder="${status.index}"/>');
+	}	// memSeq=1, mvsTheaterCd=91 */
 	// 현재 위치를 찾는 버튼 start
 	infoWindow = new google.maps.InfoWindow();
 	  
@@ -406,6 +406,39 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 	return d;
 	}
 	
+</script> -->
+
+<!-- <script type="text/javascript">
+getListTheater = function(seq) {
+
+	$.ajax({
+		async: true 
+		,cache: false
+		,type: "post"
+		,url: "/infra/index/MapFormList"
+		,dataType:"JSON" 
+		,data : {"stifSeq" : seq}	//보내는 데이터
+		,success: function(data){ 
+			alert(${status.index});
+			/* $('#StoreInfo_stifSeq').empty();	// 기재된 내용 삭제 */
+	/* 					$('#storeList').empty();
+			$('#stifSeq').empty();	// 기재된 내용 삭제
+			$('#stifName').empty();	// 기재된 내용 삭제
+			$('#stifDesc').empty();	// 기재된 내용 삭제 */
+			$('#hiddenSeq').val("");
+			console.log("::::::s545:::::::::::"+ hiddenSeq); 
+				
+			for(var i = 0; i < data['theaterList'].length; i++){		// theater의 길이만큼 극장 목록 ui로 추가
+				$('#hiddenSeq').append('<li><button type="button" id="thCd" onclick="goForm('+data['storeList'][i]['stifSeq']')" class="btn" style="padding-left: 0;"></button></li>');
+			}	// memSeq=1, mvsTheaterCd=91
+			
+			
+		} ,error : function(jqXHR, textStatus, errorThrown){
+		alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+		}
+		
+	}); 
+}
 </script> -->
 <script type="text/javascript">
 	$("#btnSubmit").on("click", function(){	
