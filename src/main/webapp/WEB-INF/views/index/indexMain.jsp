@@ -91,6 +91,10 @@
   <input type="hidden" id="StoreInfo_stifSeq" name="StoreInfo_stifSeq" > 
   <input type="hidden" id="stifName" name="stifName" > 
   <input type="hidden" id="stifDesc" name="stifDesc" > 
+  <input type="hidden" id="year" name="year" > 
+  <input type="hidden" id="month" name="month" > 
+  <input type="hidden" id="day" name="day" > 
+  <input type="hidden" id="uuidName" name="uuidName" > 
     <div class="container">
     <h1 id="jal" style="padding-top: 50px; text-align:center;" >먹거리 지도</h1>
 <div class="p-4 p-md-5 mb-4" id="map">

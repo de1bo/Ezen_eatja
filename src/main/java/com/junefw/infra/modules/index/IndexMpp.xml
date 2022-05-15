@@ -23,9 +23,16 @@
 				,b.stlcLng
 				,b.stlcDelNy
 				,b.StoreInfo_stifSeq
+				,c.year
+				,c.month
+				,c.day
+				,c.uuidName
+				,c.type
+				,c.sort
 			FROM 
 				StoreInfo a
 				left join eatja.StoreLocation as b on b.StoreInfo_stifSeq = a.stifSeq and b.stlcDelNy = 0
+				left join eatja.infrMemberUploaded as c on c.pseq = a.stifSeq and c.delNy = 0 and c.sort = 0 and c.type = 0
 			WHERE 1=1
 				 AND stlcDelNy = 0
 	</select>
@@ -46,7 +53,6 @@
 				left join eatja.infrMemberUploaded as b on b.pseq = a.stifSeq and b.delNy = 0
 			WHERE 1=1
 				 AND delNy = 0
-				 AND type = 0
 	</select>
 	<select id="selectStore" resultMap="resultMapObj">
 		SELECT
