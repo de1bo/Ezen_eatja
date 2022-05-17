@@ -190,8 +190,8 @@
 
 							</div>
 							 <div id="locationField">
-								<input class="field form-control" id="stlcIat" name="stlcLat" readonly/>
-								<input class="field form-control" id="stlcIng" name="stlcLng" readonly/>
+								<input class="field form-control" id="stlcLat" name="stlcLat" readonly/>
+								<input class="field form-control" id="stlcLng" name="stlcLng" readonly/>
 							</div>
                                      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
                                 <h3 class="register-heading jal">메뉴 등록</h3>
