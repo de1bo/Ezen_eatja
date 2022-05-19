@@ -80,6 +80,11 @@ private String tableName;
 	private String stmnPrice;
 	private String stmnDelNy;
 	
+	//StoreMenu Array
+	private String[] StoreMenuNameArray;
+	private String[] StoreMenuPriceArray;
+	private String StoreMenu;
+	
 	// common
 	private Date regDateTime;
 	private Date modDateTime;
@@ -422,6 +427,26 @@ private String tableName;
 	public void setDay(String day) {
 		this.day = day;
 	}
+	public String getStoreMenu() {
+		return StoreMenu;
+	}
+	public void setStoreMenu(String storeMenu) {
+		StoreMenu = storeMenu;
+	}
+	public String[] getStoreMenuNameArray() {
+		return StoreMenuNameArray;
+	}
+	public void setStoreMenuNameArray(String[] storeMenuNameArray) {
+		StoreMenuNameArray = storeMenuNameArray;
+	}
+	public String[] getStoreMenuPriceArray() {
+		return StoreMenuPriceArray;
+	}
+	public void setStoreMenuPriceArray(String[] storeMenuPriceArray) {
+		StoreMenuPriceArray = storeMenuPriceArray;
+	}
+
+	
 	
 	
 	

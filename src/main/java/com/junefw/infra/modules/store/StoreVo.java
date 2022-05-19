@@ -29,6 +29,10 @@ public class StoreVo {
 		private String modDateTime;
 		private String regDateTime;
 		
+		//StoreMenu Array
+		private String[] StoreMenuArray;
+		private String StoreMenu;
+		
 		
 //		paging
 		private int thisPage = 1;									// 현재 페이지
@@ -311,6 +315,26 @@ public class StoreVo {
 
 		public void setStifSeq(String stifSeq) {
 			this.stifSeq = stifSeq;
+		}
+
+
+		public String[] getStoreMenuArray() {
+			return StoreMenuArray;
+		}
+
+
+		public void setStoreMenuArray(String[] storeMenuArray) {
+			StoreMenuArray = storeMenuArray;
+		}
+
+
+		public String getStoreMenu() {
+			return StoreMenu;
+		}
+
+
+		public void setStoreMenu(String storeMenu) {
+			StoreMenu = storeMenu;
 		}
 
 

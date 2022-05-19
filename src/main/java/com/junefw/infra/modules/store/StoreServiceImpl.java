@@ -35,6 +35,13 @@ public class StoreServiceImpl implements StoreService{
 			dto.setModDateTime(UtilDateTime.nowDate());
 			dao.insert(dto);
 			
+			for(int i = 0; i < dto.getStoreMenuNameArray().length; i++) {
+				dto.setStmnName(dto.getStoreMenuNameArray()[i]);
+				dto.setStmnPrice(dto.getStoreMenuPriceArray()[i]);
+				dao.insertStoreMenu(dto);
+				} 
+			
+			
 			int j = 0;
 			for(MultipartFile multipartFile : dto.getFile0() ) {
 				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");

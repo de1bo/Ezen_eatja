@@ -216,8 +216,8 @@ function insRow() {
  
   /* var seq = oTbl.${vo.totalRows} + 1; */
   //삽입될 Form Tag
-  var frmTag = "<br><div class='input-group row row-cols-2 row-cols-lg-6' name=addText ><h3 class='ft'>메뉴: </h3><input type=text class='form-control col' id='stmnName' name='stmnName'><h3 class='ft'>가격: </h3><input type=text class='form-control col' id='stmnPrice' name='stmnPrice'><div class='col'><input type=button value='삭제' class='form-control btn btn-danger col' onClick='removeRow()' style='cursor:hand'></div></div>";
-  frmTag += "";
+  var frmTag = "<br><div class='input-group row row-cols-2 row-cols-lg-6' name=addText ><h3 class='ft'>메뉴: </h3><input type=text class='form-control col' id='stmnName' name='storeMenuNameArray'><h3 class='ft'>가격: </h3><input type=text class='form-control col' id='stmnPrice' name='storeMenuPriceArray'>";
+  frmTag += "<div class='col'><input type=button value='삭제' class='form-control btn btn-danger col' onClick='removeRow()' style='cursor:hand'></div></div>";
   oCell.innerHTML = frmTag;
 }
 //Row 삭제

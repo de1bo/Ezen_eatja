@@ -54,14 +54,11 @@ public class StoreController {
 		
 
 		// 입력을 작동시킨다.
-		
 		int result = service.insert(dto);
 		service.insertStoreTel(dto);
 		service.insertStoreLocation(dto);
-		int result2 = service.insertStoreMenu(dto);
 		
 		System.out.println("result: " + result);
-		System.out.println("result2: " + result2);
 
 		return "redirect:/index/indexMain";
 	}
