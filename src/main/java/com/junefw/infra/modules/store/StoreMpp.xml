@@ -139,16 +139,29 @@
 			,a.stifAddress2
 			,a.stifOC
 			,a.stifFoodTypeCd
-			,b.stphNumber 
+			,b.stphNumber
 			,c.stlcName
 			,c.stlcLat
-			,c.stlcLng 
+			,c.stlcLng
 		FROM
 			StoreInfo a
 			left join eatja.StoreTel as b on b.StoreInfo_stifSeq = a.stifSeq and b.stphDelNy = 0
-			left join eatja.StoreLocation as c on c.StoreInfo_stifSeq = a.stifSeq and c.stlcDelNy = 0 
+			left join eatja.StoreLocation as c on c.StoreInfo_stifSeq = a.stifSeq and c.stlcDelNy = 0
 		WHERE 1=1
 			AND stifDelNy = 0
 			AND stifSeq = #{stifSeq}
+	</select>
+	
+	<select id="selectStoreMenuList" resultMap="resultMapObj">
+			SELECT 
+				stmnSeq
+				,stmnName
+				,stmnPrice
+				,stmnDelNy
+			FROM
+				StoreMenu
+			WHERE 1=1
+				AND	StoreInfo_stifSeq = #{stifSeq}
+				 
 	</select>
 </mapper>

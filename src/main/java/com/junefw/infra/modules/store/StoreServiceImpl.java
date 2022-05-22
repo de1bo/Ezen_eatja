@@ -102,6 +102,12 @@ public class StoreServiceImpl implements StoreService{
 		return dao.insertStoreMenu(dto);
 	}
 	
+	@Override
+	public List<Store> selectStoreMenuList(StoreVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectStoreMenuList(vo); 
+	}
+	
 	
 	private void setRegMod(Store dto) {
 		// TODO Auto-generated method stub
