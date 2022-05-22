@@ -43,8 +43,13 @@ public class StoreController {
 		Store item= service.selectOne(vo);
 		model.addAttribute("item", item);
 		
+		// storeMenu list
 		List<Store> list = service.selectStoreMenuList(vo);
 		model.addAttribute("list", list);
+		
+		// storeImg list
+		List<Store> list2 = service.selectStoreImgList(vo);
+		model.addAttribute("list2", list2);
 		
 		// 수동 increment end
 		

@@ -164,4 +164,19 @@
 				AND	StoreInfo_stifSeq = #{stifSeq}
 				 
 	</select>
+	<select id="selectStoreImgList" resultMap="resultMapObj">
+			SELECT 
+				year
+				,month
+				,day
+				,uuidName
+				,ext
+			FROM
+				infrMemberUploaded
+			WHERE 1=1
+				AND	pseq = #{stifSeq}
+				AND type = 0
+				 
+	</select>
+	
 </mapper>

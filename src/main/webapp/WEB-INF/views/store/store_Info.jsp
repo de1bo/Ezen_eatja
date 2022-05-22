@@ -152,10 +152,9 @@ image {
   <div class="carousel-inner">
     <div class="carousel-item active">
     	<div class="btn-group" role="group">
+    	<c:forEach items="${list2}" var="item" varStatus="status">
       <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" height="100%" width="100%"/></svg>
-      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="../../images/food/pizza.jpg" height="100%" width="100%"/></svg>
-      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="../../images/food/pizza.jpg" height="100%" width="100%"/></svg>
-      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="../../images/food/pizza.jpg" height="100%" width="100%"/></svg>
+      </c:forEach>
     </div>
     </div>
     <div class="carousel-item">

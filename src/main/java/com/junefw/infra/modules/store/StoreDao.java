@@ -25,7 +25,8 @@ public class StoreDao {
 	public int insertStoreLocation(Store dto) {return sqlSession.insert( namespace + ".insertStoreLocation", dto);}
 	public int insertStoreMenu(Store dto) {return sqlSession.insert( namespace + ".insertStoreMenu", dto);}
 	
-	public List<Store> selectStoreMenuList(StoreVo vo) {List<Store> list = sqlSession.selectList(namespace + ".selectStoreMenuList", vo); return list; } 
+	public List<Store> selectStoreMenuList(StoreVo vo) {List<Store> list = sqlSession.selectList(namespace + ".selectStoreMenuList", vo); return list; }	//menu List 
+	public List<Store> selectStoreImgList(StoreVo vo) {List<Store> list2 = sqlSession.selectList(namespace + ".selectStoreImgList", vo); return list2; } 		//Img List
 
 	
 	public int insertUploaded(Store dto) {return sqlSession.insert( namespace + ".insertUploaded", dto);}
