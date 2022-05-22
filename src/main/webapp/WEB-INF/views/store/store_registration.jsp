@@ -13,9 +13,9 @@
 	<title>매장등록</title>
 	<link href="/infra/resources/css/store/style.css" rel="stylesheet">
 	<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-	            <script src = "/infra/resources/js/common.js"></script><!-- image -->
-			<script src = "/infra/resources/js/commonXdmin.js"></script><!-- image -->
-			<script src = "/infra/resources/js/constantsXdmin.js"></script><!-- image -->
+	<script src = "/infra/resources/js/common.js"></script><!-- image -->
+	<script src = "/infra/resources/js/commonXdmin.js"></script><!-- image -->
+	<script src = "/infra/resources/js/constantsXdmin.js"></script><!-- image -->
 <style>
 @font-face {
 		src: url("/infra/resources/fonts/pafreca.ttf");
@@ -34,40 +34,7 @@
 </style>
 </head>
 <body>
-<header>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark flex-column">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <div class="navbar-toggler-icon"></div>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-      <form class="navbar-nav me-auto mb-2 mb-md-0">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active"  href="#"><h5>메인메뉴</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>리뷰</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>고객센터</h5></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</header>
+<%@ include file="../common/headerInclude.jsp" %>
 <div class="bgImg">
 <form method="post" action="/infra/store/storeInst" enctype="multipart/form-data">
 <h1 class="display-1 jal">매장 등록</h1>
@@ -112,7 +79,7 @@
 													<ul id="ulFile0" class="list-group">
 													</ul>
 												</div>
-								</div>
+											</div>
 								
 	                                </div>
                                 </div>
@@ -125,7 +92,7 @@
 													<ul id="ulFile1" class="list-group">
 													</ul>
 												</div>
-								</div>
+											</div>
 	                                </div>
                                 </div>
                                     <div class="col-md-6">

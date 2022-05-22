@@ -46,44 +46,7 @@
     </style>
 </head>
 <body>
-<header>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-      <form class="navbar-nav me-auto mb-2 mb-md-0">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active"  href="#"><h5>메인메뉴</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
-          </li>
-           <li class="nav-item">
-            <a class="nav-link" href="/infra/store/store_registration"><h5>매장 등록</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>리뷰</h5></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#"><h5>고객센터</h5></a>
-          </li>
-        </ul>
-        
-      </div>
-    </div>
-  </nav>
-</header>
+<%@ include file="../common/headerInclude.jsp" %>
 <!-- container 부분 -->
 <div class="album py-5 bg-light">
 <form id="formList" name="formList" method="post" action="/infra/index/indexMain">
@@ -107,26 +70,6 @@
   <hr>
 	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="storeList">
 	</div>
-      <%-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <c:forEach items="${listImg}" var="item" varStatus="status">
-        <div class="col">
-          <div class="card shadow-sm">
-            	<a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a>
-            <div class="card-body">
-              <p class="card-text">식당 소개</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='javascript:goForm(<c:out value="${item.stifSeq}"/>)'">View</button>
-					<!-- <p id="result"></p> -->
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        </c:forEach>
-        </div> --%>
-        
       </div>
     </form>
     </div>
@@ -155,7 +98,6 @@ function initMap() {
 	          const pos = {
 	            lat: position.coords.latitude,
 	            lng: position.coords.longitude,
-	            
 	          };
 	          
 	const map = new google.maps.Map(document.getElementById("map"), {
@@ -196,26 +138,6 @@ function initMap() {
 		 console.log("::::::stifSeq:::::::::::"+ Seq);
 		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm(<c:out value="${item.stifSeq}"/>)">View</button></div><small class="text-muted">9 mins</small></div></div></div></div>');
 		 
-		 <%-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-	      <c:forEach items="${listImg}" var="item" varStatus="status">
-	        <div class="col">
-	          <div class="card shadow-sm">
-	            	<a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a>
-	            <div class="card-body">
-	              <p class="card-text"><c:out value="${item.stifDesc}"/></p>
-	              <div class="d-flex justify-content-between align-items-center">
-	                <div class="btn-group">
-	                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='javascript:goForm(<c:out value="${item.stifSeq}"/>)'">View</button>
-						<!-- <p id="result"></p> -->
-	                </div>
-	                <small class="text-muted">9 mins</small>
-	              </div>
-	            </div>
-	          </div>
-	        </div>
-	        </c:forEach>
-	        </div> --%>
-		 
 	      var marker = new google.maps.Marker({
 	          map: map,
 	          label: name,
@@ -224,10 +146,6 @@ function initMap() {
 	 }
 	 
 	</c:forEach> 	
-/* 	for(var j = 0; j < i; j++){		// theater의 길이만큼 극장 목록 ui로 추가
-			console.log("::::::stifSeq:::::::::::"+ arr[j]);
-		$('#storeList').append('<input type="text" id="hiddenSeq" name="storeSeq" placeholder="${status.index}"/>');
-	}	// memSeq=1, mvsTheaterCd=91 */
 	// 현재 위치를 찾는 버튼 start
 	infoWindow = new google.maps.InfoWindow();
 	  
