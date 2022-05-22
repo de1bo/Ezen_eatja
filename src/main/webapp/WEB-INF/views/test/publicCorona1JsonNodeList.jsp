@@ -8,22 +8,24 @@
 <body>
 publicCorona1JsonNodeList
 
-<br>aaa : <c:out value="${resultCode }"/>
-<br>aaa : <c:out value="${header.resultCode }"/>
-<br>aaa : <c:out value="${node.resultMsg }"/>
-<br>aaa : <c:out value="${node.header.resultMsg }"/>
-<br>aaa : <c:out value="${pageNo }"/>
-<br>aaa : <c:out value="${totalCount }"/>
-<br>aaa : <c:out value="${numOfRows }"/>
-<br>aaa : <c:out value="${items }"/>
-<br>aaa : <c:out value="${fn:length(items) }"/>
+<br>node : <c:out value="${node }"/>
+<br>node.header : <c:out value="${node.get('header') }"/>
+<br>node.header.resultCode : <c:out value="${node.get('header').get('resultCode') }"/>
+<br>node.header.resultCode : <c:out value="${fn:replace(node.get('header').get('resultCode'),'&quot;','') }"/>
+<br>ResultCode : <c:out value="${ResultCode }"/>
+<br>node.header.resultMsg : <c:out value="${fn:replace(node.get('header').get('resultMsg'),'&quot;','') }"/>
 
-<c:forEach items="${items}" var="item" varStatus="status">
+
+<br>node.body.pageNo : <c:out value="${fn:replace(node.get('body').get('pageNo'),'&quto;','') }"/>
+<br>node.body.items : <c:out value="${node.get('body').get('items') }"/>
+<br>node.body.items : <c:out value="${node.get('body').get('items').get('1').get('MM') }"/>
+
+<%-- <c:forEach items="${items}" var="item" varStatus="status">
 	<c:out value="${item.YYYY }"/>
 	<br><c:out value="${item.MM}"/>
 	<br><c:out value="${item.KIT_PROD_QTY}"/>
 	<br><c:out value="${item.KIT_EXPRT_QTY}"/>
 	<br><c:out value="${item.KIT_STOCK_QTY}"/>
-</c:forEach>
+</c:forEach> --%>
 </body>
 </html>
