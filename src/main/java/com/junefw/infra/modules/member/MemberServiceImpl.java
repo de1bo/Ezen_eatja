@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.junefw.infra.common.util.UtilDateTime;
+import com.junefw.infra.common.util.UtilMail;
 
 @Service
 public class MemberServiceImpl implements MemberService{
@@ -36,7 +37,7 @@ public class MemberServiceImpl implements MemberService{
 			
 			
 			setRegMod(dto);
-			
+			UtilMail.sendMail();
 		} finally{
 			
 		}

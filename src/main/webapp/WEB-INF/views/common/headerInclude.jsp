@@ -20,9 +20,6 @@
             <a class="nav-link" href="/infra/index/indexMain"><h5>메인메뉴</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
           </li>
           <li class="nav-item">

@@ -39,7 +39,7 @@ checkUploadedEachFileSize = function(obj, seq){
 
 checkUploadedTotalFileSize = function(totalSize, seq){
 	if(totalSize > MAX_TOTAL_FILE_SIZE){
-		alert("전체 용랴ㅑㅇ은 120M를 넘을 수 없습니다.");
+		alert("전체 용량은 120M를 넘을 수 없습니다.");
 		$("#file"+seq).val("");
 		return false;
 	}

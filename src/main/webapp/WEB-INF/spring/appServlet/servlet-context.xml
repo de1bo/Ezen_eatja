@@ -35,6 +35,7 @@
 			<exclude-mapping path="/index/indexView" />
 			<exclude-mapping path="/infra/member/memberForm" />
 			<exclude-mapping path="/member/findIdPwdForm" />
+			<exclude-mapping path="/rest/**" />
 			<beans:bean id="CheckLoginSessionInterception" class="com.junefw.infra.common.interceptor.CheckLoginSessionInterception"/>
 		</interceptor>
 	</interceptors>	

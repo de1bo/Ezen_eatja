@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -47,6 +48,7 @@ public class HomeController {
 		return "home";
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/test/publicCorona1List")
 	public String publicCorona1List(Model model) throws Exception {
 		
@@ -77,6 +79,8 @@ public class HomeController {
 		
 //		json object + array string -> java map
 		
+		
+		// jackson 객체 색성
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> map = objectMapper.readValue(stringBuilder.toString(), Map.class);
 		
@@ -86,7 +90,9 @@ public class HomeController {
 			String value= String.valueOf(map.get(key));	//ok
 			System.out.println("[key]: " + key + "[value]: " +value);
 		}
-		Map<String, Object> header = new HashMap<String, Object>();
+		
+		// header node 
+		Map<String, Object> header = new HashMap<String, Object>();	// String 타입을 Map Object으로 변환
 		header = (Map<String, Object>) map.get("header");
 		
 		System.out.println("############Header");
@@ -100,18 +106,27 @@ public class HomeController {
 		System.out.println("header.get(\"resultCode\"): " + header.get("resultCode"));
 		System.out.println("header.get(\"resultMsg\"): " + header.get("resultMsg"));
 		
-		Map<String, Object> body = new HashMap<String, Object>();
+		// body 노드 
+		Map<String, Object> body = new HashMap<String, Object>();	// String 타입을 Map Object으로 변환
 		body = (Map<String, Object>) map.get("body");
 		
 		List<Home> items = new ArrayList<Home>();
-		items = (List<Home>)body.get("items");
+		items = (List<Home>) body.get("items");
 		
 		for(int i = 0; i< items.size(); i++) {
 			
 		}
 		
+		model.addAllAttributes(header);
+		model.addAllAttributes(body);
+		
+		
+		/* map을 통째로 넘기는건 불가능 header, body로 나눠서 넘겨야함 */
+		
 		return "test/publicCorona1List";
 	}
+	
+	
 	
 	@RequestMapping(value = "/test/publicCorona1JsonNodeList")
 	public String publicCorona1JsonNodeList(Model model) throws Exception{
@@ -139,10 +154,19 @@ public class HomeController {
 		bufferedReader.close();
 		httpURLConnection.disconnect();
 		
-		System.out.println("stringBuilder.toString(): " +stringBuilder.toString());
+		// jackson 객체 색성
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode node = objectMapper.readTree(stringBuilder.toString());
 		
-		return "test/publicCorona1List";
+		System.out.println("node.get(\"header\").get(\"resultCode\").asText():" + node.get("header").get("resultCode").asText());
+		System.out.println("node.get(\"header\").get(\"resultMsg\").asText():" + node.get("header").get("resultMsg").asText());
+		System.out.println("node.get(\"header\").get(\"resultCode\").asText():" + node.get("body").get("items").get(0).get("KIT_PROD_QTY").asText());
+		
+		model.addAttribute("node", node);
+		
+		return "test/publicCorona1JsonNodeList";
 	}
 	
+
 	
 }
