@@ -123,15 +123,14 @@
     	<br><hr>
     <div id="jal">간편 로그인</div>
     <br>
-<ul>
- <li id="GgCustomLogin">
+ <div id="GgCustomLogin">
   <a href="javascript:void(0)">
-   <span>Login with Google</span>
+   <img src="/infra/resources/images/loginbutton/btn_google_signin_light_normal_web@2x.png" alt="구글 로그인" style="height: 60px;"/>
   </a>
- </li>
-</ul>
-  <a href="javascript:kakaoLogin();"><img src="./kakao_login.png" alt="카카오계정 로그인" style="height: 100px;"/></a>
-<button class="btn btn-facebook" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/resources/xdmin/image/fbicon.png" id="icon"><b> 페이스북</b> 로그인</button>
+ </div>
+  <a href="javascript:kakaoLogin();"><img src="/infra/resources/images/loginbutton/kakaologin.png" alt="카카오계정 로그인" style="height: 40px;"/></a>
+<a class="fb-login-button" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/infra/resources/images/loginbutton/Vk9SO.png" id="icon"></a>
+
     <p class="mt-5 mb-3 text-muted">&copy;2022–2022</p>
   </form>
 </main>    

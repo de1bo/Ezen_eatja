@@ -85,14 +85,6 @@
                                 </div>
                                 <div class="col-md-6">
 	                                <div class="form-group">
-	                                		<div class="col-sm-6 mt-3 mt-sm-0">
-												<label for="file1" class="form-label input-file-button">파일첨부</label>
-												<input class="form-control form-control-sm" id="file1" name="file1" type="file" multiple="multiple" onChange="upload(1, 1);">
-												<div class="addScroll">
-													<ul id="ulFile1" class="list-group">
-													</ul>
-												</div>
-											</div>
 	                                </div>
                                 </div>
                                     <div class="col-md-6">

@@ -40,7 +40,6 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
       <form class="navbar-nav me-auto mb-2 mb-md-0">
-     <div class="nav-link" id="#jal"><h3>EAT JA</h3></div>
           <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button> -->
         </form>

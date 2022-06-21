@@ -28,7 +28,7 @@ public class StoreServiceImpl implements StoreService{
 	public int insert(Store dto) throws Exception {
 		
 		try {
-			
+
 			setRegMod(dto);
 			
 			dto.setRegDateTime(UtilDateTime.nowDate());
@@ -40,7 +40,8 @@ public class StoreServiceImpl implements StoreService{
 				dto.setStmnPrice(dto.getStoreMenuPriceArray()[i]);
 				dao.insertStoreMenu(dto);
 				} 
-			
+			dao.insertStoreTel(dto);
+			dao.insertStoreLocation(dto);
 			
 			int j = 0;
 			for(MultipartFile multipartFile : dto.getFile0() ) {
@@ -52,24 +53,6 @@ public class StoreServiceImpl implements StoreService{
 				dto.setSort(j);
 				dto.setDefaultNy(0);
 				dto.setPseq(dto.getStifSeq());
-				
-				dao.insertUploaded(dto);
-				j++;
-			}
-			
-			j = 0;
-			for(MultipartFile multipartFile : dto.getFile1 ()) {
-				String pathModule = this.getClass().getSimpleName().toString().toLowerCase().replace("serviceimpl", "");
-				UtilUpload.upload(multipartFile, pathModule, dto);
-				
-				dto.setTableName("infrMemberUploaded");
-				dto.setType(1);
-				dto.setDefaultNy(0);
-				dto.setSort(j);
-				dto.setDefaultNy(0);
-				dto.setPseq(dto.getStifSeq());
-				
-
 				
 				dao.insertUploaded(dto);
 				j++;

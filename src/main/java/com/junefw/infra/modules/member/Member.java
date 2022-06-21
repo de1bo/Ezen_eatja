@@ -15,7 +15,7 @@ public class Member {
 	private Integer ifmmDelNy;
 	private String ifmmPassword;
 	private String ifmmBirthday;
-	private String ifmmRecommendSeq;
+	private String ifmmRecommend;
 	private String ifmmEmailConsentNy;
 	private String ifmmPushConsentNy;
 	private String ifmmPersonerinfoCd;
@@ -175,11 +175,12 @@ public class Member {
 	public void setModDateTime(Date date) {
 		this.modDateTime = date;
 	}
-	public String getIfmmRecommendSeq() {
-		return ifmmRecommendSeq;
+
+	public String getIfmmRecommend() {
+		return ifmmRecommend;
 	}
-	public void setIfmmRecommendSeq(String ifmmRecommendSeq) {
-		this.ifmmRecommendSeq = ifmmRecommendSeq;
+	public void setIfmmRecommend(String ifmmRecommend) {
+		this.ifmmRecommend = ifmmRecommend;
 	}
 	public String getImadSeq() {
 		return imadSeq;

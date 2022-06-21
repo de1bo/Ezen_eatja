@@ -33,7 +33,7 @@
 			<exclude-mapping path="/member/KakaoLgProc" />	<!-- kakao 로그인 관련 -->
 			<exclude-mapping path="/member/FBLgProc" />	<!-- 페북 로그인 관련 -->
 			<exclude-mapping path="/index/indexView" />
-			<exclude-mapping path="/infra/member/memberForm" />
+			<exclude-mapping path="/member/memberForm" />
 			<exclude-mapping path="/member/findIdPwdForm" />
 			<exclude-mapping path="/rest/**" />
 			<beans:bean id="CheckLoginSessionInterception" class="com.junefw.infra.common.interceptor.CheckLoginSessionInterception"/>

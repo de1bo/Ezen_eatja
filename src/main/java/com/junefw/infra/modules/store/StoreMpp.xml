@@ -46,14 +46,12 @@
 	<insert id="insertStoreTel">
 		INSERT INTO StoreTel (
 			stphDelNy
-			,stphNumberTypeCd
 			,stphNumber
 			,regDateTime
 			,modDateTime
 			,StoreInfo_stifSeq
 		) VALUES (
 			 0
-			,#{stphNumberTypeCd}
 			,#{stphNumber}
 			,#{regDateTime}
 			,#{modDateTime}

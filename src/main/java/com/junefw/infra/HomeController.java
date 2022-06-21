@@ -48,6 +48,17 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/test/map", method = RequestMethod.GET)
+	public String map(Locale locale, Model model) {
+		
+		return "test/map";
+	}
+	@RequestMapping(value = "/test/oracleconnect", method = RequestMethod.GET)
+	public String oracleconnect(Locale locale, Model model) {
+		
+		return "test/oracleconnect";
+	}
+	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/test/publicCorona1List")
 	public String publicCorona1List(Model model) throws Exception {

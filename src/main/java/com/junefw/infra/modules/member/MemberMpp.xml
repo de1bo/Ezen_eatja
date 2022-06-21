@@ -71,7 +71,7 @@
 			,ifmmPassword
 			,ifmmGenderCd
 			,ifmmBirthday
-			,ifmmRecommendSeq
+			,ifmmRecommend
 			,ifmmEmailConsentNy
 			,ifmmPushConsentNy
 			,ifmmPersonerinfoCd
@@ -87,7 +87,7 @@
 			,#{ifmmPassword}
 			,#{ifmmGenderCd}
 			,#{ifmmBirthday}
-			,#{ifmmRecommendSeq}
+			,#{ifmmRecommend}
 			,#{ifmmEmailConsentNy}
 			,#{ifmmPushConsentNy}
 			,#{ifmmPersonerinfoCd}
@@ -168,13 +168,13 @@
 				,a.ifmmPassword
 				,a.ifmmGenderCd
 				,a.ifmmBirthday
-				,a.ifmmRecommendSeq
+				,a.ifmmRecommend
 				,a.ifmmEmailConsentNy
 				,a.ifmmPushConsentNy
 				,a.ifmmPersonerinfoCd
 				,a.regDateTime
 				,a.modDateTime
-				,a.ifmmRecommendSeq
+				,a.ifmmRecommend
 				,a.ifmmDelNy
 				,b.imadAddress1
 				,b.imadAddress2
@@ -202,7 +202,7 @@
 				,ifmmPassword = #{ifmmPassword}
 				,ifmmGenderCd = #{ifmmGenderCd}
 				,ifmmBirthday = #{ifmmBirthday}
-				,ifmmRecommendSeq = #{ifmmRecommendSeq}
+				,ifmmRecommend = #{ifmmRecommend}
 				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 				,ifmmPushConsentNy = #{ifmmPushConsentNy}
 				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}
