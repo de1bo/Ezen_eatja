@@ -47,4 +47,16 @@ public class UtilDateTime {
 	public static String addStringTime(String date) {
 		return date + " 00:00:00";
 	}
+
+
+	public static String add00TimeString(String shDateStart) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	public static String addNowTimeString(String shDateEnd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -20,14 +20,21 @@
             <a class="nav-link" href="/infra/index/indexMain"><h5>메인메뉴</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/infra/store/store_registration"><h5>매장등록</h5></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"><h5>고객센터</h5></a>
+            <a class="nav-link" href="#"><h5>회원 정보</h5></a>
           </li>
+          <li class="nav-item dropdown" id="userInfoHeader">
+              <a class="nav-link" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  회원정보
+                  <span class="ti-angle-down"></span>
+              </a>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="reservation">예약내역</a>
+                  <a class="dropdown-item" href="userInfoView">회원정보 수정</a>
+              </div>
+          </li>		
         </ul>      
       </div>
     </div>

@@ -140,7 +140,7 @@
 					</select>
 				</div>
 			</div></td>
-			<td>
+			<td><
 				 <div class="col">
 		    		<div class="col p-2">
 						<input type="text" name="shValue" id="shValue" class="form-control" placeholder="아이디" value="<c:out value="${vo.shValue}"/>">
@@ -273,13 +273,18 @@
 	
 	
 	<button type="submit" class="btn btn-danger" id="btnDelete" style=" float:left; border-bottom: 10px;"><img src="/infra/resources/images/trash-icon.png" width="25px" height="25px"></button>
-	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><img src="/infra/resources/images/plus-sign.png" width="25px" height="25px"><a href="/infra/member/AdminForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">등록</a></button>
+	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><a href="/infra/member/AdminForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>"><img src="/infra/resources/images/plus-sign.png" width="25px" height="25px"></a></button>
+	<button type="button" class="btn btn-success" id="btnExcel" style=" float:right; border-bottom: 10px;">엑셀</button>
 	</div>
 	</form>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+	<script>
+	$("#btnExcel").click(function() {
+		$("#formList").attr("action", "/infra/member/excelDownload").submit();
+	});
+	</script>
 <!-- <script type="text/javascript">
 	$("#btnSubmit").on("click", function(){	
 		/* if(!checkNull($("#shIfmmDelNy"), $("#shIfmmDelNy").val(), "Y/N를 선택해주세요")) return false;
@@ -333,8 +338,7 @@
 		if($("#checkboxAll").is(":checked")) $("input[name=checkboxSeq]").prop("checked", true);
 		else $("input[name=checkboxSeq]").prop("checked", false);
 	});
-	
-	
 	</script>
+
 </body>
 </html>

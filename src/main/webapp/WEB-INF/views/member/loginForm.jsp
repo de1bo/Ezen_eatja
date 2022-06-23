@@ -105,18 +105,13 @@
     	<h1 id="jal"><strong>LOGIN</strong></h1><br>
 
     <div class="form-floating">
-      <input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="name@example.com">
+      <input type="text" class="form-control" id="ifmmId" name="ifmmId" placeholder="name@example.com" value="kimdohyun54">
       <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="Password">
+      <input type="password" class="form-control" id="ifmmPassword" name="ifmmPassword" placeholder="Password" value="123456">
       <label for="floatingPassword">Password</label>
     </div>
-
-    <div class="form-check form-switch" style="float: left;">
-  		<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-  		<label class="form-check-label" for="flexSwitchCheckChecked">자동 로그인</label>
-	</div><br><br><br>
     	<button class="w-100 btn btn-info" type="button" id="btnLogin" style="color:white"><strong>로그인</strong></button>
     	<br><br>
     	<a href="/infra/member/memberForm" class="w-100 btn btn-secondary">회원가입</a>
@@ -125,11 +120,11 @@
     <br>
  <div id="GgCustomLogin">
   <a href="javascript:void(0)">
-   <img src="/infra/resources/images/loginbutton/btn_google_signin_light_normal_web@2x.png" alt="구글 로그인" style="height: 60px;"/>
+   <img src="/infra/resources/images/loginbutton/btn_google_signin_light_normal_web@2x.png" alt="구글 로그인" style="weight: 266.40px; height: 40px;"/>
   </a>
  </div>
-  <a href="javascript:kakaoLogin();"><img src="/infra/resources/images/loginbutton/kakaologin.png" alt="카카오계정 로그인" style="height: 40px;"/></a>
-<a class="fb-login-button" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/infra/resources/images/loginbutton/Vk9SO.png" id="icon"></a>
+  <a href="javascript:kakaoLogin();"><img src="/infra/resources/images/loginbutton/kakaologin.png" alt="카카오계정 로그인" style="weight: 266.40px; height: 40px;"/></a>
+<a class="fb-login-button" type="button" id="btn-facebook" onclick="fnFbCustomLogin();"><img src="/infra/resources/images/loginbutton/Vk9SO.png" id="icon" style="weight: 266.40px; height: 40px;"></a>
 
     <p class="mt-5 mb-3 text-muted">&copy;2022–2022</p>
   </form>
@@ -150,7 +145,7 @@
 			,data : { "ifmmId" : $("#ifmmId").val(), "ifmmPassword" : $("#ifmmPassword").val()}
 			,success: function(response) {
 				if(response.item == "success") {
-					location.href = "/infra/index/indexView";
+					location.href = "/infra/index/indexMain";
 				} else {
 					alert("회원없음");
 				}
@@ -203,7 +198,7 @@ function onSignIn(googleUser) {
 			,data : {"ifmmName" : profile.getName()}
 			,success: function(response) {
 				if(response.item == "success") {
-					location.href = "/infra/index/indexView";
+					location.href = "/infra/index/indexMain";
 				} else {
 					alert("구글 로그인 실패");
 				}
@@ -251,7 +246,7 @@ function onSignInFailure(t){
                     			,data : {"ifmmName" : res.properties.nickname}		// 넘겨줄 데이터를 설정
                     			,success: function(response) {
                     				if(response.item == "success") {
-                    					location.href = "/infra/index/indexView";
+                    					location.href = "/infra/index/indexMain";
                     				} else {
                     					alert("카카오 로그인 실패");
                     				}
@@ -299,7 +294,7 @@ function fnFbCustomLogin(){
 					,data : {"ifmmName" : r.name}		// 넘겨줄 데이터를 설정
 					,success: function(response) {
 						if(response.item == "success") {
-							location.href = "/infra/index/indexView";
+							location.href = "/infra/index/indexMain";
 						} else {
 							alert("페이스북 로그인 실패");
 						}
