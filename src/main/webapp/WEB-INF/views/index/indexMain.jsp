@@ -1,93 +1,94 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <!DOCTYPE HTML>
 <html>
-<head>
-<meta charset="uTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김도현1</title>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="/infra/resources/js/jquery-1.11.2.min.js"></script>
-<link href="/infra/resources/css/style.css" rel="stylesheet">
-<style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+<head>
+    <meta charset="uTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김도현1</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/infra/resources/js/jquery-1.11.2.min.js"></script>
+    <link href="/infra/resources/css/style.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
-      }
-      
-	  #map {
-	  	  padding: 11rem!important;
-		  height: 100%;
-		  width: 100%;
-		}
-	
-	/* Optional: Makes the sample page fill the window. */
-	 html,
-	 body {
-		  height: 100%;
-		  margin: 0;
-		  padding: 0;
-	}
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        #map {
+            padding: 11rem !important;
+            height: 100%;
+            width: 100%;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
 </head>
-<body>
-<%@ include file="../common/headerInclude.jsp" %>
-<!-- container 부분 -->
-<div class="album py-5 bg-light">
-<form id="formList" name="formList" method="post" action="/infra/index/indexMain">
-  <input type="hidden" id="stifSeq" name="stifSeq" > 
-  <input type="hidden" id="StoreInfo_stifSeq" name="StoreInfo_stifSeq" > 
-  <input type="hidden" id="stifName" name="stifName" > 
-  <input type="hidden" id="stifDesc" name="stifDesc" > 
-  <input type="hidden" id="year" name="year" > 
-  <input type="hidden" id="month" name="month" > 
-  <input type="hidden" id="day" name="day" > 
-  <input type="hidden" id="uuidName" name="uuidName" > 
-    <div class="container">
-    <h1 id="jal" style="padding-top: 50px; text-align:center;" >먹거리 지도</h1>
-<div class="p-4 p-md-5 mb-4" id="map">
 
-<div id="map-canvas"></div>
- <div class="col-md-6 px-0" style="height: 100%;">
+<body>
+   <%@ include file="../common/headerInclude.jsp" %>
+    <!-- container 부분 -->
+    <div class="album py-5 bg-light">
+        <form id="formList" name="formList" method="post" action="/infra/index/indexMain">
+            <input type="hidden" id="stifSeq" name="stifSeq">
+            <input type="hidden" id="StoreInfo_stifSeq" name="StoreInfo_stifSeq">
+            <input type="hidden" id="stifName" name="stifName">
+            <input type="hidden" id="stifDesc" name="stifDesc">
+            <input type="hidden" id="year" name="year">
+            <input type="hidden" id="month" name="month">
+            <input type="hidden" id="day" name="day">
+            <input type="hidden" id="uuidName" name="uuidName">
+            <div class="container">
+                <h1 id="jal" style="padding-top: 50px; text-align:center;">먹거리 지도</h1>
+                <div class="p-4 p-md-5 mb-4" id="map">
+
+                    <div id="map-canvas"></div>
+                    <div class="col-md-6 px-0" style="height: 100%;">
+                    </div>
+                </div>
+                <h2 id="jal" style="padding-top: 50px; text-align:center;">주변 먹거리</h2>
+                <hr>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="storeList">
+                </div>
+            </div>
+        </form>
     </div>
-  </div>
-  <h2 id="jal" style="padding-top: 50px; text-align:center;">주변 먹거리</h2>
-  <hr>
-	<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="storeList">
-	</div>
-      </div>
-    </form>
-    </div>
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-  </div>
-</footer> 
-	 
-	 <!-- google 부분 start -->
-<script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffnYjApY7cl96nlyHHwrDzzdn3VWBxKk&callback=initMap&v=weekly" async>
- </script>
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Back to top</a>
+            </p>
+            <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+            <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
+        </div>
+    </footer>
+
+    <!-- google 부분 start -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffnYjApY7cl96nlyHHwrDzzdn3VWBxKk&callback=initMap&v=weekly" async>
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 let map, infoWindow;
 
@@ -136,7 +137,7 @@ function initMap() {
 /* 		 arr[i] = ${status.index}
 		 i++ */
 		 console.log("::::::stifSeq:::::::::::"+ Seq);
-		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm(<c:out value="${item.stifSeq}"/>)">View</button></div><small class="text-muted">9 mins</small></div></div></div></div>');
+		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"></div><small class="text-muted">9 mins</small></div></div></div></div>');
 		 
 	      var marker = new google.maps.Marker({
 	          map: map,
@@ -367,7 +368,6 @@ getListTheater = function(seq) {
 	});
 		
 		goForm = function(seq){
-			alert(seq);
 			
 			$("#stifSeq").val(seq);
 			$("#formList").attr("action","/infra/store/store_Info");

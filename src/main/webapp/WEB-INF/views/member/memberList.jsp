@@ -140,7 +140,7 @@
 					</select>
 				</div>
 			</div></td>
-			<td><
+			<td>
 				 <div class="col">
 		    		<div class="col p-2">
 						<input type="text" name="shValue" id="shValue" class="form-control" placeholder="아이디" value="<c:out value="${vo.shValue}"/>">
