@@ -37,7 +37,7 @@ public class MemberServiceImpl implements MemberService{
 			
 			
 			setRegMod(dto);
-			UtilMail.sendMail();
+//			UtilMail.sendMail();
 		} finally{
 			
 		}

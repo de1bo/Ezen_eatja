@@ -34,7 +34,7 @@
 <header>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
+      <a class="navbar-brand" href="/infra/index/indexMain"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -45,22 +45,15 @@
         </form>
         
         <ul class="navbar-nav">
-          <li class="nav-item">
-          <img src="../">
-          </li>
           <li class="nav-item">  	
   			 <div class="right nav-link" style="padding-right: 30px;">
 		   		<c:out value="${sessName}"/><br>
 		   		<c:out value="${sessId}"/>
 		   		</div>
    			</li>
-          <li class="nav-item">
-            <select class="form-select" >
-				    <option selected>언어</option>
-				    <option value="1">영어</option>
-				    <option value="2">한국어</option>
-				</select>
-          </li>
+		<c:if test="${not empty sessSeq}">
+			<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i>로그아웃</button>
+		</c:if>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
           </li> -->
@@ -160,12 +153,6 @@
 	  
 	</table>
 	<br><br>
-        	<select class="form-select" aria-label="Default select example" style="width:150px; float:right; border-bottom: 10px;">
-		  				<option selected>10</option>
-						<option value="1">One</option>
-						<option value="2">Two</option>
-						<option value="3">Three</option>
-					</select>
 			<!-- 게시판부분 -->	
 		<c:out value="${vo.rowNumToShow}"/>/<c:out value="${vo.totalRows}"/>개의 검색결과	
 		<table class="table table-hover" style="text-align: center;">
@@ -339,6 +326,27 @@
 		else $("input[name=checkboxSeq]").prop("checked", false);
 	});
 	</script>
-
+	<script type="text/javascript">
+		$("#btnLogout").on("click", function(){
+			$.ajax({
+				async: true 
+				,cache: false
+				,type: "post"
+				,url: "/infra/member/logoutProc"
+					,success: function(response) {
+						if(response.item == "success") {
+							alert("로그아웃 실패");
+							location.href = "/infra/member/loginForm";
+						} else {
+							alert("로그아웃 성공");
+							location.href = "/infra/member/loginForm";
+						}
+					}
+				,error : function(jqXHR, textStatus, errorThrown){
+					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+				}
+			});
+		});
+	</script>
 </body>
 </html>

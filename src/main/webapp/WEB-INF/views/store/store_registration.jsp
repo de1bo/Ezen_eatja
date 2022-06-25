@@ -13,6 +13,7 @@
 	<title>매장등록</title>
 	<link href="/infra/resources/css/store/style.css" rel="stylesheet">
 	<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/infra/resources/css/form-validation.css" rel="stylesheet">
 	<script src = "/infra/resources/js/common.js"></script><!-- image -->
 	<script src = "/infra/resources/js/commonXdmin.js"></script><!-- image -->
 	<script src = "/infra/resources/js/constantsXdmin.js"></script><!-- image -->
@@ -36,7 +37,7 @@
 <body>
 <%@ include file="../common/headerInclude.jsp" %>
 <div class="bgImg">
-<form method="post" action="/infra/store/storeInst" enctype="multipart/form-data">
+<form method="post" action="/infra/store/storeInst" enctype="multipart/form-data" class="needs-validation" novalidate>
 <h1 class="display-1 jal">매장 등록</h1>
 		<h2>Eatja와 함께하는 매장의 수</h2>
 		<ul class="countdown">
@@ -91,14 +92,23 @@
                                         <div class="form-group">
                                         	<label for="name" class="form-label">매장 이름</label>
                                             <input type="text" class="form-control" id="stifName" name="stifName" placeholder="매장 이름" value="" />
+                                         <div class="invalid-feedback">
+                							매장 이름을 입력해주세요
+             							 </div>
                                         </div>
                                         <div class="form-group">
                                       		<label for="name" class="form-label">매장 전화번호</label>
                                             <input type="text" class="form-control" id="stphNumber" name="stphNumber" placeholder="매장 전화번호" value="" />
+                                         <div class="invalid-feedback">
+                							매장 전화번호를 입력해주세요
+             							 </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="name" class="form-label">매장 영업시간</label>
                                             <input type="text" class="form-control" id="stifOC" name="stifOC"  placeholder="ex) 9AM~6PM" value="" />
+                                        <div class="invalid-feedback">
+                							매장 영업시간을 입력해주세요
+             							 </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="maxl">
@@ -122,6 +132,9 @@
 									                <label class="btn btn-outline-primary" for="storeType8">주점</label>
                                                 </label>
                                             </div>
+                                         <div class="invalid-feedback">
+                							음식종류를 선택해주세요
+             							 </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -137,20 +150,26 @@
 													</div>
 												</div>
                                         </div>
+                                         <div class="invalid-feedback">
+                							매장 주소를 입력해주세요
+             							 </div>
                                     </div>
                                     <div class="col-md-12">
 	                                <div class="form-group" align="center">
 	                                	<label for="name" class="form-label">매장 소개</label><br>
                         				<textarea name="stifDesc" id="stifDesc" class="form-control" cols="50" rows="5"></textarea>
 	                                </div>
+	                                <div class="invalid-feedback">
+                						매장 소개를 입력해주세요
+             						</div>
                                 </div>
                                 <div class="col-md-12">
                                     	<div class="form-group">
 
 							</div>
 							 <div id="locationField">
-								<input class="field form-control" id="stlcLat" name="stlcLat" readonly/>
-								<input class="field form-control" id="stlcLng" name="stlcLng" readonly/>
+								<input type="hidden" class="field form-control" id="stlcLat" name="stlcLat" readonly/>
+								<input type="hidden" class="field form-control" id="stlcLng" name="stlcLng" readonly/>
 							</div>
                                      <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
                                 <h3 class="register-heading jal">메뉴 등록</h3>

@@ -65,7 +65,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-        개인정보
+        회원정보
       </button>
     </h2>
     </div>
@@ -75,6 +75,9 @@
             <div class="col-md-6">
 	                <label for="name" class="form-label">이름</label>
 	                <input type="text" class="form-control" id="ifmmName" name="ifmmName">
+	          <div class="invalid-feedback">
+                Credit card number is required
+              </div>     
               </div>
               <div class="col-md-6">
 	                <label for="inputEmail1" class="form-label">아이디</label>
@@ -196,7 +199,7 @@
 							</td>
 						</tr>
 						<tr>
-							<th>개인정보 유효 기간</th>
+							<th>회원정보 유효 기간</th>
 							<td colspan="3" align="center">
 							<input type="radio" class="btn-check" name="ifmmPersonerinfoCd" id="option11" value="7" autocomplete="off">
 							<label class="btn btn-outline-primary" for="option11">1년</label> 

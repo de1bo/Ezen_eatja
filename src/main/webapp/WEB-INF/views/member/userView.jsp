@@ -144,10 +144,8 @@
         </div>
       </li>
       <li>
-      	<button class="form-control"><a href="/infra/member/memberForm2?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">수정</a></button>
+      	<button class="form-control" ><a href="/infra/member/userForm2?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">수정</a></button>
       	<button class="form-control"><a href="/infra/member/memberList?thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a></button>
-		<button class="form-control"><a href="/infra/member/memberDele?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>" id="btnDelete">삭제(진짜)</a></button>
-      	<button class="form-control"><a href="/infra/member/memberNele?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>" id="btnNelete">삭제(가짜)</a></button>
       </li>
     </ul>
     <hr>
@@ -302,27 +300,6 @@
     <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
       <script src="/infra/resources/js/sidebars.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script>
-	$("#btnDelete").on("click", function(){
-		
-		var answer = confirm('삭제 하시겠습니까?');
-		
-		if(answer){
-		} else{
-			return false;
-		}
-	});
-	
-$("#btnNelete").on("click", function(){
-		
-		var answer = confirm('삭제 하시겠습니까?');
-		
-		if(answer){
-		} else{
-			return false;
-		}
-	});
-</script>
   </body>
 </html>
 		

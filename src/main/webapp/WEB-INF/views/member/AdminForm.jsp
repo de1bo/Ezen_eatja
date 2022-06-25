@@ -140,7 +140,7 @@
 		    </div>
 		    <div class="col-12">
 		   		 <label for="nation" class="form-label">추천인</label>
-	          	 <input type="text" class="form-control" id="ifmmRecommendSeq" name="ifmmRecommendSeq" placeholder="안넣으면 수정시 에러" required>
+	          	 <input type="text" class="form-control" id="ifmmRecommend" name="ifmmRecommend" placeholder="" required>
 	          	  <div class="invalid-feedback">
                 추천인 입력
               </div>
@@ -155,6 +155,7 @@
 					<input type="text" class="form-control" id="imadAddress2" name="imadAddress2" placeholder="상세주소">
 					</div>
 				</div>
+            </div>
             </div>
 <!--
             <div class="col-md-5">
