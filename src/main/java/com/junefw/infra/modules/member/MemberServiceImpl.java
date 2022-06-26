@@ -101,6 +101,11 @@ public class MemberServiceImpl implements MemberService{
 		return dao.update(dto);
 	}
 	@Override
+	public int Userupdate(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.Userupdate(dto);
+	}
+	@Override
 	public int delete(MemberVo vo) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.delete(vo);

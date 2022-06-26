@@ -143,38 +143,26 @@ image {
 <body>
  
 <div id="header">
-	<div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="false" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-    	<div class="btn-group" role="group">
-    	<c:forEach items="${list2}" var="item" varStatus="status">
-      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" height="100%" width="100%"/></svg>
-      </c:forEach>
-    </div>
-    </div>
-    <div class="carousel-item">
-	    <div class="btn-group" role="group">
-	      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="../../images/food/pizza.jpg" height="100%" width="100%"/></svg>
-	      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="../../images/food/pizza.jpg" height="100%" width="100%"/></svg>
-	      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="../../images/food/pizza.jpg" height="100%" width="100%"/></svg>
-	      <svg class="bd-placeholder-img" width="27%" height="300px" role="img" aria-label="Placeholder: 300x400" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%"/><image href="../../images/food/pizza.jpg" height="100%" width="100%"/></svg>
-	    </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
+        <div class="swiper-container justify-content-center">
+            <div class="swiper-wrapper justify-content-center">
+            
+	            <div class="swiper-slide justify-content-center">
+	                	<table>
+	                		<tr>
+                                <c:forEach items="${list2}" var="item" varStatus="status">
+			                		<td>
+					                    <a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" class="grid image-link">
+					                        <img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" style="height: 370px; width:585px;" alt="#">
+					                    </a>
+			                		</td>
+		               			</c:forEach>
+	               			</tr>
+	               			  
+	               		</table>
+	               </div>
+	             
+             </div>
+        </div>
 </div>
 <div class="pd">
 <div class="container">
@@ -185,7 +173,7 @@ image {
 			<table>
 				<tr>
 					<th>주소:</th>
-					<td><c:out value="${item.stifAddress1}"/>  <c:out value="${item.stifAddress2}"/></td>
+					<td style="width: 90%;"><c:out value="${item.stifAddress1}"/>  <c:out value="${item.stifAddress2}"/></td>
 				</tr>
 				<tr>
 					<th>전화번호:</th>
@@ -219,7 +207,7 @@ image {
 					<td><c:out value="${item.stifOC}"/></td>
 				</tr>
 				<tr>
-					<th>매장 소개</th>
+					<th>매장 소개:</th>
 					<td><c:out value="${item.stifDesc}"/></td>
 				</tr>
 				<tr>

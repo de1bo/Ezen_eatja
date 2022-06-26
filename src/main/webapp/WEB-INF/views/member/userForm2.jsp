@@ -6,11 +6,8 @@
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 
-<form method="post" action="/infra/member/memberUpdt">
+<form method="post" action="/infra/member/userUpdt">
 
-<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }"/>">
-	<input type="hidden" name="shOption" value="<c:out value="${vo.shOption }"/>">
-	<input type="hidden" name="shValue" value="<c:out value="${vo.shValue }"/>">
 	<input type="hidden" name="">
 	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
 
@@ -156,7 +153,7 @@
       </li>
       <li>
       <input type="submit" class="form-control" value="수정 완료">
-      <button class="form-control"><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption}"/>&shValue=<c:out value="${vo.shValue}"/>">수정 취소</a></button>
+      <button class="form-control"><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>">수정 취소</a></button>
       </li>
     </ul>
     <hr>

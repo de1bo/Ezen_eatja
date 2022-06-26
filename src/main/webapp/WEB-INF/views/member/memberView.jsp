@@ -150,20 +150,6 @@
       	<button class="form-control"><a href="/infra/member/memberNele?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>" id="btnNelete">삭제(가짜)</a></button>
       </li>
     </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="/infra/resources/images/food/pizza.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>관리자</strong>
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
   </div>
 
 	<div class="accordion" id="accordionPanelsStayOpenExample">

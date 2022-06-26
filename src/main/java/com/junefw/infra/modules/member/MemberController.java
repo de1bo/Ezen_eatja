@@ -202,12 +202,8 @@ public class MemberController {
 		
 		
 		// 수정 프로세스 실행
-		service.update(dto);
-		
+		service.Userupdate(dto);
 		redirectAttributes.addAttribute("Seq", dto.getSeq());
-		redirectAttributes.addAttribute("thisPage", vo.getThisPage());
-		redirectAttributes.addAttribute("shOption", vo.getShOption());
-		redirectAttributes.addAttribute("shValue", vo.getShValue());
 		
 		return "redirect:/member/userView";
 	}

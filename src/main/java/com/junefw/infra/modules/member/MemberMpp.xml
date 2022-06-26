@@ -210,6 +210,23 @@
 				AND seq = #{seq}
 
 	</update>
+	<update id="Userupdate">
+		UPDATE
+				infrMember
+			SET 
+				ifmmName = #{ifmmName}
+				,ifmmId = #{ifmmId}
+				,ifmmPassword = #{ifmmPassword}
+				,ifmmGenderCd = #{ifmmGenderCd}
+				,ifmmBirthday = #{ifmmBirthday}
+				,ifmmRecommend = #{ifmmRecommend}
+				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
+				,ifmmPushConsentNy = #{ifmmPushConsentNy}
+				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}
+			WHERE 1=1
+				AND seq = #{seq}
+
+	</update>
 	
 	<update id="updateDelet">
 		UPDATE infrMember SET ifmmDelNy = 1

@@ -111,7 +111,7 @@
 
 <main>
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 320px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <a href="/infra/index/indexMain" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><image href="/infra/resources/images/place-setting.svg" height="100%" width="100%"/></svg>
       <span class="fs-4">회원정보</span>
     </a>
@@ -145,23 +145,10 @@
       </li>
       <li>
       	<button class="form-control" ><a href="/infra/member/userForm2?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">수정</a></button>
-      	<button class="form-control"><a href="/infra/member/memberList?thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">목록</a></button>
+      	<button class="form-control"><a href="/infra/index/indexMain">나가기</a></button>
       </li>
     </ul>
     <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="/infra/resources/images/food/pizza.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>관리자</strong>
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
   </div>
 
 	<div class="accordion" id="accordionPanelsStayOpenExample">

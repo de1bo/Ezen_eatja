@@ -40,8 +40,6 @@ public class StoreServiceImpl implements StoreService{
 				dto.setStmnPrice(dto.getStoreMenuPriceArray()[i]);
 				dao.insertStoreMenu(dto);
 				} 
-			dao.insertStoreTel(dto);
-			dao.insertStoreLocation(dto);
 			
 			int j = 0;
 			for(MultipartFile multipartFile : dto.getFile0() ) {

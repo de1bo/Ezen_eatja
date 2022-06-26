@@ -128,7 +128,7 @@ function initMap() {
 /* 		 arr[i] = ${status.index}
 		 i++ */
 		 console.log("::::::stifSeq:::::::::::"+ Seq);
-		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"></div><small class="text-muted">9 mins</small></div></div></div></div>');
+		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm(<c:out value="${item.stifSeq}"/>)">View</button></div><small class="text-muted">9 mins</small></div></div></div></div>');
 		 
 	      var marker = new google.maps.Marker({
 	          map: map,
