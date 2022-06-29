@@ -224,13 +224,13 @@ image {
 			</table>
 			<br><br><br><br>
 	<hr>
-	<div class="d-flex bd-highlight mb-3">
+	<!-- <div class="d-flex bd-highlight mb-3">
 		<div class="p-2 bd-highlight"><h3><strong>리뷰(count(*))</strong></h3></div>
 	
 		<div class="ms-auto p-2 bd-highlight">
 			<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="../../images/pencil.svg" width="25px;"><br>리뷰 작성
 		</div>
-		<!-- Modal -->
+		Modal
 			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 			  <div class="modal-dialog">
 			    <div class="modal-content">
@@ -239,7 +239,7 @@ image {
 			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			      </div>
 			      <div class="modal-body">
-			        <!-- 여기부터가 별점 부분 -->
+			        여기부터가 별점 부분
 		<div class="wrap">
     <h1>후기</h1>
     <form name="reviewform" class="reviewform" method="post" action="/save">
@@ -249,7 +249,7 @@ image {
         <div class="review_rating">
             <div class="warning_msg">별점을 선택해 주세요.</div>
             <div class="rating">
-                <!-- 해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용 -->
+                해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용
                 <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
                 <label for="rating1"></label>
                 <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
@@ -267,7 +267,7 @@ image {
             <textarea rows="10" class="review_textarea"></textarea>
         </div>   
     
-		<!-- 여기까지가 별점부분 -->
+		여기까지가 별점부분
 		<div class="modal-footer cmd">
 			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 			<button type="button"  name="save" id="save" class="btn btn-primary" >Understood</button>
@@ -278,12 +278,12 @@ image {
 			   </div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	</div>
 
 		<div class="col-sm-4">
 			<div id="map"></div>
-			<br>
+<!-- 			<br>
 			<h3><strong>주변 인기 식당</strong></h3>
 				<div class="card mb-3" style="max-width: 540px;">
 				  <div class="row g-0">
@@ -340,7 +340,7 @@ image {
 				      </div>
 				    </div>
 				  </div>
-			</div>
+			</div> -->
 		</div>
 		
 	</div>

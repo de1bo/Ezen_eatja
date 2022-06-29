@@ -94,7 +94,7 @@ function initMap() {
 	          
 	const map = new google.maps.Map(document.getElementById("map"), {
 	center: pos,
-    zoom: 15,
+    zoom: 13,
     
 	});
 	// 현재위치 circle
@@ -106,7 +106,7 @@ function initMap() {
 	
 	var circle = new google.maps.Circle({
 		  map: map,
-		  radius: 500,    // 10 miles in metres
+		  radius: 2000,    // 10 miles in metres
 		  fillColor: '#AA0000'
 		});
 		circle.bindTo('center', marker, 'position');
@@ -123,12 +123,12 @@ function initMap() {
 	var end = ${vo.totalRows};
 	
 	 var d = getDistanceFromLatLonInKm(pos.lat,pos.lng,lat,lng);
-	 if(d < 500){
+	 if(d < 2000){
 		 
 /* 		 arr[i] = ${status.index}
 		 i++ */
 		 console.log("::::::stifSeq:::::::::::"+ Seq);
-		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"><button type="button" class="btn btn-sm btn-outline-secondary" onclick="goForm(<c:out value="${item.stifSeq}"/>)">View</button></div><small class="text-muted">9 mins</small></div></div></div></div>');
+		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"></div><small class="text-muted">9 mins</small></div></div></div></div>');
 		 
 	      var marker = new google.maps.Marker({
 	          map: map,
