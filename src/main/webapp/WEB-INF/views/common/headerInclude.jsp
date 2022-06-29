@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
@@ -30,7 +31,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/infra/member/userView?seq=<c:out value="${sessSeq}"/>">
+                        <a class="nav-link" id="sd" href="javascript:goFormim(<c:out value="${sessSeq}"/>)">
                             <h5>회원정보</h5>
                         </a>
                     </li>
@@ -39,3 +40,15 @@
         </div>
     </nav>
 </header>
+        <form id="myinfo" name="myinfo" method="post">
+            <input type="hidden" id="myseq" name="seq">
+        </form>
+	<script type="text/javascript">
+
+		goFormim = function(sessSeq){
+			
+			$("#myseq").val(sessSeq);
+			$("#myinfo").attr("action","/infra/member/userView");
+			$("#myinfo").submit();
+		}
+	</script>

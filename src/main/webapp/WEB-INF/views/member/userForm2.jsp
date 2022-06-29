@@ -10,7 +10,7 @@
 
 	<input type="hidden" name="">
 	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
-
+    <input type="hidden" id="myseq" name="seq">
 <!doctype html>
 <html lang="en">
   <head>
@@ -153,23 +153,9 @@
       </li>
       <li>
       <input type="submit" class="form-control" value="수정 완료">
-      <button class="form-control"><a href="/infra/member/memberView?seq=<c:out value="${item.seq}"/>">수정 취소</a></button>
+      <button class="form-control"><a href="javascript:goFormim(<c:out value="${sessSeq}"/>)">수정 취소</a></button>
       </li>
     </ul>
-    <hr>
-    <div class="dropdown">
-      <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="/infra/resources/images/food/pizza.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>관리자</strong>
-      </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
-      </ul>
-    </div>
   </div>
 
 	<div class="accordion" id="accordionPanelsStayOpenExample">
@@ -311,3 +297,15 @@
   </body>
 </html>
 </form>
+        <form id="myinfo" name="myinfo" method="post">
+            <input type="hidden" id="myseq" name="seq">
+        </form>
+        	<script type="text/javascript">
+
+		goFormim = function(sessSeq){
+			
+			$("#myseq").val(sessSeq);
+			$("#myinfo").attr("action","/infra/member/userView");
+			$("#myinfo").submit();
+		}
+	</script>

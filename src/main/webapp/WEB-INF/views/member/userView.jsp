@@ -144,7 +144,7 @@
         </div>
       </li>
       <li>
-      	<button class="form-control" ><a href="/infra/member/userForm2?seq=<c:out value="${item.seq}"/>&thisPage=<c:out value="${vo.thisPage }"/>&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">수정</a></button>
+      	<button class="form-control" ><a href="javascript:goFormim(<c:out value="${sessSeq}"/>)">수정</a></button>
       	<button class="form-control"><a href="/infra/index/indexMain">나가기</a></button>
       </li>
     </ul>
@@ -281,8 +281,19 @@
 	  </div>
 	</div>
 </div>
+        <form id="myinfo" name="myinfo" method="post">
+            <input type="hidden" id="myseq" name="seq">
+        </form>
 
+	<script type="text/javascript">
 
+		goFormim = function(sessSeq){
+			
+			$("#myseq").val(sessSeq);
+			$("#myinfo").attr("action","/infra/member/userForm2");
+			$("#myinfo").submit();
+		}
+	</script>
 </main>
     <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
       <script src="/infra/resources/js/sidebars.js"></script>
