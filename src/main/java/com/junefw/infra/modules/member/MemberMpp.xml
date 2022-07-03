@@ -203,6 +203,8 @@
 				,ifmmGenderCd = #{ifmmGenderCd}
 				,ifmmBirthday = #{ifmmBirthday}
 				,ifmmRecommend = #{ifmmRecommend}
+				,ifmeEmailAccount = #{ifmeEmailAccount}
+				,ifmeEmailDomainCd = #{ifmeEmailDomainCd}
 				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 				,ifmmPushConsentNy = #{ifmmPushConsentNy}
 				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}

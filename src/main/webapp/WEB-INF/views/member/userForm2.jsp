@@ -9,8 +9,8 @@
 <form method="post" action="/infra/member/userUpdt">
 
 	<input type="hidden" name="">
-	<input type="hidden" name="seq" value="<c:out value="${item.seq}"/>">
-    <input type="hidden" id="myseq" name="seq">
+	<%-- <input type="text" name="seq" value="<c:out value="${item.seq}"/>"> --%>
+    <input type="text" id="myseq" name="seq" value="<c:out value="${item.seq}"/>">
 <!doctype html>
 <html lang="en">
   <head>
@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>Sidebars · Bootstrap v5.1</title>
+    <title>회원정보 수정</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sidebars/">
 
@@ -119,7 +119,7 @@
 
 
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 320px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+    <a href="/infra/index/indexMain" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><image href="/infra/resources/images/place-setting.svg" height="100%" width="100%"/></svg>
       <span class="fs-4">회원정보</span>
     </a>
@@ -215,7 +215,7 @@
 	       <input type="text" class="form-control" id="ifmeEmailAccount" name="ifmeEmailAccount" value="<c:out value="${item.ifmeEmailAccount}"/>"/>
 	      </div>
 	      <div class="col-sm-7">
-	       <input type="email" class="form-control" id="EmailDomain" name="" value="" />
+	       <input type="text" class="form-control" id="ifmeEmailDomainCd" name="ifmeEmailDomainCd" value="<c:out value="${item.ifmeEmailDomainCd}"/>" />
 	      </div>
 	    </div>
 	  </div>
@@ -297,15 +297,3 @@
   </body>
 </html>
 </form>
-        <form id="myinfo" name="myinfo" method="post">
-            <input type="hidden" id="myseq" name="seq">
-        </form>
-        	<script type="text/javascript">
-
-		goFormim = function(sessSeq){
-			
-			$("#myseq").val(sessSeq);
-			$("#myinfo").attr("action","/infra/member/userView");
-			$("#myinfo").submit();
-		}
-	</script>
