@@ -148,7 +148,6 @@
       	<button class="form-control"><a href="/infra/index/indexMain">나가기</a></button>
       </li>
     </ul>
-    <hr>
   </div>
 
 	<div class="accordion" id="accordionPanelsStayOpenExample">
