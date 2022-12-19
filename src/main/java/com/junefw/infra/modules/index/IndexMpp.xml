@@ -16,6 +16,7 @@
 	<select id="selectList" resultMap="resultMapObj">
 			SELECT 
 				a.stifSeq
+				,a.stifName
 				,a.stifDesc
 				,b.stlcSeq
 				,b.stlcName

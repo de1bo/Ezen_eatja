@@ -4,13 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="now" class="java.util.Date" />
 
 
 <form method="post" action="/infra/member/userUpdt">
 
 	<input type="hidden" name="">
 	<%-- <input type="text" name="seq" value="<c:out value="${item.seq}"/>"> --%>
-    <input type="text" id="myseq" name="seq" value="<c:out value="${item.seq}"/>">
+    <input type="hidden" id="myseq" name="seq" value="<c:out value="${item.seq}"/>">
 <!doctype html>
 <html lang="en">
   <head>
@@ -120,7 +121,7 @@
 
   <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 320px;">
     <a href="/infra/index/indexMain" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-      <svg class="bi me-2" width="40" height="32"><image href="/infra/resources/images/place-setting.svg" height="100%" width="100%"/></svg>
+      <svg class="bi me-2" width="60" height="50"><image href="/infra/resources/images/logo1.png" height="100%" width="100%"/></svg>
       <span class="fs-4">회원정보</span>
     </a>
     <hr>
@@ -196,12 +197,8 @@
 	       <input type="text" class="form-control" id="ifmpNumber" name="ifmpNumber" value="<c:out value="${item.ifmpNumber}"/>">
 	      </div>
 	       <label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
-    			<div class="col-sm-4">
+    			<div class="col-sm-10">
 	       <input type="text" class="form-control" id="ifmpHomeTel" name="ifmpHomeTel" value="<c:out value="${item.ifmpHomeTel}"/>">
-	      </div>
-	      <label for="staticEmail" class="col-sm-2 col-form-label">추천인</label>
-    			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="ifmmRecommendSeq" value="<c:out value="${item.ifmmRecommend}"/>">
 	      </div><br><br>
 	     <label for="staticEmail" class="col-sm-2 col-form-label">주소</label>
     			<div class="col-sm-3">
@@ -209,13 +206,24 @@
 	       </div>
 	       <div class="col-sm-7">
 	       <input type="text" class="form-control" id="imadAddress2" name="imadAddress2" value="<c:out value="${item.imadAddress2}"/>"/>
-	      </div>
+	      </div><br><br>
 	       <label for="staticEmail" class="col-sm-2 col-form-label">이메일</label>
-    			<div class="col-sm-3">
-	       <input type="text" class="form-control" id="ifmeEmailAccount" name="ifmeEmailAccount" value="<c:out value="${item.ifmeEmailAccount}"/>"/>
-	      </div>
-	      <div class="col-sm-7">
-	       <input type="text" class="form-control" id="ifmeEmailDomainCd" name="ifmeEmailDomainCd" value="<c:out value="${item.ifmeEmailDomainCd}"/>" />
+    			<div class="col-sm-10">
+	       <input type="email" readonly class="form-control" value="<c:out value="${item.ifmeEmailAccount}"/>
+<c:choose>
+<c:when test="${item.ifmeEmailDomainCd eq 14 }">
+@naver.com
+</c:when>
+<c:when test="${item.ifmeEmailDomainCd eq 15 }">
+@google.com
+</c:when>
+<c:when test="${item.ifmeEmailDomainCd eq 16 }">
+@daum.com 
+</c:when>
+<c:otherwise>
+sdfsf
+</c:otherwise>
+</c:choose>"/>
 	      </div>
 	    </div>
 	  </div>
@@ -233,18 +241,18 @@
 						<tr>
 							<th>모바일 마케팅 수신 동의</th>
 							<td colspan="3" align="center">
-								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option7" <c:if test="${item.ifmmPushConsentNy==40}">checked</c:if> value="40" autocomplete="off">
+								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option7" <c:if test="${item.ifmmPushConsentNy==0}">checked</c:if> value="0" autocomplete="off">
 								<label class="btn btn-outline-primary" for="option7">동의</label>
-								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option8" <c:if test="${item.ifmmPushConsentNy==41}">checked</c:if> value="41" autocomplete="off">
+								<input type="radio" class="btn-check" name="ifmmPushConsentNy" id="option8" <c:if test="${item.ifmmPushConsentNy==1}">checked</c:if> value="1" autocomplete="off">
 								<label class="btn btn-outline-primary" for="option8">거부</label>
 							</td>
 						</tr>
 						<tr>
 							<th>이메일 마케팅 수신 동의</th>
 							<td colspan="3" align="center">
-								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option9" <c:if test="${item.ifmmEmailConsentNy==40}">checked</c:if> value="40" autocomplete="off">
+								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option9" <c:if test="${item.ifmmEmailConsentNy==0}">checked</c:if> value="0" autocomplete="off">
 								<label class="btn btn-outline-primary" for="option9">동의</label>
-								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option10" <c:if test="${item.ifmmEmailConsentNy==41}">checked</c:if> value="41" autocomplete="off">
+								<input type="radio" class="btn-check" name="ifmmEmailConsentNy" id="option10" <c:if test="${item.ifmmEmailConsentNy==1}">checked</c:if> value="1" autocomplete="off">
 								<label class="btn btn-outline-primary" for="option10">거부</label>
 							</td>
 						<tr>
@@ -275,13 +283,11 @@
 	      <div class="mb-3 row">
 	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
     			<div class="col-sm-4">
-	       <input type="text" readonly class="form-control" id="" name="" value="2022-03-29">
-<%-- 	       <input type="text" readonly class="form-control" id="staticEmail" name="regDateTime" value="<c:out value="${item.regDateTime}"/>"> --%>
+	       <input type="text" readonly class="form-control" value="<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" />">
 	       </div>
 	       <label for="staticEmail" class="col-sm-2 col-form-label">모바일 수정 날짜</label>
 	       <div class="col-sm-4">
-	       <input type="text" readonly class="form-control" id="" name="" value="2022-03-29">
-<%-- 	       <input type="text" readonly class="form-control" id="staticEmail" name="modDateTime" value="<c:out value="${item.modDateTime}"/>"> --%>
+	       <input type="text" readonly class="form-control" value="<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" />">
 	      </div>
 	      </div>
 	      </div>

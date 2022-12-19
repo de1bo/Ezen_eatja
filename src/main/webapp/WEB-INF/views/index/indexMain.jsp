@@ -5,82 +5,277 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-<!DOCTYPE HTML>
+&nbsp<!DOCTYPE HTML>
 <html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-<head>
-    <meta charset="uTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>김도현1</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/infra/resources/js/jquery-1.11.2.min.js"></script>
-    <link href="/infra/resources/css/style.css" rel="stylesheet">
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
-        }
+        <title>Eatja</title>
+		<style>
+.label {margin-bottom: 96px;}
+.label * {display: inline-block;vertical-align: top;}
+.label .left {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_l.png") no-repeat;display: inline-block;height: 24px;overflow: hidden;vertical-align: top;width: 7px;}
+.label .center {background: url(https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_bg.png) repeat-x;display: inline-block;height: 24px;font-size: 12px;line-height: 24px;}
+.label .right {background: url("https://t1.daumcdn.net/localimg/localimages/07/2011/map/storeview/tip_r.png") -1px 0  no-repeat;display: inline-block;height: 24px;overflow: hidden;width: 6px;}
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
+#location_button {
+position: absolute; 
+z-index: 100;
+}
 
-        #map {
-            padding: 11rem !important;
-            height: 100%;
-            width: 100%;
-        }
+		</style>
+        <!--Google Fonts-->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-        /* Optional: Makes the sample page fill the window. */
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-</head>
+        <!--Fontawesom-->
+        <link rel="stylesheet" href="/infra/resources/css/css/font-awesome.min.css">
 
-<body>
-   <%@ include file="../common/headerInclude.jsp" %>
-    <!-- container 부분 -->
-    <div class="album py-5 bg-light">
-        <form id="formList" name="formList" method="post" action="/infra/index/indexMain">
-            <input type="hidden" id="stifSeq" name="stifSeq">
-            <input type="hidden" id="StoreInfo_stifSeq" name="StoreInfo_stifSeq">
-            <input type="hidden" id="stifName" name="stifName">
-            <input type="hidden" id="stifDesc" name="stifDesc">
-            <input type="hidden" id="year" name="year">
-            <input type="hidden" id="month" name="month">
-            <input type="hidden" id="day" name="day">
-            <input type="hidden" id="uuidName" name="uuidName">
+        <!--Animated CSS-->
+        <link rel="stylesheet" type="text/css" href="/infra/resources/css/css/animate.min.css">
+
+        <!-- Bootstrap -->
+        <link href="/infra/resources/css/css/bootstrap.min.css" rel="stylesheet">
+        <!--Bootstrap Carousel-->
+        <link type="text/css" rel="stylesheet" href="/infra/resources/css/css/carousel.css" />
+
+        <link rel="stylesheet" href="/infra/resources/css/css/isotope/style.css">
+
+        <!--Main Stylesheet-->
+        <link href="/infra/resources/css/css/style.css" rel="stylesheet">
+        <!--Responsive Framework-->
+        <link href="/infra/resources/css/css/responsive.css" rel="stylesheet">
+
+    </head>
+
+    <body data-spy="scroll" data-target="#header">
+	        <form id="formList" name="formList" method="post" action="/infra/index/indexMain">
+	            <input type="hidden" id="stifSeq" name="stifSeq">
+	            <input type="hidden" id="StoreInfo_stifSeq" name="StoreInfo_stifSeq">
+	            <input type="hidden" id="stifName" name="stifName">
+	            <input type="hidden" id="stifDesc" name="stifDesc">
+	            <input type="hidden" id="year" name="year">
+	            <input type="hidden" id="month" name="month">
+	            <input type="hidden" id="day" name="day">
+	            <input type="hidden" id="uuidName" name="uuidName">
+	        </form>
+        <!--Start Hedaer Section-->
+        <%@ include file="../common/headerInclude.jsp" %>
+        <!--End of Hedaer Section-->
+
+
+
+        <!--Start of slider section-->
+        <section id="slider">
+			    <div id="map">    
+			      <button id="location_button">
+			          내 위치 찾기
+			      </button>
+			</div>
+        </section>
+        <!--end of slider section-->
+        
+        
+			<section id="welcome">
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-md-12">
+	                        <div class="wel_header">
+	                            <h2>주변 먹거리</h2>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </section>
+
+
+        <!--Start of blog-->
+        <section id="blog">
             <div class="container">
-                <h1 id="jal" style="padding-top: 50px; text-align:center;">먹거리 지도</h1>
-                <div class="p-4 p-md-5 mb-4" id="map">
+                <div class="row">
+                	<div class="row" id="storeList">
+                	</div>
+            	</div>
+            </div>
+        </section>
+        <!-- end of blog-->
 
-                    <div id="map-canvas"></div>
-                    <div class="col-md-6 px-0" style="height: 100%;">
+        <!--Start of footer-->
+        <section id="footer">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="copyright">
+                            <p>@ 2016 - Design By <span><a href="">&#9798;</a></span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="designer">
+                            <p>A Design By <a href="#">XpeedStudio</a></p>
+                        </div>
                     </div>
                 </div>
-                <h2 id="jal" style="padding-top: 50px; text-align:center;">주변 먹거리</h2>
-                <hr>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="storeList">
-                </div>
+                <!--End of row-->
             </div>
-        </form>
-    </div>
+            <!--End of container-->
+        </section>
+        <!--End of footer-->
+
+
+
+        <!--Scroll to top-->
+        <!--End of Scroll to top-->
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>-->
+        <script src="/infra/resources/js/js/jquery-1.12.3.min.js"></script>
+
+        <!--Counter UP Waypoint-->
+        <script src="/infra/resources/js/js/waypoints.min.js"></script>
+        <!--Counter UP-->
+        <script src="/infra/resources/js/js/jquery.counterup.min.js"></script>
+
+
+
+        <!--Isotope-->
+        <script src="/infra/resources/js/js/isotope/min/scripts-min.js"></script>
+        <script src="/infra/resources/js/js/isotope/cells-by-row.js"></script>
+        <script src="/infra/resources/js/js/isotope/isotope.pkgd.min.js"></script>
+        <script src="/infra/resources/js/js/isotope/packery-mode.pkgd.min.js"></script>
+        <script src="/infra/resources/js/js/isotope/scripts.js"></script>
+
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/infra/resources/js/js/bootstrap.min.js"></script>
+        <!-- Custom JavaScript-->
+        <script src="/infra/resources/js/js/main.js"></script>
+        <script src="/infra/resources/js/common/logout.js"></script>  <!-- 로그아웃 -->
 
     <!-- google 부분 start -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffnYjApY7cl96nlyHHwrDzzdn3VWBxKk&callback=initMap&v=weekly" async>
-    </script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de96e57d26e4344aa147440cc4a132a7&libraries=services,clusterer,drawing"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
+    <script>   
+    var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = { 
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 6 // 지도의 확대 레벨 
+    }; 
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+if (navigator.geolocation) {
+    
+    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+    navigator.geolocation.getCurrentPosition(function(position) {
+        
+        var poslat = position.coords.latitude, // 위도
+        	poslon = position.coords.longitude; // 경도
+        
+        var locPosition = new kakao.maps.LatLng(poslat, poslon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
+            message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
+        
+           
+            
+        // 마커와 인포윈도우를 표시합니다
+        	map.setCenter(locPosition);  
+            
+        var circle = new kakao.maps.Circle({
+            center : new kakao.maps.LatLng(poslat, poslon),  // 원의 중심좌표 입니다 
+            radius: 2000, // 미터 단위의 원의 반지름입니다 
+            strokeWeight: 5, // 선의 두께입니다 
+            strokeColor: '#75B8FA', // 선의 색깔입니다
+            strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+            strokeStyle: 'dashed', // 선의 스타일 입니다
+            fillColor: '#CFE7FF', // 채우기 색깔입니다
+            fillOpacity: 0.7  // 채우기 불투명도 입니다   
+        }); 
+        circle.setMap(map);
+        
+    		// store 위치 마커
+    	<c:forEach items='${list}' var='item' varStatus='status'>
+    	var name = '${item.stlcName}';
+    	var stName = '${item.stifName}';
+    	var Seq = ${item.stifSeq};
+    	var lat = ${item.stlcLat};
+    	var lng = ${item.stlcLng};
+    	var end = ${vo.totalRows};
+    	
+    	
+    	 var d = getDistanceFromLatLonInKm(poslat,poslon,lat,lng);
+    	 if(d < 2000){
+    		 
+    		 console.log("::::::stifSeq:::::::::::"+ Seq);
+    		 $('#storeList').append('<div class="col-md-4"><div class="blog_news"><div class="single_blog_item"><div class="blog_img"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}" />/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a></div><div class="blog_content"><a href=""><h3><bold><c:out value="${item.stifName}"/></bold></h3></a><div class="expert"></div><p class="blog_news_content"><c:out value="${item.stifDesc}" /></p></div></div>');
+
+    		 
+    		    var marker = new kakao.maps.Marker({  
+    		        map: map,
+    		        label: name,
+    		        position: new kakao.maps.LatLng(lat, lng)
+    		    }); 
+    		    
+            	var infowindow = new kakao.maps.InfoWindow({
+            	    map: map, // 인포윈도우가 표시될 지도
+            	    position : new kakao.maps.LatLng(lat, lng),
+            	    content : '<div style="padding-bottom:5px;"><c:out value="${item.stifName}"/></div>',
+            	    removable : true
+            	}); 
+            	
+    		    marker.setMap(map);
+    		    infowindow.open(map, marker); 
+    	 }
+    	 marker.setMap(map);
+    	</c:forEach> 
+        
+    	var content = '<div style="padding:5px;">현재위치</div>',
+    	iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+ 
+    	var showBtn = document.getElementById("location_button"); // 아이디가 "btn"인 요소를 선택함.
+    	showBtn.addEventListener("click", showText);  // 선택한 요소에 click 이벤트 리스너를 등록함.
+    	function showText() {
+        	var infowindow = new kakao.maps.InfoWindow({
+        	    map: map, // 인포윈도우가 표시될 지도
+        	    position : new kakao.maps.LatLng(poslat, poslon),
+        	    content : content,
+        	    removable : iwRemoveable
+        	}); 
+    	} 
+
+      });
+    
+} else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+    
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+        message = 'geolocation을 사용할수 없어요..'
+        
+    displayMarker(locPosition, message);
+}
+
+
+
+function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+	
+	function deg2rad(deg) {
+		return deg * (Math.PI/180)
+	}
+	
+	var R = 6371; // Radius of the earth in km
+	var dLat = deg2rad(lat2-lat1);// deg2rad below
+	var dLon = deg2rad(lng2-lng1);
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+	var d = R * c * 1000; // Distance in meters
+	return d;
+	}
+    </script>
+
+
+
+    <!-- orlCode strat -->
+<!-- <script>
 let map, infoWindow;
 
 function initMap() {
@@ -117,6 +312,7 @@ function initMap() {
 		// store 위치 마커
 	<c:forEach items='${list}' var='item' varStatus='status'>
 	var name = '${item.stlcName}';
+	var stName = '${item.stifName}';
 	var Seq = ${item.stifSeq};
 	var lat = ${item.stlcLat};
 	var lng = ${item.stlcLng};
@@ -128,7 +324,7 @@ function initMap() {
 /* 		 arr[i] = ${status.index}
 		 i++ */
 		 console.log("::::::stifSeq:::::::::::"+ Seq);
-		 $('#storeList').append('<div class="col"><div class="card shadow-sm"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a><div class="card-body"><p class="card-text"><c:out value="${item.stifDesc}"/></p><div class="d-flex justify-content-between align-items-center"><div class="btn-group"></div></div></div></div></div>');
+		 $('#storeList').append('<div class="col-md-4"><div class="blog_news"><div class="single_blog_item"><div class="blog_img"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}" />/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a></div><div class="blog_content"><a href=""><h3><bold><c:out value="${item.stifName}"/></bold></h3></a><div class="expert"></div><p class="blog_news_content"><c:out value="${item.stifDesc}" /></p></div></div>');
 		 
 	      var marker = new google.maps.Marker({
 	          map: map,
@@ -203,157 +399,11 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 	return d;
 	}
 	
-</script>
+</script> -->
+<!-- orlCode end -->
+
+
 <!-- google 부분 end -->
-<!-- <script>
-let map, infoWindow;
-
-function initMap() {
-	// 현재 위치 가져오기
-	navigator.geolocation.getCurrentPosition(
-	        (position) => {
-	          const pos = {
-	            lat: position.coords.latitude,
-	            lng: position.coords.longitude,
-	            
-	          };
-	          
-	const map = new google.maps.Map(document.getElementById("map"), {
-	center: pos,
-    zoom: 15,
-	});
-	// 화면 위치 좌표 start
-	google.maps.event.addListener(map, 'bounds_changed', function() {
-		
-		var bounds = map.getBounds();
-	    // 영역정보의 남서쪽 정보를 얻어옵니다 
-	    var swLatlng = bounds.getSouthWest(); 
-	    // 영역정보의 북동쪽 정보를 얻어옵니다 
-	    var neLatlng = bounds.getNorthEast();
-	    // 1b에 맵의 남서쪽, 북동쪽 정보를 담음
-	    lb = new google.maps.LatLngBounds(swLatlng, neLatlng),
-		
-		// store 위치 마커
-	<c:forEach items='${list}' var='item' varStatus='status'>
-	var name = '${item.stlcName}';
-	var Lat = ${item.stlcLat};
-	var Lng = ${item.stlcLng};
-	var end = ${vo.totalRows};
-	
-	 for (var i = 0; i < end; i++) {
-		 var l1 = new google.maps.LatLng(Lat,Lng),	// db안에 있는 위도 경도를 가져옴
-		 if(lb.contain(l1) == true){		// 1b안에 l1이 포함되는게 true면 마커 실행
-        var marker = new google.maps.Marker({
-            map: map,
-            label: name,
-            position: new google.maps.LatLng(Lat,Lng),
-        });
-		 }
-	 }
-	
-</c:forEach> 
-	}
-	// 현재 위치를 찾는 버튼 start
-	infoWindow = new google.maps.InfoWindow();
-	  
-	  
-	  const locationButton = document.createElement("button");
-	  locationButton.textContent = "현재위치";
-	  locationButton.classList.add("custom-map-control-button");
-	  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-	  
-	  locationButton.addEventListener("click", () => {
-		    // Try HTML5 geolocation.  
-		    if (navigator.geolocation) {
-		      navigator.geolocation.getCurrentPosition(
-		        (position) => {
-		          const pos = {
-		            lat: position.coords.latitude,
-		            lng: position.coords.longitude,
-		          };
-		          
-		          
-		        
-		          infoWindow.setPosition(pos);
-		          infoWindow.setContent("현재위치");
-		          infoWindow.open(map);
-		          map.setCenter(pos);
-		          
-		        },
-		        () => {
-		          handleLocationError(true, infoWindow, map.getCenter());
-		        }
-		      );
-		    } else {
-		      // 현재위치를 지원하지 않을때 실행
-		      handleLocationError(false, infoWindow, map.getCenter());
-		    }
-		  });
-  });
-	// 현재 위치를 찾는 버튼 end
-}
-
-// 현재위치 검색 error 발생시 실행
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-  infoWindow.open(map);
-}
-
-//위도경도 거리계산식		(현재 위도, 현재 경도, 상대 위도, 상대 경도)
-function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
-	
-	function deg2rad(deg) {
-		return deg * (Math.PI/180)
-	}
-	
-	var R = 6371; // Radius of the earth in km
-	var dLat = deg2rad(lat2-lat1);// deg2rad below
-	var dLon = deg2rad(lng2-lng1);
-	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
-	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-	var d = R * c * 1000; // Distance in meters
-	return d;
-	}
-	
-</script> -->
-
-<!-- <script type="text/javascript">
-getListTheater = function(seq) {
-
-	$.ajax({
-		async: true 
-		,cache: false
-		,type: "post"
-		,url: "/infra/index/MapFormList"
-		,dataType:"JSON" 
-		,data : {"stifSeq" : seq}	//보내는 데이터
-		,success: function(data){ 
-			alert(${status.index});
-			/* $('#StoreInfo_stifSeq').empty();	// 기재된 내용 삭제 */
-	/* 					$('#storeList').empty();
-			$('#stifSeq').empty();	// 기재된 내용 삭제
-			$('#stifName').empty();	// 기재된 내용 삭제
-			$('#stifDesc').empty();	// 기재된 내용 삭제 */
-			$('#hiddenSeq').val("");
-			console.log("::::::s545:::::::::::"+ hiddenSeq); 
-				
-			for(var i = 0; i < data['theaterList'].length; i++){		// theater의 길이만큼 극장 목록 ui로 추가
-				$('#hiddenSeq').append('<li><button type="button" id="thCd" onclick="goForm('+data['storeList'][i]['stifSeq']')" class="btn" style="padding-left: 0;"></button></li>');
-			}	// memSeq=1, mvsTheaterCd=91
-			
-			
-		} ,error : function(jqXHR, textStatus, errorThrown){
-		alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-		}
-		
-	}); 
-}
-</script> -->
 <script type="text/javascript">
 	$("#btnSubmit").on("click", function(){	
 	});

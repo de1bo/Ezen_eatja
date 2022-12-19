@@ -11,8 +11,29 @@
 <meta charset="uTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>매장등록</title>
+	
+		<!--Google Fonts-->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!--Fontawesom-->
+        <link rel="stylesheet" href="/infra/resources/css/css/font-awesome.min.css">
+
+        <!--Animated CSS-->
+        <link rel="stylesheet" type="text/css" href="/infra/resources/css/css/animate.min.css">
+
+        <!-- Bootstrap -->
+        <link href="/infra/resources/css/css/bootstrap.min.css" rel="stylesheet">
+        <!--Bootstrap Carousel-->
+        <link type="text/css" rel="stylesheet" href="/infra/resources/css/css/carousel.css" />
+
+        <link rel="stylesheet" href="/infra/resources/css/css/isotope/style.css">
+
+        <!--Main Stylesheet-->
+        <link href="/infra/resources/css/css/style.css" rel="stylesheet">
+        <!--Responsive Framework-->
+        <link href="/infra/resources/css/css/responsive.css" rel="stylesheet">
+        
 	<link href="/infra/resources/css/store/style.css" rel="stylesheet">
-	<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/infra/resources/css/form-validation.css" rel="stylesheet">
 	<script src = "/infra/resources/js/common.js"></script><!-- image -->
 	<script src = "/infra/resources/js/commonXdmin.js"></script><!-- image -->
@@ -31,6 +52,21 @@
 }
 .jal {
 	font-family: "jal";
+}
+
+body {
+ text-align: left;
+}
+.input-hidden {
+    position: absolute;
+    left: -9999px;
+}
+input[type=radio]:checked + label {
+    border: 1px solid #fff;
+    box-shadow: 0 0 3px 3px #ff428682;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    background-color: #fff;
 }
 </style>
 </head>
@@ -68,10 +104,10 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <h3 class="register-heading jal">매장 정보 입력</h3>
                                 <div class="row register-form">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
 	                                <div class="form-group">
 	                                		<div class="col-sm-6 mt-3 mt-sm-0">
 												<label for="file0" class="form-label input-file-button">이미지 첨부</label>
@@ -84,7 +120,7 @@
 								
 	                                </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
 	                                <div class="form-group">
 	                                </div>
                                 </div>
@@ -92,49 +128,35 @@
                                         <div class="form-group">
                                         	<label for="name" class="form-label">매장 이름</label>
                                             <input type="text" class="form-control" id="stifName" name="stifName" placeholder="매장 이름" value="" />
-                                         <div class="invalid-feedback">
-                							매장 이름을 입력해주세요
-             							 </div>
                                         </div>
                                         <div class="form-group">
                                       		<label for="name" class="form-label">매장 전화번호</label>
                                             <input type="text" class="form-control" id="stphNumber" name="stphNumber" placeholder="매장 전화번호" value="" />
-                                         <div class="invalid-feedback">
-                							매장 전화번호를 입력해주세요
-             							 </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="name" class="form-label">매장 영업시간</label>
                                             <input type="text" class="form-control" id="stifOC" name="stifOC"  placeholder="ex) 9AM~6PM" value="" />
-                                        <div class="invalid-feedback">
-                							매장 영업시간을 입력해주세요
-             							 </div>
                                         </div>
                                         <div class="form-group">
-                                            <div class="maxl">
-                                                <label class="radio inline"> 
+                                            <div class="maxl"> 
 									                <label for="name" class="form-label">음식종류</label><br>
-									                <input type="radio" class="btn-check" id="storeType1" name="stifFoodTypeCd" value="25" autocomplete="off">
-									                <label class="btn btn-outline-primary" for="storeType1">한식</label> 
-									                <input type="radio" class="btn-check" id="storeType2" name="stifFoodTypeCd" value="26" autocomplete="off">
+									                <input type="radio" class="input-hidden" id="storeType1" name="stifFoodTypeCd" value="25" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType1">한식</label>
+									                <input type="radio" class="input-hidden" id="storeType2" name="stifFoodTypeCd" value="26" autocomplete="off">
 									                <label class="btn btn-outline-primary" for="storeType2">일식</label>
-													<input type="radio" class="btn-check" id="storeType3" name="stifFoodTypeCd" value="27" autocomplete="off">
-									                <label class="btn btn-outline-primary" for="storeType3">중식</label>
-									                <input type="radio" class="btn-check" id="storeType4" name="stifFoodTypeCd" value="28" autocomplete="off">
+													<input type="radio" class="input-hidden" id="storeType3" name="stifFoodTypeCd" value="27" autocomplete="off">
+									                <label class="btn btn-outline" for="storeType3">중식</label>
+									                <input type="radio" class="input-hidden" id="storeType4" name="stifFoodTypeCd" value="28" autocomplete="off">
 									                <label class="btn btn-outline-primary" for="storeType4">양식</label>
-									                <input type="radio" class="btn-check" id="storeType5" name="stifFoodTypeCd" value="29" autocomplete="off">
+									                <input type="radio" class="input-hidden" id="storeType5" name="stifFoodTypeCd" value="29" autocomplete="off">
 									                <label class="btn btn-outline-primary" for="storeType5">세계음식</label>
-									                <input type="radio" class="btn-check" id="storeType6" name="stifFoodTypeCd" value="30" autocomplete="off">
+									                <input type="radio" class="input-hidden" id="storeType6" name="stifFoodTypeCd" value="30" autocomplete="off">
 									                <label class="btn btn-outline-primary" for="storeType6">뷔페</label>
-									                <input type="radio" class="btn-check" id="storeType7" name="stifFoodTypeCd" value="31" autocomplete="off">
+									                <input type="radio" class="input-hidden" id="storeType7" name="stifFoodTypeCd" value="31" autocomplete="off">
 									                <label class="btn btn-outline-primary" for="storeType7">카페</label>
-									                <input type="radio" class="btn-check" id="storeType8" name="stifFoodTypeCd" value="32" autocomplete="off">
+									                <input type="radio" class="input-hidden" id="storeType8" name="stifFoodTypeCd" value="32" autocomplete="off">
 									                <label class="btn btn-outline-primary" for="storeType8">주점</label>
-                                                </label>
                                             </div>
-                                         <div class="invalid-feedback">
-                							음식종류를 선택해주세요
-             							 </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -150,18 +172,12 @@
 													</div>
 												</div>
                                         </div>
-                                         <div class="invalid-feedback">
-                							매장 주소를 입력해주세요
-             							 </div>
                                     </div>
                                     <div class="col-md-12">
 	                                <div class="form-group" align="center">
 	                                	<label for="name" class="form-label">매장 소개</label><br>
                         				<textarea name="stifDesc" id="stifDesc" class="form-control" cols="50" rows="5"></textarea>
 	                                </div>
-	                                <div class="invalid-feedback">
-                						매장 소개를 입력해주세요
-             						</div>
                                 </div>
                                 <div class="col-md-12">
                                     	<div class="form-group">
@@ -194,8 +210,8 @@ function insRow() {
  
   /* var seq = oTbl.${vo.totalRows} + 1; */
   //삽입될 Form Tag
-  var frmTag = "<br><div class='input-group row row-cols-2 row-cols-lg-6' name=addText ><h3 class='ft'>메뉴: </h3><input type=text class='form-control col' id='stmnName' name='storeMenuNameArray'><h3 class='ft'>가격: </h3><input type=text class='form-control col' id='stmnPrice' name='storeMenuPriceArray'>";
-  frmTag += "<div class='col'><input type=button value='삭제' class='form-control btn btn-danger col' onClick='removeRow()' style='cursor:hand'></div></div>";
+  var frmTag = "<br><div class='row'><div class='col-md-6'><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>메뉴: </h3><input type=text class='form-control col' id='stmnName' name='storeMenuNameArray'></div></div></div></div><div class='col-md-4' name=addText><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>가격: </h3><input type=text class='form-control col' id='stmnPrice' name='storeMenuPriceArray'></div></div></div></div>";
+  frmTag += "<div class='col-md-2' name=addText><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>&nbsp</h3><input type=button value='삭제' class='form-control btn btn-danger col' onClick='removeRow()' style='cursor:hand'></div></div></div></div></div>";
   oCell.innerHTML = frmTag;
 }
 //Row 삭제
@@ -219,17 +235,17 @@ function frmCheck()
    }
  }
 </script>
-<table border="0" cellspacing="0" cellpadding="0">
+<table class="col-md-12" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td colspan="2" align="center">
-      <table border="0" cellpadding="0" cellspacing="0">
+      <table class="col-md-12" border="0" cellpadding="0" cellspacing="0">
         <tr>
-         <td colspan="5" height="25" align="center">
+         <td class="col-md-12" height="25" align="center">
          </td>
         </tr>
         <tr>
          <td height="25">
-           <table id="addTable" cellspacing="0" cellpadding="0" border="0">
+           <table id="addTable" class="col-md-12">
             <tr>
               <td align="center"></td>
             </tr>
@@ -273,6 +289,7 @@ function frmCheck()
             </div>
             </div>
            </div> 
+           </div>
            </form>
            </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -332,7 +349,6 @@ delLi = function(seq, index){
 		})
 	</script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de96e57d26e4344aa147440cc4a132a7&libraries=services"></script>
-	<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=AppKey&libraries=services"></script> -->
 	
 
             <script>
@@ -420,8 +436,5 @@ delLi = function(seq, index){
     }
 </script>
             
-
-
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRvzJwvLNg3tSBW1V3iIGxE47uYc2YxsI&libraries=places&callback=initAutocomplete" async defer></script> --> <!-- google key -->
 </body>
 </html>

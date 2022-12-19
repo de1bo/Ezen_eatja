@@ -11,6 +11,7 @@
 		FROM eatja.infrMember a
 		left join eatja.infrMemberAddress as b on b.infrMember_Seq = a.seq and b.ifmaDelNy = 0
 		left join eatja.infrMemberPhone as c on c.infrMember_Seq = a.seq and c.ifmpDelNy = 0
+		left join eatja.infrMemberEmail as d on d.infrMember_Seq = a.seq and d.ifmeDelNy = 0
 			WHERE 1=1
 				<choose>
 					<when test="shIfmmDelNy == 1">AND a.ifmmDelNy = 1</when>
@@ -72,7 +73,6 @@
 			,ifmmPassword
 			,ifmmGenderCd
 			,ifmmBirthday
-			,ifmmRecommend
 			,ifmmEmailConsentNy
 			,ifmmPushConsentNy
 			,ifmmPersonerinfoCd
@@ -88,7 +88,6 @@
 			,#{ifmmPassword}
 			,#{ifmmGenderCd}
 			,#{ifmmBirthday}
-			,#{ifmmRecommend}
 			,#{ifmmEmailConsentNy}
 			,#{ifmmPushConsentNy}
 			,#{ifmmPersonerinfoCd}
@@ -169,13 +168,11 @@
 				,a.ifmmPassword
 				,a.ifmmGenderCd
 				,a.ifmmBirthday
-				,a.ifmmRecommend
 				,a.ifmmEmailConsentNy
 				,a.ifmmPushConsentNy
 				,a.ifmmPersonerinfoCd
 				,a.regDateTime
 				,a.modDateTime
-				,a.ifmmRecommend
 				,a.ifmmDelNy
 				,b.imadAddress1
 				,b.imadAddress2
@@ -203,12 +200,11 @@
 				,ifmmPassword = #{ifmmPassword}
 				,ifmmGenderCd = #{ifmmGenderCd}
 				,ifmmBirthday = #{ifmmBirthday}
-				,ifmmRecommend = #{ifmmRecommend}
-				,ifmeEmailAccount = #{ifmeEmailAccount}
-				,ifmeEmailDomainCd = #{ifmeEmailDomainCd}
 				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 				,ifmmPushConsentNy = #{ifmmPushConsentNy}
 				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}
+				,regDateTime = (NOW())
+				,modDateTime = (NOW())
 			WHERE 1=1
 				AND seq = #{seq}
 
@@ -222,10 +218,11 @@
 				,ifmmPassword = #{ifmmPassword}
 				,ifmmGenderCd = #{ifmmGenderCd}
 				,ifmmBirthday = #{ifmmBirthday}
-				,ifmmRecommend = #{ifmmRecommend}
 				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 				,ifmmPushConsentNy = #{ifmmPushConsentNy}
 				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}
+				,regDateTime = (NOW())
+				,modDateTime = (NOW())
 			WHERE 1=1
 				AND seq = #{seq}
 

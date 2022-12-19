@@ -15,78 +15,59 @@
 	#jal {
 	font-family: "jal";
 }
-#pd{
-	padding: 5%;
-}
 .ft{
 	text-color: white;
 }
+A:link {text-decoration:none; color:#646464;}
+A:visited {text-decoration:none; color:#646464;}
+A:active {text-decoration:none; color:#646464;}
+A:hover {text-decoration:none; color:#646464;}
 </style>
 <title>고객 리스트</title>
-<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!--Google Fonts-->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!--Fontawesom-->
+        <link rel="stylesheet" href="/infra/resources/css/css/font-awesome.min.css">
+
+        <!--Animated CSS-->
+        <link rel="stylesheet" type="text/css" href="/infra/resources/css/css/animate.min.css">
+
+        <!-- Bootstrap -->
+        <link href="/infra/resources/css/css/bootstrap.min.css" rel="stylesheet">
+        <!--Bootstrap Carousel-->
+        <link type="text/css" rel="stylesheet" href="/infra/resources/css/css/carousel.css" />
+
+        <link rel="stylesheet" href="/infra/resources/css/css/isotope/style.css">
+
+        <!--Main Stylesheet-->
+        <link href="/infra/resources/css/css/style.css" rel="stylesheet">
+        <!--Responsive Framework-->
+        <link href="/infra/resources/css/css/responsive.css" rel="stylesheet">
+        
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script> -->
 <link href="/infra/resources/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-<header>
-	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/infra/index/indexMain"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-      <form class="navbar-nav me-auto mb-2 mb-md-0">
-          <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button> -->
-        </form>
-        
-        <ul class="navbar-nav">
-          <li class="nav-item">  	
-  			 <div class="right nav-link" style="padding-right: 30px;">
-		   		<c:out value="${sessName}"/><br>
-		   		<c:out value="${sessId}"/>
-		   		</div>
-   			</li>
-		<c:if test="${not empty sessSeq}">
-			<button type="button" class="btn btn-danger btn-sm" name="" id="btnLogout"><i class="fa-solid fa-power-off"></i>로그아웃</button>
-		</c:if>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#"><h5>먹거리 추천</h5></a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#"><h5>랜덤 추천</h5></a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#"><h5>리뷰</h5></a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="#"><h5>고객센터</h5></a>
-          </li> -->
-        </ul>      
-      </div>
-    </div>
-  </nav>
-</header>
-</main>
+<%@ include file="../common/headerInclude.jsp" %>
 <div id="pd">
 <form id="formList" name="formList" method="post" action="/infra/member/memberList">
-  <div style="padding: 5%">
-	<h1 id="jal" style="padding: 15px;" >사용자 관리</h1>
-	  <table class="border border-3">
 	  <input type="hidden" id="thisPage" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>"><!-- Post방식 -->
 	  <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>"> <!-- multidele -->
 	  <input type="hidden" name="checkboxSeqArray">	<!-- multidele -->
 	  <input type="hidden" id="seq" name="seq" >
+  <div style="padding: 5%">
+	<h1 id="jal" style="padding: 15px;" >사용자 관리</h1>
+	  <table class="border border-3">
+
 	  <div class="container"> 	
 	  <tr class="row row-cols-1 row-cols-sm-2 row-cols-md-4">    
 	  	<td>
 		  	<div class="col">
 		    	<div class="col p-2">
-					<select class="form-select" aria-label="Default select example" id="shIfmmDelNy" name="shIfmmDelNy">
+					<select class="form-control" aria-label="Default select example" id="shIfmmDelNy" name="shIfmmDelNy">
 		  				<option value="">::삭제여부::
 						<option value="1" <c:if test="${vo.shIfmmDelNy eq 1 }">selected</c:if>>Y
 						<option value="0" <c:if test="${vo.shIfmmDelNy eq 0 }">selected</c:if>>N
@@ -97,7 +78,7 @@
 		<td>
 		    <div class="col">
 		    	<div class="col p-2">
-					<select class="form-select" id="shOptionDate" name="shOptionDate" aria-label="Default select example">
+					<select class="form-control" id="shOptionDate" name="shOptionDate" aria-label="Default select example">
 		  				<option value="" <c:if test="${empty vo.shOptionDate}">selected</c:if>>날짜</option>
 						<option value="1" <c:if test="${vo.shOptionDate eq 1}">selected</c:if>>등록일</option>
 						<option value="2" <c:if test="${vo.shOptionDate eq 2}">selected</c:if>>수정일</option>
@@ -110,7 +91,7 @@
 		    <div class="col">
 		    	<div class="col p-2">
 					<fmt:parseDate var="shDateStart" value="${vo.shDateStart }" pattern="yyyy-MM-dd HH:mm:ss"/>
-            		<input type="text" id="shDateStart" name="shDateStart" value="<fmt:formatDate value="${shDateStart }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control" autocomplete="off">
+            		<input type="text" id="shDateStart" name="shDateStart" value="<fmt:formatDate value="${shDateStart}" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control" autocomplete="off">
 				</div>
 		    </div>
 		</td>
@@ -118,7 +99,7 @@
 		    <div class="col">
 		    	<div class="col p-2">
 		    		<fmt:parseDate var="shDateEnd" value="${vo.shDateEnd }" pattern="yyyy-MM-dd HH:mm:ss"/>
-					<input type="text" id="shDateEnd" name="shDateEnd" value="<fmt:formatDate value="${shDateEnd }" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control" autocomplete="off">
+					<input type="text" id="shDateEnd" name="shDateEnd" value="<fmt:formatDate value="${shDateEnd}" pattern="yyyy-MM-dd" />" placeholder="시작일" class="form-control" autocomplete="off">
 				</div>
 		    </div>
 	    </td>
@@ -126,7 +107,7 @@
 	  <tr class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
 	  	<td><div class="col">
 		    	<div class="col p-2">
-		    	<select class="form-select" aria-label="Default select example" id="shOption" name="shOption">
+		    	<select class="form-control" aria-label="Default select example" id="shOption" name="shOption">
 		  				<option value="">::검색구분::
 						<option value="1"  <c:if test="${vo.shOption eq 1 }">selected</c:if>>이름
 						<option value="2"  <c:if test="${vo.shOption eq 2 }">selected</c:if>>아이디
@@ -154,7 +135,8 @@
 	</table>
 	<br><br>
 			<!-- 게시판부분 -->	
-		<c:out value="${vo.rowNumToShow}"/>/<c:out value="${vo.totalRows}"/>개의 검색결과	
+		<c:out value="${vo.rowNumToShow}"/>/<c:out value="${vo.totalRows}"/>개의 검색결과
+		<button class="btn btn-secondary btn-sm" style=" float:right; border-bottom: 10px;"><a href="/infra/member/AdminForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">관리자 회원가입</a></button>
 		<table class="table table-hover" style="text-align: center;">
 		  <tr class="table table-success table-striped">
 		  	<td><input type="checkbox" id="checkboxAll" name="" value="" class="form-check-input"></td>
@@ -203,10 +185,10 @@
 		  	</td>
 		  	<td>
 			  	<c:choose>
-				    <c:when test="${item.ifmmPushConsentNy == 40}">
+				    <c:when test="${item.ifmmPushConsentNy == 0}">
 				        동의
 				    </c:when>
-				    <c:when test="${item.ifmmPushConsentNy == 41}">
+				    <c:when test="${item.ifmmPushConsentNy == 1}">
 				        거부
 				    </c:when>
 				    <c:otherwise>
@@ -216,10 +198,10 @@
 			</td>
 		  	<td>
 		  		<c:choose>
-				    <c:when test="${item.ifmmEmailConsentNy == 40}">
+				    <c:when test="${item.ifmmEmailConsentNy == 0}">
 				        동의
 				    </c:when>
-				    <c:when test="${item.ifmmEmailConsentNy == 41}">
+				    <c:when test="${item.ifmmEmailConsentNy == 1}">
 				        거부
 				    </c:when>
 				    <c:otherwise>
@@ -260,7 +242,6 @@
 	
 	
 	<button type="submit" class="btn btn-danger" id="btnDelete" style=" float:left; border-bottom: 10px;"><img src="/infra/resources/images/trash-icon.png" width="25px" height="25px"></button>
-	<button type="button" class="btn btn-success" style=" float:right; border-bottom: 10px;"><a href="/infra/member/AdminForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>"><img src="/infra/resources/images/plus-sign.png" width="25px" height="25px"></a></button>
 	<button type="button" class="btn btn-success" id="btnExcel" style=" float:right; border-bottom: 10px;">엑셀</button>
 	</div>
 	</form>

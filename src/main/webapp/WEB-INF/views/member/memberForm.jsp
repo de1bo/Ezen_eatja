@@ -139,11 +139,7 @@
              	<label for="ifmpNumberArray0" class="form-label">핸드폰</label>
              	<input type="text" id="ifmpNumberArray0" name="ifmpNumberArray" value="<c:out value="${ifmpNumber}"/>" maxlength="11" placeholder="숫자만 (0104447777)" class="form-control form-control-sm">
              	 --%>
-	            <div class="col-md-6">
-	          		<label for="nation" class="form-label">추천인</label>
-	          		<input type="text" class="form-control" id="ifmmRecommendSeq" name="ifmmRecommendSeq">
-	          	</div>
-	          	<div class="col-md-6">
+	          	<div class="col-md-12">
 	           		 <label for="tel" class="form-label">전화번호</label>
 	         	     <input type="tel" id="ifmpHomeTel" name="ifmpHomeTel" class="form-control" id="tlno" title="전화번호를 입력하세요." placeholder="00*-000*-0000" maxlength="13">
 	          	</div>

@@ -1,54 +1,52 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/infra/index/indexMain"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <form class="navbar-nav me-auto mb-2 mb-md-0">
-                    <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button> -->
-                </form>
+<section id="header">
+            <div class="header-area">
+                <!--End of top header-->
+                <div class="header_menu text-center" data-spy="affix" data-offset-top="50" id="nav">
+                    <div class="container">
+                        <nav class="navbar navbar-default zero_mp">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand custom_navbar-brand" href="#"><img src="/infra/resources/images/logo1.png" height="50" width="70"></a>
+                            </div>
+                            <!--End of navbar-header-->
 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/infra/index/indexMain">
-                            <h5>메인메뉴</h5>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/infra/store/store_registration">
-                            <h5>매장등록</h5>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/infra/member/memberList">
-                            <h5>고객 관리</h5>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="sd" href="javascript:goFormim(<c:out value="${sessSeq}"/>)">
-                            <h5>회원정보</h5>
-                        </a>
-                    </li>
-                </ul>
+                            <!-- 메뉴바 -->
+                            <div class="collapse navbar-collapse zero_mp" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right main_menu">
+                                    <li><a href="/infra/index/indexMain">메인메뉴</a></li>
+                                    <li><a href="/infra/store/store_registration">매장등록</a></li>
+                                    <li><a href="/infra/member/memberList">고객관리</a></li>
+                                    <li><a href="javascript:goFormim(<c:out value="${sessSeq}"/>)">회원정보</a></li>
+                                    <li><a href="" id="btnLogout">LOGOUT</a></li>
+                                </ul>
+                            </div>
+                            <!-- /.navbar-collapse -->
+                        </nav>
+                        <!--End of nav-->
+                    </div>
+                    <!--End of container-->
+                </div>
+                <!--End of header menu-->
             </div>
-        </div>
-    </nav>
-</header>
-        <form id="myinfo" name="myinfo" method="post">
-            <input type="hidden" id="myseq" name="seq">
-        </form>
-	<script type="text/javascript">
+            <!--end of header area-->
+        </section>
+<form id="myinfo" name="myinfo" method="post">
+    <input type="hidden" id="myseq" name="seq">
+</form>
+<script type="text/javascript">
 
-		goFormim = function(sessSeq){
-			
-			$("#myseq").val(sessSeq);
-			$("#myinfo").attr("action","/infra/member/userView");
-			$("#myinfo").submit();
-		}
-	</script>
+goFormim = function(sessSeq){
+    
+    $("#myseq").val(sessSeq);
+    $("#myinfo").attr("action","/infra/member/userView");
+    $("#myinfo").submit();
+}
+</script>

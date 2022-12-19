@@ -170,6 +170,7 @@ public class MemberController {
 		System.out.println("vo.getSeq(): " + vo.getSeq());
 		System.out.println("############################");
 		
+		
 		Member item= service.selectOne(vo);
 		
 		model.addAttribute("item", item);
