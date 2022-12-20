@@ -50,10 +50,9 @@
       text-align: center;
       }
     </style>
-
-    
     <!-- Custom styles for this template -->
     <link href="/infra/resources/css/sidebars.css" rel="stylesheet">
+    <link href="/infra/resources/css/common/Alinkcolor.css" rel="stylesheet">
   </head>
   <body>
     

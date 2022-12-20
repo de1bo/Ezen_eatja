@@ -18,10 +18,6 @@
 .ft{
 	text-color: white;
 }
-A:link {text-decoration:none; color:#646464;}
-A:visited {text-decoration:none; color:#646464;}
-A:active {text-decoration:none; color:#646464;}
-A:hover {text-decoration:none; color:#646464;}
 </style>
 <title>고객 리스트</title>
 
@@ -48,6 +44,7 @@ A:hover {text-decoration:none; color:#646464;}
         
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 <link href="/infra/resources/css/style.css" rel="stylesheet">
+<link href="/infra/resources/css/common/Alinkcolor.css" rel="stylesheet">
 </head>
 
 <body>
