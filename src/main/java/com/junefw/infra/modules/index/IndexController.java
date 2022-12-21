@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,5 +74,33 @@ public class IndexController {
 		returnMap.put("item", "success");
 		
 		return returnMap;	
+	}
+	
+	
+	
+	// loginCheck
+	@ResponseBody
+	@RequestMapping(value = "/userCdCheck")
+	public Map<String, Object> loginCheck(Index dto, HttpServletRequest request) throws Exception {
+		
+		Map<String, Object> returnMap = new HashMap<String, Object>();
+		int passNy =0;
+		if(request.getSession().getAttribute("sessName")!=null) {
+			System.out.println(request.getSession().getAttribute("sessName"));
+			passNy=1;
+			
+		}
+		
+		
+		System.out.println(passNy);
+		
+		if (passNy==1 ) {
+			returnMap.put("rt", "pass");
+		} else {
+			returnMap.put("rt", "nonpass");
+		}
+
+		return returnMap;
+
 	}
 }

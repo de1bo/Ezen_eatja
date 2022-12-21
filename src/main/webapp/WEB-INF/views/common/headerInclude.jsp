@@ -22,9 +22,9 @@
                             <div class="collapse navbar-collapse zero_mp" id="bs-example-navbar-collapse-1">
                                 <ul class="nav navbar-nav navbar-right main_menu">
                                     <li><a href="/infra/index/indexMain">메인메뉴</a></li>
-                                    <li><a href="/infra/store/store_registration">매장등록</a></li>
-                                    <li><a href="/infra/member/memberList">고객관리</a></li>
-                                    <li><a href="javascript:goFormim(<c:out value="${sessSeq}"/>)">회원정보</a></li>
+                                    <li><a href="/infra/store/store_registration" id="store_registration">매장등록</a></li>
+                                    <li><a href="/infra/member/memberList" id="adminUserManagement">고객관리</a></li>
+                                    <li><a href="javascript:goFormim(<c:out value="${sessSeq}"/>)" id="userInfo">회원정보</a></li>
                                     <li><a href="" id="btnLogout">LOGOUT</a></li>
                                 </ul>
                             </div>
@@ -42,11 +42,13 @@
     <input type="hidden" id="myseq" name="seq">
 </form>
 <script type="text/javascript">
-
+	
 goFormim = function(sessSeq){
-    
-    $("#myseq").val(sessSeq);
-    $("#myinfo").attr("action","/infra/member/userView");
-    $("#myinfo").submit();
+	
+	    $("#myseq").val(sessSeq);
+	    $("#myinfo").attr("action","/infra/member/userView");
+	    $("#myinfo").submit();
+
 }
 </script>
+

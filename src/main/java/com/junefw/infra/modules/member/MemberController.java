@@ -302,6 +302,7 @@ public class MemberController {
 			if(itemMember != null) {
 
 				httpSession.setAttribute("sessSeq", itemMember.getSeq());
+				httpSession.setAttribute("sessRegistTypeCd", itemMember.getIfmmRegistTypeCd());
 				httpSession.setAttribute("sessId", itemMember.getIfmmId());
 				httpSession.setAttribute("sessName", itemMember.getIfmmName());
 					
@@ -328,6 +329,7 @@ public class MemberController {
 			
 			System.out.println(name);
 			httpSession.setAttribute("sessName", name);
+			httpSession.setAttribute("sessRegistTypeCd", "4");
 			httpSession.setAttribute("sessId","구글 회원입니다");
 			httpSession.setAttribute("sessSeq","구글 회원입니다");
 			
@@ -344,6 +346,7 @@ public class MemberController {
 			
 			System.out.println(name);
 			httpSession.setAttribute("sessName", name);
+			httpSession.setAttribute("sessRegistTypeCd", "4");
 			httpSession.setAttribute("sessId","카카오 회원입니다");
 			httpSession.setAttribute("sessSeq","카카오 회원입니다");
 			
@@ -359,6 +362,7 @@ public class MemberController {
 			
 			System.out.println(name);
 			httpSession.setAttribute("sessName", name);
+			httpSession.setAttribute("sessRegistTypeCd", "4");
 			httpSession.setAttribute("sessId","페이스북 회원입니다");
 			httpSession.setAttribute("sessSeq","페이스북 회원입니다");
 			

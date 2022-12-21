@@ -14,9 +14,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>김도현1</title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<!-- <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script> -->
 <script src="/infra/resources/js/jquery-1.11.2.min.js"></script>
+
+        <!--Google Fonts-->
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+        <!--Fontawesom-->
+        <link rel="stylesheet" href="/infra/resources/css/css/font-awesome.min.css">
+
+        <!--Animated CSS-->
+        <link rel="stylesheet" type="text/css" href="/infra/resources/css/css/animate.min.css">
+
+        <!-- Bootstrap -->
+        <link href="/infra/resources/css/css/bootstrap.min.css" rel="stylesheet">
+        <!--Bootstrap Carousel-->
+        <link type="text/css" rel="stylesheet" href="/infra/resources/css/css/carousel.css" />
+
+        <link rel="stylesheet" href="/infra/resources/css/css/isotope/style.css">
+
+        <!--Main Stylesheet-->
+        <link href="/infra/resources/css/css/style.css" rel="stylesheet">
+        <!--Responsive Framework-->
+        <link href="/infra/resources/css/css/responsive.css" rel="stylesheet">
 <!-- <link href="../../css/style.css" rel="stylesheet"> -->
 <style>
 	.pd {
@@ -25,7 +46,6 @@
 	#header{
 		width: 100%;
 		height: 30%;
-		padding-top: 7%;
 		text-align: center;
 	}
 	#content{
@@ -282,7 +302,7 @@ image {
 	</div>
 
 		<div class="col-sm-4">
-			<div id="map"></div>
+			<div id="map" style="width:100%;height:350px;"></div>
 <!-- 			<br>
 			<h3><strong>주변 인기 식당</strong></h3>
 				<div class="card mb-3" style="max-width: 540px;">
@@ -347,35 +367,77 @@ image {
 </div>
 </div>
 
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>-->
+        <script src="/infra/resources/js/js/jquery-1.12.3.min.js"></script>
+
+        <!--Counter UP Waypoint-->
+        <script src="/infra/resources/js/js/waypoints.min.js"></script>
+        <!--Counter UP-->
+        <script src="/infra/resources/js/js/jquery.counterup.min.js"></script>
 
 
 
+        <!--Isotope-->
+        <script src="/infra/resources/js/js/isotope/min/scripts-min.js"></script>
+        <script src="/infra/resources/js/js/isotope/cells-by-row.js"></script>
+        <script src="/infra/resources/js/js/isotope/isotope.pkgd.min.js"></script>
+        <script src="/infra/resources/js/js/isotope/packery-mode.pkgd.min.js"></script>
+        <script src="/infra/resources/js/js/isotope/scripts.js"></script>
 
-<script
-   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAffnYjApY7cl96nlyHHwrDzzdn3VWBxKk&callback=initMap&v=weekly" async>
- </script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="/infra/resources/js/js/bootstrap.min.js"></script>
+        <!-- Custom JavaScript-->
+        <script src="/infra/resources/js/js/main.js"></script>
+        <script src="/infra/resources/js/common/logout.js"></script>  <!-- 로그아웃 -->
+
+    <!-- google 부분 start -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de96e57d26e4344aa147440cc4a132a7&libraries=services,clusterer,drawing"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
  <script>
- let map;
-
-
+ 
+ var name = '${item.stlcName}';
+ var lat = ${item.stlcLat};
+ var lng = ${item.stlcLng};
 	
- function initMap() {
-	 
-	 var name = '${item.stlcName}';
-		var lat = ${item.stlcLat};
-		var lng = ${item.stlcLng};
-	 
-     const map = new google.maps.Map(document.getElementById("map"), {
-         zoom: 14,
-         center: { lat: lat, lng: lng },
-     });
+ var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+ mapOption = { 
+     center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
+     level: 3 // 지도의 확대 레벨
+ };
 
-         var marker = new google.maps.Marker({
-             map: map,
-             label: name,
-             position: new google.maps.LatLng(lat,lng)
-         });
- }
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+//마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(lat, lng); 
+
+//마커를 생성합니다
+var marker = new kakao.maps.Marker({
+ position: markerPosition
+});
+
+//마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+</script>
+<script>
+$(function init(){
+	
+	 let userCd= ${sessRegistTypeCd};
+
+	 			if(userCd == 1) {
+	 				$("#adminUserManagement").show();
+	 				$("#store_registration").show();
+	 			} else if(userCd == 2) {
+	 				$("#adminUserManagement").hide();
+	 			} else {
+	 				$("#store_registration").hide();
+	 				$("#adminUserManagement").hide();
+	 				
+	 				console.log(userCd);
+	 			}	
+	 
+});
 </script>
 <!-- 여기서부터 별점부분 -->
 <script>

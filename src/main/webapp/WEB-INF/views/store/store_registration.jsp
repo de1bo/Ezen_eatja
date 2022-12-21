@@ -295,6 +295,25 @@ function frmCheck()
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 주소관련 -->
+            <script>
+$(function(){
+	
+	 let userCd= ${sessRegistTypeCd};
+
+	 			if(userCd == 1) {
+	 				$("#adminUserManagement").show();
+	 				$("#store_registration").show();
+	 			} else if(userCd == 2) {
+	 				$("#adminUserManagement").hide();
+	 			} else {
+	 				$("#store_registration").hide();
+	 				$("#adminUserManagement").hide();
+	 				
+	 				console.log(userCd);
+	 			}	
+	 
+});
+</script>
 <script>
 upload = function(seq,div){
 	

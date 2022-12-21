@@ -163,6 +163,7 @@
 	<select id="selectOne" resultMap="resultMapObj">			
 			SELECT
 				a.seq
+				,a.ifmmRegistTypeCd
 				,a.ifmmName
 				,a.ifmmId
 				,a.ifmmPassword
@@ -243,7 +244,9 @@
 	<select id="selectOneId" resultMap="resultMapObj">
 		SELECT
 			a.seq
+			,a.ifmmRegistTypeCd
 			,a.ifmmId
+			
 		FROM
 			infrMember a
 		WHERE 1=1
@@ -254,6 +257,7 @@
 	<select id="selectOneLogin" resultMap="resultMapObj">
 		SELECT
 			a.seq
+			,a.ifmmRegistTypeCd
 			,a.ifmmId
 			,a.ifmmName
 		FROM

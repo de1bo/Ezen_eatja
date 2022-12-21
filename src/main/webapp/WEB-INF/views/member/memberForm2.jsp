@@ -202,9 +202,28 @@
 	       <input type="text" class="form-control" id="ifmpNumber" name="ifmpNumber" value="<c:out value="${item.ifmpNumber}"/>">
 	      </div>
 	       <label for="staticEmail" class="col-sm-2 col-form-label">전화번호</label>
-    			<div class="col-sm-9">
+    			<div class="col-sm-4">
 	       <input type="text" class="form-control" id="ifmpHomeTel" name="ifmpHomeTel" value="<c:out value="${item.ifmpHomeTel}"/>">
 	      </div>
+	      <label for="staticUserType" class="col-sm-2 col-form-label">사용자 유형</label>
+    			<div class="col-sm-4">
+	       <input type="text" readonly class="form-control-plaintext" id="ifmmRegistTypeCd" name="ifmmRegistTypeCd" value="<c:choose>
+ <c:when test="${item.ifmmRegistTypeCd == 1 }">
+  관리자
+ </c:when>
+ <c:when test="${item.ifmmRegistTypeCd == 2 }">
+  점주
+ </c:when>
+ <c:when test="${item.ifmmRegistTypeCd == 3 }">
+  일반 사용자 
+ </c:when>
+ <c:otherwise>
+  비정상적 회원 
+ </c:otherwise>
+</c:choose>">
+	      </div>
+	      
+	      
 	     <label for="staticEmail" class="col-sm-2 col-form-label">주소</label>
     			<div class="col-sm-3">
 	       <input type="text" class="form-control" id="imadAddress1" name="imadAddress1" value="<c:out value="${item.imadAddress1}"/>"/>

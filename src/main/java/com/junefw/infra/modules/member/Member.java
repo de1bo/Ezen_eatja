@@ -8,7 +8,7 @@ public class Member {
 	// infrmember
 	private String seq;
 	private String ifmmAdminCd;
-	private String ifmmRegistTypeCd;
+	private String ifmmRegistTypeCd="";
 	private String ifmmName="";
 	private String ifmmId="";
 	private String ifmmGenderCd;

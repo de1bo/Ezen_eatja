@@ -28,15 +28,10 @@
 </head>
 
 <body>
-<%@ include file="../common/headerInclude.jsp" %>
-<img src="/infra/resources/images/regist.png" alt="../../../images/ro1.jpg" style="width: 100%; padding-top: 50px;">
+<img src="/infra/resources/images/regist.png" alt="../../../images/ro1.jpg" style="width: 100%;">
 
 <br><br>
 <form method="post" action="/infra/member/memberInst">
-	<input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage }"/>">
-	<input type="hidden" name="shOption" value="<c:out value="${vo.shOption }"/>">
-	<input type="hidden" name="shValue" value="<c:out value="${vo.shValue }"/>">
-	<input type="hidden" name="">
 <div class="accordion" id="accordionPanelsStayOpenExample" style="width: 100%">
 
   <div class="accordion-item">
@@ -53,7 +48,7 @@
       <div class="col-md-4" style="text-align: center;">
 	                <input type="radio" class="btn-check" id="RegistType1" name="ifmmRegistTypeCd"  autocomplete="off" value="3">
 	                <label class="btn btn-outline-primary" for="RegistType1">일반 사용자</label> 
-	                <input type="radio" class="btn-check" id="RegistType2" name="ifmmRegistTypeCd"  autocomplete="off" value="4">
+	                <input type="radio" class="btn-check" id="RegistType2" name="ifmmRegistTypeCd"  autocomplete="off" value="2">
 	                <label class="btn btn-outline-primary" for="RegistType2">사업자</label>
 	                </div>
 	                <div class="col-md-4">
@@ -89,7 +84,7 @@
               </div>
               <div class="col-md-6">
 	                <label for="inputPassword2" class="form-label">비밀번호 확인</label>
-	                <input type="password" class="form-control"  >
+	                <input type="password" class="form-control">
               </div>
               <div class="col-md-6">
               
@@ -211,17 +206,11 @@
       </div>
     </div>
     </div>
-<input type="submit" class="btn btn-primary" style=" float:right; border-bottom: 30px;">
+<div style="padding-top: 30px;">
+<a href="/infra/member/loginForm" class="btn btn-secondary">취소</a>
+<input type="submit" class="btn btn-primary" value="등록" style=" float:right; border-bottom: 30px;">
+</div>
 </form>
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-    <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a href="../getting-started/introduction/">getting started guide</a>.</p>
-  </div>
-</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 주소관련 -->
 	<script>

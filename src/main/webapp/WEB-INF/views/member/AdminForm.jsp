@@ -47,7 +47,7 @@
   <header>
 	<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="/infra/resources/images/place-setting.svg" height="45" width="45"></a>
+      <a class="navbar-brand" href="#"><img src="/infra/resources/images/logo1.png" height="50" width="70"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -88,7 +88,7 @@
   <main>
   
     <div class="py-5 text-center">
-      <img class="d-block mx-auto mb-4" src="/infra/resources/images/place-setting.svg" alt="" width="72" height="57">
+      <img class="d-block mx-auto mb-4" src="/infra/resources/images/logo1.png" alt="" width="50" height="70">
       <h2>회원가입</h2>
       <p class="lead">관리자용 회원가입 폼입니다.</p>
     </div>
@@ -97,6 +97,9 @@
       <div class="">
         <form  method="post"  action="/infra/member/memberInst" class="needs-validation" novalidate>
           <div class="row g-3">
+             <div class="col-12">
+                <input type="hidden" name="ifmmRegistTypeCd" value="4">
+            </div>
             <div class="col-12">
               <label for="ifmmName" class="form-label">이름</label>
                 <input type="text" class="form-control" name="ifmmName" id="ifmmName" placeholder="이름" required>
@@ -138,13 +141,6 @@
                 생일입력
               </div>
 		    </div>
-		    <div class="col-12">
-		   		 <label for="nation" class="form-label">추천인</label>
-	          	 <input type="text" class="form-control" id="ifmmRecommend" name="ifmmRecommend" placeholder="" required>
-	          	  <div class="invalid-feedback">
-                추천인 입력
-              </div>
-	        </div>
              <div class="col-12">
               <div class="row mt-sm-12">
 	          	<div class="col-sm-12 mt-3 mt-sm-0">
@@ -157,19 +153,8 @@
 				</div>
             </div>
             </div>
-<!--
-            <div class="col-md-5">
-              <label for="country" class="form-label">Country</label>
-              <select class="form-select" id="country" required>
-                <option value="">Choose...</option>
-                <option>United States</option>
-              </select>
-              <div class="invalid-feedback">
-                Please select a valid country.
-              </div>
-            </div>
 
-            <div class="col-md-4">
+<!--         <div class="col-md-4">
               <label for="state" class="form-label">State</label>
               <select class="form-select" id="state" required>
                 <option value="">Choose...</option>

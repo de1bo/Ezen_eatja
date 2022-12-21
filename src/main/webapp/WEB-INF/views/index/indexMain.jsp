@@ -227,7 +227,6 @@ if (navigator.geolocation) {
     		    marker.setMap(map);
     		    infowindow.open(map, marker); 
     	 }
-    	 marker.setMap(map);
     	</c:forEach> 
         
     	var content = '<div style="padding:5px;">현재위치</div>',
@@ -402,8 +401,30 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 </script> -->
 <!-- orlCode end -->
 
-
 <!-- google 부분 end -->
+
+<script>
+$(function init(){
+	
+	 let userCd= ${sessRegistTypeCd};
+
+	 			if(userCd == 1) {
+	 				$("#adminUserManagement").show();
+	 				$("#store_registration").show();
+	 			} else if(userCd == 2) {
+	 				$("#adminUserManagement").hide();
+	 			} else if(userCd == 3) {
+	 				$("#store_registration").hide();
+	 				$("#adminUserManagement").hide();
+	 			} else if (userCd == 4) {
+	 				$("#store_registration").hide();
+	 				$("#adminUserManagement").hide();
+	 				$("#userInfo").hide();
+	 			}	
+	 				console.log(userCd);	
+	 
+});
+</script>
 <script type="text/javascript">
 	$("#btnSubmit").on("click", function(){	
 	});
@@ -418,6 +439,7 @@ function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
 		
 		
 	</script>
+	
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
 
 
