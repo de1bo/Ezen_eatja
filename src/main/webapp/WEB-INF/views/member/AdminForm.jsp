@@ -98,7 +98,18 @@
         <form  method="post"  action="/infra/member/memberInst" class="needs-validation" novalidate>
           <div class="row g-3">
              <div class="col-12">
-                <input type="hidden" name="ifmmRegistTypeCd" value="4">
+                <input type="hidden" name="ifmmRegistTypeCd" value="1">
+                <input type="hidden" name="ifmpTelecomCd" value="18">
+                <input type="hidden" name="ifmpNumber" value="0">
+                <input type="hidden" name="ifmpHomeTel" value="0">
+                <input type="hidden" name="imadAddress1" value="경기도 광명시">
+                <input type="hidden" name="imadAddress2" value="0">
+                <input type="hidden" name="ifmeEmailAccount" value="asd">
+                <input type="hidden" name="ifmeEmailAccount" value="asd">
+                <input type="hidden" name="ifmeEmailDomainCd" value="15">
+                <input type="hidden" name="ifmmEmailConsentNy" value="0">
+                <input type="hidden" name="ifmmPushConsentNy" value="0">
+                <input type="hidden" name="ifmmPersonerinfoCd" value="9">
             </div>
             <div class="col-12">
               <label for="ifmmName" class="form-label">이름</label>

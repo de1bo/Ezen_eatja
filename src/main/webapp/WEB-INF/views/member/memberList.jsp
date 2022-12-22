@@ -132,7 +132,7 @@
 	</table>
 	<br><br>
 			<!-- 게시판부분 -->	
-		<c:out value="${vo.rowNumToShow}"/>/<c:out value="${vo.totalRows}"/>개의 검색결과
+		<c:out value="${vo.totalRows}"/>개의 검색결과
 		<button class="btn btn-secondary btn-sm" style=" float:right; border-bottom: 10px;"><a href="/infra/member/AdminForm?thisPage=${vo.thisPage}&shOption=<c:out value="${vo.shOption }"/>&shValue=<c:out value="${vo.shValue }"/>">관리자 회원가입</a></button>
 		<table class="table table-hover" style="text-align: center;">
 		  <tr class="table table-success table-striped">

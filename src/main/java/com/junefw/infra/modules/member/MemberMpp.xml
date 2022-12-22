@@ -45,6 +45,8 @@
 				,a.ifmmGenderCd
 				,a.ifmmEmailConsentNy
 				,a.ifmmPushConsentNy
+				,a.regDateTime
+				,a.modDateTime
 				,c.ifmpNumber
 				,b.imadAddress1
 				<include refid="selectCommon"/>
