@@ -34,7 +34,7 @@ public class StoreController {
 	}
 	@RequestMapping(value = "/store/store_Info")
 	public String store_Info(@ModelAttribute("vo") StoreVo vo, Model model) throws Exception {
-		System.out.println("vo.getStifSeq"+vo.getStifSeq());
+		System.out.println(":::::::::::vo.getStifSeq::::::::::"+vo.getStifSeq());
 		
 		// 수동 increment start
 		int count = service.selectOneCount(vo);

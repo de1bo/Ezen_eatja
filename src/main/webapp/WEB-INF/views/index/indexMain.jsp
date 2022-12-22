@@ -5,7 +5,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-&nbsp<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html>
     <head>
         <meta charset="utf-8">
@@ -208,8 +208,17 @@ if (navigator.geolocation) {
     	 if(d < 2000){
     		 
     		 console.log("::::::stifSeq:::::::::::"+ Seq);
-    		 $('#storeList').append('<div class="col-md-4"><div class="blog_news"><div class="single_blog_item"><div class="blog_img"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}" />/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" width="100%" height="225"/></a></div><div class="blog_content"><a href=""><h3><bold><c:out value="${item.stifName}"/></bold></h3></a><div class="expert"></div><p class="blog_news_content"><c:out value="${item.stifDesc}" /></p></div></div>');
-
+    		 
+    		 var listHtml = "";
+    		 listHtml += '<div class="col-md-4">';
+    		 listHtml += '<div class="blog_news">';
+    		 listHtml += '<div class="single_blog_item"><a href="#" onclick="goForm(<c:out value="${item.stifSeq}"/>)"><img src="/infra/resources/uploaded/store/<c:out value="${item.year}" />/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" Style="width: 100%; height: 255px"/></a></div>';
+    		 listHtml += '<div class="blog_content"><h3><bold><c:out value="${item.stifName}"/></bold></h3>';
+    		 listHtml += '<div class="expert"></div>';
+    		 listHtml += '<p class="blog_news_content"><c:out value="${item.stifDesc}"/></p></div></div></div></div>';
+    		 
+    		 
+    		 $("#storeList").append(listHtml);
     		 
     		    var marker = new kakao.maps.Marker({  
     		        map: map,

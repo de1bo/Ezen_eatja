@@ -78,7 +78,7 @@ input[type=radio]:checked + label {
 		<h2>Eatja와 함께하는 매장의 수</h2>
 		<ul class="countdown">
                     <li>
-                        <span class="hours">06</span>
+                        <span class="hours"><c:out value="${vo.totalRows}"/></span>
                     </li>
                 </ul>
                 
@@ -294,6 +294,7 @@ function frmCheck()
            </div>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
             <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+            <script src="/infra/resources/js/common/logout.js"></script>  <!-- 로그아웃 -->
             <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 주소관련 -->
             <script>
 $(function(){

@@ -12,7 +12,7 @@
 <head>
 <meta charset="uTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>김도현1</title>
+<title><c:out value="${item.stifName}"/></title>
 <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 <!-- <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script> -->
@@ -155,24 +155,22 @@
     border: 1px solid #e0e0e0;
 }
 	/* 여기까지가 별점부분 */
-image {
-	object-fit: fill;
-}
+
 </style>
 <%@ include file="../common/headerInclude.jsp" %>
 <body>
  
 <div id="header">
-        <div class="swiper-container justify-content-center">
+         <div class="swiper-container justify-content-center">
             <div class="swiper-wrapper justify-content-center">
             
-	            <div class="swiper-slide justify-content-center">
-	                	<table>
+	            <div class="swiper-slide justify-content-center" style="margin: 0 0 0 10px;">
+	                	<table style="margin: 0 auto">
 	                		<tr>
                                 <c:forEach items="${list2}" var="item" varStatus="status">
 			                		<td>
 					                    <a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" class="grid image-link">
-					                        <img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" style="height: 370px; width:585px;" alt="#">
+					                        <img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" style="height: 340px; width: 100%; padding: 10px;" alt="#">
 					                    </a>
 			                		</td>
 		               			</c:forEach>
@@ -183,6 +181,10 @@ image {
 	             
              </div>
         </div>
+        
+        
+  
+  
 </div>
 <div class="pd">
 <div class="container">
