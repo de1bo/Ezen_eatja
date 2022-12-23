@@ -57,6 +57,7 @@ private String tableName;
 	private String stifAddress2;
 	private String stifOC;
 	private String stifFoodTypeCd;
+	private String infrseq;
 
 	
 	// storeTel
@@ -444,6 +445,12 @@ private String tableName;
 	}
 	public void setStoreMenuPriceArray(String[] storeMenuPriceArray) {
 		StoreMenuPriceArray = storeMenuPriceArray;
+	}
+	public String getInfrseq() {
+		return infrseq;
+	}
+	public void setInfrseq(String infrseq) {
+		this.infrseq = infrseq;
 	}
 
 	

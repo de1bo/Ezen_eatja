@@ -42,7 +42,8 @@ public class MemberController {
 		
 		
 		vo.setShOptionDate(vo.getShOptionDate() == null ? 1 : vo.getShOptionDate());
-		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+		vo.setShDateStart(vo.getShDateStart() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.START_DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateStart()));
+		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.calculateDayString(UtilDateTime.nowLocalDateTime(), Constants.END_DATE_INTERVAL) : UtilDateTime.addStringTime(vo.getShDateEnd()));
 		vo.setShDateEnd(vo.getShDateEnd() == null ? UtilDateTime.nowString() : UtilDateTime.addStringTime(vo.getShDateEnd()));
 		/* Date end*/
 		

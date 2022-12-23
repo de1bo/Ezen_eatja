@@ -74,6 +74,7 @@ input[type=radio]:checked + label {
 <%@ include file="../common/headerInclude.jsp" %>
 <div class="bgImg">
 <form method="post" action="/infra/store/storeInst" enctype="multipart/form-data" class="needs-validation" novalidate>
+<input type="hidden" id="infrseq" name="infrseq" value="${sessRegistTypeCd}">
 <h1 class="display-1 jal">매장 등록</h1>
 		<h2>Eatja와 함께하는 매장의 수</h2>
 		<ul class="countdown">

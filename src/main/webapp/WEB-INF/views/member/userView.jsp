@@ -145,9 +145,38 @@
         </div>
       </li>
       <li>
-      	<button class="form-control" ><a href="javascript:goFormim(<c:out value="${sessSeq}"/>)">수정</a></button>
-      	<button class="form-control"><a href="/infra/index/indexMain">나가기</a></button>
-      	<button class="form-control" id="btnLogout">로그아웃</button>
+      	<button class="form-control"  onclick="javascript:goFormim(<c:out value="${sessSeq}"/>)">수정</button>
+      	<button class="form-control" onclick="location.href='/infra/index/indexMain'">나가기</button>
+      	
+      	
+      	
+      	<!-- Button trigger modal -->
+<button type="button" id="storeForm2" class="form-control" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  매장정보수정
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">게시된 매장 리스트</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+	      <ul>
+	        <li>sadad</li>
+	      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
       </li>
     </ul>
   </div>
@@ -157,7 +186,7 @@
 	    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
 	      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" disabled>
 	        회원정보
-	      </button>
+	     
 	    </h2>
 	    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
 	      <div class="accordion-body">
@@ -292,11 +321,11 @@ sdfsf
 	    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
 	      <div class="accordion-body">
 	      <div class="mb-3 row">
-	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
+	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 등록 날짜</label>
     			<div class="col-sm-4">
 	       <input type="text" readonly class="form-control" id="staticEmail" value="<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />">
 	       </div>
-	       <label for="staticEmail" class="col-sm-2 col-form-label">모바일 수정 날짜</label>
+	       <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
 	       <div class="col-sm-4">
 	       <input type="text" readonly class="form-control" id="staticEmail" value="<fmt:formatDate value="${item.modDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />">
 	      </div>
@@ -309,7 +338,22 @@ sdfsf
         <form id="myinfo" name="myinfo" method="post">
             <input type="hidden" id="myseq" name="seq">
         </form>
+</main>
+    <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+      <script src="/infra/resources/js/sidebars.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      	<script type="text/javascript">
+$(function init(){
 
+	 			if(${item.ifmmRegistTypeCd} == 1) {
+	 				$("#storeForm2").show();
+	 			} else {
+	 				$("#storeForm2").hide();
+	 			}
+	 				console.log(userCd);	
+	 
+});
+</script>
 	<script type="text/javascript">
 
 		goFormim = function(sessSeq){
@@ -320,31 +364,8 @@ sdfsf
 		}
 	</script>
 	<script type="text/javascript">
-		$("#btnLogout").on("click", function(){
-			$.ajax({
-				async: true 
-				,cache: false
-				,type: "post"
-				,url: "/infra/member/logoutProc"
-					,success: function(response) {
-						if(response.item == "success") {
-							alert("로그아웃 실패");
-							location.href = "/infra/member/loginForm";
-						} else {
-							alert("로그아웃 성공");
-							location.href = "/infra/member/loginForm";
-						}
-					}
-				,error : function(jqXHR, textStatus, errorThrown){
-					alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-				}
-			});
-		});
+	console.log(${item.ifmmRegistTypeCd});
 	</script>
-</main>
-    <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
-      <script src="/infra/resources/js/sidebars.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </body>
 </html>
 		

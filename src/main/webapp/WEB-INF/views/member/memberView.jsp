@@ -298,11 +298,11 @@ sdfsf
 	    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
 	      <div class="accordion-body">
 	      <div class="mb-3 row">
-	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
+	        <label for="staticEmail" class="col-sm-2 col-form-label">회원 등록 날짜</label>
     			<div class="col-sm-4">
 	       <input type="text" readonly class="form-control" id="staticEmail" name="regDateTime" value="<fmt:formatDate value="${item.regDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />">
 	       </div>
-	       <label for="staticEmail" class="col-sm-2 col-form-label">모바일 수정 날짜</label>
+	       <label for="staticEmail" class="col-sm-2 col-form-label">회원 수정 날짜</label>
 	       <div class="col-sm-4">
 	       <input type="text" readonly class="form-control" id="staticEmail" name="modDateTime" value="<fmt:formatDate value="${item.modDateTime}" pattern="yyyy-MM-dd HH:mm:ss" />">
 	      </div>

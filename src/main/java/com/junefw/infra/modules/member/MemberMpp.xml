@@ -206,7 +206,6 @@
 				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 				,ifmmPushConsentNy = #{ifmmPushConsentNy}
 				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}
-				,regDateTime = (NOW())
 				,modDateTime = (NOW())
 			WHERE 1=1
 				AND seq = #{seq}
@@ -224,7 +223,6 @@
 				,ifmmEmailConsentNy = #{ifmmEmailConsentNy}
 				,ifmmPushConsentNy = #{ifmmPushConsentNy}
 				,ifmmPersonerinfoCd = #{ifmmPersonerinfoCd}
-				,regDateTime = (NOW())
 				,modDateTime = (NOW())
 			WHERE 1=1
 				AND seq = #{seq}

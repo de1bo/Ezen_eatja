@@ -57,6 +57,31 @@ public class StoreController {
 	}
 	
 	
+	@RequestMapping(value = "/store/storeForm2")
+	public String storeForm2(@ModelAttribute("vo") StoreVo vo, Model model) throws Exception {
+		System.out.println(":::::::::::vo.getStifSeq::::::::::"+vo.getStifSeq());
+		
+		// 수동 increment start
+		int count = service.selectOneCount(vo);
+		vo.setParamsPaging(count);
+		
+		Store item= service.selectOne(vo);
+		model.addAttribute("item", item);
+		
+		// storeMenu list
+		List<Store> list = service.selectStoreMenuList(vo);
+		model.addAttribute("list", list);
+		
+		// storeImg list
+		List<Store> list2 = service.selectStoreImgList(vo);
+		model.addAttribute("list2", list2);
+		
+		// 수동 increment end
+		
+		return "/store/storeForm2";
+	}
+	
+	
 	@RequestMapping(value = "/store/storeInst")
 	public String storeInst(@ModelAttribute("vo") StoreDao vo, Store dto, RedirectAttributes redirectAttributes) throws Exception {
 		

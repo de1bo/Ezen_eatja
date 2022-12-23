@@ -6,7 +6,8 @@ public class Constants {
 	public static final String DATE_FORMAT_BASIC = "yyyy-MM-dd";
 
 	
-	public static final int DATE_INTERVAL = -600;
+	public static final int START_DATE_INTERVAL = -600;
+	public static final int END_DATE_INTERVAL = +1;
 	
 	
 	//로그인
