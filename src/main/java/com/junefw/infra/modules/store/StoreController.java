@@ -96,4 +96,15 @@ public class StoreController {
 		return "redirect:/index/indexMain";
 	}
 	
+	@RequestMapping(value = "/store/storeUpdt")
+	public String storeUpdt(@ModelAttribute("vo") Store dto, StoreVo vo, RedirectAttributes redirectAttributes) throws Exception {
+		
+		
+		// 수정 프로세스 실행
+		service.Storeupdate(dto);
+		/* redirectAttributes.addAttribute("StifSeq", dto.getStifSeq()); */
+		
+		return "redirect:/member/userView";
+	}
+	
 }

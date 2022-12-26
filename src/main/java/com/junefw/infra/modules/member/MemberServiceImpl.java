@@ -27,6 +27,12 @@ public class MemberServiceImpl implements MemberService{
 		// TODO Auto-generated method stub
 		return dao.selectList(vo); 
 	}
+	
+	@Override
+	public List<Member> selectMSList(MemberVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectMSList(vo); 
+	}
 
 	@Override
 	public int insert(Member dto) throws Exception {
@@ -95,16 +101,36 @@ public class MemberServiceImpl implements MemberService{
 	return dao.selectOne(vo);
 	}
 	
+	
+	// ----------------------------member update ----------------------------
+	@Override
+	public int Userupdate(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.Userupdate(dto);
+	}
 	@Override
 	public int update(Member dto) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.update(dto);
 	}
 	@Override
-	public int Userupdate(Member dto) throws Exception {
+	public int updateAddress(Member dto) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.Userupdate(dto);
+		return dao.updateAddress(dto);
 	}
+	@Override
+	public int updatePhone(Member dto) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.updatePhone(dto);
+	}
+	/*
+	 * @Override public int updateEmail(Member dto) throws Exception { // TODO
+	 * Auto-generated method stub return dao.updateEmail(dto); }
+	 */
+	
+	// ----------------------------member update ----------------------------
+	
+
 	@Override
 	public int delete(MemberVo vo) throws Exception {
 		// TODO Auto-generated method stub

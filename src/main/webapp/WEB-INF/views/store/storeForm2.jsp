@@ -5,20 +5,14 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
-	<jsp:useBean id="CodeServiceImpl" class="com.junefw.infra.modules.code.CodeServiceImpl"/><!-- FoodCode -->
-
 <!DOCTYPE HTML>
 <html>
 <head>
 <meta charset="uTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><c:out value="${item.stifName}"/></title>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-<!-- <link href="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script> -->
-<script src="/infra/resources/js/jquery-1.11.2.min.js"></script>
-
-        <!--Google Fonts-->
+	<title>매장등록</title>
+	
+		<!--Google Fonts-->
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
         <!--Fontawesom-->
@@ -38,392 +32,258 @@
         <link href="/infra/resources/css/css/style.css" rel="stylesheet">
         <!--Responsive Framework-->
         <link href="/infra/resources/css/css/responsive.css" rel="stylesheet">
-<!-- <link href="../../css/style.css" rel="stylesheet"> -->
+        
+	<link href="/infra/resources/css/store/style.css" rel="stylesheet">
+	<link href="/infra/resources/css/form-validation.css" rel="stylesheet">
+	<script src = "/infra/resources/js/common.js"></script><!-- image -->
+	<script src = "/infra/resources/js/commonXdmin.js"></script><!-- image -->
+	<script src = "/infra/resources/js/constantsXdmin.js"></script><!-- image -->
 <style>
-	.pd {
-		  padding: 7%;  
-	}
-	#header{
-		width: 100%;
-		height: 30%;
-		text-align: center;
-	}
-	#content{
-		width: 60%;
-		height: 600px;
-		float: left;
-	}
-	#aside{
-		width: 40%;
-		height: 600px;
-	}
-	
-	.MenuItem{
-		webkit-flex-direction: row;
-		webkit-box-direction: normal;
-		webkit-box-orient: horizontal;
-		border-bottom: 1px solid #e9e9e9;
-		margin-bottom: 4px;
-		display: -webkit-flex;	
-	}
-	.Restaurant_Menu {
-    flex: 1;
-    display: inline-block;
-    margin-right: 30px;
-    white-space: normal;
-	}
-	.Restaurant_MenuPrice {
-    margin-left: auto;
-	}
-	
-	#map {
-  height: 50%;
-	}
-	th {
-		padding: 5px;
-	}
-	/* 여기부터 별점부분 */
-	.rating .rate_radio + label {
-    position: relative;
-    display: inline-block;
-    margin-left: -4px;
-    z-index: 10;
-    width: 60px;
-    height: 60px;
-    background-image: url('./img/starrate.png');
-    background-repeat: no-repeat;
-    background-size: 60px 60px;
-    cursor: pointer;
-    background-color: #f0f0f0;
+@font-face {
+		src: url("/infra/resources/fonts/pafreca.ttf");
+		font-family: "ft";
 }
-.rating .rate_radio:checked + label {
-    background-color: #ff8;
+.ft {
+	font-family: "ft";
 }
-.wrap{
-    max-width: 480px;
-    margin: 0 auto; /* 화면 가운데로 */
+@font-face {
+		src: url("/infra/resources/fonts/jalnan.ttf");
+		font-family: "jal";
+}
+.jal {
+	font-family: "jal";
+}
+
+body {
+ text-align: left;
+}
+.input-hidden {
+    position: absolute;
+    left: -9999px;
+}
+input[type=radio]:checked + label {
+    border: 1px solid #fff;
+    box-shadow: 0 0 3px 3px #ff428682;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     background-color: #fff;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-
 }
-.reviewform textarea{
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-}
-.rating .rate_radio {
-    position: relative;
-    display: inline-block;
-    z-index: 20;
-    opacity: 0.001;
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    cursor: pointer;
-    vertical-align: top;
-    display: none;
-}
-.rating .rate_radio + label {
-    position: relative;
-    display: inline-block;
-    margin-left: -4px;
-    z-index: 10;
-    width: 60px;
-    height: 60px;
-    background-image: url('/infra/resources/img/starrate.png');
-    background-repeat: no-repeat;
-    background-size: 60px 60px;
-    cursor: pointer;
-    background-color: #f0f0f0;
-}
-.rating .rate_radio:checked + label {
-    background-color: #ff8;
-}
-
-.warning_msg {
-    display: none;
-    position: relative;
-    text-align: center;
-    background: #ffffff;
-    line-height: 26px;
-    width: 100%;
-    color: red;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #e0e0e0;
-}
-	/* 여기까지가 별점부분 */
-
 </style>
-<%@ include file="../common/headerInclude.jsp" %>
+</head>
 <body>
- 
-<div id="header">
-         <div class="swiper-container justify-content-center">
-            <div class="swiper-wrapper justify-content-center">
-            
-	            <div class="swiper-slide justify-content-center" style="margin: 0 0 0 10px;">
-	                	<table style="margin: 0 auto">
-	                		<tr>
-                                <c:forEach items="${list2}" var="item" varStatus="status">
-			                		<td>
-					                    <a href="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" class="grid image-link">
-					                        <img src="/infra/resources/uploaded/store/<c:out value="${item.year}"/>/<c:out value="${item.month}"/>/<c:out value="${item.day}"/>/<c:out value="${item.uuidName}"/>" style="height: 340px; width: 100%; padding: 10px;" alt="#">
-					                    </a>
-			                		</td>
-		               			</c:forEach>
-	               			</tr>
-	               			  
-	               		</table>
-	               </div>
-	             
-             </div>
-        </div>
-        
-        
-  
-  
-</div>
-<div class="pd">
-<div class="container">
-	<div class="row">
-		<div class="col-sm-8">
-			<h2><strong><c:out value="${item.stifName}"/></strong></h2>
-			<hr>
-			<table>
-				<tr>
-					<th>주소:</th>
-					<td style="width: 90%;"><c:out value="${item.stifAddress1}"/>  <c:out value="${item.stifAddress2}"/></td>
-				</tr>
-				<tr>
-					<th>전화번호:</th>
-					<td>
-						<c:set var="numberPhone" value="${item.stphNumber}"/>
-			               	<c:choose>
-			               		<c:when test="${fn:length(numberPhone) eq 10 }">
-									<c:out value="${fn:substring(numberPhone,0,3)}"/>
-									- <c:out value="${fn:substring(numberPhone,3,6)}"/>
-									- <c:out value="${fn:substring(numberPhone,6,10)}"/>
-			               		</c:when>
-			               		<c:otherwise>
-									<c:out value="${fn:substring(numberPhone,0,3)}"/>
-									- <c:out value="${fn:substring(numberPhone,3,7)}"/>
-									- <c:out value="${fn:substring(numberPhone,7,11)}"/>
-			               		</c:otherwise>
-			              	</c:choose>
-					</td>
-				</tr>
-				<tr>
-					<th>음식 종류:</th>
-					<c:set var="CodeFood" value="${CodeServiceImpl.selectListCachedCode('9')}"/>  <!-- FoodCode -->
-					<td>
-					<c:forEach items="${CodeFood}" var="itemFoode" varStatus="statusFood">
-				  		<c:if test="${item.stifFoodTypeCd eq itemFoode.ifcdSeq}"><c:out value="${itemFoode.ifcdName}"/></c:if>
-				  	</c:forEach>
-					</td>
-				</tr>
-				<tr>
-					<th>영업시간:</th>
-					<td><c:out value="${item.stifOC}"/></td>
-				</tr>
-				<tr>
-					<th>매장 소개:</th>
-					<td><c:out value="${item.stifDesc}"/></td>
-				</tr>
-				<tr>
-					<th>메뉴:</th>
-					<td>
-					<c:forEach items="${list}" var="item" varStatus="status">
-						<li class="MenuItem">
-							<span class="Restaurant_Menu"><c:out value="${item.stmnName}"/></span>
-							<span class="Restaurant_MenuPrice"><c:out value="${item.stmnPrice}"/>원</span>
-						</li>
-					</c:forEach>
-					</td>
-				</tr>
-			</table>
-			<br><br><br><br>
-	<hr>
-	<!-- <div class="d-flex bd-highlight mb-3">
-		<div class="p-2 bd-highlight"><h3><strong>리뷰(count(*))</strong></h3></div>
-	
-		<div class="ms-auto p-2 bd-highlight">
-			<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><img src="../../images/pencil.svg" width="25px;"><br>리뷰 작성
-		</div>
-		Modal
-			<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			  <div class="modal-dialog">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <h5 class="modal-title" id="staticBackdropLabel">리뷰작성</h5>
-			        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-			      </div>
-			      <div class="modal-body">
-			        여기부터가 별점 부분
-		<div class="wrap">
-    <h1>후기</h1>
-    <form name="reviewform" class="reviewform" method="post" action="/save">
-        <input type="hidden" name="rate" id="rate" value="0"/>
-        <p class="title_star">별점과 리뷰를 남겨주세요.</p>
- 
-        <div class="review_rating">
-            <div class="warning_msg">별점을 선택해 주세요.</div>
-            <div class="rating">
-                해당 별점을 클릭하면 해당 별과 그 왼쪽의 모든 별의 체크박스에 checked 적용
-                <input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
-                <label for="rating1"></label>
-                <input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
-                <label for="rating2"></label>
-                <input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점" >
-                <label for="rating3"></label>
-                <input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
-                <label for="rating4"></label>
-                <input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
-                <label for="rating5"></label>
-            </div>
-        </div>
-        <div class="review_contents">
-            <div class="warning_msg">5자 이상으로 작성해 주세요.</div>
-            <textarea rows="10" class="review_textarea"></textarea>
-        </div>   
-    
-		여기까지가 별점부분
-		<div class="modal-footer cmd">
-			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-			<button type="button"  name="save" id="save" class="btn btn-primary" >Understood</button>
-		</div>
-	</form>
-		</div>
-				</div>
-			   </div>
-			</div>
-		</div>
-	</div> -->
-	</div>
+<%@ include file="../common/headerInclude.jsp" %>
+<div class="bgImg">
+<form method="post" action="/infra/store/storeUpdt" enctype="multipart/form-data" class="needs-validation" novalidate>
+<input type="hidden" id="infrseq" name="infrseq" value="${sessRegistTypeCd}">
+<input type="text" id="stifSeq" name="stifSeq" value="${item.stifSeq}">
+<h1 class="display-1 jal">매장 수정</h1>
+		<h2>Eatja와 함께하는 매장의 수</h2>
+		<ul class="countdown">
+                    <li>
+                        <span class="hours"><c:out value="${vo.totalRows}"/></span>
+                    </li>
+                </ul>
+                
+                <div class="mv">
+                	<img src="/infra/resources/images/chevron-down.svg" style="width: 20%; height:auto;"  alt="img">
+                </div>
 
-		<div class="col-sm-4">
-			<div id="map" style="width:100%;height:350px;"></div>
-<!-- 			<br>
-			<h3><strong>주변 인기 식당</strong></h3>
-				<div class="card mb-3" style="max-width: 540px;">
-				  <div class="row g-0">
-				    <div class="col-md-4">
-				      <img src="../../images/food/chicken.jpg" type="button" class="rounded-start"  alt="..." style="max-width: 100%; height: 100%;">
-				    </div>
-				    <div class="col-md-8">
-				      <div class="card-body">
-				        <h5 class="card-title"><strong>굽네치킨</strong></h5>
-				        <p class="card-text">음식종류: <small>양식</small></p>
-				        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-				      </div>
-				    </div>
-				  </div>
-			</div>
-			<div class="card mb-3" style="max-width: 540px;">
-				  <div class="row g-0">
-				    <div class="col-md-4">
-				      <img src="../../images/food/pizza.jpg" type="button" class="img-fluid rounded-start" alt="...">
-				    </div>
-				    <div class="col-md-8">
-				      <div class="card-body">
-				        <h5 class="card-title"><strong>피자헛</strong></h5>
-				        <p class="card-text">음식종류: <small>양식</small></p>
-				        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-				      </div>
-				    </div>
-				  </div>
-			</div>
-			<div class="card mb-3" style="max-width: 540px;">
-				  <div class="row g-0">
-				    <div class="col-md-4">
-				      <img src="../../images/food/pizza.jpg" type="button" class="img-fluid rounded-start" alt="...">
-				    </div>
-				    <div class="col-md-8">
-				      <div class="card-body">
-				        <h5 class="card-title"><strong>피자헛</strong></h5>
-				        <p class="card-text">음식종류: <small>양식</small></p>
-				        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-				      </div>
-				    </div>
-				  </div>
-			</div>
-			<div class="card mb-3" style="max-width: 540px;">
-				  <div class="row g-0">
-				    <div class="col-md-4">
-				      <img src="../../images/food/pizza.jpg" type="button" class="img-fluid rounded-start" alt="...">
-				    </div>
-				    <div class="col-md-8">
-				      <div class="card-body">
-				        <h5 class="card-title"><strong>피자헛</strong></h5>
-				        <p class="card-text">음식종류: <small>양식</small></p>
-				        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-				      </div>
-				    </div>
-				  </div>
-			</div> -->
-		</div>
-		
-	</div>
-</div>
-</div>
+	<div class="register">
+                <div class="row g-0">
+                    <div class="col-md-3 register-left">
+                        <img src="/infra/resources/images/place-setting.svg" style="width: 80%; height:auto;"  alt="img"> 
+                        <p class="lead">매장을 등록하고 EAT JA와 함께하세요!</p>
+                        <h6>입력을 마치셨다면 하단의 매장 수정을 눌러주세요.</h6>
+                        <input type="submit" class="btnRegister btn-success" value="매장 수정"><br/>
+                    </div>
+                    <div class="col-md-9 register-right">
+                    <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">매장 정보</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">메뉴</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h3 class="register-heading jal">매장 정보 수정</h3>
+                                <div class="row register-form">
+                                <div class="col-md-12">
+	                                <div class="form-group">
+	                                		<div class="col-sm-6 mt-3 mt-sm-0">
+												<label for="file0" class="form-label input-file-button">이미지 첨부</label>
+												<input type="file" class="form-control form-control-sm" id="file0" name="file0" value="<c:out value="${item.originalName}"/>" multiple="multiple" onChange="upload(0, 2);">
+												<div class="addScroll">
+													<ul id="ulFile0" class="list-group">
+													</ul>
+												</div>
+											</div>
+								
+	                                </div>
+                                </div>
+                                <div class="col-md-12">
+	                                <div class="form-group">
+	                                </div>
+                                </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                        	<label for="name" class="form-label">매장 이름</label>
+                                            <input type="text" class="form-control" id="stifName" name="stifName" placeholder="매장 이름" value="<c:out value="${item.stifName}"/>" />
+                                        </div>
+                                        <div class="form-group">
+                                      		<label for="name" class="form-label">매장 전화번호</label>
+                                            <input type="text" class="form-control" id="stphNumber" name="stphNumber" placeholder="매장 전화번호" value="<c:out value="${item.stphNumber}"/>" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="name" class="form-label">매장 영업시간</label>
+                                            <input type="text" class="form-control" id="stifOC" name="stifOC"  placeholder="ex) 9AM~6PM" value="<c:out value="${item.stifOC}"/>" />
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="maxl"> 
+									                <label for="name" class="form-label">음식종류</label><br>
+									                <input type="radio" class="input-hidden" id="storeType1" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==25}">checked</c:if> value="25" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType1">한식</label>
+									                <input type="radio" class="input-hidden" id="storeType2" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==26}">checked</c:if> value="26" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType2">일식</label>
+													<input type="radio" class="input-hidden" id="storeType3" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==27}">checked</c:if> value="27" autocomplete="off">
+									                <label class="btn btn-outline" for="storeType3">중식</label>
+									                <input type="radio" class="input-hidden" id="storeType4" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==28}">checked</c:if> value="28" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType4">양식</label>
+									                <input type="radio" class="input-hidden" id="storeType5" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==29}">checked</c:if> value="29" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType5">세계음식</label>
+									                <input type="radio" class="input-hidden" id="storeType6" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==30}">checked</c:if> value="30" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType6">뷔페</label>
+									                <input type="radio" class="input-hidden" id="storeType7" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==31}">checked</c:if> value="31" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType7">카페</label>
+									                <input type="radio" class="input-hidden" id="storeType8" name="stifFoodTypeCd" <c:if test="${item.stifFoodTypeCd==32}">checked</c:if> value="32" autocomplete="off">
+									                <label class="btn btn-outline-primary" for="storeType8">주점</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                    	<div class="form-group">
+                                        	<label for="name" class="form-label">매장 주소</label>
+                                            <div class="row g-0">
+									          	<div class="">
+									          	<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호">
+													<input type="button" class="form-control" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+													<input type="text" class="form-control" id="stifAddress1" name="stifAddress1" value="<c:out value="${item.stifAddress1}"/>" placeholder="주소"><br>
+													<input type="text" class="form-control" id="sample6_extraAddress" placeholder="참고항목">
+													<input type="text" class="form-control" id="stifAddress2" name="stifAddress2"  value="<c:out value="${item.stifAddress2}"/>" placeholder="상세주소">
+													</div>
+												</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+	                                <div class="form-group" align="center">
+	                                	<label for="name" class="form-label">매장 소개</label><br>
+                        				<textarea name="stifDesc" id="stifDesc" class="form-control" cols="50" rows="5"><c:out value="${item.stifOC}"/></textarea>
+	                                </div>
+                                </div>
+                                <div class="col-md-12">
+                                    	<div class="form-group">
 
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-        <!-- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>-->
-        <script src="/infra/resources/js/js/jquery-1.12.3.min.js"></script>
-
-        <!--Counter UP Waypoint-->
-        <script src="/infra/resources/js/js/waypoints.min.js"></script>
-        <!--Counter UP-->
-        <script src="/infra/resources/js/js/jquery.counterup.min.js"></script>
-
-
-
-        <!--Isotope-->
-        <script src="/infra/resources/js/js/isotope/min/scripts-min.js"></script>
-        <script src="/infra/resources/js/js/isotope/cells-by-row.js"></script>
-        <script src="/infra/resources/js/js/isotope/isotope.pkgd.min.js"></script>
-        <script src="/infra/resources/js/js/isotope/packery-mode.pkgd.min.js"></script>
-        <script src="/infra/resources/js/js/isotope/scripts.js"></script>
-
-        <!-- Include all compiled plugins (below), or include individual files as needed -->
-        <script src="/infra/resources/js/js/bootstrap.min.js"></script>
-        <!-- Custom JavaScript-->
-        <script src="/infra/resources/js/js/main.js"></script>
-        <script src="/infra/resources/js/common/logout.js"></script>  <!-- 로그아웃 -->
-
-    <!-- google 부분 start -->
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de96e57d26e4344aa147440cc4a132a7&libraries=services,clusterer,drawing"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
- <script>
- 
- var name = '${item.stlcName}';
- var lat = ${item.stlcLat};
- var lng = ${item.stlcLng};
-	
- var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
- mapOption = { 
-     center: new kakao.maps.LatLng(lat, lng), // 지도의 중심좌표
-     level: 3 // 지도의 확대 레벨
- };
-
-var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-//마커가 표시될 위치입니다 
-var markerPosition  = new kakao.maps.LatLng(lat, lng); 
-
-//마커를 생성합니다
-var marker = new kakao.maps.Marker({
- position: markerPosition
-});
-
-//마커가 지도 위에 표시되도록 설정합니다
-marker.setMap(map);
-</script>
+							</div>
+							 <div id="locationField">
+								<input type="hidden" class="field form-control" id="stlcLat" name="stlcLat" value="<c:out value="${item.stlcLat}"/>" readonly/>
+								<input type="hidden" class="field form-control" id="stlcLng" name="stlcLng" value="<c:out value="${item.stlcLng}"/>" readonly/>
+							</div>
+                                     <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab" >
+                                <h3 class="register-heading jal">메뉴 등록</h3>
+                                </div>
+								
+								<!-- 좌표 end -->
+                               <div class="row border-top p-3" style="margin-left: 350px; margin-right:50px;"></div>
+                                <div class="row register-form" align="center">
+                                	<div class="row g-0">
+                                    <div class="col">
+                                    <font color="#FF0000">*</font>추가버튼을 클릭해 보세요.
+         <input name="addButton" type="button" class="form-control btn btn-success" style="cursor:hand" onClick="insRow()" value="추가">
 <script>
-$(function init(){
+var oTbl;
+
+//Row 추가
+function insRow() {
+  oTbl = document.getElementById("addTable");
+  var oRow = oTbl.insertRow();
+  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+  var oCell = oRow.insertCell();
+ 
+  /* var seq = oTbl.${vo.totalRows} + 1; */
+  //삽입될 Form Tag
+  var frmTag = "<br><div class='row'><div class='col-md-6'><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>메뉴: </h3><input type=text class='form-control col' id='stmnName' name='storeMenuNameArray'></div></div></div></div><div class='col-md-4' name=addText><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>가격: </h3><input type=text class='form-control col' id='stmnPrice' name='storeMenuPriceArray'></div></div></div></div>";
+  frmTag += "<div class='col-md-2' name=addText><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>&nbsp</h3><input type=button value='삭제' class='form-control btn btn-danger col' onClick='removeRow()' style='cursor:hand'></div></div></div></div></div>";
+  oCell.innerHTML = frmTag;
+}
+//Row 삭제
+function removeRow() {
+  oTbl.deleteRow(oTbl.clickedRowIndex);
+}
+
+function frmCheck()
+{
+  var frm = document.form;
+  
+  for( var i = 0; i <= frm.elements.length - 1; i++ ){
+     if( frm.elements[i].name == "addText" )
+     {
+         if( !frm.elements[i].value ){
+             alert("텍스트박스에 값을 입력하세요!");
+                 frm.elements[i].focus();
+	 return;
+          }
+      }
+   }
+ }
+</script>
+<table class="col-md-12" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td colspan="2" align="center">
+      <table class="col-md-12" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+         <td class="col-md-12" height="25" align="center">
+         </td>
+        </tr>
+        <tr>
+         <td height="25">
+           <table id="addTable" class="col-md-12">
+            <tr>
+              <td align="center"></td>
+            </tr>
+          </table>
+          </td>
+        </tr>
+       </table>
+      </td>
+   </tr>
+ </table>
+ <table border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td height="10">
+      </td>
+    </tr>
+ </table>
+                            		</div>
+                            		</div>
+                            	</div>
+                        </div>
+                        <input type="button" class="btn btn-danger btn-lg" style=" float:left;"  value="삭제"/>
+						<input type="button" class="btn btn-secondary btn-lg" style=" float:right;"  value="수정 취소"/>
+                    </div>
+                </div>
+            </div>
+            </div>
+           </div> 
+           </div>
+           </form>
+           </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+            <script src="/infra/resources/js/common/logout.js"></script>  <!-- 로그아웃 -->
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script> <!-- 주소관련 -->
+            <script>
+$(function(){
 	
 	 let userCd= ${sessRegistTypeCd};
 
@@ -441,83 +301,146 @@ $(function init(){
 	 
 });
 </script>
-<!-- 여기서부터 별점부분 -->
 <script>
-//별점 마킹 모듈 프로토타입으로 생성
-function Rating(){};
-Rating.prototype.rate = 0;
-Rating.prototype.setRate = function(newrate){
-    //별점 마킹 - 클릭한 별 이하 모든 별 체크 처리
-    this.rate = newrate;
-    let items = document.querySelectorAll('.rate_radio');
-    items.forEach(function(item, idx){
-        if(idx < newrate){
-            item.checked = true;
-        }else{
-            item.checked = false;
-        }
-    });
+upload = function(seq,div){
+	
+	$("#ulFile" + seq).children().remove();
+	
+	var fileCount = $("input[type=file]")[seq].files.length;
+	
+	if(checkUploadedTotalFileNumber(fileCount, seq) == false) {return false;}
+	
+	var totalFileSize;
+	for(var i = 0; i < fileCount; i++){
+		if(div==1){
+			if(checkUploadedAllExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		}else if(div==2){
+			if(checkUploadedImageExt($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		}else {
+			return false;
+		}
+		
+		if(checkUploadedEachFileSize($("input[type=file]")[seq].files[i].name, seq) == false) {return false;}
+		totalFileSize += $("input[type=file]")[seq].files[i].size;
+	}
+	if(checkUploadedTotalFileSize(totalFileSize, seq) == false) {return false;}
+	
+	for(var i=0; i<fileCount; i++){
+		addUploadLi(seq, i, $("input[type=file]")[seq].files[i].name);
+	}
 }
-let rating = new Rating();//별점 인스턴스 생성
 
-document.addEventListener('DOMContentLoaded', function(){
-    //별점선택 이벤트 리스너
-    document.querySelector('.rating').addEventListener('click',function(e){
-        let elem = e.target;
-        if(elem.classList.contains('rate_radio')){
-            rating.setRate(parseInt(elem.value));
-        }
-    })
-});
+addUploadLi = function(seq,index,name){
+	
+	var ul_list = $("#ulFile0");
+	
+	li = '<li id="li_'+seq+'_'+index+'" class="list-group-item d-flex justify-content-between align-item-center">';
+	li = li + name;
+	li = li + '<span class="badge bg-danger rounded-pill" onClick="delLi('+ seq +','+index +')"><i class="bi bi-x-circle"></i></span>';
+	li = li + '</li>';
+	
+	$("#ulFile"+seq).append(li);
+}
 
-//상품평 작성 글자수 초과 체크 이벤트 리스너
-document.querySelector('.review_textarea').addEventListener('keydown',function(){
-    //리뷰 400자 초과 안되게 자동 자름
-    let review = document.querySelector('.review_textarea');
-    let lengthCheckEx = /^.{400,}$/;
-    if(lengthCheckEx.test(review.value)){
-        //400자 초과 컷
-        review.value = review.value.substr(0,400);
-    }
-});
-
-//저장 전송전 필드 체크 이벤트 리스너
-document.querySelector('#save').addEventListener('click', function(e){
-    //별점 선택 안했으면 메시지 표시
-    if(rating.rate == 0){
-        rating.showMessage('rate');
-        return false;
-    }
-    //리뷰 5자 미만이면 메시지 표시
-    if(document.querySelector('.review_textarea').value.length < 5){
-        rating.showMessage('review');
-        return false;
-    }
-    //폼 서밋
-});
-
-        Rating.prototype.showMessage = function(type){//경고메시지 표시
-            switch(type){
-                case 'rate':
-                    //안내메시지 표시
-                    document.querySelector('.review_rating .warning_msg').style.display = 'block';
-                    //지정된 시간 후 안내 메시지 감춤
-                    setTimeout(function(){
-                        document.querySelector('.review_rating .warning_msg').style.display = 'none';
-                    },1000);            
-                    break;
-                case 'review':
-                    //안내메시지 표시
-                    document.querySelector('.review_contents .warning_msg').style.display = 'block';
-                    //지정된 시간 후 안내 메시지 감춤
-                    setTimeout(function(){
-                        document.querySelector('.review_contents .warning_msg').style.display = 'none';
-                    },1000);    
-                    break;
-            }
-        }
+delLi = function(seq, index){
+	$("#li_"+seq+"_"+index).remove();
+}
+	
 </script>
-<!-- 여기까지가 별점부분 -->
+	<script>
+		var myModal = document.getElementById('myModal')
+		var myInput = document.getElementById('myInput')
+		myModal.addEventListener('shown.bs.modal', function() {
+			myInput.focus()
+		})
+	</script>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de96e57d26e4344aa147440cc4a132a7&libraries=services"></script>
+	
 
+            <script>
+            var address      = document.getElementById("address");
+            var mapContainer = document.getElementById("map");
+            var x,y          = "";
+
+            // 지도 생성
+            var map = new daum.maps.Map(mapContainer, mapOption);
+
+            
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("stifAddress1").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("stifAddress2").focus();
+                
+                // 자동 GeoCoder 성공 start
+                
+                // 주소-좌표 변환 객체를 생성
+                var geocoder = new daum.maps.services.Geocoder();
+
+                // 주소로 좌표를 검색
+                geocoder.addressSearch(addr, function(result, status) {
+                 
+                 // 정상적으로 검색이 완료됐으면,
+                 if (status == daum.maps.services.Status.OK) {
+                  
+                  var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+                  y = result[0].x;
+                  x = result[0].y;
+
+
+
+                  // 결과값으로 받은 위치를 마커로 표시 마커가 찍혀야 위도 경도가 표시됨
+                  var marker = new daum.maps.Marker({
+                   map: map,
+                   position: coords
+                  });
+                  
+                  // 위도 경도값 값 출력
+                  document.getElementById("stlcLat").value=x;
+                  document.getElementById("stlcLng").value=y;
+                 }
+                });
+             // 자동 GeoCoder 성공 
+            }
+        }).open();
+    }
+</script>
+            
 </body>
 </html>

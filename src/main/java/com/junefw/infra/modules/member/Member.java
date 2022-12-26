@@ -54,6 +54,10 @@ public class Member {
 	private String imadDefaultNy;
 	private Integer ifmaDelNy;
 	
+	// store
+	private String stifSeq;
+	private String stifName;
+	
 	// google
 	private String Id;
 	private String Pw;
@@ -339,6 +343,18 @@ public class Member {
 	}
 	public void setEmailDomain(String emailDomain) {
 		EmailDomain = emailDomain;
+	}
+	public String getStifName() {
+		return stifName;
+	}
+	public void setStifName(String stifName) {
+		this.stifName = stifName;
+	}
+	public String getStifSeq() {
+		return stifSeq;
+	}
+	public void setStifSeq(String stifSeq) {
+		this.stifSeq = stifSeq;
 	}
 	
 	

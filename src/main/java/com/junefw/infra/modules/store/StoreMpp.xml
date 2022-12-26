@@ -179,4 +179,19 @@
 				 
 	</select>
 	
+		<update id="Storeupdate">
+		UPDATE
+				storeinfo
+			SET 
+				stifName = #{stifName}
+				,stifDesc = #{stifDesc}
+				,stifAddress1 = #{stifAddress1}
+				,stifAddress2 = #{stifAddress2}
+				,stifOC = #{stifOC}
+				,stifFoodTypeCd = #{stifFoodTypeCd}
+			WHERE 1=1
+				AND stifSeq = #{stifSeq}
+
+	</update>
+	
 </mapper>

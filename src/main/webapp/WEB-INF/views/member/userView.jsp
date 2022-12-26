@@ -160,12 +160,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">게시된 매장 리스트</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">매장 리스트</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
 	      <ul>
-	        <li>sadad</li>
+	      <c:forEach items="${listMS}" var="item" varStatus="status">
+	        <li><p><a href="javascript:goForm(<c:out value="${item.stifSeq}"/>)"><c:out value="${item.stifName}"/></a></p></li>
+	      </c:forEach>
 	      </ul>
       </div>
       <div class="modal-footer">
@@ -337,6 +339,7 @@ sdfsf
 </div>
         <form id="myinfo" name="myinfo" method="post">
             <input type="hidden" id="myseq" name="seq">
+            <input type="hidden" id="stifSeq" name="stifSeq">
         </form>
 </main>
     <script src="/infra/resources/_bootstrap/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
@@ -345,7 +348,7 @@ sdfsf
       	<script type="text/javascript">
 $(function init(){
 
-	 			if(${item.ifmmRegistTypeCd} == 1) {
+	 			if(${item.ifmmRegistTypeCd} == 1 || ${item.ifmmRegistTypeCd} == 2) {
 	 				$("#storeForm2").show();
 	 			} else {
 	 				$("#storeForm2").hide();
@@ -363,6 +366,16 @@ $(function init(){
 			$("#myinfo").submit();
 		}
 	</script>
+	<script type="text/javascript">
+	goForm = function(stseq){
+
+		$("#stifSeq").val(stseq);
+		$("#myinfo").attr("action","/infra/store/storeForm2");
+		$("#myinfo").submit();
+		
+	}
+	</script>
+	
 	<script type="text/javascript">
 	console.log(${item.ifmmRegistTypeCd});
 	</script>

@@ -212,8 +212,11 @@ public class MemberController {
 	@RequestMapping(value = "/member/userView")
 	public String userView(@ModelAttribute("vo") MemberVo vo, Model model) throws Exception {
 	
-		Member item= service.selectOne(vo);
+		List<Member> listMS = service.selectMSList(vo);
+		model.addAttribute("listMS", listMS);
 		
+		
+		Member item= service.selectOne(vo);
 		model.addAttribute("item", item);
 		
 		return "/member/userView";
@@ -222,9 +225,12 @@ public class MemberController {
 	@RequestMapping(value = "/member/memberUpdt")
 	public String memberUpdt(@ModelAttribute("vo") Member dto, MemberVo vo, RedirectAttributes redirectAttributes) throws Exception {
 		
-		
-		// 수정 프로세스 실행
-		service.update(dto);
+		 // 수정 프로세스 실행
+		 service.update(dto);
+		 service.updateAddress(dto);
+		 service.updatePhone(dto); 
+			/* service.updateEmail(dto); */
+		 
 		
 		redirectAttributes.addAttribute("Seq", dto.getSeq());
 		redirectAttributes.addAttribute("thisPage", vo.getThisPage());

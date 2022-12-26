@@ -19,4 +19,6 @@ public interface StoreService {
 	
 	List<Store> selectStoreMenuList(StoreVo vo) throws Exception;
 	List<Store> selectStoreImgList(StoreVo vo) throws Exception;
+	
+	public int Storeupdate(Store dto) throws Exception;
 }

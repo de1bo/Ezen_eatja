@@ -54,6 +54,19 @@
 				 
 	</select>
 	
+	<select id="selectMSList" resultMap="resultMapObj">
+			SELECT
+				b.stifSeq
+				,b.stifName
+			FROM
+				infrMember a
+				left join eatja.StoreInfo as b on b.infrseq = a.seq and b.stifDelNy = 0
+			WHERE 1=1
+				and ifmmDelNy = 0
+				and seq = #{seq}
+				 
+	</select>
+	
 	<select id="selectListForCache" resultMap="resultMapObj">
 		SELECT
 			seq
@@ -211,6 +224,39 @@
 				AND seq = #{seq}
 
 	</update>
+		<update id="updateAddress">
+		UPDATE
+				infrMemberAddress
+			SET 
+				imadAddress1 = #{imadAddress1}
+				,imadAddress2 = #{imadAddress2}
+				,modDateTime = (NOW())
+			WHERE 1=1
+				AND infrMember_Seq = #{seq}
+
+	</update>
+		<update id="updatePhone">
+		UPDATE
+				infrMemberPhone
+			SET 
+				ifmpTelecomCd = #{ifmpTelecomCd}
+				,ifmpNumber = #{ifmpNumber}
+				,ifmpHomeTel = #{ifmpHomeTel}
+				,modDateTime = (NOW())
+			WHERE 1=1
+				AND infrMember_Seq = #{seq}
+
+	</update>
+<!-- 		<update id="updateEmail">
+		UPDATE
+				infrMemberEmail
+			SET 
+				ifmeEmailAccount = #{ifmeEmailAccount}
+				,modDateTime = (NOW())
+			WHERE 1=1
+				AND infrMember_Seq = #{seq}
+
+	</update> -->
 	<update id="Userupdate">
 		UPDATE
 				infrMember
@@ -234,6 +280,10 @@
 			WHERE 1=1
 				AND seq = #{seq}
 	</update>
+	
+	
+	
+	
 	
 	<delete id="delete">
 		DELETE FROM infrMember
