@@ -21,4 +21,8 @@ public interface StoreService {
 	List<Store> selectStoreImgList(StoreVo vo) throws Exception;
 	
 	public int Storeupdate(Store dto) throws Exception;
+	public int Storemenuupdate(Store dto) throws Exception;
+	
+	
+	int updatestDelet(StoreVo vo) throws Exception;
 }

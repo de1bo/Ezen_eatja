@@ -16,6 +16,7 @@ public class StoreVo {
 	private Integer shIfmmDelNy;
 	
 	private String stifSeq;
+	private String infrseq;
 	
 	// common
 		private String shOption;
@@ -335,6 +336,16 @@ public class StoreVo {
 
 		public void setStoreMenu(String storeMenu) {
 			StoreMenu = storeMenu;
+		}
+
+
+		public String getInfrseq() {
+			return infrseq;
+		}
+
+
+		public void setInfrseq(String infrseq) {
+			this.infrseq = infrseq;
 		}
 
 

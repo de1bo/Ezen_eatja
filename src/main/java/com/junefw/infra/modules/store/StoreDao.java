@@ -32,5 +32,9 @@ public class StoreDao {
 	public int insertUploaded(Store dto) {return sqlSession.insert( namespace + ".insertUploaded", dto);}
 	
 	public int Storeupdate(Store dto) {return sqlSession.update( namespace + ".Storeupdate", dto);}
+	public int Storemenuupdate(Store dto) {return sqlSession.update( namespace + ".Storemenuupdate", dto);}
+	
+	
+	public int updatestDelet(StoreVo vo) {return sqlSession.update(namespace + ".updatestDelet", vo);}
 	
 }

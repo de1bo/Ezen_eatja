@@ -75,7 +75,7 @@ input[type=radio]:checked + label {
 <div class="bgImg">
 <form method="post" action="/infra/store/storeUpdt" enctype="multipart/form-data" class="needs-validation" novalidate>
 <input type="hidden" id="infrseq" name="infrseq" value="${sessRegistTypeCd}">
-<input type="text" id="stifSeq" name="stifSeq" value="${item.stifSeq}">
+<input type="hidden" id="stifSeq" name="stifSeq" value="${item.stifSeq}">
 <h1 class="display-1 jal">매장 수정</h1>
 		<h2>Eatja와 함께하는 매장의 수</h2>
 		<ul class="countdown">
@@ -212,8 +212,19 @@ function insRow() {
  
   /* var seq = oTbl.${vo.totalRows} + 1; */
   //삽입될 Form Tag
-  var frmTag = "<br><div class='row'><div class='col-md-6'><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>메뉴: </h3><input type=text class='form-control col' id='stmnName' name='storeMenuNameArray'></div></div></div></div><div class='col-md-4' name=addText><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>가격: </h3><input type=text class='form-control col' id='stmnPrice' name='storeMenuPriceArray'></div></div></div></div>";
-  frmTag += "<div class='col-md-2' name=addText><div class='item'><div class='single_item'><div class='item_list'><h3 class='ft'>&nbsp</h3><input type=button value='삭제' class='form-control btn btn-danger col' onClick='removeRow()' style='cursor:hand'></div></div></div></div></div>";
+  
+  var frmTag = "";
+  frmTag += '<div class="row"><div class="col-md-6"><div class="item"><div class="single_item"><div class="item_list">';
+  frmTag += '<h3 class="ft">메뉴: </h3><input type=text class="form-control col" id="stmnName" name="storeMenuNameArray"/>';
+  frmTag += '</div></div></div></div>';
+  frmTag += '<div class="col-md-4" name=addText><div class="item"><div class="single_item"><div class="item_list">';
+  frmTag += '<h3 class="ft">가격: </h3><input type=text class="form-control col" id="stmnPrice" name="storeMenuPriceArray"/>';
+  frmTag += '</div></div></div></div>';
+  frmTag += '<div class="col-md-2" name=addText><div class="item"><div class="single_item">';
+  frmTag += '<div class="item_list"><h3 class="ft">&nbsp</h3><input type=button value="삭제" class="form-control btn btn-danger col" onClick="removeRow()" style="cursor:hand">';
+  frmTag += '</div></div></div></div></div>';
+  
+  
   oCell.innerHTML = frmTag;
 }
 //Row 삭제
@@ -236,6 +247,12 @@ function frmCheck()
       }
    }
  }
+ 
+function deleteDiv() {
+	  const div = document.getElementById('my_div');
+	  
+	  div.remove();
+	} 
 </script>
 <table class="col-md-12" border="0" cellspacing="0" cellpadding="0">
   <tr>
@@ -268,8 +285,8 @@ function frmCheck()
                             		</div>
                             	</div>
                         </div>
-                        <input type="button" class="btn btn-danger btn-lg" style=" float:left;"  value="삭제"/>
-						<input type="button" class="btn btn-secondary btn-lg" style=" float:right;"  value="수정 취소"/>
+                        <input type="button" class="btn btn-danger btn-lg" id="btnNelete" style=" float:left;" value="삭제" onClick="location.href='/infra/store/StoreNele?stifSeq=${item.stifSeq}'">
+						<input type="button" class="btn btn-secondary btn-lg" style=" float:right;"  value="수정 취소" onClick="location.href='/infra/'"/>
                     </div>
                 </div>
             </div>

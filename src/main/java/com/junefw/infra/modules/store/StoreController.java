@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.junefw.infra.modules.member.Member;
+import com.junefw.infra.modules.member.MemberVo;
 
 
 
@@ -102,9 +103,18 @@ public class StoreController {
 		
 		// 수정 프로세스 실행
 		service.Storeupdate(dto);
+		service.Storemenuupdate(dto);
 		/* redirectAttributes.addAttribute("StifSeq", dto.getStifSeq()); */
 		
-		return "redirect:/member/userView";
+		return "redirect:/index/indexMain";
+	}
+	
+	@RequestMapping(value= "/store/StoreNele")
+	public String storeNele(StoreVo vo, RedirectAttributes redirectAttributes) throws Exception{
+		service.updatestDelet(vo);
+		
+		
+		return "redirect:/index/indexMain";
 	}
 	
 }

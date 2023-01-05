@@ -113,5 +113,21 @@ public class StoreServiceImpl implements StoreService{
 		// TODO Auto-generated method stub
 		return dao.Storeupdate(dto);
 	}
+	@Override
+	public int Storemenuupdate(Store dto) throws Exception {
+		
+		for(int i = 0; i < dto.getStoreMenuNameArray().length; i++) {
+			dto.setStmnName(dto.getStoreMenuNameArray()[i]);
+			dto.setStmnPrice(dto.getStoreMenuPriceArray()[i]);
+			dao.insertStoreMenu(dto);
+			} 
+		
+		return dao.Storemenuupdate(dto);
+	}
 	
+	@Override
+	public int updatestDelet(StoreVo vo) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.updatestDelet(vo);
+	}
 }

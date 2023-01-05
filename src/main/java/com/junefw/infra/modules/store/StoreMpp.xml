@@ -190,8 +190,13 @@
 				,stifOC = #{stifOC}
 				,stifFoodTypeCd = #{stifFoodTypeCd}
 			WHERE 1=1
-				AND stifSeq = #{stifSeq}
+				AND stifSeq = #{infrseq}
 
 	</update>
 	
+		<update id="updatestDelet">
+		UPDATE storeinfo SET stifDelNy = 1
+			WHERE 1=1
+				AND stifSeq = #{stifSeq}
+	</update>
 </mapper>
